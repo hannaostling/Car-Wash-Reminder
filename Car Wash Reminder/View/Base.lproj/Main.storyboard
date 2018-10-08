@@ -31,11 +31,22 @@
                                     <action selector="testButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsE-Ja-v3H"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-At-DZ2">
+                                <rect key="frame" x="16" y="617" width="116" height="30"/>
+                                <state key="normal" title="Send notification"/>
+                                <connections>
+                                    <action selector="sendNotificationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZWP-hX-tuY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="LJu-At-DZ2" firstAttribute="top" secondItem="GEa-UT-Cwc" secondAttribute="bottom" constant="183.5" id="1bP-4K-wvA"/>
+                            <constraint firstItem="sue-fa-OPr" firstAttribute="leading" secondItem="LJu-At-DZ2" secondAttribute="trailing" constant="197" id="8ke-Lv-6up"/>
+                            <constraint firstItem="LJu-At-DZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="D3J-TE-3WB"/>
                             <constraint firstItem="sue-fa-OPr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="597" id="L0K-M7-92P"/>
                             <constraint firstItem="GEa-UT-Cwc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SAR-UI-ard"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LJu-At-DZ2" secondAttribute="bottom" constant="20" id="SIr-Hg-nYt"/>
                             <constraint firstItem="GEa-UT-Cwc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aZ5-Np-Nlz"/>
                             <constraint firstItem="sue-fa-OPr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="329" id="kCC-tV-mhK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sue-fa-OPr" secondAttribute="bottom" constant="20" id="yCh-hC-k3t"/>
