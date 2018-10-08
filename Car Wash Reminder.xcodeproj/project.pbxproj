@@ -97,12 +97,12 @@
 		B573C716216B80B400754AA6 /* Car Wash Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				B573C717216B80B400754AA6 /* AppDelegate.swift */,
-				B573C719216B80B400754AA6 /* ViewController.swift */,
-				B573C71B216B80B400754AA6 /* Main.storyboard */,
+				B573C747216B80CA00754AA6 /* Model */,
+				B573C746216B80C600754AA6 /* View */,
+				B573C745216B80BC00754AA6 /* Controller */,
 				B573C71E216B80B600754AA6 /* Assets.xcassets */,
-				B573C720216B80B600754AA6 /* LaunchScreen.storyboard */,
 				B573C723216B80B600754AA6 /* Info.plist */,
+				B573C717216B80B400754AA6 /* AppDelegate.swift */,
 			);
 			path = "Car Wash Reminder";
 			sourceTree = "<group>";
@@ -123,6 +123,30 @@
 				B573C739216B80B600754AA6 /* Info.plist */,
 			);
 			path = "Car Wash ReminderUITests";
+			sourceTree = "<group>";
+		};
+		B573C745216B80BC00754AA6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B573C719216B80B400754AA6 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B573C746216B80C600754AA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B573C71B216B80B400754AA6 /* Main.storyboard */,
+				B573C720216B80B600754AA6 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B573C747216B80CA00754AA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
