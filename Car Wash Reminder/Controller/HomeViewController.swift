@@ -1,20 +1,25 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Car Wash Reminder
 //
-//  Created by Hanna Östling on 2018-10-08.
+//  Created by Hanna Östling on 2018-10-09.
 //  Copyright © 2018 Hanna Östling. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
-        
+class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var thumbImage: UIImageView!
+    @IBOutlet weak var carWashedStatusSwitch: UISwitch!
+    @IBOutlet weak var carWashedStatusLabel: UILabel!
+    
+    @IBOutlet weak var weeksPickerView: UIPickerView!
+    
+    
     var logic = Logic()
-    
-    @IBOutlet weak var thumb: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logic.checkIfUserShouldWashCar()
@@ -22,19 +27,28 @@ class ViewController: UIViewController {
     }
 
     // Test button.
-    @IBAction func testButton(_ sender: Any) {
-        if thumb.image == UIImage(named: "thumbs-up") {
-            thumb.image = UIImage(named: "thumbs-down")
+    @IBAction func testButtonPressed(_ sender: Any) {
+        if thumbImage.image == UIImage(named: "thumbs-up") {
+            thumbImage.image = UIImage(named: "thumbs-down")
             logic.thumbsUp = false
         } else {
-            thumb.image = UIImage(named: "thumbs-up")
+            thumbImage.image = UIImage(named: "thumbs-up")
             logic.thumbsUp = true
         }
     }
     
+    
     // Send notification button.
     @IBAction func sendNotificationButtonPressed(_ sender: Any) {
         sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
+    }
+    
+    //
+    @IBAction func carWashedSwitch(_ sender: Any) {
+        if carWashedStatusSwitch.isOn {
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        } else {
+        }
     }
     
     // Notification settings
@@ -49,4 +63,5 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+
 }

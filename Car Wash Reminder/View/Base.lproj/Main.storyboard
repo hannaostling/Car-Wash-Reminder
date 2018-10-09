@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,61 +9,85 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Hem-->
+        <scene sceneID="lWA-lI-WHJ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="0ry-zI-H0h" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NQ6-qU-9gP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbs-down" translatesAutoresizingMaskIntoConstraints="NO" id="GEa-UT-Cwc">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="WYv-rO-NQk"/>
-                                    <constraint firstAttribute="width" constant="200" id="qAz-eK-yAJ"/>
-                                </constraints>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thumbs-down" translatesAutoresizingMaskIntoConstraints="NO" id="GEa-UT-Cwc">
+                                <rect key="frame" x="211" y="545" width="64" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sue-fa-OPr">
-                                <rect key="frame" x="329" y="617" width="30" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sue-fa-OPr">
+                                <rect key="frame" x="296" y="596" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test"/>
                                 <connections>
-                                    <action selector="testButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsE-Ja-v3H"/>
+                                    <action selector="testButtonPressed:" destination="0ry-zI-H0h" eventType="touchUpInside" id="uyj-xk-OLy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-At-DZ2">
-                                <rect key="frame" x="16" y="617" width="116" height="30"/>
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhB-gL-v2v">
+                                <rect key="frame" x="211" y="616" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="carWashedSwitch:" destination="0ry-zI-H0h" eventType="valueChanged" id="cNg-nf-Lcw"/>
+                                </connections>
+                            </switch>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bilen är tvättad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-t8-1KP">
+                                <rect key="frame" x="87" y="621" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJu-At-DZ2">
+                                <rect key="frame" x="16" y="565" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send notification"/>
                                 <connections>
-                                    <action selector="sendNotificationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZWP-hX-tuY"/>
+                                    <action selector="sendNotificationButtonPressed:" destination="0ry-zI-H0h" eventType="touchUpInside" id="fu2-er-XAG"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-ls-FrN">
+                                <rect key="frame" x="16" y="252" width="343" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5:e vecka" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-hZ-KAP">
+                                <rect key="frame" x="16" y="422" width="343" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tidsintervall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJs-dR-eJ5">
+                                <rect key="frame" x="16" y="212" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="LJu-At-DZ2" firstAttribute="top" secondItem="GEa-UT-Cwc" secondAttribute="bottom" constant="183.5" id="1bP-4K-wvA"/>
-                            <constraint firstItem="sue-fa-OPr" firstAttribute="leading" secondItem="LJu-At-DZ2" secondAttribute="trailing" constant="197" id="8ke-Lv-6up"/>
-                            <constraint firstItem="LJu-At-DZ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="D3J-TE-3WB"/>
-                            <constraint firstItem="sue-fa-OPr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="597" id="L0K-M7-92P"/>
-                            <constraint firstItem="GEa-UT-Cwc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SAR-UI-ard"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LJu-At-DZ2" secondAttribute="bottom" constant="20" id="SIr-Hg-nYt"/>
-                            <constraint firstItem="GEa-UT-Cwc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aZ5-Np-Nlz"/>
-                            <constraint firstItem="sue-fa-OPr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="329" id="kCC-tV-mhK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sue-fa-OPr" secondAttribute="bottom" constant="20" id="yCh-hC-k3t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sue-fa-OPr" secondAttribute="trailing" constant="16" id="zfa-qK-lJK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5mu-f3-waW"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Hem" largeContentSizeImage="home" id="6hb-Jv-aJH"/>
                     <connections>
-                        <outlet property="thumb" destination="GEa-UT-Cwc" id="7gS-de-1q9"/>
+                        <outlet property="carWashedStatusLabel" destination="yLf-t8-1KP" id="fOx-Gc-FNM"/>
+                        <outlet property="carWashedStatusSwitch" destination="dhB-gL-v2v" id="poY-Xv-v7g"/>
+                        <outlet property="thumbImage" destination="GEa-UT-Cwc" id="tSs-X0-siw"/>
+                        <outlet property="weeksPickerView" destination="mG7-ls-FrN" id="m2G-PZ-ld2"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LNz-ZU-Ti3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="568.79999999999995" y="-536.58170914542734"/>
         </scene>
     </scenes>
     <resources>
+        <image name="home" width="50" height="50"/>
         <image name="thumbs-down" width="300" height="300"/>
     </resources>
 </document>
