@@ -14,6 +14,8 @@ class Logic {
     var timer = Timer()
     var thumbsUp: Bool = false
     let user = User(timeIntervalInWeeks: 0)
+    let defaults = UserDefaults.standard
+    let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
