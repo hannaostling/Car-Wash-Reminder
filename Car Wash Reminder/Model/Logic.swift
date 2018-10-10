@@ -12,10 +12,11 @@ import UIKit
 class Logic {
     
     var timer = Timer()
-    var thumbsUp: Bool = false
     let user = User(timeIntervalInWeeks: 0)
     let defaults = UserDefaults.standard
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
+    let defaultsUserCarGoodDayToWash = "defaultsUserCarGoodDayToWash"
+    let defaultsUserCarIsWashed = "defaultsUserCarIsWashed"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -24,7 +25,9 @@ class Logic {
     
     // Skriver ut om thumbsUp är sann eller falsk.
     @objc func runsEverySecond() {
-        print("Thumbs up is: \(thumbsUp)")
+        print("Bra dag att tvätta bil: \(user.car.goodDayToWash)")
+        print("Bilen är tvättad: \(user.car.isWashed)")
+        print("")
     }
     
 }

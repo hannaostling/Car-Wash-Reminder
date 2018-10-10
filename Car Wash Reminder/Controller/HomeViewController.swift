@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var timeIntervalView: UIView!
     @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var goodDayToWashCarSwitch: UISwitch!
+    @IBOutlet weak var carIsWashedSwitch: UISwitch!
     @IBOutlet weak var carWashedStatusLabel: UILabel!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var weeksPickerView: UIPickerView!
@@ -21,7 +22,6 @@ class HomeViewController: UIViewController {
     
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
-    let content = UNMutableNotificationContent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +41,27 @@ class HomeViewController: UIViewController {
     
     // Sätt logig.thumbsUp till falsk om den är sann och till sann om den är falsk.
     @IBAction func goodDayToWashTest(_ sender: Any) {
-        if logic.thumbsUp == true {
-            logic.thumbsUp = false
+        if logic.user.car.goodDayToWash == true {
+            logic.user.car.goodDayToWash = false
         } else {
-            logic.thumbsUp = true
+            logic.user.car.goodDayToWash = true
         }
         checkCarWashedStatus()
     }
     
     // Användaren drar switchen till on om bilen är tvättad
     @IBAction func carIsWashed(_ sender: Any) {
-        // EJ PÅBÖRJAD
+        // EJ KLAR
+        if logic.user.car.isWashed == true {
+            carIsWashedSwitch.isOn = false
+            logic.user.car.isWashed = false
+            UIApplication.shared.applicationIconBadgeNumber = 1
+        } else {
+            carIsWashedSwitch.isOn = true
+            logic.user.car.isWashed = true
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+        print("Bil är tvättad: \(logic.user.car.isWashed)")
     }
     
     // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.
@@ -70,6 +80,7 @@ class HomeViewController: UIViewController {
     
     // Notification settings
     func sendNotification(title: String, subtitle: String, body: String) {
+        let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
         content.body = body
@@ -103,7 +114,7 @@ class HomeViewController: UIViewController {
     
     // Kollar status på logic.thumbsUp (gör till enum senare) och sätter bild samt switch.
     func checkCarWashedStatus() {
-        if logic.thumbsUp == true {
+        if logic.user.car.goodDayToWash == true {
             goodDayToWashCarSwitch.isOn = true
             thumbImage.image = UIImage(named: "thumbs-up")
         } else {

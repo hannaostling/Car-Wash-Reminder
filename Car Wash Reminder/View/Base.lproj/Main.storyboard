@@ -105,6 +105,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Hem" largeContentSizeImage="home" id="6hb-Jv-aJH"/>
                     <connections>
+                        <outlet property="carIsWashedSwitch" destination="Y0E-0F-Yoa" id="x4d-on-eas"/>
                         <outlet property="carWashedStatusLabel" destination="yLf-t8-1KP" id="fOx-Gc-FNM"/>
                         <outlet property="goodDayToWashCarSwitch" destination="dhB-gL-v2v" id="poY-Xv-v7g"/>
                         <outlet property="homeView" destination="TWx-SD-G8Y" id="DRA-ka-w7f"/>

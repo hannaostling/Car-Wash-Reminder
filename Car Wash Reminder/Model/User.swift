@@ -11,6 +11,7 @@ import Foundation
 class User {
     
     var timeIntervalInWeeks: Int
+    let car = Car()
     
     init(timeIntervalInWeeks: Int) {
         self.timeIntervalInWeeks = timeIntervalInWeeks
