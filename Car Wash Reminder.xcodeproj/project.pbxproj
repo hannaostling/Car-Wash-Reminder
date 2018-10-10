@@ -14,6 +14,7 @@
 		B573C72D216B80B600754AA6 /* Car_Wash_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C72C216B80B600754AA6 /* Car_Wash_ReminderTests.swift */; };
 		B573C738216B80B600754AA6 /* Car_Wash_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C737216B80B600754AA6 /* Car_Wash_ReminderUITests.swift */; };
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
+		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BD94C216C97990049E14F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		B573C737216B80B600754AA6 /* Car_Wash_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car_Wash_ReminderUITests.swift; sourceTree = "<group>"; };
 		B573C739216B80B600754AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58BD94C216C97990049E14F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				B573C782216B956400754AA6 /* Logic.swift */,
+				B58A5309216E017E00184750 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58A530A216E017E00184750 /* User.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
 				B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */,
