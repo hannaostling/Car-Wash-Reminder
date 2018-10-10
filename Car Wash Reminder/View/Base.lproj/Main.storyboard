@@ -72,25 +72,30 @@
                                         <rect key="frame" x="233" y="290" width="49" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="carWashedSwitch:" destination="0ry-zI-H0h" eventType="valueChanged" id="cNg-nf-Lcw"/>
+                                            <action selector="goodDayToWashTest:" destination="0ry-zI-H0h" eventType="valueChanged" id="cNg-nf-Lcw"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bilen är tvättad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-t8-1KP">
-                                        <rect key="frame" x="94" y="300" width="116" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="goodDayToWashCarSwitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLf-t8-1KP">
+                                        <rect key="frame" x="160" y="261" width="207" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sue-fa-OPr">
-                                        <rect key="frame" x="275" y="142" width="30" height="30"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y0E-0F-Yoa">
+                                        <rect key="frame" x="239" y="192" width="49" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.72984895130000005" green="0.8788814157" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Test"/>
                                         <connections>
-                                            <action selector="testButtonPressed:" destination="0ry-zI-H0h" eventType="touchUpInside" id="uyj-xk-OLy"/>
+                                            <action selector="carIsWashed:" destination="0ry-zI-H0h" eventType="valueChanged" id="4Od-h3-TL8"/>
                                         </connections>
-                                    </button>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="carIsWashedSwitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbH-ue-7Ru">
+                                        <rect key="frame" x="187" y="155" width="150" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -101,7 +106,7 @@
                     <tabBarItem key="tabBarItem" title="Hem" largeContentSizeImage="home" id="6hb-Jv-aJH"/>
                     <connections>
                         <outlet property="carWashedStatusLabel" destination="yLf-t8-1KP" id="fOx-Gc-FNM"/>
-                        <outlet property="carWashedStatusSwitch" destination="dhB-gL-v2v" id="poY-Xv-v7g"/>
+                        <outlet property="goodDayToWashCarSwitch" destination="dhB-gL-v2v" id="poY-Xv-v7g"/>
                         <outlet property="homeView" destination="TWx-SD-G8Y" id="DRA-ka-w7f"/>
                         <outlet property="selectedTimeIntervalLabel" destination="EKY-hZ-KAP" id="ILZ-ff-Xzo"/>
                         <outlet property="thumbImage" destination="GEa-UT-Cwc" id="tSs-X0-siw"/>
