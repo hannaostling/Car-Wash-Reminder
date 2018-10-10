@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
+        checkUserTimeInterval()
     }
 
     // Test button.
@@ -63,6 +64,7 @@ class HomeViewController: UIViewController {
                 let usersTimeIntervalInWeeks = i+1
                 logic.user.timeIntervalInWeeks = usersTimeIntervalInWeeks
                 print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
+                logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
                 timeIntervalView.isHidden = true
                 homeView.isHidden = false
             }
@@ -86,6 +88,20 @@ class HomeViewController: UIViewController {
         for i in 3...12 {
             let timeInterval = "Var \(i):e vecka"
             timeIntervals.append(timeInterval)
+        }
+    }
+    
+    // Kollar om användaren har valt ett tidsintervall.
+    func checkUserTimeInterval() {
+        if let savedUserTimeInterval = logic.defaults.integer(forKey: logic.defaultsUserTimeInterval) as Int? {
+            logic.user.timeIntervalInWeeks = savedUserTimeInterval
+        }
+        if logic.user.timeIntervalInWeeks == 0 {
+            timeIntervalView.isHidden = false
+            homeView.isHidden = true
+        } else {
+            timeIntervalView.isHidden = true
+            homeView.isHidden = false
         }
     }
     
