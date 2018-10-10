@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var timeIntervalView: UIView!
     @IBOutlet weak var thumbImage: UIImageView!
-    @IBOutlet weak var carWashedStatusSwitch: UISwitch!
+    @IBOutlet weak var goodDayToWashCarSwitch: UISwitch!
     @IBOutlet weak var carWashedStatusLabel: UILabel!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var weeksPickerView: UIPickerView!
@@ -21,43 +21,40 @@ class HomeViewController: UIViewController {
     
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
+    let content = UNMutableNotificationContent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //logic.checkIfUserShouldWashCar()
+        logic.checkIfUserShouldWashCar()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
         checkUserTimeInterval()
+        checkCarWashedStatus()
     }
 
-    // Test button.
-    @IBAction func testButtonPressed(_ sender: Any) {
-        if thumbImage.image == UIImage(named: "thumbs-up") {
-            thumbImage.image = UIImage(named: "thumbs-down")
-            logic.thumbsUp = false
-        } else {
-            thumbImage.image = UIImage(named: "thumbs-up")
-            logic.thumbsUp = true
-        }
-    }
-    
-    
     // Send notification button.
     @IBAction func sendNotificationButtonPressed(_ sender: Any) {
         sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
     }
     
-    //
-    @IBAction func carWashedSwitch(_ sender: Any) {
-        if carWashedStatusSwitch.isOn {
-            UIApplication.shared.applicationIconBadgeNumber = 0
+    // Sätt logig.thumbsUp till falsk om den är sann och till sann om den är falsk.
+    @IBAction func goodDayToWashTest(_ sender: Any) {
+        if logic.thumbsUp == true {
+            logic.thumbsUp = false
         } else {
+            logic.thumbsUp = true
         }
+        checkCarWashedStatus()
     }
     
-    // Done button
+    // Användaren drar switchen till on om bilen är tvättad
+    @IBAction func carIsWashed(_ sender: Any) {
+        // EJ PÅBÖRJAD
+    }
+    
+    // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.
     @IBAction func doneButton(_ sender: Any) {
         for i in 0...timeIntervals.count-1 {
             if selectedTimeIntervalLabel.text == timeIntervals[i] {
@@ -73,7 +70,6 @@ class HomeViewController: UIViewController {
     
     // Notification settings
     func sendNotification(title: String, subtitle: String, body: String) {
-        let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
         content.body = body
@@ -105,7 +101,17 @@ class HomeViewController: UIViewController {
         }
     }
     
-
+    // Kollar status på logic.thumbsUp (gör till enum senare) och sätter bild samt switch.
+    func checkCarWashedStatus() {
+        if logic.thumbsUp == true {
+            goodDayToWashCarSwitch.isOn = true
+            thumbImage.image = UIImage(named: "thumbs-up")
+        } else {
+            goodDayToWashCarSwitch.isOn = false
+            thumbImage.image = UIImage(named: "thumbs-down")
+        }
+    }
+    
 }
 
 extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
