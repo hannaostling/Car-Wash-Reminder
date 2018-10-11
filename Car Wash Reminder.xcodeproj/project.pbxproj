@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C7667D957204DAE8FB47E67 /* Pods_Car_Wash_ReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5308672AFA4C339F07A458C6 /* Pods_Car_Wash_ReminderTests.framework */; };
+		4DA2F90CB06E8BC3C6E63298 /* Pods_Car_Wash_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */; };
 		B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C717216B80B400754AA6 /* AppDelegate.swift */; };
 		B573C71D216B80B400754AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C71B216B80B400754AA6 /* Main.storyboard */; };
 		B573C71F216B80B600754AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C71E216B80B600754AA6 /* Assets.xcassets */; };
@@ -16,7 +18,10 @@
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
 		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58A530C216E28E100184750 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A530B216E28E100184750 /* Car.swift */; };
+		B58A5314216E4A7600184750 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5313216E4A7600184750 /* WeatherViewController.swift */; };
+		B58A5316216E4A9100184750 /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5315216E4A9100184750 /* ChangeCityViewController.swift */; };
 		B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BD94C216C97990049E14F /* HomeViewController.swift */; };
+		B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		027F4229EE15C767E3CA2EE1 /* Pods-Car Wash Reminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.debug.xcconfig"; sourceTree = "<group>"; };
+		3E1DC38F8E59E77631F7ECA6 /* Pods-Car Wash ReminderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5308672AFA4C339F07A458C6 /* Pods_Car_Wash_ReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_ReminderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_ReminderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62B9C87CB4391E391BA2A4B7 /* Pods-Car Wash ReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		69B94CEC089AB79552191862 /* Pods-Car Wash ReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.release.xcconfig"; sourceTree = "<group>"; };
+		B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C714216B80B400754AA6 /* Car Wash Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Wash Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C717216B80B400754AA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B573C71C216B80B400754AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,7 +64,11 @@
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58A530B216E28E100184750 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		B58A5313216E4A7600184750 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		B58A5315216E4A9100184750 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		B58BD94C216C97990049E14F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
+		FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA2F90CB06E8BC3C6E63298 /* Pods_Car_Wash_Reminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7667D957204DAE8FB47E67 /* Pods_Car_Wash_ReminderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +92,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5655C819176A68822ABBE177 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */,
+				5308672AFA4C339F07A458C6 /* Pods_Car_Wash_ReminderTests.framework */,
+				60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9423A395FF26BF02B2B1F9D4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				027F4229EE15C767E3CA2EE1 /* Pods-Car Wash Reminder.debug.xcconfig */,
+				D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */,
+				62B9C87CB4391E391BA2A4B7 /* Pods-Car Wash ReminderTests.debug.xcconfig */,
+				69B94CEC089AB79552191862 /* Pods-Car Wash ReminderTests.release.xcconfig */,
+				FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */,
+				3E1DC38F8E59E77631F7ECA6 /* Pods-Car Wash ReminderUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B573C70B216B80B400754AA6 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +129,8 @@
 				B573C72B216B80B600754AA6 /* Car Wash ReminderTests */,
 				B573C736216B80B600754AA6 /* Car Wash ReminderUITests */,
 				B573C715216B80B400754AA6 /* Products */,
+				9423A395FF26BF02B2B1F9D4 /* Pods */,
+				5655C819176A68822ABBE177 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				B58BD94C216C97990049E14F /* HomeViewController.swift */,
+				B58A5313216E4A7600184750 /* WeatherViewController.swift */,
+				B58A5315216E4A9100184750 /* ChangeCityViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B573C73C216B80B600754AA6 /* Build configuration list for PBXNativeTarget "Car Wash Reminder" */;
 			buildPhases = (
+				0605DA23D1A6681B5FB95AD9 /* [CP] Check Pods Manifest.lock */,
 				B573C710216B80B400754AA6 /* Sources */,
 				B573C711216B80B400754AA6 /* Frameworks */,
 				B573C712216B80B400754AA6 /* Resources */,
+				3F439F9E6C2804677D22035A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B573C73F216B80B600754AA6 /* Build configuration list for PBXNativeTarget "Car Wash ReminderTests" */;
 			buildPhases = (
+				ED2F9DC93893F310F70D4FC8 /* [CP] Check Pods Manifest.lock */,
 				B573C724216B80B600754AA6 /* Sources */,
 				B573C725216B80B600754AA6 /* Frameworks */,
 				B573C726216B80B600754AA6 /* Resources */,
@@ -200,6 +249,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B573C742216B80B600754AA6 /* Build configuration list for PBXNativeTarget "Car Wash ReminderUITests" */;
 			buildPhases = (
+				F3AE76B44FEFF0053394C398 /* [CP] Check Pods Manifest.lock */,
 				B573C72F216B80B600754AA6 /* Sources */,
 				B573C730216B80B600754AA6 /* Frameworks */,
 				B573C731216B80B600754AA6 /* Resources */,
@@ -226,6 +276,11 @@
 				TargetAttributes = {
 					B573C713216B80B400754AA6 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B573C727216B80B600754AA6 = {
 						CreatedOnToolsVersion = 10.0;
@@ -284,6 +339,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0605DA23D1A6681B5FB95AD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Car Wash Reminder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F439F9E6C2804677D22035A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED2F9DC93893F310F70D4FC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Car Wash ReminderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3AE76B44FEFF0053394C398 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Car Wash ReminderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B573C710216B80B400754AA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -293,7 +441,9 @@
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
+				B58A5314216E4A7600184750 /* WeatherViewController.swift in Sources */,
 				B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */,
+				B58A5316216E4A9100184750 /* ChangeCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +616,7 @@
 		};
 		B573C73D216B80B600754AA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 027F4229EE15C767E3CA2EE1 /* Pods-Car Wash Reminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +635,7 @@
 		};
 		B573C73E216B80B600754AA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,6 +654,7 @@
 		};
 		B573C740216B80B600754AA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62B9C87CB4391E391BA2A4B7 /* Pods-Car Wash ReminderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -523,6 +676,7 @@
 		};
 		B573C741216B80B600754AA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69B94CEC089AB79552191862 /* Pods-Car Wash ReminderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,6 +698,7 @@
 		};
 		B573C743216B80B600754AA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -564,6 +719,7 @@
 		};
 		B573C744216B80B600754AA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E1DC38F8E59E77631F7ECA6 /* Pods-Car Wash ReminderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
