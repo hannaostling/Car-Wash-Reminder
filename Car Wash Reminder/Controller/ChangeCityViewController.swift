@@ -8,23 +8,26 @@
 
 import UIKit
 
+protocol ChangeCityDelegate {
+    func userEnteredANewCityName(city : String)
+}
+
 class ChangeCityViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var delegate : ChangeCityDelegate?
+    
+    @IBOutlet weak var changeCityTextField: UITextField!
+    
+    // Dölj status bar.
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // Get weather button: Efter användaren skrivit in en stad och klickat på knappen så anropar vi på delegaten userEnteredANewCityName med changeCityTextField.text och går sedan tillbaka till WeatherViewController.
+    @IBAction func getWeatherPressed(_ sender: AnyObject) {
+        let cityName = changeCityTextField.text!
+        delegate?.userEnteredANewCityName(city: cityName)
+        self.navigationController?.popViewController(animated: true)
     }
-    */
-
+    
 }

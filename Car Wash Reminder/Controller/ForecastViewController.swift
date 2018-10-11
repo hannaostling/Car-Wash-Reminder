@@ -1,8 +1,8 @@
 //
-//  WeatherViewController.swift
+//  ForecastViewController.swift
 //  Car Wash Reminder
 //
-//  Created by Hanna Östling on 2018-10-10.
+//  Created by Hanna Östling on 2018-10-11.
 //  Copyright © 2018 Hanna Östling. All rights reserved.
 //
 
@@ -11,15 +11,12 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
+class ForecastViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "b187a8a5a5cca3a2d003e4a6109c208d"
+    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
+    let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     let locationManager = CLLocationManager()
-    let weatherData = WeatherData()
-    
-    @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
+    let forecastWeatherData = ForecastWeatherData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +36,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
             response in
             if response.result.isSuccess {
-                let weatherJSON: JSON = JSON(response.result.value!)
-                print(weatherJSON)
-                self.updateWeatherData(json: weatherJSON)
+                let forecastWeatherJSON: JSON = JSON(response.result.value!)
+                print(forecastWeatherJSON)
+                self.updateWeatherData(json: forecastWeatherJSON)
             }
             else {
                 print("Error \(response.result.error!))")
@@ -52,23 +49,35 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     // Uppdatera data med väderinformationen från JSON.
     func updateWeatherData(json: JSON) {
-        if let tempResult = json["main"]["temp"].double {
-            weatherData.temperature = Int(tempResult - 273.15)
-            weatherData.city = json["name"].stringValue
-            weatherData.condition = json["weather"][0]["id"].intValue
-            weatherData.weatherIconName = weatherData.updateWeatherIcon(condition: weatherData.condition)
-            updateUIWithWeatherData()
+        if json["city"]["name"].stringValue != "" {
+            
+            // City name
+            forecastWeatherData.city = json["city"]["name"].stringValue
+            self.title = forecastWeatherData.city
+            print("City: \(forecastWeatherData.city)")
+            
+            // City main weather
+            // Ta de 16 första väderna förklaring:
+            // Från "http://api.openweathermap.org/data/2.5/forecast?" får vi 40 vädern som är en 5-dagars prognos.
+            // 40/5 för att få fram hur många vädern per dag = 8
+            // 8 * 2 eftersom vi vill ha vädern för 2 dagar.
+            var forecastMainWeatherForTodayAndTomorrow: [String] = [json["list"][0]["weather"][0]["main"].stringValue]
+            for i in 1...15 {
+                forecastMainWeatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
+            }
+            
+            // Om main weather någon gång är == "Rain" så printa "JA", annars "NEJ".
+            for forecastMainWeather in forecastMainWeatherForTodayAndTomorrow {
+                if forecastMainWeather == "Rain" {
+                    print("NO")
+                } else {
+                    print("YES")
+                }
+            }
         }
         else {
             self.title = "Weather Unavailble"
         }
-    }
-    
-    // Uppdaterar UI med väderdata.
-    func updateUIWithWeatherData() {
-        self.title = weatherData.city
-        temperatureLabel.text = "\(weatherData.temperature)°"
-        weatherIcon.image = UIImage(named: weatherData.weatherIconName)
     }
     
     // Hämtar användarens position om användaren godkänner "Location When In Use".
@@ -98,7 +107,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "changeCityName" {
+        if segue.identifier == "forecastChangeCityName" {
             let destinationVC = segue.destination as! ChangeCityViewController
             destinationVC.delegate = self
         }

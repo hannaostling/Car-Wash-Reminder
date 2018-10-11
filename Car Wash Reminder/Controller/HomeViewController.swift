@@ -33,8 +33,8 @@ class HomeViewController: UIViewController {
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-        checkUserTimeInterval()
-        checkCarWashedStatus()
+        //checkUserTimeInterval()
+        //checkCarWashedStatus()
     }
 
     // Send notification button.

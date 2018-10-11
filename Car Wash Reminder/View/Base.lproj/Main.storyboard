@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bbZ-9l-Epo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kAv-AJ-rGB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -101,7 +101,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5mu-f3-waW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IYb-f4-HTK"/>
+                    <navigationItem key="navigationItem" id="IYb-f4-HTK">
+                        <barButtonItem key="leftBarButtonItem" title="Forecast Weather" id="uGe-Cs-D6I"/>
+                        <barButtonItem key="rightBarButtonItem" title="Weather" id="5TU-Fi-UqC"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="carIsWashedSwitch" destination="Y0E-0F-Yoa" id="x4d-on-eas"/>
                         <outlet property="carWashedStatusLabel" destination="yLf-t8-1KP" id="fOx-Gc-FNM"/>
@@ -117,28 +120,146 @@
             </objects>
             <point key="canvasLocation" x="1508" y="-536.58170914542734"/>
         </scene>
-        <!--Hem-->
-        <scene sceneID="eO6-yl-lQW">
+        <!--Weather View Controller-->
+        <scene sceneID="OaW-pS-k5a">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbZ-9l-Epo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hem" largeContentSizeImage="home" id="6hb-Jv-aJH"/>
+                <viewController id="0ak-WH-AWR" customClass="WeatherViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="puy-N0-ZnH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View">
+                                <rect key="frame" x="38" y="202.5" width="299" height="262"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZI-31-XQi" userLabel="Temperature Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="262" id="DpV-S9-k3A"/>
+                                    <constraint firstAttribute="width" constant="299" id="SV0-R9-RVn"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-1V-mbE" userLabel="Weather Condition Image View">
+                                <rect key="frame" x="38" y="249" width="299" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
+                                <rect key="frame" x="38" y="202" width="299" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="qSb-uN-hHY"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="uMU-ca-ULL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="viN-Hm-sVl">
+                        <barButtonItem key="rightBarButtonItem" title="Ändra stad" id="KaE-7B-64W">
+                            <connections>
+                                <segue destination="3nZ-cW-KmA" kind="show" identifier="changeCityName" id="6sC-hF-fCX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XPL-kb-0US"/>
+                        <outlet property="weatherIcon" destination="JB2-1V-mbE" id="geS-Rb-zdq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3A7-PX-xFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3280.8000000000002" y="-537.48125937031489"/>
+        </scene>
+        <!--Change City View Controller-->
+        <scene sceneID="z68-Gm-D5H">
+            <objects>
+                <viewController id="3nZ-cW-KmA" customClass="ChangeCityViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RtE-OC-OxK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TP8-ab-nEK" userLabel="Centered view">
+                                <rect key="frame" x="87.5" y="299.5" width="200" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7d-Ia-DtB" userLabel="Get Weather Button">
+                                        <rect key="frame" x="0.0" y="38" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XPK-S8-Gem"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                        <state key="normal" title="Get weather">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getWeatherPressed:" destination="3nZ-cW-KmA" eventType="touchUpInside" id="pNL-Qi-3kC"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8c7-St-dyC" userLabel="City Name Text Field">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gOs-hw-ook"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8c7-St-dyC" firstAttribute="top" secondItem="TP8-ab-nEK" secondAttribute="top" id="I9c-sq-5hZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="8c7-St-dyC" secondAttribute="trailing" id="R76-kt-mMV"/>
+                                    <constraint firstAttribute="bottom" secondItem="k7d-Ia-DtB" secondAttribute="bottom" id="gBO-J4-cVO"/>
+                                    <constraint firstAttribute="height" constant="68" id="hmr-iW-4yn"/>
+                                    <constraint firstItem="k7d-Ia-DtB" firstAttribute="leading" secondItem="TP8-ab-nEK" secondAttribute="leading" id="mEG-Ji-Cle"/>
+                                    <constraint firstAttribute="width" constant="200" id="nXD-qh-G1a"/>
+                                    <constraint firstItem="8c7-St-dyC" firstAttribute="leading" secondItem="TP8-ab-nEK" secondAttribute="leading" id="uvo-Xy-5Zu"/>
+                                    <constraint firstAttribute="trailing" secondItem="k7d-Ia-DtB" secondAttribute="trailing" id="v5R-ng-1Qz"/>
+                                    <constraint firstItem="k7d-Ia-DtB" firstAttribute="top" secondItem="8c7-St-dyC" secondAttribute="bottom" constant="8" id="ynz-lX-Mfo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TP8-ab-nEK" firstAttribute="centerY" secondItem="RtE-OC-OxK" secondAttribute="centerY" id="5Dj-6c-AGH"/>
+                            <constraint firstItem="TP8-ab-nEK" firstAttribute="centerX" secondItem="RtE-OC-OxK" secondAttribute="centerX" id="ZH9-jP-5qy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nup-PE-cbJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="changeCityTextField" destination="8c7-St-dyC" id="KXo-JQ-uwS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kF-kD-oWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4172" y="-537"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gra-bL-WvJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kAv-AJ-rGB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="usK-yp-lYl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vuw-uX-Fn6">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0ry-zI-H0h" kind="relationship" relationship="rootViewController" id="ZMm-9C-mTN"/>
+                        <segue destination="0ak-WH-AWR" kind="relationship" relationship="rootViewController" id="8Pp-ml-CZ4"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DR2-mG-l4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jx-G1-FfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568.79999999999995" y="-536.58170914542734"/>
+            <point key="canvasLocation" x="2420" y="-537.48125937031489"/>
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="50" height="50"/>
         <image name="thumbs-down" width="300" height="300"/>
     </resources>
 </document>
