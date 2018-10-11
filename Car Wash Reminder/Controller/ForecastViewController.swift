@@ -13,10 +13,13 @@ import SwiftyJSON
 
 class ForecastViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
+    let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     let locationManager = CLLocationManager()
     let forecastWeatherData = ForecastWeatherData()
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,8 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
             if response.result.isSuccess {
                 let forecastWeatherJSON: JSON = JSON(response.result.value!)
                 print(forecastWeatherJSON)
-                self.updateWeatherData(json: forecastWeatherJSON)
+                self.updateForecastWeatherData(json: forecastWeatherJSON)
+                //self.updateWeatherData(json: forecastWeatherJSON)
             }
             else {
                 print("Error \(response.result.error!))")
@@ -47,37 +51,36 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
         }
     }
     
-    // Uppdatera data med väderinformationen från JSON.
-    func updateWeatherData(json: JSON) {
-        if json["city"]["name"].stringValue != "" {
-            
-            // City name
-            forecastWeatherData.city = json["city"]["name"].stringValue
-            self.title = forecastWeatherData.city
-            print("City: \(forecastWeatherData.city)")
-            
-            // City main weather
-            // Ta de 16 första väderna förklaring:
-            // Från "http://api.openweathermap.org/data/2.5/forecast?" får vi 40 vädern som är en 5-dagars prognos.
-            // 40/5 för att få fram hur många vädern per dag = 8
-            // 8 * 2 eftersom vi vill ha vädern för 2 dagar.
+    // Uppdaterar forecast-väder-data med väderinformationen från JSON.
+    func updateForecastWeatherData(json: JSON) {
+        if let tempResult = json["list"][0]["main"]["temp"].double {
+            forecastWeatherData.temperature = Int(tempResult - 273.15)
+            forecastWeatherData.name = json["city"]["name"].stringValue
+            forecastWeatherData.condition = json["list"][0]["weather"][0]["id"].intValue
+            forecastWeatherData.weatherIconName = forecastWeatherData.updateWeatherIcon(condition: forecastWeatherData.condition)
             var forecastMainWeatherForTodayAndTomorrow: [String] = [json["list"][0]["weather"][0]["main"].stringValue]
             for i in 1...15 {
                 forecastMainWeatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
-            
-            // Om main weather någon gång är == "Rain" så printa "JA", annars "NEJ".
             for forecastMainWeather in forecastMainWeatherForTodayAndTomorrow {
-                if forecastMainWeather == "Rain" {
-                    print("NO")
+                if forecastMainWeather == "Rain" || forecastMainWeather == "Thunderstorm" || forecastMainWeather == "Snow" {
+                    print("NO: \(forecastMainWeather)")
                 } else {
-                    print("YES")
+                    print("YES: \(forecastMainWeather)")
                 }
             }
+            updateUIWithWeatherData()
         }
         else {
             self.title = "Weather Unavailble"
         }
+    }
+    
+    // Uppdaterar UI med väderdata.
+    func updateUIWithWeatherData() {
+        self.title = forecastWeatherData.name
+        temperatureLabel.text = "\(forecastWeatherData.temperature)°"
+        weatherIcon.image = UIImage(named: forecastWeatherData.weatherIconName)
     }
     
     // Hämtar användarens position om användaren godkänner "Location When In Use".
@@ -90,7 +93,8 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-            getWeatherData(url: WEATHER_URL, parameters: params)
+            //getWeatherData(url: WEATHER_URL, parameters: params)
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
     }
     
@@ -103,11 +107,12 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
     // När användaren skriver in en stad i ChangeCityViewController, uppdatera vyn med data från inskrivna staden.
     func userEnteredANewCityName(city: String) {
         let params: [String:String] = ["q": city, "appid": APP_ID]
-        getWeatherData(url: WEATHER_URL, parameters: params)
+        //getWeatherData(url: WEATHER_URL, parameters: params)
+        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "forecastChangeCityName" {
+        if segue.identifier == "changeCityName" {
             let destinationVC = segue.destination as! ChangeCityViewController
             destinationVC.delegate = self
         }
