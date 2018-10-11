@@ -1,0 +1,6 @@
+framework module Pods_Car_Wash_ReminderUITests {
+  umbrella header "Pods-Car Wash ReminderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
