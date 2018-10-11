@@ -11,7 +11,7 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class ForecastViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
+class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, ChangeCityDelegate {
     
     let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
@@ -34,6 +34,22 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
         return true
     }
     
+    // När man klickar på sök-knappen visas en sök-ruta.
+    @IBAction func searchButton(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Visa väder för en annan stad"
+        searchController.searchBar.autocapitalizationType = .words
+        present(searchController, animated: true, completion: nil)
+    }
+    
+    // När man klickat på sök, hämta data från den inskrivna staden!
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let cityName = searchBar.text!
+        let params: [String:String] = ["q": cityName, "appid": APP_ID]
+        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+    }
+    
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
     func getWeatherData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
@@ -42,9 +58,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
                 let forecastWeatherJSON: JSON = JSON(response.result.value!)
                 print(forecastWeatherJSON)
                 self.updateForecastWeatherData(json: forecastWeatherJSON)
-                //self.updateWeatherData(json: forecastWeatherJSON)
-            }
-            else {
+            } else {
                 print("Error \(response.result.error!))")
                 self.title = "Connection Issues"
             }
@@ -93,7 +107,6 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-            //getWeatherData(url: WEATHER_URL, parameters: params)
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
     }
