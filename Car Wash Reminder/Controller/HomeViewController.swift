@@ -23,6 +23,9 @@ class HomeViewController: UIViewController {
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     
+    // if (Kolla varje dag om lastWashedDate + tidsintervall > dagens datum) == true { notifikation }
+    // backgroundDataFetch 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         logic.checkIfUserShouldWashCar()
