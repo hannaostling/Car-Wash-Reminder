@@ -54,7 +54,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, Chang
     // Uppdaterar forecast-väder-data med väderinformationen från JSON.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
-            forecastWeatherData.temperature = Int(tempResult - 273.15)
+            forecastWeatherData.temperature = Int(tempResult - 272.15)
             forecastWeatherData.name = json["city"]["name"].stringValue
             forecastWeatherData.condition = json["list"][0]["weather"][0]["id"].intValue
             forecastWeatherData.weatherIconName = forecastWeatherData.updateWeatherIcon(condition: forecastWeatherData.condition)
