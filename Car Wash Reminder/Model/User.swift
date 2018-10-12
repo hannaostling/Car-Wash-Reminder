@@ -11,11 +11,8 @@ import Foundation
 class User {
     
     var startSearchingDate = Date()
-    var timeIntervalInWeeks: Int
+    var timeIntervalInWeeks: Int = 0
+    var timeIntervalChoiseIsMade: Bool = false
     let car = Car()
-    
-    init(timeIntervalInWeeks: Int) {
-        self.timeIntervalInWeeks = timeIntervalInWeeks
-    }
     
 }
