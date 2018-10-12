@@ -145,8 +145,10 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         }
         if logic.itWillRainTodayOrTomorrow == true {
             print("Tvätta INTE bilen idag!")
+            logic.user.car.goodDayToWash = false
         } else {
             print("Du kan tvätta bilen idag!")
+            logic.user.car.goodDayToWash = true
         }
     }
 
