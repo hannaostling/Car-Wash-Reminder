@@ -148,6 +148,14 @@
                                     <constraint firstAttribute="width" constant="299" id="SV0-R9-RVn"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VM-Oe-Tpg">
+                                <rect key="frame" x="16" y="617" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change city"/>
+                                <connections>
+                                    <segue destination="3nZ-cW-KmA" kind="show" identifier="changeCityName" id="kbC-tE-Pwp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -157,18 +165,21 @@
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
                     <navigationItem key="navigationItem" id="viN-Hm-sVl">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="84i-8n-AXt">
-                            <connections>
-                                <action selector="searchButton:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Ändra stad" id="KaE-7B-64W">
-                            <connections>
-                                <segue destination="3nZ-cW-KmA" kind="show" identifier="changeCityName" id="6sC-hF-fCX"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="84i-8n-AXt">
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="pSw-Kp-Ocm">
+                                <connections>
+                                    <action selector="refreshButtonPressed:" destination="0ak-WH-AWR" id="w5B-PK-yxA"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="refreshButton" destination="pSw-Kp-Ocm" id="7WH-Q0-NOc"/>
                         <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XVI-xZ-qst"/>
                         <outlet property="weatherIcon" destination="JB2-1V-mbE" id="p1G-yA-mDk"/>
                     </connections>
