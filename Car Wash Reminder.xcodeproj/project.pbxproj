@@ -20,8 +20,6 @@
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
 		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58A530C216E28E100184750 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A530B216E28E100184750 /* Car.swift */; };
-		B58A5316216E4A9100184750 /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5315216E4A9100184750 /* ChangeCityViewController.swift */; };
-		B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58BD94C216C97990049E14F /* HomeViewController.swift */; };
 		B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,8 +65,6 @@
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58A530B216E28E100184750 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		B58A5315216E4A9100184750 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
-		B58BD94C216C97990049E14F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
 		FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,9 +176,7 @@
 		B573C745216B80BC00754AA6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B58BD94C216C97990049E14F /* HomeViewController.swift */,
 				B56DBD74216F71A900E0FAFD /* ForecastViewController.swift */,
-				B58A5315216E4A9100184750 /* ChangeCityViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -446,8 +440,6 @@
 				B56DBD79216F720400E0FAFD /* ForecastWeatherData.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
 				B56DBD75216F71A900E0FAFD /* ForecastViewController.swift in Sources */,
-				B58BD94D216C97990049E14F /* HomeViewController.swift in Sources */,
-				B58A5316216E4A9100184750 /* ChangeCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
