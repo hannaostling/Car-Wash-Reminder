@@ -10,7 +10,6 @@ import Foundation
 
 class Car {
     
-    var isWashed: Bool = false
-    var goodDayToWash: Bool = false
-
+    var longTimeSinceUserWashedCar: Bool = true
+   
 }
