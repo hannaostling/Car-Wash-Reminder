@@ -12,7 +12,7 @@ import UIKit
 class Logic {
     
     var timer = Timer()
-    var searchingForGoodDayToWashCar: Bool = true
+    var searchForGoodDayToWashCar: Bool = true
     let user = User(timeIntervalInWeeks: 0)
     let defaults = UserDefaults.standard
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"

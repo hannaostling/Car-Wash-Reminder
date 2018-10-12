@@ -48,6 +48,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        //startSearchingAgainAfter(timeInterval: 3)
     }
     
     // Dölj status bar.
@@ -104,10 +105,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             carIsWashedSwitch.isOn = false
             logic.user.car.isWashed = false
             UIApplication.shared.applicationIconBadgeNumber = 1
+            logic.searchForGoodDayToWashCar = true
         } else {
             carIsWashedSwitch.isOn = true
             logic.user.car.isWashed = true
             UIApplication.shared.applicationIconBadgeNumber = 0
+            logic.searchForGoodDayToWashCar = false
+            startSearchingAgainAfter(timeInterval: logic.user.timeIntervalInWeeks)
         }
         print("Bil är tvättad: \(logic.user.car.isWashed)")
     }
@@ -122,7 +126,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
                 timeIntervalView.isHidden = true
                 homeView.isHidden = false
-                logic.searchingForGoodDayToWashCar = true
+                logic.searchForGoodDayToWashCar = true
             }
         }
     }
@@ -145,8 +149,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             print("Du kan tvätta bilen idag!")
             logic.user.car.goodDayToWash = true
-            sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
+            sendNotification(title: "Dags att tvätta bilen", subtitle: "Det ska inte regna varken idag eller imorgon.", body: "Passa på att tvätta bilen idag!")
         }
+    }
+    
+    // Börja söka igen efter användarens tidsinterval.
+    func startSearchingAgainAfter(timeInterval: Int) {
+        let daysToAdd = 7 * timeInterval
+        let calendar = Calendar.current
+        let currentDate = Date()
+        logic.user.startSearchingDate = calendar.date(byAdding: .day, value: daysToAdd, to: currentDate)!
+        let title = "Kanon!"
+        let message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(timeInterval) veckor igen!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "👍🏽", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     // När man klickat på sök, hämta data från den inskrivna staden!
@@ -162,7 +179,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             response in
             if response.result.isSuccess {
                 let forecastWeatherJSON: JSON = JSON(response.result.value!)
-                print(forecastWeatherJSON)
+                //print(forecastWeatherJSON)
                 self.updateForecastWeatherData(json: forecastWeatherJSON)
             } else {
                 print("Error \(response.result.error!))")

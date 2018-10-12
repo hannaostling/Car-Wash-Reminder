@@ -10,6 +10,7 @@ import Foundation
 
 class User {
     
+    var startSearchingDate = Date()
     var timeIntervalInWeeks: Int
     let car = Car()
     
