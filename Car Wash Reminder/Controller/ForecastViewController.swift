@@ -87,11 +87,6 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         }
     }
 
-    // Send notification button.
-    @IBAction func sendNotificationButtonPressed(_ sender: Any) {
-        sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
-    }
-
     // Sätt logig.thumbsUp till falsk om den är sann och till sann om den är falsk.
     @IBAction func goodDayToWashTest(_ sender: Any) {
         if logic.user.car.goodDayToWash == true {
@@ -146,9 +141,11 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         if logic.itWillRainTodayOrTomorrow == true {
             print("Tvätta INTE bilen idag!")
             logic.user.car.goodDayToWash = false
+            
         } else {
             print("Du kan tvätta bilen idag!")
             logic.user.car.goodDayToWash = true
+            sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
         }
     }
 
@@ -229,8 +226,12 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         content.subtitle = subtitle
         content.body = body
         content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-        let request = UNNotificationRequest(identifier: "threeSeconds", content: content, trigger: trigger)
+        content.sound = UNNotificationSound.default
+        var dateComponents = DateComponents()
+        dateComponents.hour = 17
+        dateComponents.minute = 00
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 
