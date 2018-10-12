@@ -25,30 +25,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     
     @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var forecastButton: UIBarButtonItem!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var timeIntervalView: UIView!
-    @IBOutlet weak var thumbImage: UIImageView!
-    @IBOutlet weak var goodDayToWashCarSwitch: UISwitch!
-    @IBOutlet weak var carIsWashedSwitch: UISwitch!
+    @IBOutlet weak var weatherDataView: UIImageView!
+    @IBOutlet weak var carIsWashedRecentlySwitch: UISwitch!
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var weeksPickerView: UIPickerView!
-    @IBOutlet weak var selectedTimeIntervalLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //logic.checkIfUserShouldWashCar()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-        addTimeIntervals()
-        weeksPickerView.dataSource = self
-        weeksPickerView.delegate = self
-        //checkUserTimeInterval()
-        //checkCarWashedStatus()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        //startSearchingAgainAfter(timeInterval: 3)
+        checkUserTimeInterval()
+        logic.checkIfUserShouldWashCar()
+        //askUserForWhenInUseAuthorization()
     }
     
     // Dölj status bar.
@@ -59,6 +51,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Kolla om användare har godkänt "Location when in use".
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        readUserDefaults()
         if CLLocationManager.locationServicesEnabled() {
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
                 userHasAllowedLocationService = true
@@ -88,68 +81,79 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Sätt logig.thumbsUp till falsk om den är sann och till sann om den är falsk.
-    @IBAction func goodDayToWashTest(_ sender: Any) {
-        if logic.user.car.goodDayToWash == true {
-            logic.user.car.goodDayToWash = false
-        } else {
-            logic.user.car.goodDayToWash = true
-        }
-        checkCarWashedStatus()
-    }
-    
     // Användaren drar switchen till on om bilen är tvättad
     @IBAction func carIsWashed(_ sender: Any) {
-        // EJ KLAR
-        if logic.user.car.isWashed == true {
-            carIsWashedSwitch.isOn = false
-            logic.user.car.isWashed = false
-            UIApplication.shared.applicationIconBadgeNumber = 1
-            logic.searchForGoodDayToWashCar = true
+        if logic.user.car.longTimeSinceUserWashedCar == false {
+            logic.user.car.longTimeSinceUserWashedCar = true
+            //UIApplication.shared.applicationIconBadgeNumber = 1
         } else {
-            carIsWashedSwitch.isOn = true
-            logic.user.car.isWashed = true
-            UIApplication.shared.applicationIconBadgeNumber = 0
-            logic.searchForGoodDayToWashCar = false
-            startSearchingAgainAfter(timeInterval: logic.user.timeIntervalInWeeks)
+            logic.user.car.longTimeSinceUserWashedCar = false
+            //UIApplication.shared.applicationIconBadgeNumber = 0
         }
-        print("Bil är tvättad: \(logic.user.car.isWashed)")
+        print("Länge sedan bil blev tvättad: \(logic.user.car.longTimeSinceUserWashedCar)")
+        logic.defaults.set(logic.user.car.longTimeSinceUserWashedCar, forKey:logic.defaultsUserCarIsWashedRecently)
+        updateUI()
     }
     
     // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.
-    @IBAction func doneButton(_ sender: Any) {
-        for i in 0...timeIntervals.count-1 {
-            if selectedTimeIntervalLabel.text == timeIntervals[i] {
-                let usersTimeIntervalInWeeks = i+1
-                logic.user.timeIntervalInWeeks = usersTimeIntervalInWeeks
-                print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
-                logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
-                timeIntervalView.isHidden = true
-                homeView.isHidden = false
-                logic.searchForGoodDayToWashCar = true
-            }
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if logic.user.timeIntervalChoiseIsMade == false {
+            logic.user.timeIntervalInWeeks = 1
+        }
+        print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
+        checkUserTimeInterval()
+        askUserForWhenInUseAuthorization()
+        logic.user.timeIntervalInWeeks = logic.user.timeIntervalInWeeks
+        logic.user.timeIntervalChoiseIsMade = true
+        logic.searchForGoodDayToWashCar = true
+        logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
+        logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
+        logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDay)
+    }
+    
+    // Ge användaren en prognos, varför är det bra/inte bra att tvätta bilen idag?
+    @IBAction func forecastButtonPressed(_ sender: Any) {
+        readUserDefaults()
+        var title = ""
+        if logic.washToday == true {
+            title = "Tvätta bilen idag 😍"
+        } else {
+            title = "Tvätta inte bilen idag 🙄"
+        }
+        let longTimeSinceUserWashedCar = boolMessageEmoji(bool: logic.user.car.longTimeSinceUserWashedCar)
+        let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
+        let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
+        let message = "\(longTimeSinceUserWashedCar) Det var länge sedan du tvättade bilen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) Appen letar efter ett bra datum just nu"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // Ge ja/nej meddelande från bool.
+    func boolMessageEmoji(bool: Bool) -> String {
+        if bool == true {
+            return "✅"
+        } else {
+            return "❌"
         }
     }
     
     // Hitta en bra dag att tvätta bilen.
     func searchForGoodDayToWashCar() {
-        logic.itWillRainTodayOrTomorrow = false
+        logic.noRainTodayAndTomorrow = false
         for weather in weatherData.weatherForTodayAndTomorrow {
-            if weather == "Rain" || weather == "Thunderstorm" || weather == "Snow" {
-                logic.itWillRainTodayOrTomorrow = true
-                print("✖︎ \(weather)")
+            if weather != "Rain" || weather != "Thunderstorm" || weather != "Snow" {
+                logic.noRainTodayAndTomorrow = true
+                //print("✖︎ \(weather)")
             } else {
-                print("✔︎ \(weather)")
+                //print("✔︎ \(weather)")
             }
         }
-        if logic.itWillRainTodayOrTomorrow == true {
-            print("Tvätta INTE bilen idag!")
-            logic.user.car.goodDayToWash = false
-            
-        } else {
-            print("Du kan tvätta bilen idag!")
-            logic.user.car.goodDayToWash = true
-            sendNotification(title: "Dags att tvätta bilen", subtitle: "Det ska inte regna varken idag eller imorgon.", body: "Passa på att tvätta bilen idag!")
+        if logic.washToday == true {
+            let title = "Dags att tvätta bilen 🚗"
+            let subtitle = "Din bil är inte tvättad nyligen och det ska vara bra väder både idag och imorgon..."
+            let body = "Passa på att tvätta bilen idag!"
+            sendNotification(title: title, subtitle: subtitle, body: body)
         }
     }
     
@@ -188,7 +192,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Uppdaterar forecast-väder-data med väderinformationen från JSON.
+    // Uppdaterar forecast-väder-data med väderinformationen från JSON. Uppdaterar med tumme upp om det är en bra dag att tvätta sin bil.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
             weatherData.temperature = Int(tempResult - 272.15)
@@ -200,7 +204,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
             searchForGoodDayToWashCar()
-            updateUIWithWeatherData()
+            updateUI()
         }
         else {
             self.title = String("\(json["message"])").capitalized
@@ -209,11 +213,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Uppdaterar UI med väderdata.
-    func updateUIWithWeatherData() {
+    // Uppdaterar UI.
+    func updateUI() {
         self.title = weatherData.city
         temperatureLabel.text = "\(weatherData.temperature)°"
         weatherIcon.image = UIImage(named: weatherData.weatherIconName)
+        if logic.user.car.longTimeSinceUserWashedCar == true {
+            carIsWashedRecentlySwitch.isOn = false
+        } else {
+            carIsWashedRecentlySwitch.isOn = true
+        }
     }
     
     // Hämtar användarens position om användaren godkänner "Location When In Use".
@@ -262,26 +271,53 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Kollar om användaren har valt ett tidsintervall.
     func checkUserTimeInterval() {
-        if let savedUserTimeInterval = logic.defaults.integer(forKey: logic.defaultsUserTimeInterval) as Int? {
-            logic.user.timeIntervalInWeeks = savedUserTimeInterval
-        }
-        if logic.user.timeIntervalInWeeks == 0 {
-            timeIntervalView.isHidden = false
+        readUserDefaults()
+        if logic.user.timeIntervalChoiseIsMade == false {
             homeView.isHidden = true
+            weatherDataView.isHidden = true
+            timeIntervalView.isHidden = false
+            forecastButton.isEnabled = false
+            refreshButton.isEnabled = false
+            searchButton.isEnabled = false
+            addTimeIntervals()
+            weeksPickerView.dataSource = self
+            weeksPickerView.delegate = self
         } else {
-            timeIntervalView.isHidden = true
             homeView.isHidden = false
+            weatherDataView.isHidden = false
+            timeIntervalView.isHidden = true
+            forecastButton.isEnabled = true
+            refreshButton.isEnabled = true
+            searchButton.isEnabled = true
         }
     }
     
-    // Kollar status på logic.thumbsUp (gör till enum senare) och sätter bild samt switch.
-    func checkCarWashedStatus() {
-        if logic.user.car.goodDayToWash == true {
-            goodDayToWashCarSwitch.isOn = true
-            thumbImage.image = UIImage(named: "thumbs-up")
-        } else {
-            goodDayToWashCarSwitch.isOn = false
-            thumbImage.image = UIImage(named: "thumbs-down")
+    // Fråga användaren om tillstånd att kolla position när användaren använder appen.
+    func askUserForWhenInUseAuthorization() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    // Läser sparad data.
+    func readUserDefaults() {
+        print("*** Reading from user defaults ***")
+        if let searchForGoodDay = logic.defaults.bool(forKey: logic.defaultsSearchForGoodDay) as Bool? {
+            logic.searchForGoodDayToWashCar = searchForGoodDay
+            print("• Searching for good day to wash car: \(logic.searchForGoodDayToWashCar)")
+        }
+        if let noChoise = logic.defaults.bool(forKey: logic.defaultsUserMadeChoice) as Bool? {
+            logic.user.timeIntervalChoiseIsMade = noChoise
+            print("• User has made a timeinterval choise: \(logic.user.timeIntervalChoiseIsMade)")
+        }
+        if let savedUserTimeIntervalInWeeks = logic.defaults.integer(forKey: logic.defaultsUserTimeInterval) as Int? {
+            logic.user.timeIntervalInWeeks = savedUserTimeIntervalInWeeks
+            print("• User timeinterval in weeks: \(logic.user.timeIntervalInWeeks)")
+        }
+        if let savedUserCarIsWashedRecently = logic.defaults.bool(forKey: logic.defaultsUserCarIsWashedRecently) as Bool? {
+            logic.user.car.longTimeSinceUserWashedCar = savedUserCarIsWashedRecently
+            print("• User has not washed car for long time: \(logic.user.car.longTimeSinceUserWashedCar)")
         }
     }
     
@@ -298,7 +334,12 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedTimeIntervalLabel.text = timeIntervals[row]
+        logic.user.timeIntervalChoiseIsMade = true
+        let selectedWeekInterval = row+1
+        logic.user.timeIntervalInWeeks = selectedWeekInterval
+        logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
+        logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
+        print("Selected time interval: \(selectedWeekInterval)")
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
