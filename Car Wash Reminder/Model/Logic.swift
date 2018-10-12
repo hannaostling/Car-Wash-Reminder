@@ -12,17 +12,18 @@ import UIKit
 class Logic {
     
     var timer = Timer()
-    var searchForGoodDayToWashCar: Bool = false
     let user = User()
     let defaults = UserDefaults.standard
     var noRainTodayAndTomorrow: Bool = false
+    var searchForGoodDayToWashCar: Bool = false
     var washToday: Bool = false
     
     // User defaults nycklar.
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     let defaultsUserMadeChoice = "defaultsUserMadeChoice"
-    let defaultsSearchForGoodDay = "defaultsSearchForGoodDay"
     let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"
+    let defaultsSearchForGoodDayBool = "defaultsSearchForGoodDayBool"
+    let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -34,6 +35,9 @@ class Logic {
         if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true {
             washToday = true
             print("Notifikation")
+            UIApplication.shared.applicationIconBadgeNumber = 1
+        } else {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     
