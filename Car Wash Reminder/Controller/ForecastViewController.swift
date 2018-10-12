@@ -17,17 +17,16 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
     let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     let locationManager = CLLocationManager()
-    let forecastWeatherData = ForecastWeatherData()
+    let weatherData = ForecastWeatherData()
     var latitude = ""
     var longitude = ""
     var userHasAllowedLocationService: Bool = false
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
-
+    
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
-
     @IBOutlet weak var timeIntervalView: UIView!
     @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var goodDayToWashCarSwitch: UISwitch!
@@ -38,16 +37,13 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        logic.checkIfUserShouldWashCar()
+        //logic.checkIfUserShouldWashCar()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-        checkUserTimeInterval()
-        checkCarWashedStatus()
-
+        //checkUserTimeInterval()
+        //checkCarWashedStatus()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -131,7 +127,26 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
                 logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
                 timeIntervalView.isHidden = true
                 homeView.isHidden = false
+                logic.searchingForGoodDayToWashCar = true
             }
+        }
+    }
+    
+    // Hitta en bra dag att tvätta bilen.
+    func searchForGoodDayToWashCar() {
+        logic.itWillRainTodayOrTomorrow = false
+        for weather in weatherData.weatherForTodayAndTomorrow {
+            if weather == "Rain" || weather == "Thunderstorm" || weather == "Snow" {
+                logic.itWillRainTodayOrTomorrow = true
+                print("✖︎ \(weather)")
+            } else {
+                print("✔︎ \(weather)")
+            }
+        }
+        if logic.itWillRainTodayOrTomorrow == true {
+            print("Tvätta INTE bilen idag!")
+        } else {
+            print("Du kan tvätta bilen idag!")
         }
     }
 
@@ -160,21 +175,15 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
     // Uppdaterar forecast-väder-data med väderinformationen från JSON.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
-            forecastWeatherData.temperature = Int(tempResult - 272.15)
-            forecastWeatherData.name = json["city"]["name"].stringValue
-            forecastWeatherData.condition = json["list"][0]["weather"][0]["id"].intValue
-            forecastWeatherData.weatherIconName = forecastWeatherData.updateWeatherIcon(condition: forecastWeatherData.condition)
-            var forecastMainWeatherForTodayAndTomorrow: [String] = [json["list"][0]["weather"][0]["main"].stringValue]
-            for i in 1...15 {
-                forecastMainWeatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
+            weatherData.temperature = Int(tempResult - 272.15)
+            weatherData.city = json["city"]["name"].stringValue
+            weatherData.condition = json["list"][0]["weather"][0]["id"].intValue
+            weatherData.weatherIconName = weatherData.updateWeatherIcon(condition: weatherData.condition)
+            weatherData.weatherForTodayAndTomorrow.removeAll()
+            for i in 0...15 {
+                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
-            for forecastMainWeather in forecastMainWeatherForTodayAndTomorrow {
-                if forecastMainWeather == "Rain" || forecastMainWeather == "Thunderstorm" || forecastMainWeather == "Snow" {
-                    print("NO: \(forecastMainWeather)")
-                } else {
-                    print("YES: \(forecastMainWeather)")
-                }
-            }
+            searchForGoodDayToWashCar()
             updateUIWithWeatherData()
         }
         else {
@@ -186,9 +195,9 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
 
     // Uppdaterar UI med väderdata.
     func updateUIWithWeatherData() {
-        self.title = forecastWeatherData.name
-        temperatureLabel.text = "\(forecastWeatherData.temperature)°"
-        weatherIcon.image = UIImage(named: forecastWeatherData.weatherIconName)
+        self.title = weatherData.city
+        temperatureLabel.text = "\(weatherData.temperature)°"
+        weatherIcon.image = UIImage(named: weatherData.weatherIconName)
     }
 
     // Hämtar användarens position om användaren godkänner "Location When In Use".
@@ -210,20 +219,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         print(error)
         self.title = "Location unavailable"
     }
-
-//    // När användaren skriver in en stad i ChangeCityViewController, uppdatera vyn med data från inskrivna staden.
-//    func userEnteredANewCityName(city: String) {
-//        let params: [String:String] = ["q": city, "appid": APP_ID]
-//        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
-//    }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "changeCityName" {
-//            let destinationVC = segue.destination as! ChangeCityViewController
-//            destinationVC.delegate = self
-//        }
-//    }
-
+    
     // Notification settings
     func sendNotification(title: String, subtitle: String, body: String) {
         let content = UNMutableNotificationContent()
@@ -272,6 +268,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
 }
 
 extension ForecastViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -287,4 +284,5 @@ extension ForecastViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return timeIntervals[row]
     }
+    
 }
