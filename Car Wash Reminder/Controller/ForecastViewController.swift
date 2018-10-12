@@ -17,7 +17,11 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     let locationManager = CLLocationManager()
     let forecastWeatherData = ForecastWeatherData()
+    var latitude = ""
+    var longitude = ""
+    var userHasAllowedLocationService: Bool = false
     
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     
@@ -34,13 +38,36 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         return true
     }
     
+    // Kolla om användare har godkänt "Location when in use".
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                userHasAllowedLocationService = true
+                refreshButton.isEnabled = true
+            } else {
+               userHasAllowedLocationService = false
+                refreshButton.isEnabled = false
+            }
+            print("userHasAllowedLocationService: \(userHasAllowedLocationService)")
+        }
+    }
+    
     // När man klickar på sök-knappen visas en sök-ruta.
-    @IBAction func searchButton(_ sender: Any) {
+    @IBAction func searchButtonPressed(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Visa väder för en annan stad"
         searchController.searchBar.autocapitalizationType = .words
         present(searchController, animated: true, completion: nil)
+    }
+    
+    // När man klickar på refresh-knappen uppdateras vädret med nuvarande position.
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        if userHasAllowedLocationService == true {
+            let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+        }
     }
     
     // När man klickat på sök, hämta data från den inskrivna staden!
@@ -86,7 +113,9 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             updateUIWithWeatherData()
         }
         else {
-            self.title = "Weather Unavailble"
+            self.title = String("\(json["message"])").capitalized
+            weatherIcon.image = UIImage(named: "dont_know")
+            temperatureLabel.text = ""
         }
     }
     
@@ -104,8 +133,8 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
-            let latitude = String(location.coordinate.latitude)
-            let longitude = String(location.coordinate.longitude)
+            latitude = String(location.coordinate.latitude)
+            longitude = String(location.coordinate.longitude)
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
