@@ -10,10 +10,11 @@ import Foundation
 
 class ForecastWeatherData {
     
-    var name: String = ""
+    var city: String = ""
     var temperature: Int = 0
     var condition: Int = 0
     var weatherIconName: String = ""
+    var weatherForTodayAndTomorrow: [String] = []
     
     func updateWeatherIcon(condition: Int) -> String {
         switch (condition) {
