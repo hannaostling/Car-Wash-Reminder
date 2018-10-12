@@ -1,5 +1,5 @@
 //
-//  ForecastViewController.swift
+//  HomeViewController.swift
 //  Car Wash Reminder
 //
 //  Created by Hanna Östling on 2018-10-11.
@@ -12,12 +12,12 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
-
+class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+    
     let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     let locationManager = CLLocationManager()
-    let weatherData = ForecastWeatherData()
+    let weatherData = WeatherData()
     var latitude = ""
     var longitude = ""
     var userHasAllowedLocationService: Bool = false
@@ -34,7 +34,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var weeksPickerView: UIPickerView!
     @IBOutlet weak var selectedTimeIntervalLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //logic.checkIfUserShouldWashCar()
@@ -49,12 +49,12 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
+    
     // Dölj status bar.
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
     // Kolla om användare har godkänt "Location when in use".
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,13 +63,13 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
                 userHasAllowedLocationService = true
                 refreshButton.isEnabled = true
             } else {
-               userHasAllowedLocationService = false
+                userHasAllowedLocationService = false
                 refreshButton.isEnabled = false
             }
             print("userHasAllowedLocationService: \(userHasAllowedLocationService)")
         }
     }
-
+    
     // När man klickar på sök-knappen visas en sök-ruta.
     @IBAction func searchButtonPressed(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -78,7 +78,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         searchController.searchBar.autocapitalizationType = .words
         present(searchController, animated: true, completion: nil)
     }
-
+    
     // När man klickar på refresh-knappen uppdateras vädret med nuvarande position.
     @IBAction func refreshButtonPressed(_ sender: Any) {
         if userHasAllowedLocationService == true {
@@ -86,7 +86,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
     }
-
+    
     // Sätt logig.thumbsUp till falsk om den är sann och till sann om den är falsk.
     @IBAction func goodDayToWashTest(_ sender: Any) {
         if logic.user.car.goodDayToWash == true {
@@ -96,7 +96,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         }
         checkCarWashedStatus()
     }
-
+    
     // Användaren drar switchen till on om bilen är tvättad
     @IBAction func carIsWashed(_ sender: Any) {
         // EJ KLAR
@@ -111,7 +111,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         }
         print("Bil är tvättad: \(logic.user.car.isWashed)")
     }
-
+    
     // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.
     @IBAction func doneButton(_ sender: Any) {
         for i in 0...timeIntervals.count-1 {
@@ -148,14 +148,14 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             sendNotification(title: "Dags att tvätta bilen", subtitle: "Imorgon är det soligt...", body: "Passa på att tvätta bilen idag!")
         }
     }
-
+    
     // När man klickat på sök, hämta data från den inskrivna staden!
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let cityName = searchBar.text!
         let params: [String:String] = ["q": cityName, "appid": APP_ID]
         getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
     }
-
+    
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
     func getWeatherData(url: String, parameters: [String: String]) {
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
@@ -170,7 +170,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             }
         }
     }
-
+    
     // Uppdaterar forecast-väder-data med väderinformationen från JSON.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
@@ -180,7 +180,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             weatherData.weatherIconName = weatherData.updateWeatherIcon(condition: weatherData.condition)
             weatherData.weatherForTodayAndTomorrow.removeAll()
             for i in 0...15 {
-                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
+                weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
             searchForGoodDayToWashCar()
             updateUIWithWeatherData()
@@ -191,14 +191,14 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             temperatureLabel.text = ""
         }
     }
-
+    
     // Uppdaterar UI med väderdata.
     func updateUIWithWeatherData() {
         self.title = weatherData.city
         temperatureLabel.text = "\(weatherData.temperature)°"
         weatherIcon.image = UIImage(named: weatherData.weatherIconName)
     }
-
+    
     // Hämtar användarens position om användaren godkänner "Location When In Use".
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
@@ -212,7 +212,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
     }
-
+    
     // Vid misslyckad hämtning av data, uppdatera titeln till "Location unavailable".
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
@@ -234,7 +234,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-
+    
     // Lägger till fler element i timeIntervals.
     func addTimeIntervals() {
         for i in 3...12 {
@@ -242,7 +242,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             timeIntervals.append(timeInterval)
         }
     }
-
+    
     // Kollar om användaren har valt ett tidsintervall.
     func checkUserTimeInterval() {
         if let savedUserTimeInterval = logic.defaults.integer(forKey: logic.defaultsUserTimeInterval) as Int? {
@@ -256,7 +256,7 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             homeView.isHidden = false
         }
     }
-
+    
     // Kollar status på logic.thumbsUp (gör till enum senare) och sätter bild samt switch.
     func checkCarWashedStatus() {
         if logic.user.car.goodDayToWash == true {
@@ -267,23 +267,23 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
             thumbImage.image = UIImage(named: "thumbs-down")
         }
     }
-
+    
 }
 
-extension ForecastViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return timeIntervals.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedTimeIntervalLabel.text = timeIntervals[row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return timeIntervals[row]
     }

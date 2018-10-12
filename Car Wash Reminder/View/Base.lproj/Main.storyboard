@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Forecast View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="OaW-pS-k5a">
             <objects>
-                <viewController id="0ak-WH-AWR" customClass="ForecastViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0ak-WH-AWR" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="puy-N0-ZnH">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

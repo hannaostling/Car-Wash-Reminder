@@ -44,5 +44,5 @@ class WeatherData {
             return "dont_know"
         }
     }
-
+    
 }

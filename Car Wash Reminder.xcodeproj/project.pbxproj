@@ -10,8 +10,8 @@
 		3C7667D957204DAE8FB47E67 /* Pods_Car_Wash_ReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5308672AFA4C339F07A458C6 /* Pods_Car_Wash_ReminderTests.framework */; };
 		4DA2F90CB06E8BC3C6E63298 /* Pods_Car_Wash_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */; };
 		B54940802170EC3300EB3F11 /* File in Resources */ = {isa = PBXBuildFile; fileRef = B549407F2170EC3300EB3F11 /* File */; };
-		B56DBD75216F71A900E0FAFD /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56DBD74216F71A900E0FAFD /* ForecastViewController.swift */; };
-		B56DBD79216F720400E0FAFD /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56DBD78216F720400E0FAFD /* ForecastWeatherData.swift */; };
+		B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940812170ECCF00EB3F11 /* WeatherData.swift */; };
+		B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940832170ECFB00EB3F11 /* HomeViewController.swift */; };
 		B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C717216B80B400754AA6 /* AppDelegate.swift */; };
 		B573C71D216B80B400754AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C71B216B80B400754AA6 /* Main.storyboard */; };
 		B573C71F216B80B600754AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C71E216B80B600754AA6 /* Assets.xcassets */; };
@@ -50,8 +50,8 @@
 		69B94CEC089AB79552191862 /* Pods-Car Wash ReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.release.xcconfig"; sourceTree = "<group>"; };
 		B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B549407F2170EC3300EB3F11 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
-		B56DBD74216F71A900E0FAFD /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
-		B56DBD78216F720400E0FAFD /* ForecastWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
+		B54940812170ECCF00EB3F11 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		B54940832170ECFB00EB3F11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B573C714216B80B400754AA6 /* Car Wash Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Wash Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C717216B80B400754AA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B573C71C216B80B400754AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		B573C745216B80BC00754AA6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B56DBD74216F71A900E0FAFD /* ForecastViewController.swift */,
+				B54940832170ECFB00EB3F11 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 				B573C782216B956400754AA6 /* Logic.swift */,
 				B58A5309216E017E00184750 /* User.swift */,
 				B58A530B216E28E100184750 /* Car.swift */,
-				B56DBD78216F720400E0FAFD /* ForecastWeatherData.swift */,
+				B54940812170ECCF00EB3F11 /* WeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,9 +441,9 @@
 				B58A530A216E017E00184750 /* User.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,
-				B56DBD79216F720400E0FAFD /* ForecastWeatherData.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
-				B56DBD75216F71A900E0FAFD /* ForecastViewController.swift in Sources */,
+				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
+				B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
