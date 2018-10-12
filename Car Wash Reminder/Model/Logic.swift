@@ -12,11 +12,13 @@ import UIKit
 class Logic {
     
     var timer = Timer()
+    var searchingForGoodDayToWashCar: Bool = true
     let user = User(timeIntervalInWeeks: 0)
     let defaults = UserDefaults.standard
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     let defaultsUserCarGoodDayToWash = "defaultsUserCarGoodDayToWash"
     let defaultsUserCarIsWashed = "defaultsUserCarIsWashed"
+    var itWillRainTodayOrTomorrow: Bool = false
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
