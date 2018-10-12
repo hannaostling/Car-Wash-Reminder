@@ -149,7 +149,6 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
     // När användaren skriver in en stad i ChangeCityViewController, uppdatera vyn med data från inskrivna staden.
     func userEnteredANewCityName(city: String) {
         let params: [String:String] = ["q": city, "appid": APP_ID]
-        //getWeatherData(url: WEATHER_URL, parameters: params)
         getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
     }
     
