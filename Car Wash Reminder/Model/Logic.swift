@@ -12,13 +12,17 @@ import UIKit
 class Logic {
     
     var timer = Timer()
-    var searchForGoodDayToWashCar: Bool = true
-    let user = User(timeIntervalInWeeks: 0)
+    var searchForGoodDayToWashCar: Bool = false
+    let user = User()
     let defaults = UserDefaults.standard
+    var noRainTodayAndTomorrow: Bool = false
+    var washToday: Bool = false
+    
+    // User defaults nycklar.
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
-    let defaultsUserCarGoodDayToWash = "defaultsUserCarGoodDayToWash"
-    let defaultsUserCarIsWashed = "defaultsUserCarIsWashed"
-    var itWillRainTodayOrTomorrow: Bool = false
+    let defaultsUserMadeChoice = "defaultsUserMadeChoice"
+    let defaultsSearchForGoodDay = "defaultsSearchForGoodDay"
+    let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -27,9 +31,10 @@ class Logic {
     
     // Skriver ut om thumbsUp är sann eller falsk.
     @objc func runsEverySecond() {
-        print("Bra dag att tvätta bil: \(user.car.goodDayToWash)")
-        print("Bilen är tvättad: \(user.car.isWashed)")
-        print("")
+        if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true {
+            washToday = true
+            print("Notifikation")
+        }
     }
     
 }
