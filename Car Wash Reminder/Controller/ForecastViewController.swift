@@ -11,7 +11,8 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, ChangeCityDelegate {
+class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+    // , ChangeCityDelegate {
     
     let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
@@ -146,16 +147,16 @@ class ForecastViewController: UIViewController, CLLocationManagerDelegate, UISea
         self.title = "Location unavailable"
     }
     
-    // När användaren skriver in en stad i ChangeCityViewController, uppdatera vyn med data från inskrivna staden.
-    func userEnteredANewCityName(city: String) {
-        let params: [String:String] = ["q": city, "appid": APP_ID]
-        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
-    }
+//    // När användaren skriver in en stad i ChangeCityViewController, uppdatera vyn med data från inskrivna staden.
+//    func userEnteredANewCityName(city: String) {
+//        let params: [String:String] = ["q": city, "appid": APP_ID]
+//        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+//    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "changeCityName" {
-            let destinationVC = segue.destination as! ChangeCityViewController
-            destinationVC.delegate = self
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "changeCityName" {
+//            let destinationVC = segue.destination as! ChangeCityViewController
+//            destinationVC.delegate = self
+//        }
+//    }
 }
