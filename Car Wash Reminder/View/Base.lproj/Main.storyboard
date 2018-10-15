@@ -63,43 +63,23 @@
                                     <constraint firstAttribute="width" constant="316" id="ywO-2M-Dh5"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-RR-XVG" userLabel="HomeView">
-                                <rect key="frame" x="100.66666666666667" y="507" width="212.66666666666663" height="29"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu har jag tvättat bilen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-pb-Sa4">
-                                        <rect key="frame" x="0.0" y="6" width="155.66666666666666" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-Jy-YY4" userLabel="carIsWashed">
-                                        <rect key="frame" x="163.66666666666663" y="-2" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="carIsWashed:" destination="0ak-WH-AWR" eventType="valueChanged" id="dC1-Fk-W5o"/>
-                                        </connections>
-                                    </switch>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="j3L-Jy-YY4" secondAttribute="bottom" id="EFk-K5-0h2"/>
-                                    <constraint firstAttribute="trailing" secondItem="j3L-Jy-YY4" secondAttribute="trailing" id="FDS-T3-eVm"/>
-                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="top" secondItem="8fu-RR-XVG" secondAttribute="top" constant="6" id="Jlx-13-gKm"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Xc-pb-Sa4" secondAttribute="bottom" constant="5" id="VJP-n4-hJ7"/>
-                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="leading" secondItem="8fu-RR-XVG" secondAttribute="leading" id="hb3-jg-jxC"/>
-                                    <constraint firstItem="j3L-Jy-YY4" firstAttribute="leading" secondItem="9Xc-pb-Sa4" secondAttribute="trailing" constant="8" id="lIA-Mq-v8q"/>
-                                    <constraint firstAttribute="width" constant="212.66999999999999" id="nK3-VG-hPO"/>
-                                </constraints>
-                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-o4-HOw">
+                                <rect key="frame" x="132.66666666666666" y="507" width="148.99999999999997" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <state key="normal" title="Nu är bilen tvättad"/>
+                                <connections>
+                                    <action selector="washedCarButtonPressed:" destination="0ak-WH-AWR" eventType="touchUpInside" id="Kn4-32-NHD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="FkF-Jo-nn3"/>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="T7y-Nc-VXm"/>
+                            <constraint firstItem="k6f-o4-HOw" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="UqW-s3-Md3"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="ZS3-Ps-2h7"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="ZaA-KG-zXL"/>
                             <constraint firstItem="T1C-2S-ffr" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="d6U-n5-frn"/>
+                            <constraint firstItem="k6f-o4-HOw" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="fSg-P6-KRG"/>
                             <constraint firstItem="T1C-2S-ffr" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="hy3-tM-ycU"/>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="y5t-YC-K6e"/>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="yKQ-kx-Xgo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
@@ -123,13 +103,12 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="carIsWashedRecentlySwitch" destination="j3L-Jy-YY4" id="UFs-cq-jAR"/>
                         <outlet property="forecastButton" destination="kao-HT-q7I" id="ygu-qt-i4Q"/>
-                        <outlet property="homeView" destination="8fu-RR-XVG" id="2sU-sh-tg2"/>
                         <outlet property="refreshButton" destination="pSw-Kp-Ocm" id="7WH-Q0-NOc"/>
                         <outlet property="searchButton" destination="84i-8n-AXt" id="I8v-KE-qyq"/>
                         <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XVI-xZ-qst"/>
                         <outlet property="timeIntervalView" destination="T1C-2S-ffr" id="nZE-bo-u0G"/>
+                        <outlet property="washedCarButton" destination="k6f-o4-HOw" id="j3f-4p-I57"/>
                         <outlet property="weatherDataView" destination="JB2-1V-mbE" id="UTu-xJ-Uzm"/>
                         <outlet property="weatherIcon" destination="JB2-1V-mbE" id="p1G-yA-mDk"/>
                         <outlet property="weeksPickerView" destination="Hmk-1k-UZb" id="4Uf-tq-LaX"/>
