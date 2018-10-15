@@ -11,5 +11,6 @@ import Foundation
 class Car {
     
     var longTimeSinceUserWashedCar: Bool = true
+    var isNotWashedRecentlyDate = Date()
    
 }
