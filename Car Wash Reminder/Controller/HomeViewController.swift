@@ -349,7 +349,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
         let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
         let howManyDaysLeftToSearchDate = logic.user.howManyDaysToSearchingDate()
-        let message = "\(longTimeSinceUserWashedCar) Bilen är INTE tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
+        let message = "\(longTimeSinceUserWashedCar) Bilen är inte tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
