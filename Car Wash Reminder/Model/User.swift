@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class User {
     
@@ -31,6 +32,24 @@ class User {
         let components = calendar.dateComponents([.day], from: date1, to: date2)
         let daysLeft = components.day!
         return daysLeft
+    }
+    
+    // Börja söka igen efter användarens tidsinterval.
+    func startSearchingAgainAfter(timeInterval: Int) {
+        let daysToAdd = 7 * timeInterval
+        let calendar = Calendar.current
+        let currentDate = Date()
+        startSearchingDate = calendar.date(byAdding: .day, value: daysToAdd, to: currentDate)!
+        let carNotWashedRecently = daysToAdd - 6
+        car.isNotWashedRecentlyDate = calendar.date(byAdding: .day, value: carNotWashedRecently, to: currentDate)!
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let currentDateInString = formatter.string(from: Date())
+        let carIsNotWashedEecentlyDateInString = formatter.string(from: car.isNotWashedRecentlyDate)
+        let startSearchingDateInString = formatter.string(from: startSearchingDate)
+        print("Dagens datum: \(currentDateInString)")
+        print("Bilen räknas som smutsig igen: \(carIsNotWashedEecentlyDateInString)")
+        print("Appen börjar leta efter bra datum: \(startSearchingDateInString)")
     }
     
     
