@@ -150,7 +150,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let title = "Kanon!"
         let message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(timeInterval) veckor igen!"
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: { action in
+            self.carIsWashedRecentlySwitch.setOn(false, animated: true)
+        }))
         self.present(alert, animated: true, completion: nil)
         logic.searchForGoodDayToWashCar = false
         logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)
@@ -206,9 +208,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         temperatureLabel.text = "\(weatherData.temperature)°"
         weatherIcon.image = UIImage(named: weatherData.weatherIconName)
         if logic.user.car.longTimeSinceUserWashedCar == true {
-            carIsWashedRecentlySwitch.isOn = false
+            carIsWashedRecentlySwitch.isEnabled = true
         } else {
-            carIsWashedRecentlySwitch.isOn = true
+            carIsWashedRecentlySwitch.isEnabled = false
         }
     }
     
@@ -238,7 +240,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         content.title = title
         content.subtitle = subtitle
         content.body = body
-        content.badge = 1
+        content.badge = 0
         content.sound = UNNotificationSound.default
         var dateComponents = DateComponents()
         dateComponents.hour = 17
@@ -327,10 +329,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             title = "Tvätta inte bilen idag 🙄"
         }
-        let longTimeSinceUserWashedCar = boolMessageEmoji(bool: logic.user.car.longTimeSinceUserWashedCar)
         let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
         let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
-        let message = "\(longTimeSinceUserWashedCar) Det var länge sedan du tvättade bilen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) Appen letar efter ett bra datum just nu"
+        let howManyDaysLeftToSearchDate = logic.user.howManyDaysToSearchingDate()
+        let message = "\(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
