@@ -20,6 +20,7 @@ class Logic {
     var washToday: Bool = false
     
     // User defaults nycklar.
+    let defaultsUserCity = "defaultsUserCity"
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     let defaultsUserMadeChoice = "defaultsUserMadeChoice"
     let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"

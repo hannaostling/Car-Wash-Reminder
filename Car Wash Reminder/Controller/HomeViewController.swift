@@ -155,6 +155,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let params: [String:String] = ["q": cityName, "appid": APP_ID]
         getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         positionButton.isEnabled = true
+        logic.user.city = cityName
+        logic.defaults.set(logic.user.city, forKey: "\(logic.defaultsUserCity)")
     }
     
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
@@ -214,9 +216,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
             latitude = String(location.coordinate.latitude)
             longitude = String(location.coordinate.longitude)
-            let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-            getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
-            positionButton.isEnabled = false
+            if logic.user.city == "" {
+                let positionParams: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
+                getWeatherData(url: FORECAST_WEATHER_URL, parameters: positionParams)
+                positionButton.isEnabled = false
+            } else {
+                let cityName = logic.user.city
+                let cityParams: [String:String] = ["q": cityName, "appid": APP_ID]
+                getWeatherData(url: FORECAST_WEATHER_URL, parameters: cityParams)
+                positionButton.isEnabled = true
+            }
         }
     }
     
@@ -290,6 +299,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if let savedUserSearchAgainDate = logic.defaults.object(forKey: logic.defaultsSearchForGoodDayDate) {
             logic.user.startSearchingDate = savedUserSearchAgainDate as! Date
             print("• User search again date: \(logic.user.startSearchingDate)")
+        }
+        if let savedUserCity = logic.defaults.string(forKey: logic.defaultsUserCity) as String? {
+            logic.user.city = savedUserCity
+            print("• User city: \(logic.user.city)")
         }
     }
     

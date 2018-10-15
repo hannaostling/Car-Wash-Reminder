@@ -14,6 +14,7 @@ class User {
     var startSearchingDate = Date()
     var timeIntervalInWeeks: Int = 0
     var timeIntervalChoiseIsMade: Bool = false
+    var city: String = ""
     let car = Car()
     
     // Returnerar en sträng av startSearchingDate
