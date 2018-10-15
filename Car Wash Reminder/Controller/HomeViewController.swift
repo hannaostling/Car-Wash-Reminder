@@ -39,8 +39,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         super.viewDidLoad()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         checkUserTimeInterval()
-        updatePosition()
-        logic.checkIfUserShouldWashCar()
+        if logic.user.timeIntervalChoiseIsMade == true {
+            updatePosition()
+            logic.checkIfUserShouldWashCar()
+        }
+        
     }
     
     // Dölj status bar.
@@ -50,15 +53,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readUserDefaults()
         if CLLocationManager.locationServicesEnabled() {
             if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
                 userHasAllowedLocationService = true
             } else {
                 userHasAllowedLocationService = false
+                askUserForWhenInUseAuthorization()
             }
         }
-        updateUI()
     }
     
     // När man klickar på sök-knappen visas en sök-ruta.
@@ -109,7 +111,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if logic.user.timeIntervalChoiseIsMade == false {
             logic.user.timeIntervalInWeeks = 1
         }
-        print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
         checkUserTimeInterval()
         askUserForWhenInUseAuthorization()
         logic.user.timeIntervalInWeeks = logic.user.timeIntervalInWeeks
@@ -264,9 +265,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Kollar om användaren har valt ett tidsintervall.
     func checkUserTimeInterval() {
-        getWeather()
         readUserDefaults()
         if logic.user.timeIntervalChoiseIsMade == false {
+            title = ""
             weatherDataView.isHidden = true
             washedCarButton.isHidden = true
             timeIntervalView.isHidden = false
@@ -282,6 +283,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             forecastButton.isEnabled = true
             searchButton.isEnabled = true
         }
+        print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
     }
     
     // Uppdatera positionen om användare tillåtit tillståndet.
