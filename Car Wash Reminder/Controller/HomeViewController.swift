@@ -76,6 +76,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
+        print("Refresh button pressed!")
     }
     
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
@@ -87,9 +88,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { action in
             self.logic.searchForGoodDayToWashCar = false
             self.logic.user.car.longTimeSinceUserWashedCar = false
-            self.updateUI()
-            self.logic.user.car.longTimeSinceUserWashedCar = false
             self.logic.user.startSearchingAgainAfter(timeInterval: self.logic.user.timeIntervalInWeeks)
+            self.updateUI()
             title = "Kanon!"
             message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -146,12 +146,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 //print("✔︎ \(weather)")
             }
         }
-        if logic.washToday == true {
-            let title = "Dags att tvätta bilen 🚗"
-            let subtitle = "Passa på medan det är bra väder!"
-            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder både idag och imorgon ☀️"
-            sendNotification(title: title, subtitle: subtitle, body: body)
-        }
+//        if logic.washToday == true {
+//            let title = "Dags att tvätta bilen 🚗"
+//            let subtitle = "Passa på medan det är bra väder!"
+//            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder både idag och imorgon ☀️"
+//            logic.sendNotification = true
+           // sendNotification(title: title, subtitle: subtitle, body: body)
+//        } else {
+//
+//        }
     }
         
     // När man klickat på sök, hämta data från den inskrivna staden!
@@ -229,22 +232,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.title = "Location unavailable"
     }
     
-    // Notification settings
-    func sendNotification(title: String, subtitle: String, body: String) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subtitle
-        content.body = body
-        content.badge = 0
-        content.sound = UNNotificationSound.default
-        var dateComponents = DateComponents()
-        dateComponents.hour = 17
-        dateComponents.minute = 00
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
     // Lägger till fler element i timeIntervals.
     func addTimeIntervals() {
         for i in 3...12 {
@@ -310,7 +297,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
         if let savedUserSearchAgainDate = logic.defaults.object(forKey: logic.defaultsSearchForGoodDayDate) {
             logic.user.startSearchingDate = savedUserSearchAgainDate as! Date
-            print("• RÄTT: User search again date: \(logic.user.startSearchingDate)")
+            print("• User search again date: \(logic.user.startSearchingDate)")
         }
     }
     
