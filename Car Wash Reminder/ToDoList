@@ -1,4 +1,3 @@
 TO DO:
 * Fixa till utf8
-* Fixa när processen börjas om, startSearchDate > date()
-* Snygga till appen
+* Background fetch 
