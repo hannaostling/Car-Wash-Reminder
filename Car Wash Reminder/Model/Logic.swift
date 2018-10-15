@@ -35,10 +35,8 @@ class Logic {
         if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true {
             washToday = true
             print("Notifikation")
-            UIApplication.shared.applicationIconBadgeNumber = 1
-        } else {
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        }
+            //UIApplication.shared.applicationIconBadgeNumber = 1
+        } //else {UIApplication.shared.applicationIconBadgeNumber = 0}
     }
     
 }
