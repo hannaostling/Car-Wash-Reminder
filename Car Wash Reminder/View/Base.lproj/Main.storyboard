@@ -32,11 +32,11 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="262" id="9oE-Fz-SbC"/>
-                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="leading" secondItem="cux-lF-BXk" secondAttribute="leading" id="Cfd-XM-pnc"/>
-                                    <constraint firstAttribute="trailing" secondItem="e5E-vw-HEN" secondAttribute="trailing" id="YqG-SP-hUC"/>
-                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="top" id="wAc-H7-JF6"/>
-                                    <constraint firstAttribute="width" constant="299" id="yki-1A-KwQ"/>
+                                    <constraint firstAttribute="height" constant="262" id="Ne1-PX-tle"/>
+                                    <constraint firstAttribute="width" constant="299" id="c07-wZ-8EI"/>
+                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="leading" secondItem="cux-lF-BXk" secondAttribute="leading" id="jQC-2E-c8u"/>
+                                    <constraint firstAttribute="trailing" secondItem="e5E-vw-HEN" secondAttribute="trailing" id="vAh-om-Acs"/>
+                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="top" id="z4J-Rr-FNP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1C-2S-ffr" userLabel="TimeIntervalView">
@@ -56,46 +56,50 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hFS-Od-wkV" secondAttribute="trailing" id="1NB-xW-BRR"/>
-                                    <constraint firstAttribute="height" constant="192" id="6Gz-1Y-upk"/>
-                                    <constraint firstItem="hFS-Od-wkV" firstAttribute="leading" secondItem="T1C-2S-ffr" secondAttribute="leading" id="gYM-7h-l93"/>
-                                    <constraint firstAttribute="bottom" secondItem="hFS-Od-wkV" secondAttribute="bottom" id="kab-sk-tsH"/>
-                                    <constraint firstAttribute="width" constant="316" id="xTU-ZU-vbV"/>
+                                    <constraint firstAttribute="trailing" secondItem="hFS-Od-wkV" secondAttribute="trailing" id="6Dq-ke-CEJ"/>
+                                    <constraint firstAttribute="height" constant="192" id="Hts-63-sjB"/>
+                                    <constraint firstAttribute="bottom" secondItem="hFS-Od-wkV" secondAttribute="bottom" id="ONC-6R-r9z"/>
+                                    <constraint firstItem="hFS-Od-wkV" firstAttribute="leading" secondItem="T1C-2S-ffr" secondAttribute="leading" id="lVL-Ii-m05"/>
+                                    <constraint firstAttribute="width" constant="316" id="ywO-2M-Dh5"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-RR-XVG" userLabel="HomeView">
-                                <rect key="frame" x="119.66666666666669" y="507" width="175" height="60"/>
+                                <rect key="frame" x="100.66666666666667" y="507" width="212.66666666666663" height="29"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilen är tvättad nyligen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-pb-Sa4">
-                                        <rect key="frame" x="0.0" y="0.0" width="175" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu har jag tvättat bilen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xc-pb-Sa4">
+                                        <rect key="frame" x="0.0" y="6" width="155.66666666666666" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-Jy-YY4" userLabel="carIsWashed">
-                                        <rect key="frame" x="64" y="29" width="49" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-Jy-YY4" userLabel="carIsWashed">
+                                        <rect key="frame" x="163.66666666666663" y="-2" width="51" height="31"/>
                                         <connections>
                                             <action selector="carIsWashed:" destination="0ak-WH-AWR" eventType="valueChanged" id="dC1-Fk-W5o"/>
                                         </connections>
                                     </switch>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="leading" secondItem="8fu-RR-XVG" secondAttribute="leading" id="0mw-Im-PqC"/>
-                                    <constraint firstAttribute="height" constant="60" id="5v1-YZ-LSy"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Xc-pb-Sa4" secondAttribute="trailing" id="f0f-VL-KmZ"/>
-                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="top" secondItem="8fu-RR-XVG" secondAttribute="top" id="sJW-Zz-gLw"/>
+                                    <constraint firstAttribute="bottom" secondItem="j3L-Jy-YY4" secondAttribute="bottom" id="EFk-K5-0h2"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3L-Jy-YY4" secondAttribute="trailing" id="FDS-T3-eVm"/>
+                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="top" secondItem="8fu-RR-XVG" secondAttribute="top" constant="6" id="Jlx-13-gKm"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Xc-pb-Sa4" secondAttribute="bottom" constant="5" id="VJP-n4-hJ7"/>
+                                    <constraint firstItem="9Xc-pb-Sa4" firstAttribute="leading" secondItem="8fu-RR-XVG" secondAttribute="leading" id="hb3-jg-jxC"/>
+                                    <constraint firstItem="j3L-Jy-YY4" firstAttribute="leading" secondItem="9Xc-pb-Sa4" secondAttribute="trailing" constant="8" id="lIA-Mq-v8q"/>
+                                    <constraint firstAttribute="width" constant="212.66999999999999" id="nK3-VG-hPO"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="T1C-2S-ffr" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="9xq-Ro-Ik2"/>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="Aa9-Vn-dL2"/>
-                            <constraint firstItem="T1C-2S-ffr" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="LLi-Fx-e0A"/>
-                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="Obe-SU-s8E"/>
-                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="tKP-fo-ggi"/>
-                            <constraint firstItem="8fu-RR-XVG" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="ypd-8G-hjJ"/>
+                            <constraint firstItem="8fu-RR-XVG" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="FkF-Jo-nn3"/>
+                            <constraint firstItem="8fu-RR-XVG" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="T7y-Nc-VXm"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="ZS3-Ps-2h7"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="ZaA-KG-zXL"/>
+                            <constraint firstItem="T1C-2S-ffr" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="d6U-n5-frn"/>
+                            <constraint firstItem="T1C-2S-ffr" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="hy3-tM-ycU"/>
+                            <constraint firstItem="8fu-RR-XVG" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" constant="8" id="y5t-YC-K6e"/>
+                            <constraint firstItem="8fu-RR-XVG" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="yKQ-kx-Xgo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
