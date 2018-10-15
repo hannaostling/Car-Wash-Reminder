@@ -31,9 +31,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var timeIntervalView: UIView!
     @IBOutlet weak var weatherDataView: UIImageView!
-    @IBOutlet weak var carIsWashedRecentlySwitch: UISwitch!
-    @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var weeksPickerView: UIPickerView!
+    @IBOutlet weak var washedCarButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,16 +78,28 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Användaren drar switchen till on om bilen är tvättad
-    @IBAction func carIsWashed(_ sender: Any) {
-        if logic.user.car.longTimeSinceUserWashedCar == false {
-            logic.user.car.longTimeSinceUserWashedCar = true
-        } else {
-            logic.user.car.longTimeSinceUserWashedCar = false
-            startSearchingAgainAfter(timeInterval: logic.user.timeIntervalInWeeks)
-        }
-        print("Länge sedan bil blev tvättad: \(logic.user.car.longTimeSinceUserWashedCar)")
-        logic.defaults.set(logic.user.car.longTimeSinceUserWashedCar, forKey:logic.defaultsUserCarIsWashedRecently)
+    // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
+    @IBAction func washedCarButtonPressed(_ sender: Any) {
+        var title = "Är du säker?"
+        var message = "Vill du verkligen markera bilen som tvättad? Appen kommer att sluta leta efter en bra dag att tvätta bilen på \(logic.user.timeIntervalInWeeks) veckor om du trycker på \"Ja\"."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Nej", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { action in
+            self.logic.searchForGoodDayToWashCar = false
+            self.logic.user.car.longTimeSinceUserWashedCar = false
+            self.updateUI()
+            self.logic.user.car.longTimeSinceUserWashedCar = false
+            self.logic.user.startSearchingAgainAfter(timeInterval: self.logic.user.timeIntervalInWeeks)
+            title = "Kanon!"
+            message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            self.logic.defaults.set(self.logic.user.car.longTimeSinceUserWashedCar, forKey:self.logic.defaultsUserCarIsWashedRecently)
+            self.logic.defaults.set(self.logic.searchForGoodDayToWashCar, forKey:self.logic.defaultsSearchForGoodDayBool)
+            self.logic.defaults.set(self.logic.user.startSearchingDate, forKey:self.logic.defaultsSearchForGoodDayDate)
+        }))
+        self.present(alert, animated: true, completion: nil)
         updateUI()
     }
     
@@ -103,6 +114,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         logic.user.timeIntervalInWeeks = logic.user.timeIntervalInWeeks
         logic.user.timeIntervalChoiseIsMade = true
         logic.searchForGoodDayToWashCar = true
+        logic.user.car.longTimeSinceUserWashedCar = true
+        logic.defaults.set(logic.user.car.longTimeSinceUserWashedCar, forKey:logic.defaultsUserCarIsWashedRecently)
         logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
         logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
         logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)
@@ -135,30 +148,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
         if logic.washToday == true {
             let title = "Dags att tvätta bilen 🚗"
-            let subtitle = "Din bil är inte tvättad nyligen och det ska vara bra väder både idag och imorgon..."
-            let body = "Passa på att tvätta bilen idag!"
+            let subtitle = "Passa på medan det är bra väder!"
+            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder både idag och imorgon ☀️"
             sendNotification(title: title, subtitle: subtitle, body: body)
         }
     }
-    
-    // Börja söka igen efter användarens tidsinterval.
-    func startSearchingAgainAfter(timeInterval: Int) {
-        let daysToAdd = 7 * timeInterval
-        let calendar = Calendar.current
-        let currentDate = Date()
-        logic.user.startSearchingDate = calendar.date(byAdding: .day, value: daysToAdd, to: currentDate)!
-        let title = "Kanon!"
-        let message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(timeInterval) veckor igen!"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: { action in
-            self.carIsWashedRecentlySwitch.setOn(false, animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
-        logic.searchForGoodDayToWashCar = false
-        logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)
-        logic.defaults.set(logic.user.startSearchingDate, forKey:logic.defaultsSearchForGoodDayDate)
-    }
-    
+        
     // När man klickat på sök, hämta data från den inskrivna staden!
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let cityName = searchBar.text!
@@ -208,9 +203,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         temperatureLabel.text = "\(weatherData.temperature)°"
         weatherIcon.image = UIImage(named: weatherData.weatherIconName)
         if logic.user.car.longTimeSinceUserWashedCar == true {
-            carIsWashedRecentlySwitch.isEnabled = true
+            washedCarButton.isEnabled = true
         } else {
-            carIsWashedRecentlySwitch.isEnabled = false
+            washedCarButton.isEnabled = false
         }
     }
     
@@ -262,8 +257,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     func checkUserTimeInterval() {
         readUserDefaults()
         if logic.user.timeIntervalChoiseIsMade == false {
-            homeView.isHidden = true
             weatherDataView.isHidden = true
+            washedCarButton.isHidden = true
             timeIntervalView.isHidden = false
             forecastButton.isEnabled = false
             refreshButton.isEnabled = false
@@ -272,8 +267,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             weeksPickerView.dataSource = self
             weeksPickerView.delegate = self
         } else {
-            homeView.isHidden = false
             weatherDataView.isHidden = false
+            washedCarButton.isHidden = false
             timeIntervalView.isHidden = true
             forecastButton.isEnabled = true
             refreshButton.isEnabled = true
@@ -317,7 +312,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             logic.user.startSearchingDate = savedUserSearchAgainDate as! Date
             print("• RÄTT: User search again date: \(logic.user.startSearchingDate)")
         }
-        print("• FEL: User search again date: \(logic.user.startSearchingDate)")
     }
     
     // Ge användaren en prognos.
@@ -329,10 +323,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             title = "Tvätta inte bilen idag 🙄"
         }
+        let longTimeSinceUserWashedCar = boolMessageEmoji(bool: logic.user.car.longTimeSinceUserWashedCar)
         let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
         let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
         let howManyDaysLeftToSearchDate = logic.user.howManyDaysToSearchingDate()
-        let message = "\(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
+        let message = "\(longTimeSinceUserWashedCar) Bilen är INTE tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen.   "
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
