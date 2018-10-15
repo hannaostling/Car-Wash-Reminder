@@ -75,6 +75,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if userHasAllowedLocationService == true {
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+            positionButton.isEnabled = false
         }
         print("Position button pressed!")
     }
@@ -146,15 +147,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 //print("✔︎ \(weather)")
             }
         }
-//        if logic.washToday == true {
-//            let title = "Dags att tvätta bilen 🚗"
-//            let subtitle = "Passa på medan det är bra väder!"
-//            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder både idag och imorgon ☀️"
-//            logic.sendNotification = true
-           // sendNotification(title: title, subtitle: subtitle, body: body)
-//        } else {
-//
-//        }
     }
         
     // När man klickat på sök, hämta data från den inskrivna staden!
@@ -162,6 +154,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let cityName = searchBar.text!
         let params: [String:String] = ["q": cityName, "appid": APP_ID]
         getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+        positionButton.isEnabled = true
     }
     
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
@@ -223,6 +216,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             longitude = String(location.coordinate.longitude)
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+            positionButton.isEnabled = false
         }
     }
     
@@ -248,7 +242,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             washedCarButton.isHidden = true
             timeIntervalView.isHidden = false
             forecastButton.isEnabled = false
-            positionButton.isEnabled = false
             searchButton.isEnabled = false
             addTimeIntervals()
             weeksPickerView.dataSource = self
@@ -258,7 +251,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             washedCarButton.isHidden = false
             timeIntervalView.isHidden = true
             forecastButton.isEnabled = true
-            positionButton.isEnabled = true
             searchButton.isEnabled = true
         }
     }
