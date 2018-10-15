@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View" customClass="CSAnimationView">
                                 <rect key="frame" x="57.666666666666657" y="237" width="299" height="262"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
@@ -38,6 +38,15 @@
                                     <constraint firstAttribute="trailing" secondItem="e5E-vw-HEN" secondAttribute="trailing" id="vAh-om-Acs"/>
                                     <constraint firstItem="e5E-vw-HEN" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="top" id="z4J-Rr-FNP"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="fadeIn"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1C-2S-ffr" userLabel="TimeIntervalView">
                                 <rect key="frame" x="49" y="272" width="316" height="192"/>
