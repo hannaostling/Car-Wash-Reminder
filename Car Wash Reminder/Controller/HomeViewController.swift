@@ -137,15 +137,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     }
     
     // Hitta en bra dag att tvätta bilen.
-    func searchForGoodDayToWashCar() {
-        logic.noRainTodayAndTomorrow = false
+    func checkRain() {
+        var countBadWeather = 0
         for weather in weatherData.weatherForTodayAndTomorrow {
-            if weather != "Rain" || weather != "Thunderstorm" || weather != "Snow" {
-                logic.noRainTodayAndTomorrow = true
-                //print("✖︎ \(weather)")
+            if weather == "Rain" || weather == "Thunderstorm" || weather == "Snow" {
+                countBadWeather += 1
+                print("☔️ \(weather)")
             } else {
-                //print("✔︎ \(weather)")
+                print("🌞 \(weather)")
             }
+        }
+        if countBadWeather <= 0 {
+            logic.noRainTodayAndTomorrow = true
+        } else {
+            logic.noRainTodayAndTomorrow = false
         }
     }
         
@@ -174,6 +179,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
+    // Hämtar data antingen från användarens stad, eller med geografiska positionen.
+    func getWeather() {
+        if logic.user.city == "" {
+            let positionParams: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: positionParams)
+            positionButton.isEnabled = false
+        } else {
+            let cityName = logic.user.city
+            let cityParams: [String:String] = ["q": cityName, "appid": APP_ID]
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: cityParams)
+            positionButton.isEnabled = true
+        }
+    }
+    
     // Uppdaterar forecast-väder-data med väderinformationen från JSON. Uppdaterar med tumme upp om det är en bra dag att tvätta sin bil.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
@@ -185,7 +204,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             for i in 0...15 {
                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
-            searchForGoodDayToWashCar()
+            print(weatherData.city)
+            checkRain()
             updateUI()
         }
         else {
@@ -216,16 +236,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
             latitude = String(location.coordinate.latitude)
             longitude = String(location.coordinate.longitude)
-            if logic.user.city == "" {
-                let positionParams: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-                getWeatherData(url: FORECAST_WEATHER_URL, parameters: positionParams)
-                positionButton.isEnabled = false
-            } else {
-                let cityName = logic.user.city
-                let cityParams: [String:String] = ["q": cityName, "appid": APP_ID]
-                getWeatherData(url: FORECAST_WEATHER_URL, parameters: cityParams)
-                positionButton.isEnabled = true
-            }
+            getWeather()
         }
     }
     
@@ -245,6 +256,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Kollar om användaren har valt ett tidsintervall.
     func checkUserTimeInterval() {
+        getWeather()
         readUserDefaults()
         if logic.user.timeIntervalChoiseIsMade == false {
             weatherDataView.isHidden = true
@@ -308,6 +320,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Ge användaren en prognos.
     func giveForecastAlert() {
+        checkRain()
         readUserDefaults()
         var title = ""
         if logic.washToday == true {
