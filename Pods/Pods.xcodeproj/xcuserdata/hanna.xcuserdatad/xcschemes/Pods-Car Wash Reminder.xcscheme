@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C9026F845472735596D20C2F2032B49D"
+               BlueprintIdentifier = "1D6E61F7DE9EEBD47BB39E6A7639A6DB"
                BuildableName = "Pods_Car_Wash_Reminder.framework"
                BlueprintName = "Pods-Car Wash Reminder"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C9026F845472735596D20C2F2032B49D"
+            BlueprintIdentifier = "1D6E61F7DE9EEBD47BB39E6A7639A6DB"
             BuildableName = "Pods_Car_Wash_Reminder.framework"
             BlueprintName = "Pods-Car Wash Reminder"
             ReferencedContainer = "container:Pods.xcodeproj">

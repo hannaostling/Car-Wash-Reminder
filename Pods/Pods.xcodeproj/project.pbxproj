@@ -3,152 +3,219 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1FC3FD39157C2FFFF3869A1300730086 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332F6B9EA5D63A221428D82DFC754F83 /* SessionDelegate.swift */; };
+		02BD4F898E8FBC821B12F4DE200967C1 /* Canvas-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F80C4B1FE4E61F4361280E4D6A62784 /* Canvas-dummy.m */; };
+		0D27D8F31749C3D7C55CA0B3D38D4E75 /* UITextField+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D2451772FA92C97EF293DBB21754704A /* UITextField+TCCustomFont.m */; };
+		14A14F761865A8A9B235175A07F1822C /* UILabel+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = E3D712E500546811868511F93484491D /* UILabel+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		190D4FC1811881DF3B163BF524AB1E6F /* CSAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6AC84E76C4A681FDBB2DB4B4CB1369 /* CSAnimationView.m */; };
+		1B052940904113503E18FE5FE51DE818 /* UITextField+PlaceholderColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 43022D450DA29EEBC08D450C6C599E2F /* UITextField+PlaceholderColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FC3FD39157C2FFFF3869A1300730086 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B692DB72E990AC1F32856CFAA0D8504 /* SessionDelegate.swift */; };
+		24118352FD39A3B6BCF314AEAF389E86 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FCA08E991835C886674538521D9EF3 /* SwiftyJSON-dummy.m */; };
 		2E592FAB4CC2520108F1E1677EE2AA42 /* Pods-Car Wash ReminderUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1430844B39865BBE052C08AB7514DB25 /* Pods-Car Wash ReminderUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		36FF8853CB34A9297AFAA8F5F7456324 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003F0620667B1D1CE3A63A07911DA946 /* TaskDelegate.swift */; };
+		31A3F07AC3C8810BA9584D1D5DB3197C /* Pods-Car Wash Reminder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE4C07EFCDE0687FA813DFCD59FA0C5E /* Pods-Car Wash Reminder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		364292DC2E201894D4B2D7D4E49B6983 /* CSBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = D8CF9644387636C3679BD2E173FF0E96 /* CSBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36FF8853CB34A9297AFAA8F5F7456324 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C37C9C43656069163FE438EE17676AA /* TaskDelegate.swift */; };
+		42AF4F04E566C82CB7A9D031C7204A04 /* CSNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 850AE46F86A37D93A1CF6000973CF331 /* CSNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A3158088A9050536B7A282E9BAE17FE /* CSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC39A9E56921948C0728CCEE5FC0053 /* CSAnimation.m */; };
 		4A6DA26CD47011C1EA9022B2A5FB345F /* Pods-Car Wash ReminderUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2904C3CF4C96E1FF3B71885EE18588E /* Pods-Car Wash ReminderUITests-dummy.m */; };
-		4E1A913EFB404FB11524718FF0298EFE /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26FB4343C43368E1D119B6871123AF1 /* Alamofire.swift */; };
-		500C8EDA60C07B0F127C7FC385E17D38 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09922B86810418CDE6DD69710D5A9C17 /* Notifications.swift */; };
-		52237C35642089F77DD4D723CEB25737 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6E04C2B770D33E90A7E43AD9A6DDF5 /* Response.swift */; };
+		4E1A913EFB404FB11524718FF0298EFE /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DF81D3AD60B71286329C3240D5875 /* Alamofire.swift */; };
+		500C8EDA60C07B0F127C7FC385E17D38 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BEEBBD9B0D477C04E6E2BDE4476FB /* Notifications.swift */; };
+		5014E9183681E6973D5C48A003FA5C52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		52237C35642089F77DD4D723CEB25737 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E11002D36EBCF27C1D0AA3299F848 /* Response.swift */; };
+		5406BEB3FD29A9C539DE4AFE4C10A986 /* Canvas.h in Headers */ = {isa = PBXBuildFile; fileRef = 676948CD820748BA8A5EEB2C7DD6A101 /* Canvas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55C45ADDCC323234766ECD8F0E6444D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		55D0112EDE97D9F57ABC5E2E9550BA5F /* Pods-Car Wash ReminderTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0B17FF14B4C819D228664C5E8B6654 /* Pods-Car Wash ReminderTests-dummy.m */; };
-		58A9719584AFA2D108D9E5C585A79329 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382C5721F36A8CF08DA36032E8FF2C1 /* Validation.swift */; };
-		5EE5FED83B90A606A763CF1114D1D6FB /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFF0A773A9B68F8036680922E55A8F /* ResponseSerialization.swift */; };
-		6BEA14EC335E07C7063CD1383C0C443C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE6D52AA2F0C3238B527C58255F520 /* ServerTrustPolicy.swift */; };
-		7068E8A7DDC1424EE8F24BC77E8746F4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B506A540FE042146EA8265DD35585 /* SessionManager.swift */; };
-		73794425DCAE9933A885F8E1BED18B32 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBFF681209D4E5030FF4116EFD41362 /* SwiftyJSON.swift */; };
-		796177DE2762F24DAC16A709FD954838 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F03809326666A0674F21BBADB1BB09D /* ParameterEncoding.swift */; };
-		810CC29D9CA98162EFE9E2A3971124A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		965DACF3DC02857ECBE66C5CBA3DA5D4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBEB670658597FB7864005ED913ECB6 /* Request.swift */; };
+		58A9719584AFA2D108D9E5C585A79329 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AA6C48BE302FAF3691A19A184E3364 /* Validation.swift */; };
+		5C8C7F958728C3773E644ED0668A846E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		5EE5FED83B90A606A763CF1114D1D6FB /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358E67518B23F3A68170611994147CE /* ResponseSerialization.swift */; };
+		603A783B1E251353EDBDA43F35E63B8A /* CSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A64C7B7E961D57E11032FBDF4F22885B /* CSNavigationController.m */; };
+		649007CA24A39B49B960828688775E31 /* UILabel+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F68802714503AA7EFC2DF7129EC7A163 /* UILabel+TCCustomFont.m */; };
+		6BEA14EC335E07C7063CD1383C0C443C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064B0FCF03198644D2D5736C994D51F /* ServerTrustPolicy.swift */; };
+		7068E8A7DDC1424EE8F24BC77E8746F4 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8209D1BD5FC5314C91240AB5245F44C /* SessionManager.swift */; };
+		79091A120833E7602B730D078817A104 /* UITextField+PlaceholderColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BC01D48CCB89BE6776DA28F7EF11F0 /* UITextField+PlaceholderColor.m */; };
+		7949435F0BA72EBF667A9D27067C2041 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B801D65A03143D325DDB771E6CF6266 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		796177DE2762F24DAC16A709FD954838 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50420B1EFC6608B72B6D129F5FCFF614 /* ParameterEncoding.swift */; };
+		8011BB215C76D9D9AEA7CC7DD11AD020 /* UITextField+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8F407693A20172550D361E658A764F /* UITextField+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87F467023D856D6C4593E24263667D22 /* UIButton+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = B0D55A62811ED8B69AD6A25DF0D677F1 /* UIButton+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E42DD04601DA8609C72D3CFB073F62D /* Canvas-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF322F7F19B286D0EB258870305DB42 /* Canvas-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91D795311EAD2F3355D0BEEB2F0AE0EC /* CSAnimationView.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFA2387888411FB1DF80116A3E78678 /* CSAnimationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92850C64E351375AB8760BB8089C14ED /* UIButton+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B7DE93AFA27F3F16A48EB7415441AE /* UIButton+TCCustomFont.m */; };
+		965DACF3DC02857ECBE66C5CBA3DA5D4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BEBA52D73F6CFB9F000458C2E63115 /* Request.swift */; };
+		A1BD168DD0FAAB7537580B019D458087 /* UINavigationBar+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 97B2C3F99D45F95BE5EAD36B824A1E02 /* UINavigationBar+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A39B1696D5B86193098F263B4504DBE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		ADDA342130AF1D946648F3DED98A03A6 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6BCB8BFA44757C42826D92DE90E92 /* SwiftyJSON-dummy.m */; };
-		AE905141BC8269F488A1669DCE0E5417 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 40940641FEC544E01CEA2CF3E3D8CEA5 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B424F524BBBE34E685129945993809A8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D182500FF4918391F97385DAE996449 /* Timeline.swift */; };
-		B77705737566AE83ED7E448923D7FA60 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857033CB003F852F367D6BC6CA97425 /* NetworkReachabilityManager.swift */; };
-		BE4BA1EDE444A770F834605F4B65348E /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FA20699EAC0AB72A507BB66B191F8 /* AFError.swift */; };
-		C2F8AEE806663691DD71DD1B864EC2CB /* Pods-Car Wash Reminder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EE4C07EFCDE0687FA813DFCD59FA0C5E /* Pods-Car Wash Reminder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4C3899574E9D5DF5E5DA52310560BCC /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0841CA7163214CF11939BFCB9E0C45F2 /* Alamofire-dummy.m */; };
+		B424F524BBBE34E685129945993809A8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26320669BEF3765F0EE60045C1D17042 /* Timeline.swift */; };
+		B43C475C22DBCB76EF9A0BB670D9912D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE17C22547B93A87BA0E173C281518A /* SwiftyJSON.swift */; };
+		B77705737566AE83ED7E448923D7FA60 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5305B311EAEBBD1E89D2674EE587D /* NetworkReachabilityManager.swift */; };
+		BE4BA1EDE444A770F834605F4B65348E /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970295C891DAACAC84CEFE177993830C /* AFError.swift */; };
+		C11E9E3E1599422A2BC7984680EA8277 /* CSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6791D195AB7412CB2436D2EDB187B815 /* CSBlurView.m */; };
+		C97D369B1DDB4C11AAD450254141412A /* Pods-Car Wash Reminder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB20C2959474C9116208901180DFCC7C /* Pods-Car Wash Reminder-dummy.m */; };
+		D1EF4A54B4E8F963E7232DA731E7AE75 /* CSAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B553CE266FEC1F7204695CD1E63221C /* CSAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4C3899574E9D5DF5E5DA52310560BCC /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A33BAFAF3A5EBE8D532645697F767D /* Alamofire-dummy.m */; };
+		D5374FDB05E6C3CA00625AD949DA6E57 /* UITextView+TCCustomFont.h in Headers */ = {isa = PBXBuildFile; fileRef = E4B859B65D47A72DCB86445E20CADD92 /* UITextView+TCCustomFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5B801126452C05AAAA941553F7A5C80 /* UITextView+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA42A02CE36B607DD3DE3CEA3F33821 /* UITextView+TCCustomFont.m */; };
 		D8EC5B74B9B5DC842F4179D19E6DE6D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		DBE6E2E4D205545E7988CFA5057C31D6 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5933A0580629CB79BDBD1D33483297F5 /* DispatchQueue+Alamofire.swift */; };
+		DBE6E2E4D205545E7988CFA5057C31D6 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F06DA3E77B36D140956B7672F81BDC /* DispatchQueue+Alamofire.swift */; };
 		E58A58B10ACA255535E325016918D9E1 /* Pods-Car Wash ReminderTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9650611454A2200771F545B74F1FD98F /* Pods-Car Wash ReminderTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E8BAF5B8A3AC31B40CA98B67ABE38393 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		EF1461221681BCA12A4147900A704727 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 901710181ECB814C322BEBBC0BC5182E /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F9B29CAD7FE4ACFF21843F0A022EFAFF /* Pods-Car Wash Reminder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB20C2959474C9116208901180DFCC7C /* Pods-Car Wash Reminder-dummy.m */; };
-		F9EA61D484CC15FDDAB0D8C0D26D7949 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5CA9C1A1A8A10FA0F34E068E281AB /* Result.swift */; };
-		FF9C7BC64DB23D2CED48197DE67F0335 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F49FBA20BC96954B56110A1FB0535 /* MultipartFormData.swift */; };
+		EF1461221681BCA12A4147900A704727 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 77454F90D9741B5C241307D75760740B /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F866B2746D35EFA3F7C652B063BC41F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		F8A30EB7E98022E480E091F7E01475EF /* UINavigationBar+TCCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CB63D9906D131238C7D06A2C5CCFD6 /* UINavigationBar+TCCustomFont.m */; };
+		F9EA61D484CC15FDDAB0D8C0D26D7949 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC0E990DDB17DF9C6557D06A8960E5 /* Result.swift */; };
+		FF9C7BC64DB23D2CED48197DE67F0335 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5F6682F6983AD51D03FF75E3DA30CA /* MultipartFormData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3F172AD0E13684E3656743F0AC935E01 /* PBXContainerItemProxy */ = {
+		5EE07A22FCBE59AAEF2329DBE52D5988 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E76458C58C9140B6A16D60547E68E80C;
 			remoteInfo = Alamofire;
 		};
+		741B9DB1D86A1E6C7B921B58DE931345 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D56DF436583FA42D0630B45F5D79DD7E;
+			remoteInfo = SwiftyJSON;
+		};
 		7A7717F624C3F62E2928F90CBC2F489F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C9026F845472735596D20C2F2032B49D;
+			remoteGlobalIDString = 1D6E61F7DE9EEBD47BB39E6A7639A6DB;
 			remoteInfo = "Pods-Car Wash Reminder";
+		};
+		811DA480D45F48BB491E2B97E291F1DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B1F7D992188AE1C4099470FAF013C96;
+			remoteInfo = Canvas;
 		};
 		A1C81DD6BBF9F0896167022866151B8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C9026F845472735596D20C2F2032B49D;
+			remoteGlobalIDString = 1D6E61F7DE9EEBD47BB39E6A7639A6DB;
 			remoteInfo = "Pods-Car Wash Reminder";
-		};
-		A9868690AD0C1556A11AF8B7B193A6FE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 86D28D5BE206589C6205B54E912D681C;
-			remoteInfo = SwiftyJSON;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		003F0620667B1D1CE3A63A07911DA946 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		0358E67518B23F3A68170611994147CE /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		047B01CD2449B71F7196029780A88E2F /* Pods-Car Wash ReminderTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Car Wash ReminderTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		05164FB75C7496B18EDFD1A706072D70 /* Pods-Car Wash ReminderTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash ReminderTests-frameworks.sh"; sourceTree = "<group>"; };
 		07002558D99A4A26D1448D1D88392619 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		0841CA7163214CF11939BFCB9E0C45F2 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		09922B86810418CDE6DD69710D5A9C17 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		0C6E04C2B770D33E90A7E43AD9A6DDF5 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		07A0CF19BC0F4689C19FA4227A470F11 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0910D2EBF44B1DC136C841F2777A685A /* Pods_Car_Wash_ReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Car_Wash_ReminderTests.framework; path = "Pods-Car Wash ReminderTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B553CE266FEC1F7204695CD1E63221C /* CSAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSAnimation.h; path = CanvasLibrary/CSAnimation.h; sourceTree = "<group>"; };
+		0C2A62906B4144C586508B0304DB9D05 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		0C37C9C43656069163FE438EE17676AA /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		1430844B39865BBE052C08AB7514DB25 /* Pods-Car Wash ReminderUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Car Wash ReminderUITests-umbrella.h"; sourceTree = "<group>"; };
+		15BEBA52D73F6CFB9F000458C2E63115 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		15E5305B311EAEBBD1E89D2674EE587D /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		17F4CB451849887A531D7EE5B7C68323 /* Pods-Car Wash ReminderUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Car Wash ReminderUITests.modulemap"; sourceTree = "<group>"; };
+		20CB63D9906D131238C7D06A2C5CCFD6 /* UINavigationBar+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+TCCustomFont.m"; path = "CanvasLibrary/UINavigationBar+TCCustomFont.m"; sourceTree = "<group>"; };
+		22EC0E990DDB17DF9C6557D06A8960E5 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		2498E2C559A08AB2C73C08B760FE166A /* Pods-Car Wash ReminderUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash ReminderUITests-frameworks.sh"; sourceTree = "<group>"; };
 		25323FB433645388E65A01A8A98800D4 /* Pods-Car Wash Reminder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Car Wash Reminder.modulemap"; sourceTree = "<group>"; };
-		26EFF0A773A9B68F8036680922E55A8F /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		2D182500FF4918391F97385DAE996449 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		26320669BEF3765F0EE60045C1D17042 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		2B42120BA3532C48729D98375BD9D3E0 /* Canvas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Canvas.xcconfig; sourceTree = "<group>"; };
+		2BC42D649557FA76D81EB191B5B0ECC7 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		3091435BAEACC0133F97E8DE210D78D3 /* Pods-Car Wash ReminderTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Car Wash ReminderTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		332F6B9EA5D63A221428D82DFC754F83 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		40940641FEC544E01CEA2CF3E3D8CEA5 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		47A6BCB8BFA44757C42826D92DE90E92 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		4F7DC1E21DB2CFEB43E506E64D5B61D6 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		379723FB9F89C4AE2309C3BB9350544A /* Canvas.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Canvas.modulemap; sourceTree = "<group>"; };
+		37F06DA3E77B36D140956B7672F81BDC /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		3892A009DD505BBD3C7C3F3CCE69A14A /* Pods_Car_Wash_ReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Car_Wash_ReminderUITests.framework; path = "Pods-Car Wash ReminderUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B801D65A03143D325DDB771E6CF6266 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		43022D450DA29EEBC08D450C6C599E2F /* UITextField+PlaceholderColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+PlaceholderColor.h"; path = "CanvasLibrary/UITextField+PlaceholderColor.h"; sourceTree = "<group>"; };
+		50420B1EFC6608B72B6D129F5FCFF614 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		50C18AC3BE0315D429DF411ACEFA88E9 /* Pods-Car Wash Reminder-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Car Wash Reminder-acknowledgements.plist"; sourceTree = "<group>"; };
-		557AFBCC38FD01234CE7EEAFFFF83850 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		562CF504AEEDF6009597F045CAB1719E /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		5933A0580629CB79BDBD1D33483297F5 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		562DF81D3AD60B71286329C3240D5875 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		581678FFE307DE8D7C3E60547571B891 /* Canvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Canvas.framework; path = Canvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		590D364BD5B99D0544E7AC7962C07891 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A0DE04AEBE43F65C3B2FCDD10763934 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5B6AC84E76C4A681FDBB2DB4B4CB1369 /* CSAnimationView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimationView.m; path = CanvasLibrary/CSAnimationView.m; sourceTree = "<group>"; };
+		5D8F407693A20172550D361E658A764F /* UITextField+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+TCCustomFont.h"; path = "CanvasLibrary/UITextField+TCCustomFont.h"; sourceTree = "<group>"; };
+		63A33BAFAF3A5EBE8D532645697F767D /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		6559ACC204798903F995CC6A49BD2450 /* Pods-Car Wash ReminderUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash ReminderUITests-resources.sh"; sourceTree = "<group>"; };
-		6EC9F2B17E3F31671529D092B9450376 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		656D68AFA36E2EACA8471E0175BA0F2C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		676948CD820748BA8A5EEB2C7DD6A101 /* Canvas.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Canvas.h; path = CanvasLibrary/Canvas.h; sourceTree = "<group>"; };
+		6791D195AB7412CB2436D2EDB187B815 /* CSBlurView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSBlurView.m; path = CanvasLibrary/CSBlurView.m; sourceTree = "<group>"; };
+		6F6224C65901ECD8A766692B3EC1AB39 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		6F80C4B1FE4E61F4361280E4D6A62784 /* Canvas-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Canvas-dummy.m"; sourceTree = "<group>"; };
 		71723E4873704EC2224DCF47279D66F3 /* Pods-Car Wash ReminderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash ReminderUITests.release.xcconfig"; sourceTree = "<group>"; };
-		73700E13B07592982F396FCAF905FBA6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7857033CB003F852F367D6BC6CA97425 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		7CBA1A8E0D70902CF24680564F8A2678 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77454F90D9741B5C241307D75760740B /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		7E4B4472EDFD8D74061FCD885AE5F678 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800B66CFA0C633F5918909628BC01A23 /* Pods-Car Wash ReminderUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Car Wash ReminderUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		816537A57D0662D80486E6CE09CBDF4F /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		84B7DE93AFA27F3F16A48EB7415441AE /* UIButton+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+TCCustomFont.m"; path = "CanvasLibrary/UIButton+TCCustomFont.m"; sourceTree = "<group>"; };
+		850AE46F86A37D93A1CF6000973CF331 /* CSNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSNavigationController.h; path = CanvasLibrary/CSNavigationController.h; sourceTree = "<group>"; };
+		8AA42A02CE36B607DD3DE3CEA3F33821 /* UITextView+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+TCCustomFont.m"; path = "CanvasLibrary/UITextView+TCCustomFont.m"; sourceTree = "<group>"; };
+		8C5F6682F6983AD51D03FF75E3DA30CA /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		8C878E4342F3A130C540A9156A25023E /* Pods-Car Wash ReminderTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Car Wash ReminderTests.modulemap"; sourceTree = "<group>"; };
-		8F03809326666A0674F21BBADB1BB09D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		901710181ECB814C322BEBBC0BC5182E /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		8EC39A9E56921948C0728CCEE5FC0053 /* CSAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSAnimation.m; path = CanvasLibrary/CSAnimation.m; sourceTree = "<group>"; };
 		912CEA46628157742F7D4BFDBB706054 /* Pods-Car Wash ReminderUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Car Wash ReminderUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		91AA6C48BE302FAF3691A19A184E3364 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9490705F5A075776A658155A580846CA /* Pods-Car Wash Reminder-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash Reminder-frameworks.sh"; sourceTree = "<group>"; };
-		954BFFBD391D85441DD97F2659B53121 /* Pods_Car_Wash_ReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_ReminderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9650611454A2200771F545B74F1FD98F /* Pods-Car Wash ReminderTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Car Wash ReminderTests-umbrella.h"; sourceTree = "<group>"; };
+		970295C891DAACAC84CEFE177993830C /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		97B2C3F99D45F95BE5EAD36B824A1E02 /* UINavigationBar+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+TCCustomFont.h"; path = "CanvasLibrary/UINavigationBar+TCCustomFont.h"; sourceTree = "<group>"; };
 		98D09B0EFFDD477BE376F52B49EAA0D1 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
+		9B692DB72E990AC1F32856CFAA0D8504 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
+		9EBE41D639902D0E7C884F002F26C862 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Car_Wash_Reminder.framework; path = "Pods-Car Wash Reminder.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EF322F7F19B286D0EB258870305DB42 /* Canvas-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Canvas-umbrella.h"; sourceTree = "<group>"; };
 		9F2F72BFE4C97CC6B8C6B806C743DA33 /* Pods-Car Wash Reminder-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash Reminder-resources.sh"; sourceTree = "<group>"; };
 		A2904C3CF4C96E1FF3B71885EE18588E /* Pods-Car Wash ReminderUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Car Wash ReminderUITests-dummy.m"; sourceTree = "<group>"; };
-		A339DDB3446FA41EBA132FD30E9F5227 /* Pods_Car_Wash_ReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_ReminderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9AFE378F80F8666C912AD21BF22B4C9 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEBEB670658597FB7864005ED913ECB6 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		A5FCA08E991835C886674538521D9EF3 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		A64C7B7E961D57E11032FBDF4F22885B /* CSNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CSNavigationController.m; path = CanvasLibrary/CSNavigationController.m; sourceTree = "<group>"; };
+		A90EAAF7896A2B502922E7213DC33C0E /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		AB86944DB06AE9149A56019B0A2C7A18 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		B0D55A62811ED8B69AD6A25DF0D677F1 /* UIButton+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+TCCustomFont.h"; path = "CanvasLibrary/UIButton+TCCustomFont.h"; sourceTree = "<group>"; };
+		B46C7BCFD4F3C2C0761756B7C960FF73 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B53BEEBBD9B0D477C04E6E2BDE4476FB /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		BB20C2959474C9116208901180DFCC7C /* Pods-Car Wash Reminder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Car Wash Reminder-dummy.m"; sourceTree = "<group>"; };
-		C12A5AE2510C6F27150E15E2025223C3 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA4C6999AD24A8711EC78E47BFC32E4 /* Canvas-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Canvas-prefix.pch"; sourceTree = "<group>"; };
+		C31A3F7ECCA5859EF245C42D1DF71E18 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		C8EEA8EF88861698329706F3E2F125CF /* Pods-Car Wash ReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash ReminderTests.release.xcconfig"; sourceTree = "<group>"; };
-		CE916262DA3B758CAD082788099FDE78 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF6FA20699EAC0AB72A507BB66B191F8 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		CFBFF681209D4E5030FF4116EFD41362 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		D9EE6D52AA2F0C3238B527C58255F520 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		DAA5CA9C1A1A8A10FA0F34E068E281AB /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		E1456F70DDC38E5610289D309053CAC2 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		CB55ED23472A90254EB95E5BDF43C7A9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2451772FA92C97EF293DBB21754704A /* UITextField+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+TCCustomFont.m"; path = "CanvasLibrary/UITextField+TCCustomFont.m"; sourceTree = "<group>"; };
+		D27E11002D36EBCF27C1D0AA3299F848 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		D2BC01D48CCB89BE6776DA28F7EF11F0 /* UITextField+PlaceholderColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+PlaceholderColor.m"; path = "CanvasLibrary/UITextField+PlaceholderColor.m"; sourceTree = "<group>"; };
+		D8CF9644387636C3679BD2E173FF0E96 /* CSBlurView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSBlurView.h; path = CanvasLibrary/CSBlurView.h; sourceTree = "<group>"; };
 		E2A2E769881A4E864937EF42AF2CB0A3 /* Pods-Car Wash Reminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash Reminder.debug.xcconfig"; sourceTree = "<group>"; };
+		E3D712E500546811868511F93484491D /* UILabel+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UILabel+TCCustomFont.h"; path = "CanvasLibrary/UILabel+TCCustomFont.h"; sourceTree = "<group>"; };
 		E420E1CB4C1C07DF7458B4E93A42F00A /* Pods-Car Wash Reminder-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Car Wash Reminder-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E42F49FBA20BC96954B56110A1FB0535 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		E4B859B65D47A72DCB86445E20CADD92 /* UITextView+TCCustomFont.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+TCCustomFont.h"; path = "CanvasLibrary/UITextView+TCCustomFont.h"; sourceTree = "<group>"; };
+		E8209D1BD5FC5314C91240AB5245F44C /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		EE0B17FF14B4C819D228664C5E8B6654 /* Pods-Car Wash ReminderTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Car Wash ReminderTests-dummy.m"; sourceTree = "<group>"; };
 		EE4C07EFCDE0687FA813DFCD59FA0C5E /* Pods-Car Wash Reminder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Car Wash Reminder-umbrella.h"; sourceTree = "<group>"; };
-		F05B506A540FE042146EA8265DD35585 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		F26FB4343C43368E1D119B6871123AF1 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		F382C5721F36A8CF08DA36032E8FF2C1 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		F064B0FCF03198644D2D5736C994D51F /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		F68802714503AA7EFC2DF7129EC7A163 /* UILabel+TCCustomFont.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UILabel+TCCustomFont.m"; path = "CanvasLibrary/UILabel+TCCustomFont.m"; sourceTree = "<group>"; };
 		F76B7223A2D422924C3C5F35E1B29694 /* Pods-Car Wash ReminderTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Car Wash ReminderTests-resources.sh"; sourceTree = "<group>"; };
 		F9203650098E82FC3F0388F1630D7CAF /* Pods-Car Wash ReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Car Wash ReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FDC7F0BD18B3E4CD0618C9FDE599E323 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDE17C22547B93A87BA0E173C281518A /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		FFFA2387888411FB1DF80116A3E78678 /* CSAnimationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CSAnimationView.h; path = CanvasLibrary/CSAnimationView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		09983D712B6D35B738326A4F849785B6 /* Frameworks */ = {
+		005E8EFF94596D3DBDA470C1889E1A39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8BAF5B8A3AC31B40CA98B67ABE38393 /* Foundation.framework in Frameworks */,
+				5014E9183681E6973D5C48A003FA5C52 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		203D0C47892F32B48AB90EE43BA3952A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F866B2746D35EFA3F7C652B063BC41F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,11 +235,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2898FD221968E713941E8C808B36158 /* Frameworks */ = {
+		897881CAE84FD46E0E82989847223409 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				810CC29D9CA98162EFE9E2A3971124A1 /* Foundation.framework in Frameworks */,
+				5C8C7F958728C3773E644ED0668A846E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,30 +254,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F208330439369DD867D8F7BFF712D6B /* Products */ = {
+		36229E18C41FD45153DEBB87BE22BD97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9AFE378F80F8666C912AD21BF22B4C9 /* Alamofire.framework */,
-				7CBA1A8E0D70902CF24680564F8A2678 /* Pods_Car_Wash_Reminder.framework */,
-				954BFFBD391D85441DD97F2659B53121 /* Pods_Car_Wash_ReminderTests.framework */,
-				A339DDB3446FA41EBA132FD30E9F5227 /* Pods_Car_Wash_ReminderUITests.framework */,
-				C12A5AE2510C6F27150E15E2025223C3 /* SwiftyJSON.framework */,
+				07A0CF19BC0F4689C19FA4227A470F11 /* Alamofire.framework */,
+				581678FFE307DE8D7C3E60547571B891 /* Canvas.framework */,
+				9EBE41D639902D0E7C884F002F26C862 /* Pods_Car_Wash_Reminder.framework */,
+				0910D2EBF44B1DC136C841F2777A685A /* Pods_Car_Wash_ReminderTests.framework */,
+				3892A009DD505BBD3C7C3F3CCE69A14A /* Pods_Car_Wash_ReminderUITests.framework */,
+				CB55ED23472A90254EB95E5BDF43C7A9 /* SwiftyJSON.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52CC3F1FEFCE662664006A9B9376FB3A /* Support Files */ = {
+		44B3D2BB078478326885B68EBC35583A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				816537A57D0662D80486E6CE09CBDF4F /* Alamofire.modulemap */,
-				E1456F70DDC38E5610289D309053CAC2 /* Alamofire.xcconfig */,
-				0841CA7163214CF11939BFCB9E0C45F2 /* Alamofire-dummy.m */,
-				562CF504AEEDF6009597F045CAB1719E /* Alamofire-prefix.pch */,
-				901710181ECB814C322BEBBC0BC5182E /* Alamofire-umbrella.h */,
-				73700E13B07592982F396FCAF905FBA6 /* Info.plist */,
+				379723FB9F89C4AE2309C3BB9350544A /* Canvas.modulemap */,
+				2B42120BA3532C48729D98375BD9D3E0 /* Canvas.xcconfig */,
+				6F80C4B1FE4E61F4361280E4D6A62784 /* Canvas-dummy.m */,
+				BCA4C6999AD24A8711EC78E47BFC32E4 /* Canvas-prefix.pch */,
+				9EF322F7F19B286D0EB258870305DB42 /* Canvas-umbrella.h */,
+				656D68AFA36E2EACA8471E0175BA0F2C /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
+			path = "../Target Support Files/Canvas";
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -221,38 +289,99 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		5E6D9A20CF9FCFDB8B2585A1421BD32F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				590D364BD5B99D0544E7AC7962C07891 /* Info.plist */,
+				AB86944DB06AE9149A56019B0A2C7A18 /* SwiftyJSON.modulemap */,
+				6F6224C65901ECD8A766692B3EC1AB39 /* SwiftyJSON.xcconfig */,
+				A5FCA08E991835C886674538521D9EF3 /* SwiftyJSON-dummy.m */,
+				0C2A62906B4144C586508B0304DB9D05 /* SwiftyJSON-prefix.pch */,
+				3B801D65A03143D325DDB771E6CF6266 /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				86D8AA6B1E9A5BBF1AE91BD6451D7A84 /* Pods */,
-				1F208330439369DD867D8F7BFF712D6B /* Products */,
+				C6D2D6DF80F38E39F73FB9DBE31EC313 /* Pods */,
+				36229E18C41FD45153DEBB87BE22BD97 /* Products */,
 				B7CD002AABE64345959DB8A325A5A3F9 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		86D8AA6B1E9A5BBF1AE91BD6451D7A84 /* Pods */ = {
+		7E9F5B60F83BEF904DEB108499FF8635 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				EB9D3294C408A3132839B3B5B37A96BC /* Alamofire */,
-				C9BFD22DAF08BC7D056B72F0924E9AFE /* SwiftyJSON */,
+				676948CD820748BA8A5EEB2C7DD6A101 /* Canvas.h */,
+				0B553CE266FEC1F7204695CD1E63221C /* CSAnimation.h */,
+				8EC39A9E56921948C0728CCEE5FC0053 /* CSAnimation.m */,
+				FFFA2387888411FB1DF80116A3E78678 /* CSAnimationView.h */,
+				5B6AC84E76C4A681FDBB2DB4B4CB1369 /* CSAnimationView.m */,
+				D8CF9644387636C3679BD2E173FF0E96 /* CSBlurView.h */,
+				6791D195AB7412CB2436D2EDB187B815 /* CSBlurView.m */,
+				850AE46F86A37D93A1CF6000973CF331 /* CSNavigationController.h */,
+				A64C7B7E961D57E11032FBDF4F22885B /* CSNavigationController.m */,
+				B0D55A62811ED8B69AD6A25DF0D677F1 /* UIButton+TCCustomFont.h */,
+				84B7DE93AFA27F3F16A48EB7415441AE /* UIButton+TCCustomFont.m */,
+				E3D712E500546811868511F93484491D /* UILabel+TCCustomFont.h */,
+				F68802714503AA7EFC2DF7129EC7A163 /* UILabel+TCCustomFont.m */,
+				97B2C3F99D45F95BE5EAD36B824A1E02 /* UINavigationBar+TCCustomFont.h */,
+				20CB63D9906D131238C7D06A2C5CCFD6 /* UINavigationBar+TCCustomFont.m */,
+				43022D450DA29EEBC08D450C6C599E2F /* UITextField+PlaceholderColor.h */,
+				D2BC01D48CCB89BE6776DA28F7EF11F0 /* UITextField+PlaceholderColor.m */,
+				5D8F407693A20172550D361E658A764F /* UITextField+TCCustomFont.h */,
+				D2451772FA92C97EF293DBB21754704A /* UITextField+TCCustomFont.m */,
+				E4B859B65D47A72DCB86445E20CADD92 /* UITextView+TCCustomFont.h */,
+				8AA42A02CE36B607DD3DE3CEA3F33821 /* UITextView+TCCustomFont.m */,
+				44B3D2BB078478326885B68EBC35583A /* Support Files */,
 			);
-			name = Pods;
+			name = Canvas;
+			path = Canvas;
 			sourceTree = "<group>";
 		};
-		872358948F17223FC246D5650867D2C7 /* Support Files */ = {
+		84FD804F876EE812C9E2BB601F602768 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE916262DA3B758CAD082788099FDE78 /* Info.plist */,
-				4F7DC1E21DB2CFEB43E506E64D5B61D6 /* SwiftyJSON.modulemap */,
-				6EC9F2B17E3F31671529D092B9450376 /* SwiftyJSON.xcconfig */,
-				47A6BCB8BFA44757C42826D92DE90E92 /* SwiftyJSON-dummy.m */,
-				557AFBCC38FD01234CE7EEAFFFF83850 /* SwiftyJSON-prefix.pch */,
-				40940641FEC544E01CEA2CF3E3D8CEA5 /* SwiftyJSON-umbrella.h */,
+				A90EAAF7896A2B502922E7213DC33C0E /* Alamofire.modulemap */,
+				C31A3F7ECCA5859EF245C42D1DF71E18 /* Alamofire.xcconfig */,
+				63A33BAFAF3A5EBE8D532645697F767D /* Alamofire-dummy.m */,
+				2BC42D649557FA76D81EB191B5B0ECC7 /* Alamofire-prefix.pch */,
+				77454F90D9741B5C241307D75760740B /* Alamofire-umbrella.h */,
+				B46C7BCFD4F3C2C0761756B7C960FF73 /* Info.plist */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		A7012FFC27E50920AC0A1103F8746A63 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				970295C891DAACAC84CEFE177993830C /* AFError.swift */,
+				562DF81D3AD60B71286329C3240D5875 /* Alamofire.swift */,
+				37F06DA3E77B36D140956B7672F81BDC /* DispatchQueue+Alamofire.swift */,
+				8C5F6682F6983AD51D03FF75E3DA30CA /* MultipartFormData.swift */,
+				15E5305B311EAEBBD1E89D2674EE587D /* NetworkReachabilityManager.swift */,
+				B53BEEBBD9B0D477C04E6E2BDE4476FB /* Notifications.swift */,
+				50420B1EFC6608B72B6D129F5FCFF614 /* ParameterEncoding.swift */,
+				15BEBA52D73F6CFB9F000458C2E63115 /* Request.swift */,
+				D27E11002D36EBCF27C1D0AA3299F848 /* Response.swift */,
+				0358E67518B23F3A68170611994147CE /* ResponseSerialization.swift */,
+				22EC0E990DDB17DF9C6557D06A8960E5 /* Result.swift */,
+				F064B0FCF03198644D2D5736C994D51F /* ServerTrustPolicy.swift */,
+				9B692DB72E990AC1F32856CFAA0D8504 /* SessionDelegate.swift */,
+				E8209D1BD5FC5314C91240AB5245F44C /* SessionManager.swift */,
+				0C37C9C43656069163FE438EE17676AA /* TaskDelegate.swift */,
+				26320669BEF3765F0EE60045C1D17042 /* Timeline.swift */,
+				91AA6C48BE302FAF3691A19A184E3364 /* Validation.swift */,
+				84FD804F876EE812C9E2BB601F602768 /* Support Files */,
+			);
+			name = Alamofire;
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		A7B3380CA91EE4BC3DE6CC3723061065 /* Pods-Car Wash ReminderUITests */ = {
@@ -291,6 +420,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C6D2D6DF80F38E39F73FB9DBE31EC313 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7012FFC27E50920AC0A1103F8746A63 /* Alamofire */,
+				7E9F5B60F83BEF904DEB108499FF8635 /* Canvas */,
+				DDC4BC9546E9897540FD3E510874B65B /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C8C4F49F915EA5928D30CA017272020D /* Pods-Car Wash Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,12 +448,13 @@
 			path = "Target Support Files/Pods-Car Wash Reminder";
 			sourceTree = "<group>";
 		};
-		C9BFD22DAF08BC7D056B72F0924E9AFE /* SwiftyJSON */ = {
+		DDC4BC9546E9897540FD3E510874B65B /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				CFBFF681209D4E5030FF4116EFD41362 /* SwiftyJSON.swift */,
-				872358948F17223FC246D5650867D2C7 /* Support Files */,
+				FDE17C22547B93A87BA0E173C281518A /* SwiftyJSON.swift */,
+				5E6D9A20CF9FCFDB8B2585A1421BD32F /* Support Files */,
 			);
+			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -336,39 +476,22 @@
 			path = "Target Support Files/Pods-Car Wash ReminderTests";
 			sourceTree = "<group>";
 		};
-		EB9D3294C408A3132839B3B5B37A96BC /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				CF6FA20699EAC0AB72A507BB66B191F8 /* AFError.swift */,
-				F26FB4343C43368E1D119B6871123AF1 /* Alamofire.swift */,
-				5933A0580629CB79BDBD1D33483297F5 /* DispatchQueue+Alamofire.swift */,
-				E42F49FBA20BC96954B56110A1FB0535 /* MultipartFormData.swift */,
-				7857033CB003F852F367D6BC6CA97425 /* NetworkReachabilityManager.swift */,
-				09922B86810418CDE6DD69710D5A9C17 /* Notifications.swift */,
-				8F03809326666A0674F21BBADB1BB09D /* ParameterEncoding.swift */,
-				AEBEB670658597FB7864005ED913ECB6 /* Request.swift */,
-				0C6E04C2B770D33E90A7E43AD9A6DDF5 /* Response.swift */,
-				26EFF0A773A9B68F8036680922E55A8F /* ResponseSerialization.swift */,
-				DAA5CA9C1A1A8A10FA0F34E068E281AB /* Result.swift */,
-				D9EE6D52AA2F0C3238B527C58255F520 /* ServerTrustPolicy.swift */,
-				332F6B9EA5D63A221428D82DFC754F83 /* SessionDelegate.swift */,
-				F05B506A540FE042146EA8265DD35585 /* SessionManager.swift */,
-				003F0620667B1D1CE3A63A07911DA946 /* TaskDelegate.swift */,
-				2D182500FF4918391F97385DAE996449 /* Timeline.swift */,
-				F382C5721F36A8CF08DA36032E8FF2C1 /* Validation.swift */,
-				52CC3F1FEFCE662664006A9B9376FB3A /* Support Files */,
-			);
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2211A0ABB9A011FD328A526B6F2F1E10 /* Headers */ = {
+		15BF0B9AC12E07D818E513E43904C085 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE905141BC8269F488A1669DCE0E5417 /* SwiftyJSON-umbrella.h in Headers */,
+				31A3F07AC3C8810BA9584D1D5DB3197C /* Pods-Car Wash Reminder-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2987830347FFCBEE456F668E246D60D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7949435F0BA72EBF667A9D27067C2041 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,11 +503,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84FB7763E245E45629C2F0347CA5AE32 /* Headers */ = {
+		843B4331EF62D38A2B33A48EDAC00E03 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F8AEE806663691DD71DD1B864EC2CB /* Pods-Car Wash Reminder-umbrella.h in Headers */,
+				8E42DD04601DA8609C72D3CFB073F62D /* Canvas-umbrella.h in Headers */,
+				5406BEB3FD29A9C539DE4AFE4C10A986 /* Canvas.h in Headers */,
+				D1EF4A54B4E8F963E7232DA731E7AE75 /* CSAnimation.h in Headers */,
+				91D795311EAD2F3355D0BEEB2F0AE0EC /* CSAnimationView.h in Headers */,
+				364292DC2E201894D4B2D7D4E49B6983 /* CSBlurView.h in Headers */,
+				42AF4F04E566C82CB7A9D031C7204A04 /* CSNavigationController.h in Headers */,
+				87F467023D856D6C4593E24263667D22 /* UIButton+TCCustomFont.h in Headers */,
+				14A14F761865A8A9B235175A07F1822C /* UILabel+TCCustomFont.h in Headers */,
+				A1BD168DD0FAAB7537580B019D458087 /* UINavigationBar+TCCustomFont.h in Headers */,
+				1B052940904113503E18FE5FE51DE818 /* UITextField+PlaceholderColor.h in Headers */,
+				8011BB215C76D9D9AEA7CC7DD11AD020 /* UITextField+TCCustomFont.h in Headers */,
+				D5374FDB05E6C3CA00625AD949DA6E57 /* UITextView+TCCustomFont.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,42 +541,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		86D28D5BE206589C6205B54E912D681C /* SwiftyJSON */ = {
+		1B1F7D992188AE1C4099470FAF013C96 /* Canvas */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 98F19EDB9F841ACE53A7FA97B36489F0 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = 75F094D897EF81CF2FDCF61B5D78C7CF /* Build configuration list for PBXNativeTarget "Canvas" */;
 			buildPhases = (
-				2211A0ABB9A011FD328A526B6F2F1E10 /* Headers */,
-				D2CC01828487D2A110CCE47C1EFA9492 /* Sources */,
-				B2898FD221968E713941E8C808B36158 /* Frameworks */,
-				A755D3139E4123558950B10A44B30596 /* Resources */,
+				843B4331EF62D38A2B33A48EDAC00E03 /* Headers */,
+				09FA62169B0DDAF7E58D4C215E73C1AF /* Sources */,
+				005E8EFF94596D3DBDA470C1889E1A39 /* Frameworks */,
+				14389DF8B623272111898F751F94DD8C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SwiftyJSON;
-			productName = SwiftyJSON;
-			productReference = C12A5AE2510C6F27150E15E2025223C3 /* SwiftyJSON.framework */;
+			name = Canvas;
+			productName = Canvas;
+			productReference = 581678FFE307DE8D7C3E60547571B891 /* Canvas.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C9026F845472735596D20C2F2032B49D /* Pods-Car Wash Reminder */ = {
+		1D6E61F7DE9EEBD47BB39E6A7639A6DB /* Pods-Car Wash Reminder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E6401F75DFF6EB2BCA79AD6BEE0D9553 /* Build configuration list for PBXNativeTarget "Pods-Car Wash Reminder" */;
+			buildConfigurationList = 9686370AF14B34C40FB7405FBF0D1523 /* Build configuration list for PBXNativeTarget "Pods-Car Wash Reminder" */;
 			buildPhases = (
-				84FB7763E245E45629C2F0347CA5AE32 /* Headers */,
-				9F24C0E4A0BFC01BA45C714CFBCBAC35 /* Sources */,
-				09983D712B6D35B738326A4F849785B6 /* Frameworks */,
-				4DD1AE3D8A1928CDA79EBEFFD1FDDB77 /* Resources */,
+				15BF0B9AC12E07D818E513E43904C085 /* Headers */,
+				A780E0B016345663DD25BD60A22755F2 /* Sources */,
+				897881CAE84FD46E0E82989847223409 /* Frameworks */,
+				73724F007B3E22FD8E98A23A01216DE1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CFCC5A21EF3EABFFF6C6AF1D8D71060E /* PBXTargetDependency */,
-				839805884424EB46120558F57CE23591 /* PBXTargetDependency */,
+				8757E66BE529E1E0D707C326E0F7BFBD /* PBXTargetDependency */,
+				2A78E1C247F7C717600D926FC2510617 /* PBXTargetDependency */,
+				048FB75B235217C1BE3D09CBF3C81FEC /* PBXTargetDependency */,
 			);
 			name = "Pods-Car Wash Reminder";
 			productName = "Pods-Car Wash Reminder";
-			productReference = 7CBA1A8E0D70902CF24680564F8A2678 /* Pods_Car_Wash_Reminder.framework */;
+			productReference = 9EBE41D639902D0E7C884F002F26C862 /* Pods_Car_Wash_Reminder.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D4CF2B7F3970B88FBAEB4C33194B1ADF /* Pods-Car Wash ReminderTests */ = {
@@ -461,7 +596,25 @@
 			);
 			name = "Pods-Car Wash ReminderTests";
 			productName = "Pods-Car Wash ReminderTests";
-			productReference = 954BFFBD391D85441DD97F2659B53121 /* Pods_Car_Wash_ReminderTests.framework */;
+			productReference = 0910D2EBF44B1DC136C841F2777A685A /* Pods_Car_Wash_ReminderTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D56DF436583FA42D0630B45F5D79DD7E /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 287F7587BAA6796ABD08B3E1F4AE52BE /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				2987830347FFCBEE456F668E246D60D3 /* Headers */,
+				05FB087A7841777644925A8F3CAF0FE9 /* Sources */,
+				203D0C47892F32B48AB90EE43BA3952A /* Frameworks */,
+				37425E6E29E01E79FDBFC8BB853CA341 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = CB55ED23472A90254EB95E5BDF43C7A9 /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DF56FFB96012205EED10945094139562 /* Pods-Car Wash ReminderUITests */ = {
@@ -480,7 +633,7 @@
 			);
 			name = "Pods-Car Wash ReminderUITests";
 			productName = "Pods-Car Wash ReminderUITests";
-			productReference = A339DDB3446FA41EBA132FD30E9F5227 /* Pods_Car_Wash_ReminderUITests.framework */;
+			productReference = 3892A009DD505BBD3C7C3F3CCE69A14A /* Pods_Car_Wash_ReminderUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E76458C58C9140B6A16D60547E68E80C /* Alamofire */ = {
@@ -498,7 +651,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = A9AFE378F80F8666C912AD21BF22B4C9 /* Alamofire.framework */;
+			productReference = 07A0CF19BC0F4689C19FA4227A470F11 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -508,7 +661,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -518,28 +671,36 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 1F208330439369DD867D8F7BFF712D6B /* Products */;
+			productRefGroup = 36229E18C41FD45153DEBB87BE22BD97 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E76458C58C9140B6A16D60547E68E80C /* Alamofire */,
-				C9026F845472735596D20C2F2032B49D /* Pods-Car Wash Reminder */,
+				1B1F7D992188AE1C4099470FAF013C96 /* Canvas */,
+				1D6E61F7DE9EEBD47BB39E6A7639A6DB /* Pods-Car Wash Reminder */,
 				D4CF2B7F3970B88FBAEB4C33194B1ADF /* Pods-Car Wash ReminderTests */,
 				DF56FFB96012205EED10945094139562 /* Pods-Car Wash ReminderUITests */,
-				86D28D5BE206589C6205B54E912D681C /* SwiftyJSON */,
+				D56DF436583FA42D0630B45F5D79DD7E /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3DDB7E21141D7764AE4658D5B6AFF8C6 /* Resources */ = {
+		14389DF8B623272111898F751F94DD8C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DD1AE3D8A1928CDA79EBEFFD1FDDB77 /* Resources */ = {
+		37425E6E29E01E79FDBFC8BB853CA341 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DDB7E21141D7764AE4658D5B6AFF8C6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -553,14 +714,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99C44F6AFA687A7D459A54F39181905E /* Resources */ = {
+		73724F007B3E22FD8E98A23A01216DE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A755D3139E4123558950B10A44B30596 /* Resources */ = {
+		99C44F6AFA687A7D459A54F39181905E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -570,6 +731,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		05FB087A7841777644925A8F3CAF0FE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24118352FD39A3B6BCF314AEAF389E86 /* SwiftyJSON-dummy.m in Sources */,
+				B43C475C22DBCB76EF9A0BB670D9912D /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09FA62169B0DDAF7E58D4C215E73C1AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02BD4F898E8FBC821B12F4DE200967C1 /* Canvas-dummy.m in Sources */,
+				4A3158088A9050536B7A282E9BAE17FE /* CSAnimation.m in Sources */,
+				190D4FC1811881DF3B163BF524AB1E6F /* CSAnimationView.m in Sources */,
+				C11E9E3E1599422A2BC7984680EA8277 /* CSBlurView.m in Sources */,
+				603A783B1E251353EDBDA43F35E63B8A /* CSNavigationController.m in Sources */,
+				92850C64E351375AB8760BB8089C14ED /* UIButton+TCCustomFont.m in Sources */,
+				649007CA24A39B49B960828688775E31 /* UILabel+TCCustomFont.m in Sources */,
+				F8A30EB7E98022E480E091F7E01475EF /* UINavigationBar+TCCustomFont.m in Sources */,
+				79091A120833E7602B730D078817A104 /* UITextField+PlaceholderColor.m in Sources */,
+				0D27D8F31749C3D7C55CA0B3D38D4E75 /* UITextField+TCCustomFont.m in Sources */,
+				D5B801126452C05AAAA941553F7A5C80 /* UITextView+TCCustomFont.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		143D511FE959171D6D5462975F899B64 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,11 +774,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F24C0E4A0BFC01BA45C714CFBCBAC35 /* Sources */ = {
+		A780E0B016345663DD25BD60A22755F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B29CAD7FE4ACFF21843F0A022EFAFF /* Pods-Car Wash Reminder-dummy.m in Sources */,
+				C97D369B1DDB4C11AAD450254141412A /* Pods-Car Wash Reminder-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,41 +807,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2CC01828487D2A110CCE47C1EFA9492 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADDA342130AF1D946648F3DED98A03A6 /* SwiftyJSON-dummy.m in Sources */,
-				73794425DCAE9933A885F8E1BED18B32 /* SwiftyJSON.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		048FB75B235217C1BE3D09CBF3C81FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyJSON;
+			target = D56DF436583FA42D0630B45F5D79DD7E /* SwiftyJSON */;
+			targetProxy = 741B9DB1D86A1E6C7B921B58DE931345 /* PBXContainerItemProxy */;
+		};
+		2A78E1C247F7C717600D926FC2510617 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Canvas;
+			target = 1B1F7D992188AE1C4099470FAF013C96 /* Canvas */;
+			targetProxy = 811DA480D45F48BB491E2B97E291F1DD /* PBXContainerItemProxy */;
+		};
 		4C45541804FA78F2CFFD0D2BD239810E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Car Wash Reminder";
-			target = C9026F845472735596D20C2F2032B49D /* Pods-Car Wash Reminder */;
+			target = 1D6E61F7DE9EEBD47BB39E6A7639A6DB /* Pods-Car Wash Reminder */;
 			targetProxy = 7A7717F624C3F62E2928F90CBC2F489F /* PBXContainerItemProxy */;
 		};
 		6416FF76560F170CF55291DC7DD67526 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Car Wash Reminder";
-			target = C9026F845472735596D20C2F2032B49D /* Pods-Car Wash Reminder */;
+			target = 1D6E61F7DE9EEBD47BB39E6A7639A6DB /* Pods-Car Wash Reminder */;
 			targetProxy = A1C81DD6BBF9F0896167022866151B8E /* PBXContainerItemProxy */;
 		};
-		839805884424EB46120558F57CE23591 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyJSON;
-			target = 86D28D5BE206589C6205B54E912D681C /* SwiftyJSON */;
-			targetProxy = A9868690AD0C1556A11AF8B7B193A6FE /* PBXContainerItemProxy */;
-		};
-		CFCC5A21EF3EABFFF6C6AF1D8D71060E /* PBXTargetDependency */ = {
+		8757E66BE529E1E0D707C326E0F7BFBD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = E76458C58C9140B6A16D60547E68E80C /* Alamofire */;
-			targetProxy = 3F172AD0E13684E3656743F0AC935E01 /* PBXContainerItemProxy */;
+			targetProxy = 5EE07A22FCBE59AAEF2329DBE52D5988 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -675,7 +860,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash ReminderUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -691,39 +880,7 @@
 			};
 			name = Debug;
 		};
-		0CE3AF37574381AF901BDA40A1F17C0E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1456F70DDC38E5610289D309053CAC2 /* Alamofire.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				PRODUCT_MODULE_NAME = Alamofire;
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		290AD58407D9AB55897F28F926002799 /* Debug */ = {
+		038C0C96C6300B10676837E812266AAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2A2E769881A4E864937EF42AF2CB0A3 /* Pods-Car Wash Reminder.debug.xcconfig */;
 			buildSettings = {
@@ -740,7 +897,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash Reminder/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.modulemap";
 				OTHER_LDFLAGS = "";
@@ -758,9 +919,9 @@
 			};
 			name = Debug;
 		};
-		29461B23402771DC36BB84FE023D99B9 /* Release */ = {
+		0CE3AF37574381AF901BDA40A1F17C0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1456F70DDC38E5610289D309053CAC2 /* Alamofire.xcconfig */;
+			baseConfigurationReference = C31A3F7ECCA5859EF245C42D1DF71E18 /* Alamofire.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -775,14 +936,55 @@
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29461B23402771DC36BB84FE023D99B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C31A3F7ECCA5859EF245C42D1DF71E18 /* Alamofire.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				PRODUCT_MODULE_NAME = Alamofire;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -791,9 +993,44 @@
 			};
 			name = Release;
 		};
-		4CFEEB80145AA6429FB415AB601BC692 /* Debug */ = {
+		2D20BF271AB3BC02150095CB3BFC561E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EC9F2B17E3F31671529D092B9450376 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 2B42120BA3532C48729D98375BD9D3E0 /* Canvas.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Canvas/Canvas-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Canvas/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Canvas/Canvas.modulemap";
+				PRODUCT_MODULE_NAME = Canvas;
+				PRODUCT_NAME = Canvas;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3556CD68EB15628C6BBB59E497082A61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F6224C65901ECD8A766692B3EC1AB39 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -808,26 +1045,31 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
 				PRODUCT_MODULE_NAME = SwiftyJSON;
 				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		5670514D66CDB558906FB76D32286097 /* Release */ = {
+		475FF8D3D7C53A6086AE7E6FF2E3617D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98D09B0EFFDD477BE376F52B49EAA0D1 /* Pods-Car Wash Reminder.release.xcconfig */;
+			baseConfigurationReference = 2B42120BA3532C48729D98375BD9D3E0 /* Canvas.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -837,20 +1079,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash Reminder/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Canvas/Canvas-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Canvas/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Canvas/Canvas.modulemap";
+				PRODUCT_MODULE_NAME = Canvas;
+				PRODUCT_NAME = Canvas;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -922,39 +1166,6 @@
 			};
 			name = Debug;
 		};
-		638701ABDDF82DF8CEFDA48907B6C352 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EC9F2B17E3F31671529D092B9450376 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyJSON;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		7D75AECAE9BA44E51DF4A750C308824B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9203650098E82FC3F0388F1630D7CAF /* Pods-Car Wash ReminderTests.debug.xcconfig */;
@@ -972,7 +1183,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash ReminderTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -987,6 +1202,46 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		BCDD8C2515FE4E0B84247B577F7ADF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98D09B0EFFDD477BE376F52B49EAA0D1 /* Pods-Car Wash Reminder.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash Reminder/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		C4EAA84F44D044E108500A81C635F21E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1043,7 +1298,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -1065,7 +1319,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash ReminderUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1081,6 +1339,42 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		EEE54E02F0A07E583B953E8CAF7B5455 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F6224C65901ECD8A766692B3EC1AB39 /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		EF4AB65CE2BF18EDD1326E0C8DC2362F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1099,7 +1393,11 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Car Wash ReminderTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1119,6 +1417,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		287F7587BAA6796ABD08B3E1F4AE52BE /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEE54E02F0A07E583B953E8CAF7B5455 /* Debug */,
+				3556CD68EB15628C6BBB59E497082A61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1146,11 +1453,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		98F19EDB9F841ACE53A7FA97B36489F0 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		75F094D897EF81CF2FDCF61B5D78C7CF /* Build configuration list for PBXNativeTarget "Canvas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4CFEEB80145AA6429FB415AB601BC692 /* Debug */,
-				638701ABDDF82DF8CEFDA48907B6C352 /* Release */,
+				2D20BF271AB3BC02150095CB3BFC561E /* Debug */,
+				475FF8D3D7C53A6086AE7E6FF2E3617D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9686370AF14B34C40FB7405FBF0D1523 /* Build configuration list for PBXNativeTarget "Pods-Car Wash Reminder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				038C0C96C6300B10676837E812266AAF /* Debug */,
+				BCDD8C2515FE4E0B84247B577F7ADF7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1160,15 +1476,6 @@
 			buildConfigurations = (
 				000F6E3E013528B44B0E37BAD97CFC31 /* Debug */,
 				C9C4242427B1AF4FA6DE6F086CB07B38 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6401F75DFF6EB2BCA79AD6BEE0D9553 /* Build configuration list for PBXNativeTarget "Pods-Car Wash Reminder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				290AD58407D9AB55897F28F926002799 /* Debug */,
-				5670514D66CDB558906FB76D32286097 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
