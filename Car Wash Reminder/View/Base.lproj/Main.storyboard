@@ -95,16 +95,16 @@
                                     <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="refresh" id="pSw-Kp-Ocm">
+                            <barButtonItem enabled="NO" image="Position" landscapeImage="Position" id="pSw-Kp-Ocm">
                                 <connections>
-                                    <action selector="refreshButtonPressed:" destination="0ak-WH-AWR" id="w5B-PK-yxA"/>
+                                    <action selector="positionButtonPressed:" destination="0ak-WH-AWR" id="w5B-PK-yxA"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="forecastButton" destination="kao-HT-q7I" id="ygu-qt-i4Q"/>
-                        <outlet property="refreshButton" destination="pSw-Kp-Ocm" id="7WH-Q0-NOc"/>
+                        <outlet property="positionButton" destination="pSw-Kp-Ocm" id="7WH-Q0-NOc"/>
                         <outlet property="searchButton" destination="84i-8n-AXt" id="I8v-KE-qyq"/>
                         <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XVI-xZ-qst"/>
                         <outlet property="timeIntervalView" destination="T1C-2S-ffr" id="nZE-bo-u0G"/>
@@ -137,4 +137,7 @@
             <point key="canvasLocation" x="2420" y="-537.48125937031489"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Position" width="25" height="25"/>
+    </resources>
 </document>

@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     
-    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var positionButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var forecastButton: UIBarButtonItem!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -70,13 +70,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         present(searchController, animated: true, completion: nil)
     }
     
-    // När man klickar på refresh-knappen uppdateras vädret med nuvarande position.
-    @IBAction func refreshButtonPressed(_ sender: Any) {
+    // När man klickar på position-knappen uppdateras vädret med nuvarande position.
+    @IBAction func positionButtonPressed(_ sender: Any) {
         if userHasAllowedLocationService == true {
             let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         }
-        print("Refresh button pressed!")
+        print("Position button pressed!")
     }
     
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
@@ -248,7 +248,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             washedCarButton.isHidden = true
             timeIntervalView.isHidden = false
             forecastButton.isEnabled = false
-            refreshButton.isEnabled = false
+            positionButton.isEnabled = false
             searchButton.isEnabled = false
             addTimeIntervals()
             weeksPickerView.dataSource = self
@@ -258,7 +258,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             washedCarButton.isHidden = false
             timeIntervalView.isHidden = true
             forecastButton.isEnabled = true
-            refreshButton.isEnabled = true
+            positionButton.isEnabled = true
             searchButton.isEnabled = true
         }
     }
