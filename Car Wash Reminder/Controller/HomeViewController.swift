@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var userHasAllowedLocationService: Bool = false
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
+    var retrievedData: Bool = true
     
     @IBOutlet weak var positionButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -47,7 +48,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         return true
     }
     
-    // Kolla om användare har godkänt "Location when in use".
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readUserDefaults()
@@ -57,8 +57,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             } else {
                 userHasAllowedLocationService = false
             }
-            print("userHasAllowedLocationService: \(userHasAllowedLocationService)")
         }
+        updateUI()
     }
     
     // När man klickar på sök-knappen visas en sök-ruta.
@@ -172,11 +172,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 let forecastWeatherJSON: JSON = JSON(response.result.value!)
                 //print(forecastWeatherJSON)
                 self.updateForecastWeatherData(json: forecastWeatherJSON)
+                self.retrievedData = true
             } else {
                 print("Error \(response.result.error!))")
                 self.title = "Connection Issues"
+                self.retrievedData = false
             }
         }
+        checkBadRequest()
     }
     
     // Hämtar data antingen från användarens stad, eller med geografiska positionen.
@@ -196,6 +199,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Uppdaterar forecast-väder-data med väderinformationen från JSON. Uppdaterar med tumme upp om det är en bra dag att tvätta sin bil.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
+            self.retrievedData = true
             weatherData.temperature = Int(tempResult - 272.15)
             weatherData.city = json["city"]["name"].stringValue
             weatherData.condition = json["list"][0]["weather"][0]["id"].intValue
@@ -209,10 +213,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             updateUI()
         }
         else {
+            self.retrievedData = false
             self.title = String("\(json["message"])").capitalized
             weatherIcon.image = UIImage(named: "dont_know")
             temperatureLabel.text = ""
         }
+        checkBadRequest()
     }
     
     // Uppdaterar UI.
@@ -220,6 +226,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.title = weatherData.city
         temperatureLabel.text = "\(weatherData.temperature)°"
         weatherIcon.image = UIImage(named: weatherData.weatherIconName)
+        checkBadRequest()
         if logic.user.car.longTimeSinceUserWashedCar == true {
             washedCarButton.isEnabled = true
         } else {
@@ -242,8 +249,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Vid misslyckad hämtning av data, uppdatera titeln till "Location unavailable".
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
         self.title = "Location unavailable"
+        retrievedData = false
+        print(error)
     }
     
     // Lägger till fler element i timeIntervals.
@@ -289,6 +297,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         updatePosition()
     }
     
+    // Kollar om vi lyckats hämta data och om vi inte gjort det, ska man inte kunna klicka på "Prognos".
+    func checkBadRequest() {
+        if retrievedData == true {
+            forecastButton.isEnabled = true
+        } else {
+            forecastButton.isEnabled = false
+        }
+    }
+    
     // Läser sparad data.
     func readUserDefaults() {
         print("*** Reading from user defaults ***")
@@ -332,7 +349,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
         let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
         let howManyDaysLeftToSearchDate = logic.user.howManyDaysToSearchingDate()
-        let message = "\(longTimeSinceUserWashedCar) Bilen är INTE tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen.   "
+        let message = "\(longTimeSinceUserWashedCar) Bilen är INTE tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
