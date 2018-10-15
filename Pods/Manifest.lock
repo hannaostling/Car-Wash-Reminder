@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.7.3)
+  - Canvas (0.1.2)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Canvas
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Canvas
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 8690bfc685a75091af98310d76268f248101a0c6
+PODFILE CHECKSUM: 796631402d006ce89bc7b7f017b4030be42dcb2c
 
 COCOAPODS: 1.5.3

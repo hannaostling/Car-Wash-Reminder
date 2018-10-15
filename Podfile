@@ -7,6 +7,8 @@ target 'Car Wash Reminder' do
   # Pods for Car Wash Reminder
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'Canvas'
+
 
   target 'Car Wash ReminderTests' do
     inherit! :search_paths
