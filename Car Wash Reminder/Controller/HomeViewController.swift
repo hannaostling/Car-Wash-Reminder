@@ -25,6 +25,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     var retrievedData: Bool = true
     var counter = 0
+    var fetchedDataTime = Date()
     
     @IBOutlet weak var positionButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -44,20 +45,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             updatePosition()
             logic.checkIfUserShouldWashCar()
         }
-        logic.logicDelegate = self
-    }
-    
-    // Background fetch
-    func notifyUser(washToday: Bool) {
-        if washToday == true {
-            print("Notification because washToday is true!")
-            let title = "Dags att tvätta bilen 🚗"
-            //let subtitle = "Passa på medan det är bra väder!"
-            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder i \(weatherData.city) både idag och imorgon ☀️"
-            logic.sendNotification(title: title, body: body)
-        } else {
-            print("No notification because washToday is false!")
+        if weatherData.city == "" {
+            retrievedData = false
         }
+        getWeather()
+        logic.logicDelegate = self
     }
     
     // Dölj status bar.
@@ -185,9 +177,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             response in
             if response.result.isSuccess {
                 let forecastWeatherJSON: JSON = JSON(response.result.value!)
-                //print(forecastWeatherJSON)
                 self.updateForecastWeatherData(json: forecastWeatherJSON)
                 self.retrievedData = true
+                self.fetchedDataTime = Date()
+                //print(forecastWeatherJSON)
             } else {
                 print("Error \(response.result.error!))")
                 self.title = "Connection Issues"
@@ -371,14 +364,31 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.present(alert, animated: true, completion: nil)
     }
     
-    // Test delegate
-    func test(washToday: Bool) {
-        counter += 1
+    // Background fetch
+    func notifyUser(washToday: Bool) {
+        //getWeather()
         if washToday == true {
-            print("Washtoday is true: \(counter)")
+            print("Notification today because washToday is true!")
+            let title = "Dags att tvätta bilen 🚗"
+            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder i \(weatherData.city) både idag och imorgon ☀️"
+            logic.sendNotification(title: title, body: body)
         } else {
-            print("Washtoday is false: \(counter)")
+            print("No notification today because washToday is false!")
         }
+        print("********************")
+        print("* Lyckades hämta data:", retrievedData)
+        print("* Väder stad:", weatherData.city)
+        print("* Appen söker efter datum:",logic.searchForGoodDayToWashCar)
+        print("* Länge sedan bilen var tvättad:",logic.user.car.longTimeSinceUserWashedCar)
+        print("* Inget regn idag och imorgon:",logic.noRainTodayAndTomorrow)
+        let formatter = DateFormatter()
+        let currentTime = Date()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = formatter.string(from: currentTime)
+        let fetchedDate = formatter.string(from: fetchedDataTime)
+        print("* Tid för bakcground-fetch:",date)
+        print("* Tid för fetch:",fetchedDate)
+        print("********************")
     }
     
 }

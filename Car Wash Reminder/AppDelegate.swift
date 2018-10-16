@@ -20,7 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let homeVc = window?.rootViewController as? HomeViewController {
+//            if homeVc.logic.user.city == "" {
+//                let positionParams: [String:String] = ["lat": homeVc.latitude, "lon": homeVc.longitude, "appid": homeVc.APP_ID]
+//                homeVc.getWeatherData(url: homeVc.FORECAST_WEATHER_URL, parameters: positionParams)
+//            } else {
+//                let cityName = homeVc.logic.user.city
+//                let cityParams: [String:String] = ["q": cityName, "appid": homeVc.APP_ID]
+//                homeVc.getWeatherData(url: homeVc.FORECAST_WEATHER_URL, parameters: cityParams)
+//            }
             homeVc.notifyUser(washToday: homeVc.logic.washToday)
+            completionHandler(.newData)
         }
     }
 
