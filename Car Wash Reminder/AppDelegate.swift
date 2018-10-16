@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler(.newData)
                 print("")
                 print("Succeeded to get data with city params")
-            } else if homeVC.logic.user.city != "" {
+            } else if homeVC.logic.user.city == "" {
                 homeVC.getWeatherData(url: url, parameters: positionParams)
                 homeVC.notifyUser(washToday: homeVC.logic.washToday)
                 completionHandler(.newData)
