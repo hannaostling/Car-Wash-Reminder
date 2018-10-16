@@ -23,11 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIApplication.shared.keyWindow!
         let navigationController = window?.rootViewController as! UINavigationController
         if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
-            
-            homeVC.checkRain()
-            homeVC.getWeather()
-            homeVC.readUserDefaults()
-            
             let cityName = homeVC.logic.user.city
             let url = homeVC.FORECAST_WEATHER_URL
             let cityParams = homeVC.logic.user.cityParams
