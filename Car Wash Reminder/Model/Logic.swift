@@ -38,17 +38,13 @@ class Logic {
         let shouldAppSearchForDate = shouldCheckForGoodDate()
         if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true && shouldAppSearchForDate == true {
             washToday = true
-            let title = "Dags att tvätta bilen 🚗"
-            let subtitle = "Passa på medan det är bra väder!"
-            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder både idag och imorgon ☀️"
-            sendNotification(title: title, subtitle: subtitle, body: body)
         } else {
             washToday = false
         }
         if user.car.isNotWashedRecentlyDate == Date() {
             user.car.longTimeSinceUserWashedCar = true
         }
-        logicDelegate?.test(washToday: washToday)
+        logicDelegate?.notifyUser(washToday: washToday)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då kan canAppCheckForGoodDate = true.
@@ -61,10 +57,9 @@ class Logic {
     }
     
     // Notification settings
-    func sendNotification(title: String, subtitle: String, body: String) {
+    func sendNotification(title: String, body: String) {
         let content = UNMutableNotificationContent()
         content.title = title
-        content.subtitle = subtitle
         content.body = body
         content.badge = 0
         content.sound = UNNotificationSound.default
@@ -78,5 +73,5 @@ class Logic {
 }
 
 protocol LogicDelegate {
-    func test(washToday: Bool)
+    func notifyUser(washToday: Bool)
 }

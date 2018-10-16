@@ -47,8 +47,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         logic.logicDelegate = self
     }
     
-    func test() {
-        print(Date())
+    // Background fetch
+    func notifyUser(washToday: Bool) {
+        if washToday == true {
+            print("Notification because washToday is true!")
+            let title = "Dags att tvätta bilen 🚗"
+            //let subtitle = "Passa på medan det är bra väder!"
+            let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder i \(weatherData.city) både idag och imorgon ☀️"
+            logic.sendNotification(title: title, body: body)
+        } else {
+            print("No notification because washToday is false!")
+        }
     }
     
     // Dölj status bar.

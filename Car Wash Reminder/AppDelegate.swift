@@ -19,10 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let viewController = window?.rootViewController as? HomeViewController {
-            viewController.test()
+        if let homeVc = window?.rootViewController as? HomeViewController {
+            homeVc.notifyUser(washToday: homeVc.logic.washToday)
         }
-        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
