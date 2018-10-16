@@ -16,6 +16,8 @@ class User {
     var timeIntervalChoiseIsMade: Bool = false
     var city: String = ""
     let car = Car()
+    var positionParams = ["":""]
+    var cityParams = ["":""]
     
     // Returnerar en sträng av startSearchingDate
     func dateWithFormatter() -> String {

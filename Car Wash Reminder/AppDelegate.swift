@@ -19,20 +19,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if let homeVc = window?.rootViewController as? HomeViewController {
-//            if homeVc.logic.user.city == "" {
-//                let positionParams: [String:String] = ["lat": homeVc.latitude, "lon": homeVc.longitude, "appid": homeVc.APP_ID]
-//                homeVc.getWeatherData(url: homeVc.FORECAST_WEATHER_URL, parameters: positionParams)
-//            } else {
-//                let cityName = homeVc.logic.user.city
-//                let cityParams: [String:String] = ["q": cityName, "appid": homeVc.APP_ID]
-//                homeVc.getWeatherData(url: homeVc.FORECAST_WEATHER_URL, parameters: cityParams)
-//            }
-            homeVc.notifyUser(washToday: homeVc.logic.washToday)
-            completionHandler(.newData)
+
+        window = UIApplication.shared.keyWindow!
+        let navigationController = window?.rootViewController as! UINavigationController
+        if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
+            
+            homeVC.checkRain()
+            homeVC.getWeather()
+            homeVC.readUserDefaults()
+            
+            let cityName = homeVC.logic.user.city
+            let url = homeVC.FORECAST_WEATHER_URL
+            let cityParams = homeVC.logic.user.cityParams
+            let positionParams = homeVC.logic.user.positionParams
+            
+            if cityName != "" {
+                homeVC.getWeatherData(url: url, parameters: cityParams)
+                homeVC.notifyUser(washToday: homeVC.logic.washToday)
+                completionHandler(.newData)
+                print("")
+                print("Succeeded to get data with city params")
+            } else if homeVC.logic.user.city != "" {
+                homeVC.getWeatherData(url: url, parameters: positionParams)
+                homeVC.notifyUser(washToday: homeVC.logic.washToday)
+                completionHandler(.newData)
+                print("")
+                print("Succeeded to get data with position params")
+            } else {
+                completionHandler(.failed)
+                print("Failed to get data")
+            }
         }
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

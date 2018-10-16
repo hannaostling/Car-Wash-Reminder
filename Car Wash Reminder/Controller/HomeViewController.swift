@@ -41,34 +41,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         super.viewDidLoad()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         checkUserTimeInterval()
+        logic.logicDelegate = self
         if logic.user.timeIntervalChoiseIsMade == true {
+            askUserForWhenInUseAuthorization()
             updatePosition()
             logic.checkIfUserShouldWashCar()
         }
         if weatherData.city == "" {
             retrievedData = false
         }
-        getWeather()
-        logic.logicDelegate = self
     }
     
     // Dölj status bar.
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                userHasAllowedLocationService = true
-            } else {
-                userHasAllowedLocationService = false
-                askUserForWhenInUseAuthorization()
-            }
-        }
-    }
-    
+
     // När man klickar på sök-knappen visas en sök-ruta.
     @IBAction func searchButtonPressed(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -81,8 +69,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // När man klickar på position-knappen uppdateras vädret med nuvarande position.
     @IBAction func positionButtonPressed(_ sender: Any) {
         if userHasAllowedLocationService == true {
-            let params: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-            getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
+            // INTE FÖRSTA GÅNGEN
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.positionParams)
             positionButton.isEnabled = false
         }
         print("Position button pressed!")
@@ -163,12 +151,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         
     // När man klickat på sök, hämta data från den inskrivna staden!
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let cityName = searchBar.text!
-        let params: [String:String] = ["q": cityName, "appid": APP_ID]
-        getWeatherData(url: FORECAST_WEATHER_URL, parameters: params)
         positionButton.isEnabled = true
+        let cityName = searchBar.text!
+        logic.user.cityParams = ["q": cityName, "appid": APP_ID]
+        getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.cityParams)
         logic.user.city = cityName
-        logic.defaults.set(logic.user.city, forKey: "\(logic.defaultsUserCity)")
+        logic.defaults.set(logic.user.cityParams, forKey: logic.defaultsCityParams)
+        logic.defaults.set(logic.user.city, forKey: logic.defaultsUserCity)
     }
     
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
@@ -193,13 +182,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Hämtar data antingen från användarens stad, eller med geografiska positionen.
     func getWeather() {
         if logic.user.city == "" {
-            let positionParams: [String:String] = ["lat": latitude, "lon": longitude, "appid": APP_ID]
-            getWeatherData(url: FORECAST_WEATHER_URL, parameters: positionParams)
+            logic.user.positionParams = ["lat": latitude, "lon": longitude, "appid": APP_ID]
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.positionParams)
+            logic.defaults.set(logic.user.positionParams, forKey: logic.defaultsPositionParams)
             positionButton.isEnabled = false
         } else {
-            let cityName = logic.user.city
-            let cityParams: [String:String] = ["q": cityName, "appid": APP_ID]
-            getWeatherData(url: FORECAST_WEATHER_URL, parameters: cityParams)
+            getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.cityParams)
             positionButton.isEnabled = true
         }
     }
@@ -290,7 +278,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             forecastButton.isEnabled = true
             searchButton.isEnabled = true
         }
-        print("Users time interval in weeks:",logic.user.timeIntervalInWeeks)
     }
     
     // Uppdatera positionen om användare tillåtit tillståndet.
@@ -317,7 +304,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Läser sparad data.
     func readUserDefaults() {
-        print("*** Reading from user defaults ***")
+        print("")
+        print("• USER DEFAULTS ")
         if let searchForGoodDay = logic.defaults.bool(forKey: logic.defaultsSearchForGoodDayBool) as Bool? {
             logic.searchForGoodDayToWashCar = searchForGoodDay
             print("• Searching for good day to wash car: \(logic.searchForGoodDayToWashCar)")
@@ -336,11 +324,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
         if let savedUserSearchAgainDate = logic.defaults.object(forKey: logic.defaultsSearchForGoodDayDate) {
             logic.user.startSearchingDate = savedUserSearchAgainDate as! Date
-            print("• User search again date: \(logic.user.startSearchingDate)")
+            print("• App start searching: \(logic.user.startSearchingDate)")
         }
         if let savedUserCity = logic.defaults.string(forKey: logic.defaultsUserCity) as String? {
             logic.user.city = savedUserCity
             print("• User city: \(logic.user.city)")
+        }
+        if let savedUserCityParams = logic.defaults.dictionary(forKey: logic.defaultsCityParams) as! [String:String]? {
+            logic.user.cityParams = savedUserCityParams
+        }
+        if let savedUserPositionParams = logic.defaults.dictionary(forKey: logic.defaultsPositionParams) as! [String:String]? {
+            logic.user.positionParams = savedUserPositionParams
         }
     }
     
@@ -366,7 +360,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Background fetch
     func notifyUser(washToday: Bool) {
-        //getWeather()
         if washToday == true {
             print("Notification today because washToday is true!")
             let title = "Dags att tvätta bilen 🚗"
@@ -375,24 +368,26 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             print("No notification today because washToday is false!")
         }
-        print("********************")
-        print("* Lyckades hämta data:", retrievedData)
-        print("* Väder stad:", weatherData.city)
-        print("* Appen söker efter datum:",logic.searchForGoodDayToWashCar)
-        print("* Länge sedan bilen var tvättad:",logic.user.car.longTimeSinceUserWashedCar)
-        print("* Inget regn idag och imorgon:",logic.noRainTodayAndTomorrow)
+        print("")
+        print("* BACKGROUND-FETCH")
+        print("* Appen söker efter datum: \(logic.searchForGoodDayToWashCar)")
+        print("* Länge sedan bilen var tvättad: \(logic.user.car.longTimeSinceUserWashedCar)")
+        print("* Inget regn idag och imorgon: \(logic.noRainTodayAndTomorrow)")
+        
         let formatter = DateFormatter()
         let currentTime = Date()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let date = formatter.string(from: currentTime)
         let fetchedDate = formatter.string(from: fetchedDataTime)
-        print("* Tid för bakcground-fetch:",date)
-        print("* Tid för fetch:",fetchedDate)
-        print("********************")
+        print("* Tid för bakcground-fetch: \(date)")
+        print("* Tid för väder-fetch: \(fetchedDate)")
+        
+        print("* Väder stad: \(weatherData.city)")
+        print("* Väder temperatur: \(weatherData.temperature)")
+        print("* Väderlag id: \(weatherData.condition)")
     }
-    
+        
 }
-
 
 extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     

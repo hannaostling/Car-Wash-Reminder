@@ -27,6 +27,8 @@ class Logic {
     let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"
     let defaultsSearchForGoodDayBool = "defaultsSearchForGoodDayBool"
     let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
+    let defaultsCityParams = "defaultsCityParams"
+    let defaultsPositionParams = "defaultsPositionParams"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
