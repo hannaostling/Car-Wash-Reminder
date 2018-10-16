@@ -12,7 +12,7 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, LogicDelegate {
     
     let FORECAST_WEATHER_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     var retrievedData: Bool = true
+    var counter = 0
     
     @IBOutlet weak var positionButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -43,7 +44,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             updatePosition()
             logic.checkIfUserShouldWashCar()
         }
-        
+        logic.logicDelegate = self
+    }
+    
+    func test() {
+        print(Date())
     }
     
     // Dölj status bar.
@@ -357,7 +362,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         self.present(alert, animated: true, completion: nil)
     }
     
+    // Test delegate
+    func test(washToday: Bool) {
+        counter += 1
+        if washToday == true {
+            print("Washtoday is true: \(counter)")
+        } else {
+            print("Washtoday is false: \(counter)")
+        }
+    }
+    
 }
+
 
 extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     

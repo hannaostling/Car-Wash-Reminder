@@ -7,7 +7,30 @@
 		<key>Car Wash Reminder.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>6</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B573C713216B80B400754AA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B573C727216B80B600754AA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B573C732216B80B600754AA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -18,6 +18,7 @@ class Logic {
     var noRainTodayAndTomorrow: Bool = false
     var searchForGoodDayToWashCar: Bool = false
     var washToday: Bool = false
+    var logicDelegate: LogicDelegate?
     
     // User defaults nycklar.
     let defaultsUserCity = "defaultsUserCity"
@@ -47,6 +48,7 @@ class Logic {
         if user.car.isNotWashedRecentlyDate == Date() {
             user.car.longTimeSinceUserWashedCar = true
         }
+        logicDelegate?.test(washToday: washToday)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då kan canAppCheckForGoodDate = true.
@@ -73,4 +75,8 @@ class Logic {
         let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+}
+
+protocol LogicDelegate {
+    func test(washToday: Bool)
 }
