@@ -11,11 +11,13 @@ import UIKit
 
 class User {
     
+    let car = Car()
     var startSearchingDate = Date()
     var timeIntervalInWeeks: Int = 0
     var timeIntervalChoiseIsMade: Bool = false
-    var city: String = ""
-    let car = Car()
+    var hasOpenedAppBefore: Bool = false
+    var lastSearchedCity: String = ""
+    var lastPositionCity: String = ""
     var positionParams = ["":""]
     var cityParams = ["":""]
     
@@ -54,6 +56,5 @@ class User {
         print("Bilen räknas som smutsig igen: \(carIsNotWashedEecentlyDateInString)")
         print("Appen börjar leta efter bra datum: \(startSearchingDateInString)")
     }
-    
     
 }

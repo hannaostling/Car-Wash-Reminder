@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
             let logic = StartViewController.logic
             logic.readUserDefaults()
-            let cityName = logic.user.city
+            let cityName = logic.user.lastSearchedCity
             let url = logic.FORECAST_URL
             let cityParams = logic.user.cityParams
             let positionParams = logic.user.positionParams
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler(.newData)
                 print("")
                 print("Succeeded to get data with city params")
-            } else if homeVC.logic.user.city == "" {
+            } else if homeVC.logic.user.lastSearchedCity == "" {
                 homeVC.getWeatherData(url: url, parameters: positionParams)
                 homeVC.notifyUser(washToday: homeVC.logic.washToday)
                 completionHandler(.newData)
