@@ -117,8 +117,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let cityName = searchBar.text!
         logic.user.cityParams = ["q": cityName, "appid": logic.APP_ID]
         logic.defaults.set(logic.user.cityParams, forKey: logic.defaultsCityParams)
-        logic.user.lastSearchedCity = cityName
-        logic.defaults.set(logic.user.lastSearchedCity, forKey: logic.defaultsUserLastSearchedCity)
+        //logic4.user.lastSearchedCity = cityName
+        //logic.defaults.set(logi3c.user.lastSearchedCity, forKey: logic.defaultsUserLastSearchedCity)
         positionOrSearch = .search
         getWeather(positionOrSearch: .search)
     }
@@ -171,6 +171,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 self.title = self.weatherData.city
                 self.temperatureLabel.text = "\(self.weatherData.temperature)°"
                 self.weatherIcon.image = UIImage(named: self.weatherData.weatherIconName)
+                if self.positionOrSearch == .position {
+                    self.weatherData.city = self.logic.user.lastPositionCity
+                    self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
+                    print("Fel: \(self.weatherData.city)")
+                    print("Fel: \(self.logic.user.lastPositionCity)")
+                } else {
+                    self.weatherData.city = self.logic.user.lastSearchedCity
+                    self.logic.defaults.set(self.logic.user.lastSearchedCity, forKey: self.logic.defaultsUserLastSearchedCity)
+                    print("Fel: \(self.weatherData.city)")
+                    print("Fel: \(self.logic.user.lastSearchedCity)")
+                }
                 self.setButtonsEnabledOrNotEnabled()
             }
         }
@@ -191,8 +202,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             //print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
             latitude = String(location.coordinate.latitude)
             longitude = String(location.coordinate.longitude)
-            logic.user.lastPositionCity = weatherData.city
-            logic.defaults.set(logic.user.lastPositionCity, forKey: logic.defaultsUserLastPositionCity)
+            //losgic.user.lastPositionCity = weatherData.city
+            //logic.defaults.set(logsic.user.lastPositionCity, forKey: logic.defaultsUserLastPositionCity)
             logic.user.positionParams = ["lat": latitude, "lon": longitude, "appid": logic.APP_ID]
             logic.defaults.set(logic.user.positionParams, forKey: logic.defaultsPositionParams)
             positionOrSearch = .position
