@@ -19,16 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
         window = UIApplication.shared.keyWindow!
         let navigationController = window?.rootViewController as! UINavigationController
         if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
-            homeVC.readUserDefaults()
-            let cityName = homeVC.logic.user.city
-            let url = homeVC.FORECAST_WEATHER_URL
-            let cityParams = homeVC.logic.user.cityParams
-            let positionParams = homeVC.logic.user.positionParams
-            
+            let logic = StartViewController.logic
+            logic.readUserDefaults()
+            let cityName = logic.user.city
+            let url = logic.FORECAST_URL
+            let cityParams = logic.user.cityParams
+            let positionParams = logic.user.positionParams
             if cityName != "" {
                 homeVC.getWeatherData(url: url, parameters: cityParams)
                 homeVC.notifyUser(washToday: homeVC.logic.washToday)
