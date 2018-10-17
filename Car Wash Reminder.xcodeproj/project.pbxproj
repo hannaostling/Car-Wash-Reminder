@@ -21,7 +21,6 @@
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
 		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58A530C216E28E100184750 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A530B216E28E100184750 /* Car.swift */; };
-		B5A9FA2921763ACC00528E6E /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9FA2821763ACC00528E6E /* Notes.swift */; };
 		B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +67,6 @@
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58A530B216E28E100184750 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		B5A9FA2821763ACC00528E6E /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
 		FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,7 +153,6 @@
 				B573C71E216B80B600754AA6 /* Assets.xcassets */,
 				B573C723216B80B600754AA6 /* Info.plist */,
 				B573C717216B80B400754AA6 /* AppDelegate.swift */,
-				B5A9FA2821763ACC00528E6E /* Notes.swift */,
 				B549407F2170EC3300EB3F11 /* ToDoList */,
 			);
 			path = "Car Wash Reminder";
@@ -444,7 +441,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58A530A216E017E00184750 /* User.swift in Sources */,
-				B5A9FA2921763ACC00528E6E /* Notes.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
