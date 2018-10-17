@@ -21,6 +21,9 @@
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
 		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58A530C216E28E100184750 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A530B216E28E100184750 /* Car.swift */; };
+		B59C2EFD21776788004C8C2D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2EFC21776788004C8C2D /* StartViewController.swift */; };
+		B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */; };
+		B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */; };
 		B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +70,9 @@
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58A530B216E28E100184750 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		B59C2EFC21776788004C8C2D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalViewController.swift; sourceTree = "<group>"; };
+		B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeViewController.swift; sourceTree = "<group>"; };
 		D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
 		FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +185,9 @@
 		B573C745216B80BC00754AA6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B59C2EFC21776788004C8C2D /* StartViewController.swift */,
+				B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */,
+				B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */,
 				B54940832170ECFB00EB3F11 /* HomeViewController.swift */,
 			);
 			path = Controller;
@@ -441,10 +450,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58A530A216E017E00184750 /* User.swift in Sources */,
+				B59C2EFD21776788004C8C2D /* StartViewController.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,
+				B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
 				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
+				B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */,
 				B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
