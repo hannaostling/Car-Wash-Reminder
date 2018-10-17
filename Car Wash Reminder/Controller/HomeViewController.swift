@@ -106,12 +106,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if logic.user.timeIntervalChoiseIsMade == false {
             logic.user.timeIntervalInWeeks = 1
         }
-        checkUserTimeInterval()
         askUserForWhenInUseAuthorization()
         logic.user.timeIntervalInWeeks = logic.user.timeIntervalInWeeks
         logic.user.timeIntervalChoiseIsMade = true
         logic.searchForGoodDayToWashCar = true
         logic.user.car.longTimeSinceUserWashedCar = true
+        checkUserTimeInterval()
         logic.defaults.set(logic.user.car.longTimeSinceUserWashedCar, forKey:logic.defaultsUserCarIsWashedRecently)
         logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
         logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
@@ -206,8 +206,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
             print(weatherData.city)
-            checkRain()
-            updateUI()
+            DispatchQueue.main.async {
+                self.checkRain()
+                self.updateUI()
+            }
         }
         else {
             self.retrievedData = false
