@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     let weatherData = WeatherData()
     var latitude = ""
     var longitude = ""
-    var userHasAllowedLocationService: Bool = false
     var logic = Logic()
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     var retrievedData: Bool = true
@@ -52,18 +51,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        readUserDefaults()
-        if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                userHasAllowedLocationService = true
-            } else {
-                userHasAllowedLocationService = false
-            }
-        }
-    }
-    
     // Dölj status bar.
     override var prefersStatusBarHidden: Bool {
         return true
@@ -80,12 +67,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // När man klickar på position-knappen uppdateras vädret med nuvarande position.
     @IBAction func positionButtonPressed(_ sender: Any) {
-        if userHasAllowedLocationService == true {
-            print(logic.user.positionParams)
-            getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.positionParams)
-            positionButton.isEnabled = false
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.positionParams)
+                positionButton.isEnabled = false
+            } else {
+                askUserForWhenInUseAuthorization()
+            }
         }
-        print("Position button pressed!")
     }
     
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
