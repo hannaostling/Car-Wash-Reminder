@@ -52,6 +52,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        readUserDefaults()
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+                userHasAllowedLocationService = true
+            } else {
+                userHasAllowedLocationService = false
+            }
+        }
+    }
+    
     // Dölj status bar.
     override var prefersStatusBarHidden: Bool {
         return true
@@ -69,7 +81,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // När man klickar på position-knappen uppdateras vädret med nuvarande position.
     @IBAction func positionButtonPressed(_ sender: Any) {
         if userHasAllowedLocationService == true {
-            // INTE FÖRSTA GÅNGEN
+            print(logic.user.positionParams)
             getWeatherData(url: FORECAST_WEATHER_URL, parameters: logic.user.positionParams)
             positionButton.isEnabled = false
         }
