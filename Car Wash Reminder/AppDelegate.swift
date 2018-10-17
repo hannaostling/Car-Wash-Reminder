@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         return true
     }
     
@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIApplication.shared.keyWindow!
         let navigationController = window?.rootViewController as! UINavigationController
         if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
+            homeVC.readUserDefaults()
             let cityName = homeVC.logic.user.city
             let url = homeVC.FORECAST_WEATHER_URL
             let cityParams = homeVC.logic.user.cityParams
