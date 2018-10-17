@@ -1,4 +1,3 @@
-//
 //  Logic.swift
 //  Car Wash Reminder
 //
@@ -12,16 +11,19 @@ import UIKit
 
 class Logic {
    
-    var timer = Timer()
     let user = User()
     let defaults = UserDefaults.standard
+    let FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?"
+    let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
     var noRainTodayAndTomorrow: Bool = false
     var searchForGoodDayToWashCar: Bool = false
     var washToday: Bool = false
     var logicDelegate: LogicDelegate?
+    var timer = Timer()
     
     // User defaults nycklar.
-    let defaultsUserCity = "defaultsUserCity"
+    let defaultsUserLastSearchedCity = "defaultsUserLastSearchedCity"
+    let defaultsUserLastPositionCity = "letdefaultsUserLastPositionCity"
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     let defaultsUserMadeChoice = "defaultsUserMadeChoice"
     let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"
@@ -29,6 +31,7 @@ class Logic {
     let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
     let defaultsCityParams = "defaultsCityParams"
     let defaultsPositionParams = "defaultsPositionParams"
+    let defaultsUserOpenedAppBefore = "defaultsUserOpenedAppBefore"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -46,6 +49,7 @@ class Logic {
         if user.car.isNotWashedRecentlyDate == Date() {
             user.car.longTimeSinceUserWashedCar = true
         }
+        logicDelegate?.notifyUser(washToday: washToday)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då kan canAppCheckForGoodDate = true.
@@ -57,7 +61,7 @@ class Logic {
         }
     }
     
-    // Notification settings
+    // Konfiguera notifikationen.
     func sendNotification(title: String, body: String) {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -71,8 +75,58 @@ class Logic {
         let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+    
+    // Läs user defaults.
+    func readUserDefaults() {
+        print("")
+        print("• USER DEFAULTS ")
+        if let savedUserOpenedAppBefore = defaults.bool(forKey: defaultsUserOpenedAppBefore) as Bool?  {
+            user.hasOpenedAppBefore = savedUserOpenedAppBefore
+            print("• User has opened app before: \(user.hasOpenedAppBefore)")
+        }
+        if let searchForGoodDay = defaults.bool(forKey: defaultsSearchForGoodDayBool) as Bool? {
+            searchForGoodDayToWashCar = searchForGoodDay
+            print("• Searching for good day to wash car: \(searchForGoodDayToWashCar)")
+        }
+        if let noChoise = defaults.bool(forKey: defaultsUserMadeChoice) as Bool? {
+            user.timeIntervalChoiseIsMade = noChoise
+            print("• User has made a timeinterval choise: \(user.timeIntervalChoiseIsMade)")
+        }
+        if let savedUserTimeIntervalInWeeks = defaults.integer(forKey: defaultsUserTimeInterval) as Int? {
+            user.timeIntervalInWeeks = savedUserTimeIntervalInWeeks
+            print("• User timeinterval in weeks: \(user.timeIntervalInWeeks)")
+        }
+        if let savedUserCarIsWashedRecently = defaults.bool(forKey: defaultsUserCarIsWashedRecently) as Bool? {
+            user.car.longTimeSinceUserWashedCar = savedUserCarIsWashedRecently
+            print("• Long time since user washed car: \(user.car.longTimeSinceUserWashedCar)")
+        }
+        if let savedUserSearchAgainDate = defaults.object(forKey: defaultsSearchForGoodDayDate) {
+            user.startSearchingDate = savedUserSearchAgainDate as! Date
+            print("• App start searching: \(user.startSearchingDate)")
+        }
+        if let savedUserLastSearchedCity = defaults.string(forKey: defaultsUserLastSearchedCity) as String? {
+            user.lastSearchedCity = savedUserLastSearchedCity
+            print("• User last searched city: \(user.lastSearchedCity)")
+        }
+        if let savedUserPositionCity = defaults.string(forKey: defaultsUserLastPositionCity) as String? {
+            user.lastPositionCity = savedUserPositionCity
+            print("• User last position city: \(user.lastPositionCity)")
+        }
+        if let savedUserCityParams = defaults.dictionary(forKey: defaultsCityParams) as! [String:String]? {
+            user.cityParams = savedUserCityParams
+        }
+        if let savedUserPositionParams = defaults.dictionary(forKey: defaultsPositionParams) as! [String:String]? {
+            user.positionParams = savedUserPositionParams
+        }
+    }
+    
+    // Fråga användaren efter tillstånd att få skicka notiser.
+    func askForNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+    }
 }
 
 protocol LogicDelegate {
     func notifyUser(washToday: Bool)
 }
+
