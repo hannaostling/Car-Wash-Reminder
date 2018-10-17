@@ -46,7 +46,6 @@ class Logic {
         if user.car.isNotWashedRecentlyDate == Date() {
             user.car.longTimeSinceUserWashedCar = true
         }
-        logicDelegate?.notifyUser(washToday: washToday)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då kan canAppCheckForGoodDate = true.
