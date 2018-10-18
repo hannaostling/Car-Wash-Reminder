@@ -170,15 +170,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 self.temperatureLabel.text = "\(self.weatherData.temperature)°"
                 self.weatherIcon.image = UIImage(named: self.weatherData.weatherIconName)
                 if self.positionOrSearch == .position {
-                    self.weatherData.city = self.logic.user.lastPositionCity
+                    self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
-                    print("Fel: \(self.weatherData.city)")
-                    print("Fel: \(self.logic.user.lastPositionCity)")
                 } else {
-                    self.weatherData.city = self.logic.user.lastSearchedCity
+                    self.logic.user.lastSearchedCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastSearchedCity, forKey: self.logic.defaultsUserLastSearchedCity)
-                    print("Fel: \(self.weatherData.city)")
-                    print("Fel: \(self.logic.user.lastSearchedCity)")
                 }
                 self.setButtonsEnabledOrNotEnabled()
             }
