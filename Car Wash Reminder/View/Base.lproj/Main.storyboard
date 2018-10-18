@@ -65,40 +65,61 @@
                                     <action selector="washedCarButtonPressed:" destination="0ak-WH-AWR" eventType="touchUpInside" id="Kn4-32-NHD"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZh-XU-Ju5">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="hQ8-WK-ZOV">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Prognos" id="kao-HT-q7I">
+                                            <connections>
+                                                <action selector="forecastButtonPressed:" destination="0ak-WH-AWR" id="gaP-dh-Wlx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
+                                            <rect key="frame" x="118.66666666666669" y="7" width="177" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Position"/>
+                                                <segment title="Senaste sök"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="chooseCitySement:" destination="0ak-WH-AWR" eventType="valueChanged" id="QO3-FN-Oxz"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="84i-8n-AXt">
+                                            <connections>
+                                                <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7U-ke-TsU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <color key="backgroundColor" red="0.97637790441513062" green="0.97653752565383911" blue="0.97634392976760864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4da-pl-8pY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="p7U-ke-TsU" secondAttribute="trailing" id="05T-6o-VAI"/>
+                            <constraint firstItem="p7U-ke-TsU" firstAttribute="top" secondItem="puy-N0-ZnH" secondAttribute="top" id="D5u-qx-NtS"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="Lwe-jD-pUj"/>
                             <constraint firstItem="k6f-o4-HOw" firstAttribute="leading" secondItem="PXG-72-rv9" secondAttribute="leading" id="Rdm-hg-pKD"/>
                             <constraint firstItem="k6f-o4-HOw" firstAttribute="trailing" secondItem="PXG-72-rv9" secondAttribute="trailing" id="TTW-fT-dUO"/>
+                            <constraint firstItem="zZh-XU-Ju5" firstAttribute="trailing" secondItem="PXG-72-rv9" secondAttribute="trailing" id="VAp-qv-bz3"/>
+                            <constraint firstItem="zZh-XU-Ju5" firstAttribute="leading" secondItem="PXG-72-rv9" secondAttribute="leading" id="VSk-DP-p16"/>
+                            <constraint firstItem="zZh-XU-Ju5" firstAttribute="top" secondItem="p7U-ke-TsU" secondAttribute="bottom" id="gMx-Fs-zzR"/>
                             <constraint firstItem="k6f-o4-HOw" firstAttribute="bottom" secondItem="PXG-72-rv9" secondAttribute="bottom" id="nme-ML-NOo"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="tQ9-zL-6Wt"/>
+                            <constraint firstItem="p7U-ke-TsU" firstAttribute="leading" secondItem="puy-N0-ZnH" secondAttribute="leading" id="uDj-M8-kpg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
                     <navigationItem key="navigationItem" id="viN-Hm-sVl">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Prognos" id="kao-HT-q7I">
-                            <connections>
-                                <action selector="forecastButtonPressed:" destination="0ak-WH-AWR" id="gaP-dh-Wlx"/>
-                            </connections>
-                        </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
-                            <rect key="frame" x="118.66666666666669" y="7" width="177" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Position"/>
-                                <segment title="Senaste sök"/>
-                            </segments>
-                            <connections>
-                                <action selector="chooseCitySement:" destination="0ak-WH-AWR" eventType="valueChanged" id="QO3-FN-Oxz"/>
-                            </connections>
-                        </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="84i-8n-AXt">
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="citySegmentControl" destination="PZG-Lf-wjW" id="Zue-fw-ts5"/>
@@ -111,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3A7-PX-xFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4162" y="213"/>
+            <point key="canvasLocation" x="4160.8695652173919" y="212.77173913043481"/>
         </scene>
         <!--Time Interval View Controller-->
         <scene sceneID="AnR-H6-0Dh">
@@ -162,6 +183,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gra-bL-WvJ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jx-G1-FfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kAv-AJ-rGB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-pu-Gcf"/>
@@ -174,7 +196,6 @@
                         <segue destination="bw3-pU-lqe" kind="relationship" relationship="rootViewController" id="HeX-Hf-g0b"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7jx-G1-FfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2343" y="-538"/>
         </scene>
@@ -250,13 +271,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZB-kt-AqH">
-                                <rect key="frame" x="146" y="350" width="122" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="88.333333333333329" y="332.66666666666669" width="237.66666666666669" height="70.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NZB-kt-AqH" firstAttribute="centerX" secondItem="fU9-0W-zOq" secondAttribute="centerX" id="7Fq-R5-ugK"/>
                             <constraint firstItem="NZB-kt-AqH" firstAttribute="centerY" secondItem="fU9-0W-zOq" secondAttribute="centerY" id="Pgk-Nh-4cd"/>
@@ -265,9 +286,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Gii-lZ-wEW"/>
                     <connections>
-                        <segue destination="jEy-Om-slK" kind="presentation" identifier="fromStartToFirst" id="Eq2-bA-6mp"/>
+                        <segue destination="jEy-Om-slK" kind="show" identifier="fromStartToFirst" id="Eq2-bA-6mp"/>
                         <segue destination="0ak-WH-AWR" kind="show" identifier="fromStartToHome" id="auc-71-0qA"/>
-                        <segue destination="xk6-Yp-IJN" kind="presentation" identifier="fromStartToTime" id="k95-FJ-3VD"/>
+                        <segue destination="xk6-Yp-IJN" kind="show" identifier="fromStartToTime" id="k95-FJ-3VD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXS-zI-7DX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +297,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nfg-gr-uNM"/>
+        <segue reference="k95-FJ-3VD"/>
         <segue reference="auc-71-0qA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
