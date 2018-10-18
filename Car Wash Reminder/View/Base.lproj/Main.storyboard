@@ -75,27 +75,32 @@
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
                     <navigationItem key="navigationItem" id="viN-Hm-sVl">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Prognos" id="kao-HT-q7I">
                             <connections>
                                 <action selector="forecastButtonPressed:" destination="0ak-WH-AWR" id="gaP-dh-Wlx"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="84i-8n-AXt">
-                                <connections>
-                                    <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="Position" landscapeImage="Position" id="pSw-Kp-Ocm">
-                                <connections>
-                                    <action selector="positionButtonPressed:" destination="0ak-WH-AWR" id="w5B-PK-yxA"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
+                            <rect key="frame" x="118.66666666666669" y="7" width="177" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Position"/>
+                                <segment title="Senaste sök"/>
+                            </segments>
+                            <connections>
+                                <action selector="chooseCitySement:" destination="0ak-WH-AWR" eventType="valueChanged" id="QO3-FN-Oxz"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="84i-8n-AXt">
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="0ak-WH-AWR" id="pfD-Vp-eNa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="citySegmentControl" destination="PZG-Lf-wjW" id="Zue-fw-ts5"/>
                         <outlet property="forecastButton" destination="kao-HT-q7I" id="ygu-qt-i4Q"/>
-                        <outlet property="positionButton" destination="pSw-Kp-Ocm" id="7WH-Q0-NOc"/>
                         <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XVI-xZ-qst"/>
                         <outlet property="washedCarButton" destination="k6f-o4-HOw" id="j3f-4p-I57"/>
                         <outlet property="weatherDataView" destination="JB2-1V-mbE" id="UTu-xJ-Uzm"/>
@@ -264,12 +269,9 @@
             <point key="canvasLocation" x="3235" y="-538"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Position" width="25" height="25"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nfg-gr-uNM"/>
-        <segue reference="mL8-d2-1FJ"/>
+        <segue reference="auc-71-0qA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
