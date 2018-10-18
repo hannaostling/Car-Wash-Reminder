@@ -20,22 +20,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var longitude = ""
     var retrievedData: Bool = true
     var fetchedDataTime = Date()
-    var positionOrSearch = PositionOrSearch.position
     let logic = StartViewController.logic
+    var positionOrSearch = PositionOrSearch.position
     
-    @IBOutlet weak var positionButton: UIBarButtonItem!
+    //@IBOutlet weak var positionButton: UIBarButtonItem!
     @IBOutlet weak var forecastButton: UIBarButtonItem!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherDataView: UIImageView!
     @IBOutlet weak var washedCarButton: UIButton!
+    @IBOutlet weak var citySegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         logic.logicDelegate = self
         logic.askForNotificationPermission()
         logic.checkIfUserShouldWashCar()
-        updatePosition()
+        if let value = UserDefaults.standard.value(forKey: logic.defaultsSelectedCity) {
+            let selectedIndex = value as! Int
+            citySegmentControl.selectedSegmentIndex = selectedIndex
+        }
+        if citySegmentControl.selectedSegmentIndex == 0 {
+            positionOrSearch = .position
+            getWeather(positionOrSearch: .position)
+        } else {
+            positionOrSearch = .search
+            getWeather(positionOrSearch: .search)
+        }
         if weatherData.city == "" {
             retrievedData = false
         }
@@ -49,14 +60,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         searchController.searchBar.autocapitalizationType = .words
         present(searchController, animated: true, completion: nil)
     }
-    
-    // När man klickar på position-knappen uppdateras vädret med nuvarande position.
-    @IBAction func positionButtonPressed(_ sender: Any) {
-        updatePosition()
-        print(positionButton.isEnabled)
-        print("Position button pressed")
-    }
-    
+
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
     @IBAction func washedCarButtonPressed(_ sender: Any) {
         var title = "Är du säker?"
@@ -84,7 +88,23 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBAction func forecastButtonPressed(_ sender: Any) {
         giveForecastAlert()
     }
-        
+    
+    // Välj att hämta väder för den stad man klickar på.
+    @IBAction func chooseCitySement(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: logic.defaultsSelectedCity)
+        let getIndex = citySegmentControl.selectedSegmentIndex
+        switch (getIndex) {
+        case 0:
+           positionOrSearch = .position
+           getWeather(positionOrSearch: .position)
+        case 1:
+            positionOrSearch = .search
+            getWeather(positionOrSearch: .search)
+        default:
+            print("No segment selected.")
+        }
+    }
+    
     // Ge ja/nej meddelande från bool.
     func boolMessageEmoji(bool: Bool) -> String {
         if bool == true {
@@ -116,9 +136,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let cityName = searchBar.text!
         logic.user.cityParams = ["q": cityName, "appid": logic.APP_ID]
+        logic.user.lastSearchedCity = cityName
         logic.defaults.set(logic.user.cityParams, forKey: logic.defaultsCityParams)
+        logic.defaults.set(logic.user.lastSearchedCity, forKey: logic.defaultsUserLastSearchedCity)
         positionOrSearch = .search
         getWeather(positionOrSearch: .search)
+        setButtonsEnabledOrNotEnabled()
     }
     
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
@@ -132,8 +155,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 self.fetchedDataTime = Date()
                 //print(forecastWeatherJSON)
             } else {
+                let title = String("Connection Issues")
+                let alert = self.logic.noWeatherDataAlert(title: title)
+                self.present(alert, animated: true, completion: nil)
                 print("Error \(response.result.error!))")
-                self.title = "Connection Issues"
                 self.retrievedData = false
             }
         }
@@ -163,27 +188,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             for i in 0...15 {
                 weatherData.weatherForTodayAndTomorrow.append(json["list"][i]["weather"][0]["main"].stringValue)
             }
-            print(weatherData.city)
             DispatchQueue.main.async {
                 self.checkRain()
-                self.title = self.weatherData.city
                 self.temperatureLabel.text = "\(self.weatherData.temperature)°"
                 self.weatherIcon.image = UIImage(named: self.weatherData.weatherIconName)
                 if self.positionOrSearch == .position {
                     self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
-                } else {
-                    self.logic.user.lastSearchedCity = self.weatherData.city
-                    self.logic.defaults.set(self.logic.user.lastSearchedCity, forKey: self.logic.defaultsUserLastSearchedCity)
                 }
                 self.setButtonsEnabledOrNotEnabled()
             }
-        }
-        else {
+        } else {
             self.retrievedData = false
-            self.title = String("\(json["message"])").capitalized
+            temperatureLabel.text = String("\(json["message"])").capitalized
             weatherIcon.image = UIImage(named: "dont_know")
-            temperatureLabel.text = ""
         }
     }
     
@@ -204,7 +222,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Vid misslyckad hämtning av data, uppdatera titeln till "Location unavailable".
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        self.title = "Plats ej tillgänglig"
+        let title = String("Plats ej tillgänglig")
+        let alert = self.logic.noWeatherDataAlert(title: title)
+        self.present(alert, animated: true, completion: nil)
         retrievedData = false
         print(error)
     }
@@ -228,11 +248,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             forecastButton.isEnabled = true
         } else {
             forecastButton.isEnabled = false
-        }
-        if weatherData.city == "\(logic.user.lastPositionCity)" {
-            positionButton.isEnabled = false
-        } else {
-            positionButton.isEnabled = true
         }
     }
     
@@ -282,7 +297,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
 //        print("* Väder temperatur: \(weatherData.temperature)")
 //        print("* Väderlag id: \(weatherData.condition)")
     }
-        
+    
+    // Uppdaterar segmentcontrol.
+    func didUpdateUserCities(positionCity: String, searchedCity: String) {
+        citySegmentControl.setTitle("\(positionCity)", forSegmentAt: 0)
+        citySegmentControl.setTitle("\(searchedCity)", forSegmentAt: 1)
+        if positionOrSearch == .position {
+            citySegmentControl.selectedSegmentIndex = 0
+        } else {
+            citySegmentControl.selectedSegmentIndex = 1
+        }
+    }
 }
 
 enum PositionOrSearch {

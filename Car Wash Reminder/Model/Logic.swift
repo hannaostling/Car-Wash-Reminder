@@ -32,13 +32,14 @@ class Logic {
     let defaultsCityParams = "defaultsCityParams"
     let defaultsPositionParams = "defaultsPositionParams"
     let defaultsUserOpenedAppBefore = "defaultsUserOpenedAppBefore"
+    let defaultsSelectedCity = "defaultsSelectedCity"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runsEverySecond), userInfo: nil, repeats: true)
     }
     
-    // Skriver ut om thumbsUp är sann eller falsk.
+    // Kollar om det är bra dag att tvätta bilen eller inte.
     @objc func runsEverySecond() {
         let shouldAppSearchForDate = shouldCheckForGoodDate()
         if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true && shouldAppSearchForDate == true {
@@ -50,6 +51,7 @@ class Logic {
             user.car.longTimeSinceUserWashedCar = true
         }
         logicDelegate?.notifyUser(washToday: washToday)
+        logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då kan canAppCheckForGoodDate = true.
@@ -75,6 +77,14 @@ class Logic {
         let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+    
+    // Ge användaren alert om det inte går att hämta väderdata.
+    func noWeatherDataAlert(title: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: "Försök igen senare", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
+        return alert
+    }
+    
     
     // Läs user defaults.
     func readUserDefaults() {
@@ -128,5 +138,6 @@ class Logic {
 
 protocol LogicDelegate {
     func notifyUser(washToday: Bool)
+    func didUpdateUserCities(positionCity: String, searchedCity: String)
 }
 
