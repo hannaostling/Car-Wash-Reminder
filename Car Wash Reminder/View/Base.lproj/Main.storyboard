@@ -53,12 +53,14 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-o4-HOw">
                                 <rect key="frame" x="0.0" y="666" width="414" height="70"/>
-                                <color key="backgroundColor" red="0.75261598829999998" green="0.84218400719999997" blue="0.72037547830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="w3V-mL-7Fd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Klicka på mig när bilen är tvättad"/>
+                                <state key="normal" title="Klicka på mig när bilen är tvättad">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="washedCarButtonPressed:" destination="0ak-WH-AWR" eventType="touchUpInside" id="Kn4-32-NHD"/>
                                 </connections>
@@ -81,7 +83,7 @@
                                 <action selector="forecastButtonPressed:" destination="0ak-WH-AWR" id="gaP-dh-Wlx"/>
                             </connections>
                         </barButtonItem>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
                             <rect key="frame" x="118.66666666666669" y="7" width="177" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -121,12 +123,14 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJ4-fn-yLZ">
                                 <rect key="frame" x="0.0" y="666" width="414" height="70"/>
-                                <color key="backgroundColor" red="0.75261598829999998" green="0.84218400719999997" blue="0.72037547830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="yzZ-GB-nfn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Klar"/>
+                                <state key="normal" title="Klar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="doneButtonPressed:" destination="xk6-Yp-IJN" eventType="touchUpInside" id="jyA-D2-bdx"/>
                                     <segue destination="0ak-WH-AWR" kind="show" id="mL8-d2-1FJ"/>
@@ -204,12 +208,14 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caW-Nz-3dD">
                                 <rect key="frame" x="0.0" y="666" width="414" height="70"/>
-                                <color key="backgroundColor" red="0.75261598829999998" green="0.84218400719999997" blue="0.72037547830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="hN7-af-zsQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Okej"/>
+                                <state key="normal" title="Okej">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="okButtonPressed:" destination="jEy-Om-slK" eventType="touchUpInside" id="NA0-oL-ELQ"/>
                                     <segue destination="xk6-Yp-IJN" kind="show" id="Nfg-gr-uNM"/>
@@ -273,5 +279,5 @@
         <segue reference="Nfg-gr-uNM"/>
         <segue reference="auc-71-0qA"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
