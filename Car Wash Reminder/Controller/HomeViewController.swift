@@ -53,6 +53,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // När man klickar på position-knappen uppdateras vädret med nuvarande position.
     @IBAction func positionButtonPressed(_ sender: Any) {
         updatePosition()
+        print(positionButton.isEnabled)
+        print("Position button pressed")
     }
     
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
@@ -65,7 +67,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             self.logic.searchForGoodDayToWashCar = false
             self.logic.user.car.longTimeSinceUserWashedCar = false
             self.logic.user.startSearchingAgainAfter(timeInterval: self.logic.user.timeIntervalInWeeks)
-            //self.updatUI()
             title = "Kanon"
             message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -77,7 +78,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }))
         self.present(alert, animated: true, completion: nil)
         setButtonsEnabledOrNotEnabled()
-        //updateIWithWeatherData()
     }
     
     // Ge användaren en prognos, varför är det bra/inte bra att tvätta bilen idag?
@@ -117,8 +117,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let cityName = searchBar.text!
         logic.user.cityParams = ["q": cityName, "appid": logic.APP_ID]
         logic.defaults.set(logic.user.cityParams, forKey: logic.defaultsCityParams)
-        //logic4.user.lastSearchedCity = cityName
-        //logic.defaults.set(logi3c.user.lastSearchedCity, forKey: logic.defaultsUserLastSearchedCity)
         positionOrSearch = .search
         getWeather(positionOrSearch: .search)
     }
@@ -199,11 +197,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
-            //print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)" )
             latitude = String(location.coordinate.latitude)
             longitude = String(location.coordinate.longitude)
-            //losgic.user.lastPositionCity = weatherData.city
-            //logic.defaults.set(logsic.user.lastPositionCity, forKey: logic.defaultsUserLastPositionCity)
             logic.user.positionParams = ["lat": latitude, "lon": longitude, "appid": logic.APP_ID]
             logic.defaults.set(logic.user.positionParams, forKey: logic.defaultsPositionParams)
             positionOrSearch = .position
@@ -238,7 +233,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             forecastButton.isEnabled = false
         }
-        if title == "\(logic.user.lastPositionCity)" {
+        if weatherData.city == "\(logic.user.lastPositionCity)" {
             positionButton.isEnabled = false
         } else {
             positionButton.isEnabled = true
