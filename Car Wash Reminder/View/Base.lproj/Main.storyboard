@@ -102,7 +102,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.88645720539999995" green="0.98528578369999997" blue="0.91280073520000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="p7U-ke-TsU" secondAttribute="trailing" id="05T-6o-VAI"/>
                             <constraint firstItem="p7U-ke-TsU" firstAttribute="top" secondItem="puy-N0-ZnH" secondAttribute="top" id="D5u-qx-NtS"/>
@@ -208,7 +208,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Gra-bL-WvJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7jx-G1-FfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kAv-AJ-rGB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-pu-Gcf"/>
@@ -221,6 +220,7 @@
                         <segue destination="bw3-pU-lqe" kind="relationship" relationship="rootViewController" id="HeX-Hf-g0b"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jx-G1-FfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2343" y="-538"/>
         </scene>
