@@ -12,5 +12,6 @@ class Car {
     
     var longTimeSinceUserWashedCar: Bool = true
     var isNotWashedRecentlyDate = Date()
+    var history = [History(lastWashed: Date())]
    
 }
