@@ -39,6 +39,16 @@ class TimeIntervalViewController: UIViewController {
         logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)
     }
     
+    // Om användaren inte förstår vad det är för tidsintervall så kan man klicka på info för att få mer information.
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        print("Info button pressed!")
+        let title = "Information"
+        let message = "Du ska välja ett tidsintervall på den tid du vill att appen ska ta en paus från att leta efter ett bra datum att tvätta bilen, när du markerat din bil som tvättad."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Lägger till fler element i timeIntervals.
     func addTimeIntervals() {
         for i in 3...12 {
@@ -62,9 +72,6 @@ extension TimeIntervalViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         logic.user.timeIntervalChoiseIsMade = true
         let selectedWeekInterval = row+1
-        logic.user.timeIntervalInWeeks = selectedWeekInterval
-        logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
-        logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
         print("Selected time interval: \(selectedWeekInterval)")
     }
     

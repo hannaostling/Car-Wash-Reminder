@@ -42,8 +42,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             citySegmentControl.selectedSegmentIndex = selectedIndex
         }
         if citySegmentControl.selectedSegmentIndex == 0 {
-            positionOrSearch = .position
-            getWeather(positionOrSearch: .position)
+            updatePosition()
         } else {
             positionOrSearch = .search
             getWeather(positionOrSearch: .search)
