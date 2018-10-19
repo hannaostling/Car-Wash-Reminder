@@ -28,7 +28,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>If you would like to find the weather for your current position, you need to allow the permission.</string>
+	<string>Om du vill ta reda på nuvarande vädret efter din geografiska position när du använder appen, vänligen acceptera.  Ditt val går att ändra i inställningar om du skulle ångra dig.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
