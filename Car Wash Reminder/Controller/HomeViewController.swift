@@ -153,7 +153,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 self.updateForecastWeatherData(json: forecastWeatherJSON)
                 self.retrievedData = true
                 self.fetchedDataTime = Date()
-                //print(forecastWeatherJSON)
             } else {
                 let title = String("Connection Issues")
                 let alert = self.logic.noWeatherDataAlert(title: title)
@@ -274,12 +273,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Background fetch
     func notifyUser(washToday: Bool) {
         if washToday == true {
-            //print("Give user notification today!")
+            print("Give user notification today!")
             let title = "Dags att tvätta bilen 🚗"
             let body = "Det var länge sedan du tvättade din bil och det ska vara bra väder i \(weatherData.city) både idag och imorgon ☀️"
             logic.sendNotification(title: title, body: body)
         } else {
-            //print("Don't give user notification today!")
+            print("Don't give user notification today!")
         }
 //        print("")
 //        print("* BACKGROUND-FETCH")
@@ -302,6 +301,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     func didUpdateUserCities(positionCity: String, searchedCity: String) {
         citySegmentControl.setTitle("\(positionCity)", forSegmentAt: 0)
         citySegmentControl.setTitle("\(searchedCity)", forSegmentAt: 1)
+        if searchedCity == "" {
+            citySegmentControl.setTitle("Senaste sök", forSegmentAt: 1)
+        }
+        if searchedCity == "" && citySegmentControl.selectedSegmentIndex == 1 {
+            temperatureLabel.text = "Du har inte gjort någon sökning hittils"
+        }
+        if positionCity == "" {
+            citySegmentControl.setTitle("Position", forSegmentAt: 0)
+        }
         if positionOrSearch == .position {
             citySegmentControl.selectedSegmentIndex = 0
         } else {

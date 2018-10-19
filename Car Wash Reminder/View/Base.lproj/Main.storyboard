@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View" customClass="CSAnimationView">
                                 <rect key="frame" x="57.666666666666657" y="237" width="299" height="262"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
                                         <rect key="frame" x="0.0" y="0.0" width="299" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                         <nil key="textColor"/>
@@ -357,7 +357,7 @@
                     <navigationItem key="navigationItem" id="Gii-lZ-wEW"/>
                     <connections>
                         <segue destination="jEy-Om-slK" kind="show" identifier="fromStartToFirst" id="Eq2-bA-6mp"/>
-                        <segue destination="0ak-WH-AWR" kind="show" identifier="fromStartToHome" id="auc-71-0qA"/>
+                        <segue destination="0ak-WH-AWR" kind="presentation" identifier="fromStartToHome" id="auc-71-0qA"/>
                         <segue destination="xk6-Yp-IJN" kind="show" identifier="fromStartToTime" id="k95-FJ-3VD"/>
                     </connections>
                 </viewController>
@@ -368,7 +368,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="k95-FJ-3VD"/>
-        <segue reference="mL8-d2-1FJ"/>
+        <segue reference="auc-71-0qA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
