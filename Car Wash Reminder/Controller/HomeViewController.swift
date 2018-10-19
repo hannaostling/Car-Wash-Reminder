@@ -105,15 +105,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Ge ja/nej meddelande från bool.
-    func boolMessageEmoji(bool: Bool) -> String {
-        if bool == true {
-            return "✅"
-        } else {
-            return "❌"
-        }
-    }
-    
     // Hitta en bra dag att tvätta bilen.
     func checkRain() {
         var countBadWeather = 0
@@ -254,19 +245,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     func giveForecastAlert() {
         logic.readUserDefaults()
         checkRain()
-        var title = ""
-        if logic.washToday == true {
-            title = "Tvätta bilen idag 😍"
-        } else {
-            title = "Tvätta inte bilen idag 🙄"
-        }
-        let longTimeSinceUserWashedCar = boolMessageEmoji(bool: logic.user.car.longTimeSinceUserWashedCar)
-        let noRainTodayAndTomorrow = boolMessageEmoji(bool: logic.noRainTodayAndTomorrow)
-        let searchForGoodDayToWashCar = boolMessageEmoji(bool: logic.searchForGoodDayToWashCar)
-        let howManyDaysLeftToSearchDate = logic.user.howManyDaysToSearchingDate()
-        let message = "\(longTimeSinceUserWashedCar) Bilen är inte tvättad nyligen \n \(noRainTodayAndTomorrow) Vädret är bra idag och imorgon \n \(searchForGoodDayToWashCar) \(howManyDaysLeftToSearchDate) dagar kvar tills appen börjar leta efter en bra dag att tvätta bilen."
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
+        let alert = logic.alert.forecast(washToday: logic.washToday, longTimeSinceWashedCar: logic.user.car.longTimeSinceUserWashedCar,  noRainTodayOrTomorrow: logic.noRainTodayAndTomorrow, searchingForGoodDate: logic.searchForGoodDayToWashCar, daysLeftToSearchingAgain: logic.user.howManyDaysToSearchingDate())
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -305,7 +284,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             citySegmentControl.setTitle("Senaste sök", forSegmentAt: 1)
         }
         if searchedCity == "" && citySegmentControl.selectedSegmentIndex == 1 {
-            temperatureLabel.text = "Du har inte gjort någon sökning hittils"
+            temperatureLabel.text = "Du har inte gjort någon sökning hittils."
         }
         if positionCity == "" {
             citySegmentControl.setTitle("Position", forSegmentAt: 0)

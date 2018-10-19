@@ -12,6 +12,7 @@ import UIKit
 class Logic {
    
     let user = User()
+    let alert = Alert()
     let defaults = UserDefaults.standard
     let FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"

@@ -12,6 +12,7 @@
 		B54940802170EC3300EB3F11 /* ToDoList in Resources */ = {isa = PBXBuildFile; fileRef = B549407F2170EC3300EB3F11 /* ToDoList */; };
 		B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940812170ECCF00EB3F11 /* WeatherData.swift */; };
 		B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940832170ECFB00EB3F11 /* HomeViewController.swift */; };
+		B550762E217961AE009F17BB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550762D217961AE009F17BB /* Alert.swift */; };
 		B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C717216B80B400754AA6 /* AppDelegate.swift */; };
 		B573C71D216B80B400754AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C71B216B80B400754AA6 /* Main.storyboard */; };
 		B573C71F216B80B600754AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C71E216B80B600754AA6 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		B549407F2170EC3300EB3F11 /* ToDoList */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoList; sourceTree = "<group>"; };
 		B54940812170ECCF00EB3F11 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		B54940832170ECFB00EB3F11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B550762D217961AE009F17BB /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B573C714216B80B400754AA6 /* Car Wash Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Wash Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C717216B80B400754AA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B573C71C216B80B400754AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				B58A5309216E017E00184750 /* User.swift */,
 				B58A530B216E28E100184750 /* Car.swift */,
 				B54940812170ECCF00EB3F11 /* WeatherData.swift */,
+				B550762D217961AE009F17BB /* Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
 				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
+				B550762E217961AE009F17BB /* Alert.swift in Sources */,
 				B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */,
 				B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */,
 			);
