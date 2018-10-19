@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Väder-->
         <scene sceneID="OaW-pS-k5a">
             <objects>
                 <viewController id="0ak-WH-AWR" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-o4-HOw">
-                                <rect key="frame" x="0.0" y="666" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="617" width="414" height="70"/>
                                 <color key="backgroundColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="w3V-mL-7Fd"/>
@@ -118,6 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PXG-72-rv9"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Väder" image="umbrella" landscapeImage="umbrella" selectedImage="umbrella" id="ysn-e1-Ueo"/>
                     <navigationItem key="navigationItem" id="viN-Hm-sVl">
                         <nil key="title"/>
                     </navigationItem>
@@ -133,6 +134,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3A7-PX-xFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4160.8695652173919" y="212.77173913043481"/>
+        </scene>
+        <!--Historik-->
+        <scene sceneID="BYr-4W-9PI">
+            <objects>
+                <tableViewController id="WJ5-jL-L20" customClass="HistoryTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rQH-CR-Wtc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="zk5-Er-A5M">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Senast tvättad" id="lTw-Xm-L5M"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="Y5b-Sj-yaf" customClass="HistoryTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y5b-Sj-yaf" id="7a0-oi-8AQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Oktober 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50B-hn-58N">
+                                            <rect key="frame" x="20" y="10" width="374" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="rFg-WK-9Ij"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="50B-hn-58N" firstAttribute="leading" secondItem="7a0-oi-8AQ" secondAttribute="leading" constant="20" id="agh-pc-fDM"/>
+                                        <constraint firstItem="50B-hn-58N" firstAttribute="centerY" secondItem="7a0-oi-8AQ" secondAttribute="centerY" id="ceF-H4-rfk"/>
+                                        <constraint firstItem="50B-hn-58N" firstAttribute="centerX" secondItem="7a0-oi-8AQ" secondAttribute="centerX" id="gHe-o2-H1D"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="50B-hn-58N" id="4zg-c0-OA2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WJ5-jL-L20" id="Idb-yw-pe4"/>
+                            <outlet property="delegate" destination="WJ5-jL-L20" id="J46-3D-uVF"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Historik" image="history" landscapeImage="history" selectedImage="history" id="Mhk-t0-caG"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KpY-SP-8k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5085.507246376812" y="212.77173913043481"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TqP-aW-shV">
+            <objects>
+                <tabBarController id="GeH-Ah-PjB" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4D6-c0-E4c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="0ak-WH-AWR" kind="relationship" relationship="viewControllers" id="fja-3M-sb2"/>
+                        <segue destination="WJ5-jL-L20" kind="relationship" relationship="viewControllers" id="oUu-0k-xYO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAS-bq-gX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3235" y="213"/>
         </scene>
         <!--Time Interval View Controller-->
         <scene sceneID="AnR-H6-0Dh">
@@ -166,7 +240,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Välj tidsintervall" prompt="sökning" id="eeq-8F-0Zc">
-                                        <barButtonItem key="rightBarButtonItem" title="Info" id="24q-Pq-Cgy">
+                                        <barButtonItem key="rightBarButtonItem" title="Info" image="info" landscapeImage="info" id="24q-Pq-Cgy">
                                             <connections>
                                                 <action selector="infoButtonPressed:" destination="xk6-Yp-IJN" id="e08-Jf-rmg"/>
                                             </connections>
@@ -357,8 +431,8 @@
                     <navigationItem key="navigationItem" id="Gii-lZ-wEW"/>
                     <connections>
                         <segue destination="jEy-Om-slK" kind="show" identifier="fromStartToFirst" id="Eq2-bA-6mp"/>
-                        <segue destination="0ak-WH-AWR" kind="presentation" identifier="fromStartToHome" id="auc-71-0qA"/>
-                        <segue destination="xk6-Yp-IJN" kind="show" identifier="fromStartToTime" id="k95-FJ-3VD"/>
+                        <segue destination="xk6-Yp-IJN" kind="presentation" identifier="fromStartToTime" id="k95-FJ-3VD"/>
+                        <segue destination="GeH-Ah-PjB" kind="show" identifier="fromStartToHome" id="lfn-IJ-jft"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXS-zI-7DX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,9 +440,14 @@
             <point key="canvasLocation" x="3235" y="-538"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="history" width="60" height="60"/>
+        <image name="info" width="56.25" height="56.25"/>
+        <image name="umbrella" width="60" height="60"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k95-FJ-3VD"/>
-        <segue reference="auc-71-0qA"/>
+        <segue reference="fja-3M-sb2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.17293392190000001" green="0.53892082249999995" blue="0.4176674058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
