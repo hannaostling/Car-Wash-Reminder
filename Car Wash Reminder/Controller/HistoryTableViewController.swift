@@ -9,11 +9,19 @@
 import UIKit
 
 class HistoryTableViewController: UITableViewController {
+    
+    @IBOutlet weak var sortButton: UIBarButtonItem!
 
     let logic = StartViewController.logic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        logic.readUserDefaults()
+        tableView.reloadData()
     }
     
     // Antal rader.
@@ -23,14 +31,19 @@ class HistoryTableViewController: UITableViewController {
     
     // Antal kolumner.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  logic.user.car.history.count
+        return logic.user.car.history.count
     }
     
     // Konfiguera call.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let washed = logic.user.car.history[indexPath.row]
+        var reversedArray: [Date] = []
+        for date in logic.user.car.history.reversed() {
+            reversedArray.append(date)
+        }
+        let lastWashed = reversedArray[indexPath.row]
+        
         let washedCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
-        washedCell.setHistory(history: washed)
+        washedCell.setHistory(lastWashed: lastWashed)
         return washedCell
     }
     

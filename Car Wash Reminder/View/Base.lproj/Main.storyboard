@@ -135,7 +135,7 @@
             </objects>
             <point key="canvasLocation" x="4160.8695652173919" y="212.77173913043481"/>
         </scene>
-        <!--Historik-->
+        <!--Senast tvättad-->
         <scene sceneID="BYr-4W-9PI">
             <objects>
                 <tableViewController id="WJ5-jL-L20" customClass="HistoryTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,22 +143,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="zk5-Er-A5M">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Senast tvättad" id="lTw-Xm-L5M"/>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="Y5b-Sj-yaf" customClass="HistoryTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y5b-Sj-yaf" id="7a0-oi-8AQ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Oktober 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50B-hn-58N">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50B-hn-58N">
                                             <rect key="frame" x="20" y="10" width="374" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="rFg-WK-9Ij"/>
@@ -184,11 +177,11 @@
                             <outlet property="delegate" destination="WJ5-jL-L20" id="J46-3D-uVF"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Historik" image="history" landscapeImage="history" selectedImage="history" id="Mhk-t0-caG"/>
+                    <navigationItem key="navigationItem" title="Senast tvättad" id="U1h-Kw-qEt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KpY-SP-8k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5085.507246376812" y="212.77173913043481"/>
+            <point key="canvasLocation" x="5992.753623188406" y="212.77173913043481"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TqP-aW-shV">
@@ -201,7 +194,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="0ak-WH-AWR" kind="relationship" relationship="viewControllers" id="fja-3M-sb2"/>
-                        <segue destination="WJ5-jL-L20" kind="relationship" relationship="viewControllers" id="oUu-0k-xYO"/>
+                        <segue destination="ikq-Uk-Udf" kind="relationship" relationship="viewControllers" id="oUu-0k-xYO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAS-bq-gX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -438,6 +431,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXS-zI-7DX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3235" y="-538"/>
+        </scene>
+        <!--Historik-->
+        <scene sceneID="03Z-3f-Wka">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ikq-Uk-Udf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Historik" image="history" landscapeImage="history" selectedImage="history" id="Mhk-t0-caG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JfB-sZ-Qae">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WJ5-jL-L20" kind="relationship" relationship="rootViewController" id="YIH-Uf-XM9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hB3-4G-yIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5085.507246376812" y="212.77173913043481"/>
         </scene>
     </scenes>
     <resources>

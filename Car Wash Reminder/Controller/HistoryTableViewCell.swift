@@ -10,6 +10,8 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
     
+    let logic = StartViewController.logic
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
@@ -20,11 +22,13 @@ class HistoryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setHistory(history: History) {
+    func setHistory(lastWashed: Date) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let date = formatter.string(from: history.lastWashed)
-        dateLabel.text = date
+        formatter.locale = Locale(identifier: "sv")
+        formatter.dateFormat = "d MMMM yyyy"
+        let date = formatter.string(from: lastWashed)
+        let dateCapitalized = date.capitalized
+        dateLabel.text = dateCapitalized
     }
 
 }
