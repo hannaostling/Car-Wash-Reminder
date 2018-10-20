@@ -72,6 +72,9 @@ extension TimeIntervalViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         logic.user.timeIntervalChoiseIsMade = true
         let selectedWeekInterval = row+1
+        logic.user.timeIntervalInWeeks = selectedWeekInterval
+        logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
+        logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
         print("Selected time interval: \(selectedWeekInterval)")
     }
     
