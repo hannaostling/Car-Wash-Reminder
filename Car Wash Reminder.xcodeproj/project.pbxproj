@@ -15,7 +15,6 @@
 		B550762E217961AE009F17BB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550762D217961AE009F17BB /* Alert.swift */; };
 		B557761E2179EADD00C92F7F /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */; };
 		B55776202179EB1D00C92F7F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */; };
-		B55776222179EBC900C92F7F /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55776212179EBC900C92F7F /* History.swift */; };
 		B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C717216B80B400754AA6 /* AppDelegate.swift */; };
 		B573C71D216B80B400754AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C71B216B80B400754AA6 /* Main.storyboard */; };
 		B573C71F216B80B600754AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C71E216B80B600754AA6 /* Assets.xcassets */; };
@@ -62,7 +61,6 @@
 		B550762D217961AE009F17BB /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
-		B55776212179EBC900C92F7F /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		B573C714216B80B400754AA6 /* Car Wash Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Wash Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573C717216B80B400754AA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B573C71C216B80B400754AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				B58A530B216E28E100184750 /* Car.swift */,
 				B54940812170ECCF00EB3F11 /* WeatherData.swift */,
 				B550762D217961AE009F17BB /* Alert.swift */,
-				B55776212179EBC900C92F7F /* History.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,7 +468,6 @@
 				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
 				B550762E217961AE009F17BB /* Alert.swift in Sources */,
 				B557761E2179EADD00C92F7F /* HistoryTableViewController.swift in Sources */,
-				B55776222179EBC900C92F7F /* History.swift in Sources */,
 				B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */,
 				B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */,
 			);
@@ -650,7 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D4M6BKZ2Z7;
+				DEVELOPMENT_TEAM = TJZDPACBSW;
 				INFOPLIST_FILE = "Car Wash Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -669,7 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D4M6BKZ2Z7;
+				DEVELOPMENT_TEAM = TJZDPACBSW;
 				INFOPLIST_FILE = "Car Wash Reminder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

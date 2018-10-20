@@ -71,6 +71,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             self.logic.searchForGoodDayToWashCar = false
             self.logic.user.car.longTimeSinceUserWashedCar = false
             self.logic.user.startSearchingAgainAfter(timeInterval: self.logic.user.timeIntervalInWeeks)
+            self.logic.user.car.history.append(Date())
             title = "Kanon"
             message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -79,9 +80,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             self.logic.defaults.set(self.logic.user.car.longTimeSinceUserWashedCar, forKey:self.logic.defaultsUserCarIsWashedRecently)
             self.logic.defaults.set(self.logic.searchForGoodDayToWashCar, forKey:self.logic.defaultsSearchForGoodDayBool)
             self.logic.defaults.set(self.logic.user.startSearchingDate, forKey:self.logic.defaultsSearchForGoodDayDate)
+            self.logic.defaults.set(self.logic.user.car.history, forKey: self.logic.defaultsCarHistory)
         }))
         self.present(alert, animated: true, completion: nil)
-        setButtonsEnabledOrNotEnabled()
     }
     
     // Ge användaren en prognos, varför är det bra/inte bra att tvätta bilen idag?
@@ -132,7 +133,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         logic.defaults.set(logic.user.lastSearchedCity, forKey: logic.defaultsUserLastSearchedCity)
         positionOrSearch = .search
         getWeather(positionOrSearch: .search)
-        setButtonsEnabledOrNotEnabled()
     }
     
     // Hämtar data med hjälp av CocoaPod 'Alamofire'.
@@ -186,7 +186,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                     self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
                 }
-                self.setButtonsEnabledOrNotEnabled()
             }
         } else {
             self.retrievedData = false
@@ -225,20 +224,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
-    }
-    
-    // Sätter knapparnas tillgänglighet beroende på olika villkor.
-    func setButtonsEnabledOrNotEnabled() {
-        if logic.user.car.longTimeSinceUserWashedCar == true {
-            washedCarButton.isEnabled = true
-        } else {
-            washedCarButton.isEnabled = false
-        }
-        if retrievedData == true {
-            forecastButton.isEnabled = true
-        } else {
-            forecastButton.isEnabled = false
-        }
     }
     
     // Ge användaren en prognos.
@@ -293,6 +278,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             citySegmentControl.selectedSegmentIndex = 0
         } else {
             citySegmentControl.selectedSegmentIndex = 1
+        }
+        if logic.user.car.longTimeSinceUserWashedCar == true {
+            washedCarButton.isEnabled = true
+            washedCarButton.alpha = 1.0
+        } else {
+            washedCarButton.isEnabled = false
+            washedCarButton.alpha = 0.5
+        }
+        if retrievedData == true {
+            forecastButton.isEnabled = true
+        } else {
+            forecastButton.isEnabled = false
         }
     }
 }

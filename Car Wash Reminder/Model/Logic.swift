@@ -34,6 +34,7 @@ class Logic {
     let defaultsPositionParams = "defaultsPositionParams"
     let defaultsUserOpenedAppBefore = "defaultsUserOpenedAppBefore"
     let defaultsSelectedCity = "defaultsSelectedCity"
+    let defaultsCarHistory = "defaultsCarHistory"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -128,6 +129,9 @@ class Logic {
         }
         if let savedUserPositionParams = defaults.dictionary(forKey: defaultsPositionParams) as! [String:String]? {
             user.positionParams = savedUserPositionParams
+        }
+        if let savedCarHistory = defaults.object(forKey: defaultsCarHistory) {
+            user.car.history = savedCarHistory as! [Date]
         }
     }
     
