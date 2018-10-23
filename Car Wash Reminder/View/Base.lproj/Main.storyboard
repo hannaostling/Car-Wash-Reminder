@@ -428,7 +428,7 @@
                                     <action selector="nextButtonPressed:" destination="zUf-Zf-8UV" eventType="touchUpInside" id="Apc-15-Clv"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skriv bilens smeknamn här" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9M4-0g-F2X">
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Skriv bilens namn här" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9M4-0g-F2X">
                                 <rect key="frame" x="30" y="269" width="260" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="caZ-W1-j5k"/>
@@ -450,7 +450,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Ge din bil ett smeknamn" id="3Fq-3j-uJL"/>
+                                    <navigationItem title="Namnge din bil" id="3Fq-3j-uJL"/>
                                 </items>
                             </navigationBar>
                         </subviews>
