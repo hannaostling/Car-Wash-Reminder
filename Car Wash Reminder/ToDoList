@@ -1,4 +1,4 @@
 TO DO:
-* Förklara lite innan notification
-* Förklara tidsintervallet
-* Gör knappen "Nu är bilen tvättad" tydligare som knapp
+* Fixa bugg att bilar inte sparas
+* Fixa så man kan lägga till fler bilar
+* Flytta timeintervalInWeeks från user till user.cars[x]
