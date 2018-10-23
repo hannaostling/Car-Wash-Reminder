@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class User {
-    
-    let car = Car()
+
     var startSearchingDate = Date()
     var timeIntervalInWeeks: Int = 0
     var timeIntervalChoiseIsMade: Bool = false
@@ -20,6 +19,17 @@ class User {
     var lastPositionCity: String = ""
     var positionParams = ["":""]
     var cityParams = ["":""]
+    var chosenCarIndex = 0
+    var cars = [Car]()
+    let carObject = Car()
+    
+    init() {
+        setCars()
+    }
+    
+    func setCars() {
+        cars = carObject.giveCarArray(fromDictionaryArray: carObject.carDataDictionaryArray)
+    }
     
     // Returnerar en sträng av startSearchingDate
     func dateWithFormatter() -> String {
@@ -46,14 +56,15 @@ class User {
         let currentDate = Date()
         startSearchingDate = calendar.date(byAdding: .day, value: daysToAdd, to: currentDate)!
         let carNotWashedRecently = daysToAdd - 6
-        car.isNotWashedRecentlyDate = calendar.date(byAdding: .day, value: carNotWashedRecently, to: currentDate)!
+        //let carArray = car.giveCarArray(fromDictionaryArray: car.carDataDictionaryArray)
+        cars[chosenCarIndex].isNotCleanDate = calendar.date(byAdding: .day, value: carNotWashedRecently, to: currentDate)!
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         let currentDateInString = formatter.string(from: Date())
-        let carIsNotWashedEecentlyDateInString = formatter.string(from: car.isNotWashedRecentlyDate)
+        let carIsNotCleanDate = formatter.string(from: cars[chosenCarIndex].isNotCleanDate)
         let startSearchingDateInString = formatter.string(from: startSearchingDate)
         print("Dagens datum: \(currentDateInString)")
-        print("Bilen räknas som smutsig igen: \(carIsNotWashedEecentlyDateInString)")
+        print("Bilen räknas som smutsig igen: \(carIsNotCleanDate)")
         print("Appen börjar leta efter bra datum: \(startSearchingDateInString)")
     }
     

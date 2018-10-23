@@ -24,7 +24,9 @@ class StartViewController: UIViewController {
         logic.readUserDefaults()
         if logic.user.hasOpenedAppBefore == false && logic.user.timeIntervalChoiseIsMade == false {
             performSegue(withIdentifier: "fromStartToFirst", sender: self)
-        } else if logic.user.hasOpenedAppBefore == true && logic.user.timeIntervalChoiseIsMade == false {
+        } else if logic.user.cars.count == 0 && logic.user.hasOpenedAppBefore == true {
+            performSegue(withIdentifier: "fromStartToNameCar", sender: self)
+        } else if logic.user.hasOpenedAppBefore == true && logic.user.timeIntervalChoiseIsMade == false && logic.user.cars.count > 0 {
             performSegue(withIdentifier: "fromStartToTime", sender: self)
         } else {
             performSegue(withIdentifier: "fromStartToHome", sender: self)

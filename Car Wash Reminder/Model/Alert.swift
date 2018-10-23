@@ -11,16 +11,16 @@ import UIKit
 
 class Alert {
     
-    func forecast(washToday: Bool, longTimeSinceWashedCar: Bool, noRainTodayOrTomorrow: Bool, searchingForGoodDate: Bool, daysLeftToSearchingAgain: Int) -> UIAlertController {
+    func forecast(carName: String, washToday: Bool, longTimeSinceWashedCar: Bool, noRainTodayOrTomorrow: Bool, searchingForGoodDate: Bool, daysLeftToSearchingAgain: Int) -> UIAlertController {
         var title = ""
         var line1 = ""
         var line2 = ""
         var line3 = ""
         var message = ""
         if washToday == true {
-            title = "Tvätta bilen idag 👍🏽"
+            title = "Tvätta \"\(carName)\" idag 👍🏽"
         } else {
-            title = "Tvätta inte bilen idag 👎🏽"
+            title = "Tvätta inte \"\(carName)\" idag 👎🏽"
         }
         let longTimeSinceUserWashedCar = boolMessageEmoji(bool: longTimeSinceWashedCar)
         let noRainTodayAndTomorrow = boolMessageEmoji(bool: noRainTodayOrTomorrow)

@@ -12,6 +12,7 @@ import UserNotifications
 class TimeIntervalViewController: UIViewController {
 
     @IBOutlet weak var weeksPickerView: UIPickerView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     let logic = StartViewController.logic
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
@@ -19,11 +20,12 @@ class TimeIntervalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        logic.askForNotificationPermission()
+        navigationBar.topItem?.title = "Välj tidsintervall för \"\(logic.user.cars[logic.user.chosenCarIndex].name)\""
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-        giveInformationAlert()
+        logic.readUserDefaults()
+        // giveInformationAlert()
     }
     
     // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.
@@ -33,8 +35,8 @@ class TimeIntervalViewController: UIViewController {
         }
         logic.user.timeIntervalChoiseIsMade = true
         logic.searchForGoodDayToWashCar = true
-        logic.user.car.longTimeSinceUserWashedCar = true
-        logic.defaults.set(logic.user.car.longTimeSinceUserWashedCar, forKey:logic.defaultsUserCarIsWashedRecently)
+        logic.user.cars[logic.user.chosenCarIndex].isNotClean = true
+        logic.defaults.set(logic.user.carObject.carDataDictionaryArray, forKey:logic.defaultsCarDataDictionaryArray)
         logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
         logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
         logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)

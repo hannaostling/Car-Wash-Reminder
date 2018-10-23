@@ -12,6 +12,7 @@ class HistoryTableViewCell: UITableViewCell {
     
     let logic = StartViewController.logic
     
+    @IBOutlet weak var daysAgoLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
@@ -23,12 +24,19 @@ class HistoryTableViewCell: UITableViewCell {
     }
     
     func setHistory(lastWashed: Date) {
+        let dateInString = getDateInString(date: lastWashed)
+        dateLabel.text = dateInString
+        let daysAgoInt = logic.user.cars[logic.user.chosenCarIndex].howManyDaysAgo(date: lastWashed)
+        let daysAgoString = "\(daysAgoInt) dagar sedan"
+        daysAgoLabel.text = daysAgoString
+    }
+    
+    func getDateInString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "sv")
         formatter.dateFormat = "d MMMM yyyy"
-        let date = formatter.string(from: lastWashed)
-        let dateCapitalized = date.capitalized
-        dateLabel.text = dateCapitalized
+        let dateString = formatter.string(from: date)
+        let dateCapitalized = dateString.capitalized
+        return dateCapitalized
     }
-
 }

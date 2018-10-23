@@ -27,14 +27,13 @@ class Logic {
     let defaultsUserLastPositionCity = "letdefaultsUserLastPositionCity"
     let defaultsUserTimeInterval = "defaultsUserTimeInterval"
     let defaultsUserMadeChoice = "defaultsUserMadeChoice"
-    let defaultsUserCarIsWashedRecently = "defaultsUserCarIsWashedRecently"
     let defaultsSearchForGoodDayBool = "defaultsSearchForGoodDayBool"
     let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
     let defaultsCityParams = "defaultsCityParams"
     let defaultsPositionParams = "defaultsPositionParams"
     let defaultsUserOpenedAppBefore = "defaultsUserOpenedAppBefore"
     let defaultsSelectedCity = "defaultsSelectedCity"
-    let defaultsCarHistory = "defaultsCarHistory"
+    let defaultsCarDataDictionaryArray = "defaultsCarDataDictionaryArray"
     
     // Funktionen innehåller en timer som anropar på "runsEverySecond()" varje sekund.
     func checkIfUserShouldWashCar() {
@@ -44,13 +43,13 @@ class Logic {
     // Kollar om det är bra dag att tvätta bilen eller inte.
     @objc func runsEverySecond() {
         let shouldAppSearchForDate = shouldCheckForGoodDate()
-        if searchForGoodDayToWashCar == true && user.car.longTimeSinceUserWashedCar == true && noRainTodayAndTomorrow == true && shouldAppSearchForDate == true {
+        if searchForGoodDayToWashCar == true && user.cars[user.chosenCarIndex].isNotClean == true && noRainTodayAndTomorrow == true && shouldAppSearchForDate == true {
             washToday = true
         } else {
             washToday = false
         }
-        if user.car.isNotWashedRecentlyDate == Date() {
-            user.car.longTimeSinceUserWashedCar = true
+        if user.cars[user.chosenCarIndex].isNotCleanDate == Date() {
+            user.cars[user.chosenCarIndex].isNotClean = true
         }
         logicDelegate?.notifyUser(washToday: washToday)
         logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
@@ -87,7 +86,6 @@ class Logic {
         return alert
     }
     
-    
     // Läs user defaults.
     func readUserDefaults() {
         print("")
@@ -108,10 +106,6 @@ class Logic {
             user.timeIntervalInWeeks = savedUserTimeIntervalInWeeks
             print("• User timeinterval in weeks: \(user.timeIntervalInWeeks)")
         }
-        if let savedUserCarIsWashedRecently = defaults.bool(forKey: defaultsUserCarIsWashedRecently) as Bool? {
-            user.car.longTimeSinceUserWashedCar = savedUserCarIsWashedRecently
-            print("• Long time since user washed car: \(user.car.longTimeSinceUserWashedCar)")
-        }
         if let savedUserSearchAgainDate = defaults.object(forKey: defaultsSearchForGoodDayDate) {
             user.startSearchingDate = savedUserSearchAgainDate as! Date
             print("• App start searching: \(user.startSearchingDate)")
@@ -130,8 +124,15 @@ class Logic {
         if let savedUserPositionParams = defaults.dictionary(forKey: defaultsPositionParams) as! [String:String]? {
             user.positionParams = savedUserPositionParams
         }
-        if let savedCarHistory = defaults.object(forKey: defaultsCarHistory) {
-            user.car.history = savedCarHistory as! [Date]
+        if let savedCarDataDictionaryArray = defaults.array(forKey: defaultsCarDataDictionaryArray) as! [[String:Any]]? {
+            user.carObject.carDataDictionaryArray = savedCarDataDictionaryArray
+            print("• User amount of cars: \(user.cars.count)")
+            if user.cars.count > 0 {
+                for car in user.cars {
+                    print("• Car \(user.cars.count) name: \(car.name)")
+                    print("• Car \(user.cars.count) is not clean: \(car.isNotClean)")
+                }
+            }
         }
     }
     

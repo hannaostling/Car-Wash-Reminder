@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var latitude = ""
     var longitude = ""
     var retrievedData: Bool = true
+    var retrievedDataButDidNotSucceed = false
     var fetchedDataTime = Date()
     let logic = StartViewController.logic
     var positionOrSearch = PositionOrSearch.position
@@ -29,6 +30,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherDataView: UIImageView!
     @IBOutlet weak var washedCarButton: UIButton!
+    
+    
     @IBOutlet weak var citySegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -52,6 +55,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
+    // Gå till Historik
+    @IBAction func historyButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "fromHomeToHistory", sender: self)
+    }
+    
     // När man klickar på sök-knappen visas en sök-ruta.
     @IBAction func searchButtonPressed(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -69,18 +77,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         alert.addAction(UIAlertAction(title: "Nej", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { action in
             self.logic.searchForGoodDayToWashCar = false
-            self.logic.user.car.longTimeSinceUserWashedCar = false
+            self.logic.user.cars[self.logic.user.chosenCarIndex].isNotClean = false
             self.logic.user.startSearchingAgainAfter(timeInterval: self.logic.user.timeIntervalInWeeks)
-            self.logic.user.car.history.append(Date())
+            self.logic.user.cars[self.logic.user.chosenCarIndex].washedDates.append(Date())
             title = "Kanon"
-            message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
+            if self.logic.user.timeIntervalInWeeks == 1 {
+                message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) vecka igen!"
+            } else {
+                message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(self.logic.user.timeIntervalInWeeks) veckor igen!"
+            }
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            self.logic.defaults.set(self.logic.user.car.longTimeSinceUserWashedCar, forKey:self.logic.defaultsUserCarIsWashedRecently)
             self.logic.defaults.set(self.logic.searchForGoodDayToWashCar, forKey:self.logic.defaultsSearchForGoodDayBool)
             self.logic.defaults.set(self.logic.user.startSearchingDate, forKey:self.logic.defaultsSearchForGoodDayDate)
-            self.logic.defaults.set(self.logic.user.car.history, forKey: self.logic.defaultsCarHistory)
+            self.logic.defaults.set(self.logic.user.carObject.carDataDictionaryArray, forKey: self.logic.defaultsCarDataDictionaryArray)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -169,7 +180,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Uppdaterar forecast-väder-data med väderinformationen från JSON. Uppdaterar med tumme upp om det är en bra dag att tvätta sin bil.
     func updateForecastWeatherData(json: JSON) {
         if let tempResult = json["list"][0]["main"]["temp"].double {
-            self.retrievedData = true
+            retrievedDataButDidNotSucceed = false
+            retrievedData = true
             weatherData.temperature = Int(tempResult - 272.15)
             weatherData.city = json["city"]["name"].stringValue
             weatherData.condition = json["list"][0]["weather"][0]["id"].intValue
@@ -188,7 +200,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 }
             }
         } else {
-            self.retrievedData = false
+            retrievedDataButDidNotSucceed = true
             temperatureLabel.text = String("\(json["message"])").capitalized
             weatherIcon.image = UIImage(named: "dont_know")
         }
@@ -230,7 +242,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     func giveForecastAlert() {
         logic.readUserDefaults()
         checkRain()
-        let alert = logic.alert.forecast(washToday: logic.washToday, longTimeSinceWashedCar: logic.user.car.longTimeSinceUserWashedCar,  noRainTodayOrTomorrow: logic.noRainTodayAndTomorrow, searchingForGoodDate: logic.searchForGoodDayToWashCar, daysLeftToSearchingAgain: logic.user.howManyDaysToSearchingDate())
+        let alert = logic.alert.forecast(carName:"\(logic.user.cars[logic.user.chosenCarIndex].name)", washToday: logic.washToday, longTimeSinceWashedCar: logic.user.cars[logic.user.chosenCarIndex].isNotClean,  noRainTodayOrTomorrow: logic.noRainTodayAndTomorrow, searchingForGoodDate: logic.searchForGoodDayToWashCar, daysLeftToSearchingAgain: logic.user.howManyDaysToSearchingDate())
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -247,7 +259,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
 //        print("")
 //        print("* BACKGROUND-FETCH")
 //        print("* Appen söker efter datum: \(logic.searchForGoodDayToWashCar)")
-//        print("* Länge sedan bilen var tvättad: \(logic.user.car.longTimeSinceUserWashedCar)")
+//        print("* Länge sedan bilen var tvättad: \(logic.user.car.isNotClean)")
 //        print("* Inget regn idag och imorgon: \(logic.noRainTodayAndTomorrow)")
 //        let formatter = DateFormatter()
 //        let currentTime = Date()
@@ -279,14 +291,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             citySegmentControl.selectedSegmentIndex = 1
         }
-        if logic.user.car.longTimeSinceUserWashedCar == true {
+        if logic.user.cars[logic.user.chosenCarIndex].isNotClean == true {
+            washedCarButton.setTitle("Klicka på mig när \(logic.user.cars[logic.user.chosenCarIndex].name) är tvättad", for: .normal)
             washedCarButton.isEnabled = true
             washedCarButton.alpha = 1.0
         } else {
+            washedCarButton.setTitle("\(logic.user.cars[logic.user.chosenCarIndex].name) är tvättad nyligen", for: .normal)
             washedCarButton.isEnabled = false
             washedCarButton.alpha = 0.5
         }
-        if retrievedData == true {
+        if retrievedData == true && retrievedDataButDidNotSucceed == false {
             forecastButton.isEnabled = true
         } else {
             forecastButton.isEnabled = false
