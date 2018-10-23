@@ -44,6 +44,18 @@ class ChooseCarTableViewController: UITableViewController {
         return carCell
     }
     
+    // När man klickar på en rad.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        logic.user.chosenCarIndex = indexPath.row
+        logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
+        let carName = logic.user.carObject.carDataDictionaryArray[indexPath.row][logic.user.carObject.carName] as! String
+        let title = "Ditt val är sparat"
+        let message = "Nu visas information för \"\(carName)\""
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Tillbaka knapp
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
