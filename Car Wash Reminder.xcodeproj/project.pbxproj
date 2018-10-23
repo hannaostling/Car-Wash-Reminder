@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C7667D957204DAE8FB47E67 /* Pods_Car_Wash_ReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5308672AFA4C339F07A458C6 /* Pods_Car_Wash_ReminderTests.framework */; };
 		4DA2F90CB06E8BC3C6E63298 /* Pods_Car_Wash_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */; };
+		B507FCEA217E088F005E7321 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507FCE9217E088F005E7321 /* NameViewController.swift */; };
 		B54940802170EC3300EB3F11 /* ToDoList in Resources */ = {isa = PBXBuildFile; fileRef = B549407F2170EC3300EB3F11 /* ToDoList */; };
 		B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940812170ECCF00EB3F11 /* WeatherData.swift */; };
 		B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940832170ECFB00EB3F11 /* HomeViewController.swift */; };
@@ -55,6 +56,7 @@
 		62B9C87CB4391E391BA2A4B7 /* Pods-Car Wash ReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69B94CEC089AB79552191862 /* Pods-Car Wash ReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderTests/Pods-Car Wash ReminderTests.release.xcconfig"; sourceTree = "<group>"; };
 		B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B507FCE9217E088F005E7321 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		B549407F2170EC3300EB3F11 /* ToDoList */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoList; sourceTree = "<group>"; };
 		B54940812170ECCF00EB3F11 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		B54940832170ECFB00EB3F11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				B59C2EFC21776788004C8C2D /* StartViewController.swift */,
 				B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */,
+				B507FCE9217E088F005E7321 /* NameViewController.swift */,
 				B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */,
 				B54940832170ECFB00EB3F11 /* HomeViewController.swift */,
 				B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */,
@@ -462,6 +465,7 @@
 				B59C2EFD21776788004C8C2D /* StartViewController.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,
+				B507FCEA217E088F005E7321 /* NameViewController.swift in Sources */,
 				B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
 				B55776202179EB1D00C92F7F /* HistoryTableViewCell.swift in Sources */,
