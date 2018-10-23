@@ -72,7 +72,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
     @IBAction func washedCarButtonPressed(_ sender: Any) {
         var title = "Är du säker?"
-        var message = "Appen kommer att sluta leta efter en bra dag att tvätta bilen på \(logic.user.timeIntervalInWeeks) veckor om du trycker på \"Ja\"."
+        var message = ""
+        if self.logic.user.timeIntervalInWeeks == 1 {
+            message = "Appen kommer att sluta leta efter en bra dag att tvätta bilen på \(logic.user.timeIntervalInWeeks) vecka om du trycker på \"Ja\"."
+        } else {
+            message = "Appen kommer att sluta leta efter en bra dag att tvätta bilen på \(logic.user.timeIntervalInWeeks) veckor om du trycker på \"Ja\"."
+        }
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Nej", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { action in
