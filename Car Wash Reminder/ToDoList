@@ -1,6 +1,11 @@
 TO DO:
-* Fixa bugg att bilar inte sparas
-* Fixa så man kan lägga till fler bilar
+* Swipe istället för knappar i början - eller tydliga knappar med "nästa" och "föregående"
 * Flytta timeintervalInWeeks från user till user.cars[x]
 * Ta bort upprepningar (carName, readUserDefaults osv.)
 * Att knapparnas tillgänglighet körs varje sekund är inte nödvändigt
+* Searchbar automatiskt försvinn istället för att man måste trycka?
+* Prognos i bakgrunden också, bara simpelt om man kan tvätta eller inte
+* större temperatur-label
+* kanske två knappar
+* tableview i tableview
+* Använd let instanceOfLogic = Logic.sharedInstance
