@@ -12,7 +12,7 @@
         <!--Väder-->
         <scene sceneID="OaW-pS-k5a">
             <objects>
-                <viewController id="0ak-WH-AWR" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Väder" id="0ak-WH-AWR" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="puy-N0-ZnH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
         <!--Senast tvättad-->
         <scene sceneID="BYr-4W-9PI">
             <objects>
-                <tableViewController id="WJ5-jL-L20" customClass="HistoryTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Senast tvättad" id="WJ5-jL-L20" customClass="HistoryTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="rQH-CR-Wtc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,23 +193,27 @@
                             <outlet property="delegate" destination="WJ5-jL-L20" id="J46-3D-uVF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Senast tvättad" id="U1h-Kw-qEt">
+                    <navigationItem key="navigationItem" id="U1h-Kw-qEt">
                         <barButtonItem key="leftBarButtonItem" title="Tillbaka" image="left" landscapeImage="left" largeContentSizeImage="left" id="wCS-nv-90C">
                             <connections>
                                 <action selector="backButtonPressed:" destination="WJ5-jL-L20" id="EUg-CA-AMF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="change" landscapeImage="change" largeContentSizeImage="change" id="dwl-xE-NKp"/>
+                        <barButtonItem key="rightBarButtonItem" image="change" landscapeImage="change" largeContentSizeImage="change" id="dwl-xE-NKp">
+                            <connections>
+                                <segue destination="2Bh-qk-csB" kind="show" id="W8S-c7-ZbX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KpY-SP-8k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5996.25" y="255.63380281690141"/>
         </scene>
-        <!--Time Interval View Controller-->
+        <!--Time-->
         <scene sceneID="AnR-H6-0Dh">
             <objects>
-                <viewController id="xk6-Yp-IJN" customClass="TimeIntervalViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Time" id="xk6-Yp-IJN" customClass="TimeIntervalViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Whl-sg-wWJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="4161" y="-538"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller 1-->
         <scene sceneID="Gra-bL-WvJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kAv-AJ-rGB" sceneMemberID="viewController">
+                <navigationController title="Navigation Controller 1" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kAv-AJ-rGB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-pu-Gcf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vuw-uX-Fn6">
@@ -296,10 +300,10 @@
             </objects>
             <point key="canvasLocation" x="2343" y="-538"/>
         </scene>
-        <!--First Time View Controller-->
+        <!--Welcome-->
         <scene sceneID="Et1-Hc-oxp">
             <objects>
-                <viewController id="jEy-Om-slK" customClass="FirstTimeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Welcome" id="jEy-Om-slK" customClass="FirstTimeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAv-r7-UwL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,10 +408,10 @@
             </objects>
             <point key="canvasLocation" x="4161" y="-1925"/>
         </scene>
-        <!--Name View Controller-->
+        <!--Name Car-->
         <scene sceneID="UoV-3E-xMb">
             <objects>
-                <viewController id="zUf-Zf-8UV" customClass="NameViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Name Car" id="zUf-Zf-8UV" customClass="NameViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jQd-Gr-Ujl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,10 +482,10 @@
             </objects>
             <point key="canvasLocation" x="4161" y="-1225"/>
         </scene>
-        <!--Start View Controller-->
+        <!--Start-->
         <scene sceneID="5Op-Zm-79Y">
             <objects>
-                <viewController id="bw3-pU-lqe" customClass="StartViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Start" id="bw3-pU-lqe" customClass="StartViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fU9-0W-zOq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -512,10 +516,10 @@
             </objects>
             <point key="canvasLocation" x="3235" y="-538"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller 2-->
         <scene sceneID="a65-IB-H7m">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="47W-5T-wJx" sceneMemberID="viewController">
+                <navigationController title="Navigation Controller 2" automaticallyAdjustsScrollViewInsets="NO" id="47W-5T-wJx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zPj-g2-BG5">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -530,6 +534,71 @@
             </objects>
             <point key="canvasLocation" x="5086.875" y="255.63380281690141"/>
         </scene>
+        <!--Choose Car-->
+        <scene sceneID="fHo-dQ-4Ds">
+            <objects>
+                <tableViewController title="Choose Car" id="2Bh-qk-csB" customClass="ChooseCarTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="gff-da-9g8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="car" rowHeight="100" id="Il4-tq-Y2p" customClass="ChooseCarTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Il4-tq-Y2p" id="T71-3O-lrF">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZJ-s7-b5I" userLabel="Car name">
+                                            <rect key="frame" x="16" y="11" width="288" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0v-g9-e8s" userLabel="Last washed (days ago)">
+                                            <rect key="frame" x="16" y="89" width="288" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="y0v-g9-e8s" firstAttribute="leading" secondItem="T71-3O-lrF" secondAttribute="leadingMargin" id="9gv-Ji-QeB"/>
+                                        <constraint firstItem="GZJ-s7-b5I" firstAttribute="top" secondItem="T71-3O-lrF" secondAttribute="topMargin" id="ONb-1J-Ncb"/>
+                                        <constraint firstItem="GZJ-s7-b5I" firstAttribute="leading" secondItem="T71-3O-lrF" secondAttribute="leadingMargin" id="QRg-Nd-rp9"/>
+                                        <constraint firstItem="y0v-g9-e8s" firstAttribute="trailing" secondItem="T71-3O-lrF" secondAttribute="trailingMargin" id="fES-51-cF0"/>
+                                        <constraint firstItem="y0v-g9-e8s" firstAttribute="bottom" secondItem="T71-3O-lrF" secondAttribute="bottomMargin" id="gL0-GX-5Nq"/>
+                                        <constraint firstItem="GZJ-s7-b5I" firstAttribute="trailing" secondItem="T71-3O-lrF" secondAttribute="trailingMargin" id="wc7-1A-9yV"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="carLastWashedDaysAgoLabel" destination="y0v-g9-e8s" id="sve-WC-94N"/>
+                                    <outlet property="carNameLabel" destination="GZJ-s7-b5I" id="Xji-G1-lol"/>
+                                    <outlet property="dateLabel" destination="y0v-g9-e8s" id="Juj-R1-fN8"/>
+                                    <outlet property="daysAgoLabel" destination="GZJ-s7-b5I" id="HVX-Jg-vlL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="2Bh-qk-csB" id="QhX-uQ-BfV"/>
+                            <outlet property="delegate" destination="2Bh-qk-csB" id="ohY-YT-WVZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Välj bil" id="FvC-55-igP">
+                        <barButtonItem key="leftBarButtonItem" title="Tillbaka" image="left" landscapeImage="left" largeContentSizeImage="left" id="xGP-PR-AqN">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="2Bh-qk-csB" id="SNt-tJ-c94"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0LP-js-lhF"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YRc-eO-tHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6902" y="256"/>
+        </scene>
     </scenes>
     <resources>
         <image name="change" width="50" height="50"/>
@@ -539,9 +608,9 @@
         <image name="umbrella" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1E9-OY-L6y"/>
-        <segue reference="Nxt-B4-Spy"/>
-        <segue reference="mL8-d2-1FJ"/>
+        <segue reference="TqX-6o-BCo"/>
+        <segue reference="k95-FJ-3VD"/>
+        <segue reference="Z1e-us-Qgx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29945462719161448" green="0.74508176813471505" blue="0.74418964664599907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

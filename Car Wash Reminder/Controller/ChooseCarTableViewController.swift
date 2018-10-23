@@ -1,14 +1,14 @@
 //
-//  HistoryTableViewController.swift
+//  ChooseCarTableViewController.swift
 //  Car Wash Reminder
 //
-//  Created by Hanna Östling on 2018-10-19.
+//  Created by Hanna Östling on 2018-10-23.
 //  Copyright © 2018 Hanna Östling. All rights reserved.
 //
 
 import UIKit
 
-class HistoryTableViewController: UITableViewController {
+class ChooseCarTableViewController: UITableViewController {
     
     let logic = StartViewController.logic
     var dates = [Date]()
@@ -21,8 +21,6 @@ class HistoryTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         logic.readUserDefaults()
         dates = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carWashedDates] as! [Date]
-        let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
-        title = "\(carName) senast tvättad"
         tableView.reloadData()
     }
     
@@ -45,7 +43,7 @@ class HistoryTableViewController: UITableViewController {
             reversedArray.append(date)
         }
         let lastWashed = reversedArray[indexPath.row]
-        let historyCell = tableView.dequeueReusableCell(withIdentifier: "carHistory", for: indexPath) as! HistoryTableViewCell
+        let historyCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
         historyCell.setHistory(lastWashed: lastWashed)
         return historyCell
     }
