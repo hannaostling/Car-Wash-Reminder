@@ -25,19 +25,19 @@ class WeatherData {
         case 501...600 :
             return "much_rain"
         case 601...700 :
-            return "snow1"
+            return "snow"
         case 701...771 :
             return "fog"
         case 772...799 :
-            return "storm2"
+            return "storm"
         case 800 :
             return "sunny"
         case 801...804 :
             return "cloudy"
         case 900...903, 905...1000  :
-            return "storm2"
+            return "storm"
         case 903 :
-            return "snow2"
+            return "snow"
         case 904 :
             return "sunny"
         default :
