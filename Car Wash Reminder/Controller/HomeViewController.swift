@@ -29,9 +29,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherDataView: UIImageView!
-    @IBOutlet weak var washedCarButton: UIButton!
-    
-    
+    @IBOutlet weak var washedCarButton: UIButton!    
     @IBOutlet weak var citySegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -109,9 +107,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             // Spara
             self.logic.defaults.set(carsDataArray, forKey: self.logic.defaultsCarDataDictionaryArray)
             // Ändrar chosenCarIndex till den som vi la till nu
-            print("Chosen index: \(self.logic.user.chosenCarIndex)")
             self.logic.user.chosenCarIndex = carsDataArray.count-1
-            print("Chosen index: \(self.logic.user.chosenCarIndex)")
             // Sparar
             self.logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
             title = "Kanon"
@@ -313,7 +309,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let carNotClean = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carIsNotCleanBool] as! Bool
         let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
         if carNotClean == true {
-            washedCarButton.setTitle("Klicka på mig när \(carName) är tvättad", for: .normal)
+            washedCarButton.setTitle("Klicka här när \(carName) är tvättad", for: .normal)
             washedCarButton.isEnabled = true
             washedCarButton.alpha = 1.0
         } else {
