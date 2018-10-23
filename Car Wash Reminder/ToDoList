@@ -2,3 +2,4 @@ TO DO:
 * Fixa bugg att bilar inte sparas
 * Fixa så man kan lägga till fler bilar
 * Flytta timeintervalInWeeks från user till user.cars[x]
+* Ta bort upprepningar (carName, readUserDefaults osv.)
