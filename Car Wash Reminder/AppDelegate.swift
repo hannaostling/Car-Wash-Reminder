@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIApplication.shared.keyWindow!
         let navigationController = window?.rootViewController as! UINavigationController
         if let homeVC = navigationController.viewControllers[0] as? HomeViewController {
-            let logic = StartViewController.logic
+            let logic = Logic.sharedInstance
             logic.readUserDefaults()
             let cityName = logic.user.lastSearchedCity
             let url = logic.FORECAST_URL
