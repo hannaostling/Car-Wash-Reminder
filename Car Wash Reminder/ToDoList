@@ -5,7 +5,5 @@ TO DO:
 * Att knapparnas tillgänglighet körs varje sekund är inte nödvändigt
 * Searchbar automatiskt försvinn istället för att man måste trycka?
 * Prognos i bakgrunden också, bara simpelt om man kan tvätta eller inte
-* större temperatur-label
-* kanske två knappar
-* tableview i tableview
-* Använd let instanceOfLogic = Logic.sharedInstance
+* Större temperatur-label
+* Tableview i tableview
