@@ -10,6 +10,7 @@ import Foundation
 
 class Car {
 
+    var id: Int = 0
     var name: String = "Bilen"
     var isNotClean: Bool = true
     var isNotCleanDate = Date()

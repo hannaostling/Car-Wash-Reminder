@@ -72,7 +72,11 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             let car = Car()
             car.name = "\(carName)"
             car.isNotClean = true
+            car.id = cars.count
             cars.append(car)
+            // Sätt användarens chosenCarIndex till samma som nya bilens id
+            logic.user.chosenCarIndex = car.id
+            logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
             // Skapa ny array med dictionaries för att hålla all data som skall sparas
             var carsDataArray = [[String:Any]]()
             for car in cars {
@@ -89,7 +93,6 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        print("Antal bilar: \(logic.user.carObject.carDataDictionaryArray.count)")
     }
 }
 
