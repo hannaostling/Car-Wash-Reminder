@@ -217,18 +217,35 @@
         <scene sceneID="4Bz-t5-dFz">
             <objects>
                 <tableViewController title="Choose car" id="UIc-pn-SVi" customClass="ChooseCarTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fQm-aO-su8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fQm-aO-su8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="car" id="lE0-eF-HPO">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="car" rowHeight="50" id="lE0-eF-HPO" customClass="ChooseCarTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lE0-eF-HPO" id="Zg0-MN-3sG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWk-JK-vkx">
+                                            <rect key="frame" x="16" y="11" width="288" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NWk-JK-vkx" firstAttribute="leading" secondItem="Zg0-MN-3sG" secondAttribute="leadingMargin" id="JER-9A-Gis"/>
+                                        <constraint firstItem="NWk-JK-vkx" firstAttribute="top" secondItem="Zg0-MN-3sG" secondAttribute="topMargin" id="r5X-kP-Xg0"/>
+                                        <constraint firstItem="NWk-JK-vkx" firstAttribute="bottom" secondItem="Zg0-MN-3sG" secondAttribute="bottomMargin" id="yI1-wy-zxC"/>
+                                        <constraint firstItem="NWk-JK-vkx" firstAttribute="trailing" secondItem="Zg0-MN-3sG" secondAttribute="trailingMargin" id="yv7-ZW-6Wh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="carNameLabel" destination="NWk-JK-vkx" id="jAA-P2-wBR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

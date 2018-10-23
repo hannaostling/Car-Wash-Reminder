@@ -37,23 +37,10 @@ class ChooseCarTableViewController: UITableViewController {
     
     // Konfiguera call.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        tableView.rowHeight = 100
-//        let car = Car()
-//        let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
-//        carCell.setCar(car: car)
-//        return carCell
-//        var reversedArray: [Date] = []
-//        for date in dates.reversed() {
-//            reversedArray.append(date)
-//        }
-//        let lastWashed = reversedArray[indexPath.row]
-//        let historyCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
-//        historyCell.setHistory(lastWashed: lastWashed)
-//        return historyCell
-    
-        let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath)
-        carCell.textLabel?.text = "Hej"
-        
+        let carArray = logic.user.carObject.giveCarArray(fromDictionaryArray: logic.user.carObject.carDataDictionaryArray)
+        let car = carArray[indexPath.row]
+        let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
+        carCell.setCar(car: car)
         return carCell
     }
     
