@@ -199,7 +199,7 @@
                                 <action selector="backButtonPressed:" destination="WJ5-jL-L20" id="EUg-CA-AMF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="change" landscapeImage="change" largeContentSizeImage="change" id="dwl-xE-NKp">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="change" landscapeImage="change" largeContentSizeImage="change" id="dwl-xE-NKp">
                             <connections>
                                 <segue destination="2Bh-qk-csB" kind="show" id="W8S-c7-ZbX"/>
                             </connections>
