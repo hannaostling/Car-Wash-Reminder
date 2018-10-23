@@ -10,7 +10,7 @@ import UIKit
 
 class ChooseCarTableViewController: UITableViewController {
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     var dates = [Date]()
     
     override func viewDidLoad() {

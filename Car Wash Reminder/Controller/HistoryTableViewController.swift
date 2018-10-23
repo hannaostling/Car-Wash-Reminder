@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     var dates = [Date]()
     
     override func viewDidLoad() {

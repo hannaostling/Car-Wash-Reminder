@@ -16,7 +16,7 @@ class FirstTimeViewController: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     
     var index = 0
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     let messages = ["Det här är en app för dig som vill slippa tänka på när du behöver tvätta din bil.","Appen kommer ge dig en notis varje gång vädret är bra samma dag och dagen efter.","Du kan markera din bil som tvättad så pausar appens sökande i ett tidsintervall som du själv väljer i nästa steg.", "För att appen ska fungera måste du alltså tillåta notiser, är det okej?"]
     
     override func viewDidLoad() {

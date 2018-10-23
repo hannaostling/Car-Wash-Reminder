@@ -14,7 +14,7 @@ class TimeIntervalViewController: UIViewController {
     @IBOutlet weak var weeksPickerView: UIPickerView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     
     override func viewDidLoad() {

@@ -13,7 +13,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameCarTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

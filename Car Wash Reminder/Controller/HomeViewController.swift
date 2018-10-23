@@ -14,6 +14,7 @@ import SwiftyJSON
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, LogicDelegate {
     
+    let logic = Logic.sharedInstance
     let locationManager = CLLocationManager()
     let weatherData = WeatherData()
     var latitude = ""
@@ -21,7 +22,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var retrievedData: Bool = true
     var retrievedDataButDidNotSucceed = false
     var fetchedDataTime = Date()
-    let logic = StartViewController.logic
     var positionOrSearch = PositionOrSearch.position
     
     //@IBOutlet weak var positionButton: UIBarButtonItem!

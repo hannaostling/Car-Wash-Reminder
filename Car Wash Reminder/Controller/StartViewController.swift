@@ -10,12 +10,7 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-    static let logic = Logic()
-    let logic = StartViewController.logic
-    
-    // let instanceOfLogic = Logic.sharedInstance
-    
-    // icons from https://www.freepik.com/free-vector/coloured-weather-icons-collection_895655.htm' Designed by Titusurya
+    let logic = Logic.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

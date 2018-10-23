@@ -11,6 +11,8 @@ import UIKit
 
 class Logic {
    
+    static let sharedInstance = Logic()
+    
     let user = User()
     let alert = Alert()
     let defaults = UserDefaults.standard

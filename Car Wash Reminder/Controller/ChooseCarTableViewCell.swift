@@ -10,7 +10,7 @@ import UIKit
 
 class ChooseCarTableViewCell: UITableViewCell {
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     
     @IBOutlet weak var carNameLabel: UILabel!
     

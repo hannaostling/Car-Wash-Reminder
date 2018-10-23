@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
     
-    let logic = StartViewController.logic
+    let logic = Logic.sharedInstance
     
     @IBOutlet weak var daysAgoLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
