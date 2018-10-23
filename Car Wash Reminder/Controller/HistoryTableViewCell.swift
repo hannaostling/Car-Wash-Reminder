@@ -26,7 +26,7 @@ class HistoryTableViewCell: UITableViewCell {
     func setHistory(lastWashed: Date) {
         let dateInString = getDateInString(date: lastWashed)
         dateLabel.text = dateInString
-        let daysAgoInt = logic.user.cars[logic.user.chosenCarIndex].howManyDaysAgo(date: lastWashed)
+        let daysAgoInt = logic.user.carObject.howManyDaysAgo(date: lastWashed)
         let daysAgoString = "\(daysAgoInt) dagar sedan"
         daysAgoLabel.text = daysAgoString
     }

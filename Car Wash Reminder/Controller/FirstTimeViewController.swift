@@ -22,7 +22,6 @@ class FirstTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        logic.readUserDefaults()
         pageControl.numberOfPages = messages.count
         label.text = messages[0]
     }

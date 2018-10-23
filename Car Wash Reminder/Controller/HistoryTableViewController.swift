@@ -13,6 +13,7 @@ class HistoryTableViewController: UITableViewController {
     @IBOutlet weak var sortButton: UIBarButtonItem!
 
     let logic = StartViewController.logic
+    var dates = [Date]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class HistoryTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         logic.readUserDefaults()
+        dates = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carWashedDates] as! [Date]
         tableView.reloadData()
     }
     
@@ -31,23 +33,20 @@ class HistoryTableViewController: UITableViewController {
     
     // Antal kolumner.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return logic.user.cars[logic.user.chosenCarIndex].washedDates.count
+        let amountOfRows = dates.count
+        return amountOfRows
     }
     
     // Konfiguera call.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.rowHeight = 100
         var reversedArray: [Date] = []
-        for date in logic.user.cars[logic.user.chosenCarIndex].washedDates.reversed() {
+        for date in dates.reversed() {
             reversedArray.append(date)
         }
         let lastWashed = reversedArray[indexPath.row]
         let historyCell = tableView.dequeueReusableCell(withIdentifier: "carHistory", for: indexPath) as! HistoryTableViewCell
         historyCell.setHistory(lastWashed: lastWashed)
-        
-//        let car = logic.user.cars[indexPath.row]
-//        let carHistoryCell = tableView.dequeueReusableCell(withIdentifier: "carHistory", for: indexPath) as! HistoryTableViewCell
-//        carHistoryCell.serCarHistory(car: car)
         return historyCell
     }
     

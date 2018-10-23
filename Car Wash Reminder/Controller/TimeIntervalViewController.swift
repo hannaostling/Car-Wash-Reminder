@@ -20,11 +20,12 @@ class TimeIntervalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationBar.topItem?.title = "Välj tidsintervall för \"\(logic.user.cars[logic.user.chosenCarIndex].name)\""
+        logic.readUserDefaults()
+        let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
+        navigationBar.topItem?.title = carName
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-        logic.readUserDefaults()
         // giveInformationAlert()
     }
     
@@ -34,12 +35,8 @@ class TimeIntervalViewController: UIViewController {
             logic.user.timeIntervalInWeeks = 1
         }
         logic.user.timeIntervalChoiseIsMade = true
-        logic.searchForGoodDayToWashCar = true
-        logic.user.cars[logic.user.chosenCarIndex].isNotClean = true
-        logic.defaults.set(logic.user.carObject.carDataDictionaryArray, forKey:logic.defaultsCarDataDictionaryArray)
         logic.defaults.set(logic.user.timeIntervalInWeeks, forKey:logic.defaultsUserTimeInterval)
         logic.defaults.set(logic.user.timeIntervalChoiseIsMade, forKey:logic.defaultsUserMadeChoice)
-        logic.defaults.set(logic.searchForGoodDayToWashCar, forKey:logic.defaultsSearchForGoodDayBool)
     }
     
     // Om användaren inte förstår vad det är för tidsintervall så kan man klicka på info för att få mer information.

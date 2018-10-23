@@ -50,6 +50,11 @@ class Car {
         return dataArray
     }
     
+    // Returnerar isNotClean bool av carArray
+    func giveCarIsNotCleanBool(carArray: [Car], carIndex: Int) -> Bool {
+        return carArray[carIndex].isNotClean
+    }
+    
     // Returnerar ett heltal hur många dagar har det gått sen ett inskickat datum.
     func howManyDaysAgo(date: Date) -> Int {
         let calendar = Calendar.current

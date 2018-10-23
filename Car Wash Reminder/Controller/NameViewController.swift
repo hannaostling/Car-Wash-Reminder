@@ -44,7 +44,9 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     
     // Vad som ska häna när användaren klickar på nästa, ovsett om det är från return button i textfield eller om det är knappen "nextButton".
     func next() {
-        let carIndex = logic.user.cars.count
+        logic.readUserDefaults()
+        let carArray = logic.user.carObject.giveCarArray(fromDictionaryArray: logic.user.carObject.carDataDictionaryArray)
+        let carIndex = carArray.count
         let carName = nameCarTextField.text!
         nameTheCar(carName: carName, carIndex: carIndex)
     }
@@ -54,20 +56,31 @@ class NameViewController: UIViewController, UITextFieldDelegate {
         var title = ""
         var message = ""
         if carName.count == 0 {
-            title = "Inget namn?"
-            let name = "Bilen"
-            message = "Om du inte vill namnge din bil kommer vi kalla den för \"\(name)\", är det okej?"
+            title = "För kort namn"
+            message = "Bilens namn måste bestå av minst 1 bokstav"
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Avbryt", style: UIAlertAction.Style.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
-                self.logic.user.cars.append(Car())
-                self.performSegue(withIdentifier: "fromNameCarToTime", sender: self)
-                self.logic.user.cars[carIndex].name = "\(name)"
-            }))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else if carName.count > 0 && carName.count < 9 {
-            logic.user.cars.append(Car())
-            logic.user.cars[carIndex].name = "\(carName)"
+            // Skapa array för test-objekt
+            var cars = [Car]()
+            for dataDictionary in logic.user.carObject.carDataDictionaryArray {
+                let car = Car(dataDictionary: dataDictionary)
+                cars.append(car)
+            }
+            // Skapa nytt car-objekt
+            let car = Car()
+            car.name = "\(carName)"
+            car.isNotClean = true
+            cars.append(car)
+            // Skapa ny array med dictionaries för att hålla all data som skall sparas
+            var carsDataArray = [[String:Any]]()
+            for car in cars {
+                let carDictionaryFromObject = car.dataDictionaryFromObject()
+                carsDataArray.append(carDictionaryFromObject)
+            }
+            // Sparar carsDataArray med user defaults
+            logic.defaults.set(carsDataArray, forKey: logic.defaultsCarDataDictionaryArray)
             performSegue(withIdentifier: "fromNameCarToTime", sender: self)
         } else {
             title = "För långt namn"
@@ -76,8 +89,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        logic.defaults.set(logic.user.carObject.carDataDictionaryArray, forKey: logic.defaultsCarDataDictionaryArray)
-        print("Antal bilar: \(logic.user.cars.count)")
+        print("Antal bilar: \(logic.user.carObject.carDataDictionaryArray.count)")
     }
 }
 
