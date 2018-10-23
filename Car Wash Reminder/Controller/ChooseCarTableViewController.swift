@@ -31,26 +31,39 @@ class ChooseCarTableViewController: UITableViewController {
     
     // Antal kolumner.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let amountOfRows = dates.count
+        let amountOfRows = logic.user.carObject.carDataDictionaryArray.count
         return amountOfRows
     }
     
     // Konfiguera call.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.rowHeight = 100
-        var reversedArray: [Date] = []
-        for date in dates.reversed() {
-            reversedArray.append(date)
-        }
-        let lastWashed = reversedArray[indexPath.row]
-        let historyCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
-        historyCell.setHistory(lastWashed: lastWashed)
-        return historyCell
+//        tableView.rowHeight = 100
+//        let car = Car()
+//        let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
+//        carCell.setCar(car: car)
+//        return carCell
+//        var reversedArray: [Date] = []
+//        for date in dates.reversed() {
+//            reversedArray.append(date)
+//        }
+//        let lastWashed = reversedArray[indexPath.row]
+//        let historyCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
+//        historyCell.setHistory(lastWashed: lastWashed)
+//        return historyCell
+    
+        let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath)
+        carCell.textLabel?.text = "Hej"
+        
+        return carCell
     }
     
     // Tillbaka knapp
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "fromChooseCarToNewCar", sender: self)
     }
     
 }

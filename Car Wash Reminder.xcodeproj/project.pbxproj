@@ -28,8 +28,8 @@
 		B59C2EFD21776788004C8C2D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2EFC21776788004C8C2D /* StartViewController.swift */; };
 		B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */; };
 		B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */; };
-		B5CF08AE217F441500380A01 /* ChooseCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF08AD217F441500380A01 /* ChooseCarTableViewCell.swift */; };
 		B5CF08B0217F442300380A01 /* ChooseCarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF08AF217F442200380A01 /* ChooseCarTableViewController.swift */; };
+		B5CF08B2217F50B200380A01 /* ChooseCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CF08B1217F50B200380A01 /* ChooseCarTableViewCell.swift */; };
 		B98595E24EE17793F3FDCE4F /* Pods_Car_Wash_ReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A825E9723537B9CE073E95 /* Pods_Car_Wash_ReminderUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +83,8 @@
 		B59C2EFC21776788004C8C2D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalViewController.swift; sourceTree = "<group>"; };
 		B59C2F00217768D5004C8C2D /* FirstTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeViewController.swift; sourceTree = "<group>"; };
-		B5CF08AD217F441500380A01 /* ChooseCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCarTableViewCell.swift; sourceTree = "<group>"; };
 		B5CF08AF217F442200380A01 /* ChooseCarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCarTableViewController.swift; sourceTree = "<group>"; };
+		B5CF08B1217F50B200380A01 /* ChooseCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCarTableViewCell.swift; sourceTree = "<group>"; };
 		D45007274A484B8866021403 /* Pods-Car Wash Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash Reminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder.release.xcconfig"; sourceTree = "<group>"; };
 		FC503CB61166EA8EBE291821 /* Pods-Car Wash ReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Wash ReminderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Car Wash ReminderUITests/Pods-Car Wash ReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,7 +205,7 @@
 				B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */,
 				B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */,
 				B5CF08AF217F442200380A01 /* ChooseCarTableViewController.swift */,
-				B5CF08AD217F441500380A01 /* ChooseCarTableViewCell.swift */,
+				B5CF08B1217F50B200380A01 /* ChooseCarTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -475,8 +475,8 @@
 				B507FCEA217E088F005E7321 /* NameViewController.swift in Sources */,
 				B59C2EFF217768B7004C8C2D /* TimeIntervalViewController.swift in Sources */,
 				B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */,
-				B5CF08AE217F441500380A01 /* ChooseCarTableViewCell.swift in Sources */,
 				B55776202179EB1D00C92F7F /* HistoryTableViewCell.swift in Sources */,
+				B5CF08B2217F50B200380A01 /* ChooseCarTableViewCell.swift in Sources */,
 				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
 				B550762E217961AE009F17BB /* Alert.swift in Sources */,
 				B557761E2179EADD00C92F7F /* HistoryTableViewController.swift in Sources */,

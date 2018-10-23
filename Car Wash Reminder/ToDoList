@@ -3,3 +3,4 @@ TO DO:
 * Fixa så man kan lägga till fler bilar
 * Flytta timeintervalInWeeks från user till user.cars[x]
 * Ta bort upprepningar (carName, readUserDefaults osv.)
+* Att knapparnas tillgänglighet körs varje sekund är inte nödvändigt

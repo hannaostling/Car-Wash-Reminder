@@ -24,7 +24,7 @@ class StartViewController: UIViewController {
         logic.readUserDefaults()
         let amountOfCars = logic.user.carObject.carDataDictionaryArray.count
         if logic.user.hasOpenedAppBefore == false && logic.user.timeIntervalChoiseIsMade == false {
-            performSegue(withIdentifier: "fromStartToFirst", sender: self)
+            performSegue(withIdentifier: "fromStartToNewCar", sender: self)
         } else if amountOfCars == 0 && logic.user.hasOpenedAppBefore == true {
             performSegue(withIdentifier: "fromStartToNameCar", sender: self)
         } else if logic.user.hasOpenedAppBefore == true && logic.user.timeIntervalChoiseIsMade == false && amountOfCars > 0 {

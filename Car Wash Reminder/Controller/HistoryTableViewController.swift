@@ -55,4 +55,9 @@ class HistoryTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // Byr bil knapp
+    @IBAction func changeCarButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "fromHistoryToChooseCar", sender: self)
+    }
+    
 }
