@@ -20,14 +20,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View" customClass="CSAnimationView">
                                 <rect key="frame" x="10.5" y="153" width="299" height="262"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
-                                        <rect key="frame" x="0.0" y="0.0" width="299" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="36"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-1V-mbE" userLabel="Weather Condition Image View">
-                                        <rect key="frame" x="0.0" y="8" width="299" height="254"/>
+                                        <rect key="frame" x="0.0" y="44" width="299" height="218"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -51,20 +51,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-o4-HOw">
-                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
-                                <color key="backgroundColor" red="0.29945462719999999" green="0.74508176810000004" blue="0.74418964659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="w3V-mL-7Fd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Klicka på mig när bilen är tvättad">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="washedCarButtonPressed:" destination="0ak-WH-AWR" eventType="touchUpInside" id="Kn4-32-NHD"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZh-XU-Ju5">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
@@ -108,18 +94,33 @@
                                     <constraint firstAttribute="height" constant="20" id="4da-pl-8pY"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-o4-HOw">
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                                <color key="backgroundColor" red="0.29945462719999999" green="0.74508176810000004" blue="0.74418964659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="qPA-AC-FNi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Klicka här när bilen är tvättad">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="washedCarButtonPressed:" destination="0ak-WH-AWR" eventType="touchUpInside" id="Kn4-32-NHD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9d9-Es-67Z" firstAttribute="trailing" secondItem="p7U-ke-TsU" secondAttribute="trailing" id="05T-6o-VAI"/>
+                            <constraint firstItem="k6f-o4-HOw" firstAttribute="leading" secondItem="puy-N0-ZnH" secondAttribute="leading" id="6e1-WX-ugB"/>
                             <constraint firstItem="p7U-ke-TsU" firstAttribute="top" secondItem="puy-N0-ZnH" secondAttribute="top" id="D5u-qx-NtS"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="Lwe-jD-pUj"/>
-                            <constraint firstItem="k6f-o4-HOw" firstAttribute="leading" secondItem="9d9-Es-67Z" secondAttribute="leading" id="Rdm-hg-pKD"/>
-                            <constraint firstItem="k6f-o4-HOw" firstAttribute="trailing" secondItem="9d9-Es-67Z" secondAttribute="trailing" id="TTW-fT-dUO"/>
                             <constraint firstItem="zZh-XU-Ju5" firstAttribute="trailing" secondItem="9d9-Es-67Z" secondAttribute="trailing" id="VAp-qv-bz3"/>
                             <constraint firstItem="zZh-XU-Ju5" firstAttribute="leading" secondItem="9d9-Es-67Z" secondAttribute="leading" id="VSk-DP-p16"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="bMB-DE-7ZP"/>
                             <constraint firstItem="zZh-XU-Ju5" firstAttribute="top" secondItem="p7U-ke-TsU" secondAttribute="bottom" id="gMx-Fs-zzR"/>
-                            <constraint firstItem="k6f-o4-HOw" firstAttribute="bottom" secondItem="9d9-Es-67Z" secondAttribute="bottom" id="nme-ML-NOo"/>
+                            <constraint firstAttribute="bottom" secondItem="k6f-o4-HOw" secondAttribute="bottom" id="gQC-fx-tZa"/>
+                            <constraint firstAttribute="trailing" secondItem="k6f-o4-HOw" secondAttribute="trailing" id="qqB-Xt-R6j"/>
                             <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="9d9-Es-67Z" secondAttribute="centerX" id="tQ9-zL-6Wt"/>
                             <constraint firstItem="p7U-ke-TsU" firstAttribute="leading" secondItem="9d9-Es-67Z" secondAttribute="leading" id="uDj-M8-kpg"/>
                         </constraints>
@@ -141,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3A7-PX-xFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="256"/>
+            <point key="canvasLocation" x="4160.625" y="255.63380281690141"/>
         </scene>
         <!--Senast tvättad-->
         <scene sceneID="BYr-4W-9PI">
@@ -217,20 +218,20 @@
         <scene sceneID="4Bz-t5-dFz">
             <objects>
                 <tableViewController title="Choose car" id="UIc-pn-SVi" customClass="ChooseCarTableViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fQm-aO-su8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="fQm-aO-su8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="car" rowHeight="50" id="lE0-eF-HPO" customClass="ChooseCarTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="car" rowHeight="50" id="lE0-eF-HPO" customClass="ChooseCarTableViewCell" customModule="Car_Wash_Reminder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lE0-eF-HPO" id="Zg0-MN-3sG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWk-JK-vkx">
-                                            <rect key="frame" x="16" y="11" width="288" height="28"/>
+                                            <rect key="frame" x="16" y="11" width="262" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
