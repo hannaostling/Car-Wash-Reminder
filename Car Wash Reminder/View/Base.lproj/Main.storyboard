@@ -363,7 +363,7 @@
                                 </state>
                                 <connections>
                                     <action selector="okButtonPressed:" destination="jEy-Om-slK" eventType="touchUpInside" id="NA0-oL-ELQ"/>
-                                    <segue destination="zUf-Zf-8UV" kind="presentation" id="1E9-OY-L6y"/>
+                                    <segue destination="zUf-Zf-8UV" kind="show" id="1E9-OY-L6y"/>
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ii7-Ca-jsP">
@@ -2125,9 +2125,9 @@ AXHnA
         <image name="umbrella" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aLP-tT-424"/>
+        <segue reference="1E9-OY-L6y"/>
         <segue reference="k95-FJ-3VD"/>
-        <segue reference="mL8-d2-1FJ"/>
+        <segue reference="Z1e-us-Qgx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29945462719161448" green="0.74508176813471505" blue="0.74418964664599907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
