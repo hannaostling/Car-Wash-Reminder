@@ -18,28 +18,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cux-lF-BXk" userLabel="Weather Data View" customClass="CSAnimationView">
-                                <rect key="frame" x="10.5" y="153" width="299" height="262"/>
+                                <rect key="frame" x="8" y="70" width="304" height="428"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-vw-HEN">
-                                        <rect key="frame" x="0.0" y="0.0" width="299" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-1V-mbE" userLabel="Weather Condition Image View">
-                                        <rect key="frame" x="0.0" y="8" width="299" height="254"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="JB2-1V-mbE" userLabel="Weather Condition Image View">
+                                        <rect key="frame" x="0.0" y="0.0" width="304" height="428"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="JB2-1V-mbE" firstAttribute="leading" secondItem="cux-lF-BXk" secondAttribute="leading" id="6QG-7d-hgK"/>
-                                    <constraint firstAttribute="height" constant="262" id="AMk-4V-FtA"/>
-                                    <constraint firstAttribute="trailing" secondItem="JB2-1V-mbE" secondAttribute="trailing" id="DUB-pT-hlo"/>
-                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="leading" secondItem="cux-lF-BXk" secondAttribute="leading" id="HWW-Zp-ELi"/>
-                                    <constraint firstAttribute="bottom" secondItem="JB2-1V-mbE" secondAttribute="bottom" id="SbT-FV-wU0"/>
-                                    <constraint firstItem="JB2-1V-mbE" firstAttribute="top" secondItem="e5E-vw-HEN" secondAttribute="bottom" constant="8" id="YRd-BO-KQD"/>
-                                    <constraint firstItem="e5E-vw-HEN" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="top" id="mgd-az-ALH"/>
-                                    <constraint firstAttribute="trailing" secondItem="e5E-vw-HEN" secondAttribute="trailing" id="wJT-vL-nEp"/>
-                                    <constraint firstAttribute="width" constant="299" id="wMi-bT-v4h"/>
+                                    <constraint firstAttribute="trailing" secondItem="JB2-1V-mbE" secondAttribute="trailing" id="Bsj-qy-X5f"/>
+                                    <constraint firstItem="JB2-1V-mbE" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="top" id="Mjp-Oi-C9Q"/>
+                                    <constraint firstItem="JB2-1V-mbE" firstAttribute="leading" secondItem="cux-lF-BXk" secondAttribute="leading" id="QB2-BG-ai7"/>
+                                    <constraint firstAttribute="bottom" secondItem="JB2-1V-mbE" secondAttribute="bottom" id="ZoQ-3F-qVs"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="type" value="pop"/>
@@ -55,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <color key="backgroundColor" red="0.29945462719999999" green="0.74508176810000004" blue="0.74418964659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="qPA-AC-FNi"/>
+                                    <constraint firstAttribute="height" constant="70" id="voM-0b-P8b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Klicka här när bilen är tvättad">
@@ -68,12 +57,14 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="k6f-o4-HOw" firstAttribute="leading" secondItem="puy-N0-ZnH" secondAttribute="leading" id="6e1-WX-ugB"/>
-                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="Lwe-jD-pUj"/>
-                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="bMB-DE-7ZP"/>
-                            <constraint firstAttribute="bottom" secondItem="k6f-o4-HOw" secondAttribute="bottom" id="gQC-fx-tZa"/>
-                            <constraint firstAttribute="trailing" secondItem="k6f-o4-HOw" secondAttribute="trailing" id="qqB-Xt-R6j"/>
-                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="9d9-Es-67Z" secondAttribute="centerX" id="tQ9-zL-6Wt"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="leading" secondItem="9d9-Es-67Z" secondAttribute="leading" constant="8" id="1Ce-zU-QK5"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerX" secondItem="puy-N0-ZnH" secondAttribute="centerX" id="25V-tH-A7L"/>
+                            <constraint firstAttribute="trailing" secondItem="k6f-o4-HOw" secondAttribute="trailing" id="3lW-H4-jq7"/>
+                            <constraint firstAttribute="bottom" secondItem="k6f-o4-HOw" secondAttribute="bottom" id="7oJ-h6-XeY"/>
+                            <constraint firstItem="cux-lF-BXk" firstAttribute="centerY" secondItem="puy-N0-ZnH" secondAttribute="centerY" id="Bbc-EL-FFh"/>
+                            <constraint firstItem="k6f-o4-HOw" firstAttribute="top" secondItem="cux-lF-BXk" secondAttribute="bottom" id="gCg-lL-YA7"/>
+                            <constraint firstItem="9d9-Es-67Z" firstAttribute="trailing" secondItem="cux-lF-BXk" secondAttribute="trailing" constant="8" id="pbw-JE-A3j"/>
+                            <constraint firstItem="k6f-o4-HOw" firstAttribute="leading" secondItem="puy-N0-ZnH" secondAttribute="leading" id="w25-OA-znQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9d9-Es-67Z"/>
                     </view>
@@ -91,7 +82,7 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PZG-Lf-wjW">
                             <rect key="frame" x="143" y="7.5" width="126" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -111,7 +102,6 @@
                     <connections>
                         <outlet property="citySegmentControl" destination="PZG-Lf-wjW" id="Zue-fw-ts5"/>
                         <outlet property="forecastButton" destination="kao-HT-q7I" id="ygu-qt-i4Q"/>
-                        <outlet property="temperatureLabel" destination="e5E-vw-HEN" id="XVI-xZ-qst"/>
                         <outlet property="washedCarButton" destination="k6f-o4-HOw" id="j3f-4p-I57"/>
                         <outlet property="weatherDataView" destination="JB2-1V-mbE" id="UTu-xJ-Uzm"/>
                         <outlet property="weatherIcon" destination="JB2-1V-mbE" id="p1G-yA-mDk"/>
@@ -262,7 +252,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJ4-fn-yLZ">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJ4-fn-yLZ">
                                 <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <color key="backgroundColor" red="0.29945462719999999" green="0.74508176810000004" blue="0.74418964659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -273,7 +263,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="xk6-Yp-IJN" eventType="touchUpInside" id="jyA-D2-bdx"/>
                                     <segue destination="0ak-WH-AWR" kind="show" id="mL8-d2-1FJ"/>
                                 </connections>
                             </button>
@@ -301,12 +290,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="FJ4-fn-yLZ" id="ai2-55-c2a"/>
                         <outlet property="weeksPickerView" destination="Hmk-1k-UZb" id="P17-6G-Jka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfw-1f-oiC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="-538"/>
+            <point key="canvasLocation" x="4161" y="-488"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gra-bL-WvJ">
@@ -456,7 +446,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="xk6-Yp-IJN" eventType="touchUpInside" id="aGA-aO-eEs"/>
                                     <action selector="nextButtonPressed:" destination="zUf-Zf-8UV" eventType="touchUpInside" id="Apc-15-Clv"/>
                                 </connections>
                             </button>
@@ -485,7 +474,7 @@
                     <connections>
                         <outlet property="nameCarTextField" destination="9M4-0g-F2X" id="b3A-fu-u51"/>
                         <outlet property="nextButton" destination="gmF-Yv-d0o" id="37c-w3-MRJ"/>
-                        <segue destination="xk6-Yp-IJN" kind="show" identifier="fromNameCarToTime" id="Nxt-B4-Spy"/>
+                        <segue destination="xk6-Yp-IJN" kind="show" identifier="fromNameCarToTime" id="VMA-bf-JFP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izu-K1-pea" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2122,12 +2111,13 @@ AXHnA
         <image name="change" width="50" height="50"/>
         <image name="history" width="40" height="40"/>
         <image name="left" width="37.5" height="37.5"/>
+        <image name="sunny" width="245.75999450683594" height="245.75999450683594"/>
         <image name="umbrella" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1E9-OY-L6y"/>
+        <segue reference="TqX-6o-BCo"/>
         <segue reference="k95-FJ-3VD"/>
-        <segue reference="Z1e-us-Qgx"/>
+        <segue reference="mL8-d2-1FJ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.29945462719161448" green="0.74508176813471505" blue="0.74418964664599907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
