@@ -14,7 +14,6 @@ class Logic {
     static let sharedInstance = Logic()
     
     let user = User()
-    let alert = Alert()
     let defaults = UserDefaults.standard
     let FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?"
     let APP_ID = "8d3cdc147cc33854e24e8e8c15f128cb"
@@ -26,8 +25,8 @@ class Logic {
     // User defaults nycklar.
     let defaultsUserLastSearchedCity = "defaultsUserLastSearchedCity"
     let defaultsUserLastPositionCity = "letdefaultsUserLastPositionCity"
-    let defaultsUserTimeInterval = "defaultsUserTimeInterval"
-    let defaultsUserMadeChoice = "defaultsUserMadeChoice"
+    //let defaultsUserTimeInterval = "defaultsUserTimeInterval"
+    //let defaultsUserMadeChoice = "defaultsUserMadeChoice"
     let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
     let defaultsCityParams = "defaultsCityParams"
     let defaultsPositionParams = "defaultsPositionParams"
@@ -43,10 +42,9 @@ class Logic {
     
     // Kollar om det är bra dag att tvätta bilen eller inte.
     @objc func runsEverySecond() {
-        //self.readUserDefaults()
         let appIsSearching = shouldAppSearchForGoodDate()
-        let carIsCleanDate = user.carObject.carDataDictionaryArray[user.chosenCarIndex][user.carObject.carIsNotCleanDate] as! Date
-        var carIsCleanBool = user.carObject.carDataDictionaryArray[user.chosenCarIndex][user.carObject.carIsNotCleanBool] as! Bool
+        let carIsCleanDate = getCarIsDirtyDate(withCarIndex: user.chosenCarIndex)
+        var carIsCleanBool = getCarIsDirtyBool(withCarIndex: user.chosenCarIndex)
         if carIsCleanBool == true && noRainTodayAndTomorrow == true && appIsSearching == true {
             washToday = true
         } else {
@@ -55,7 +53,6 @@ class Logic {
         if carIsCleanDate == Date() {
             carIsCleanBool = true
         }
-        //logicDelegate?.notifyUser(washToday: washToday)
         logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
     }
     
@@ -98,14 +95,6 @@ class Logic {
             user.hasOpenedAppBefore = savedUserOpenedAppBefore
             print("• User has opened app before: \(user.hasOpenedAppBefore)")
         }
-        if let noChoise = defaults.bool(forKey: defaultsUserMadeChoice) as Bool? {
-            user.timeIntervalChoiseIsMade = noChoise
-            print("• User has made a timeinterval choise: \(user.timeIntervalChoiseIsMade)")
-        }
-        if let savedUserTimeIntervalInWeeks = defaults.integer(forKey: defaultsUserTimeInterval) as Int? {
-            user.timeIntervalInWeeks = savedUserTimeIntervalInWeeks
-            print("• User timeinterval in weeks: \(user.timeIntervalInWeeks)")
-        }
         if let savedUserSearchAgainDate = defaults.object(forKey: defaultsSearchForGoodDayDate) {
             user.startSearchingDate = savedUserSearchAgainDate as! Date
             print("• App start searching: \(user.startSearchingDate)")
@@ -133,19 +122,91 @@ class Logic {
             print("• User amount of cars: \(user.carObject.carDataDictionaryArray.count)")
             if user.carObject.carDataDictionaryArray.count > 0 {
                 for i in 0...user.carObject.carDataDictionaryArray.count-1 {
-                    let carName = user.carObject.carDataDictionaryArray[i][user.carObject.carName] as! String
-                    let carNotClean = user.carObject.carDataDictionaryArray[i][user.carObject.carIsNotCleanBool] as! Bool
+                    let carName = getCarName(withCarIndex: i)
+                    let carIsDirty = getCarIsDirtyBool(withCarIndex: i)
+                    let carTimeInterval = getCarTimeInterval(withCarIndex: i)
                     print("• Car \(i+1) name: \(carName)")
-                    print("• Car \(i+1) is not clean: \(carNotClean)")
+                    print("• Car \(i+1) is dirty: \(carIsDirty)")
+                    print("• Car \(i+1) time interval: \(carTimeInterval)")
                 }
             }
         }
+    }
+    
+    // Returnera bilens (carName) med ett visst index
+    func getCarName(withCarIndex: Int) -> String {
+        let carName = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carName] as! String
+        return carName
+    }
+    
+    // Returnera bilens (carIsDirtyBool) med ett visst index
+    func getCarIsDirtyBool(withCarIndex: Int) -> Bool {
+        let carIsDirtyBool = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carIsDirtyBool] as! Bool
+        return carIsDirtyBool
+    }
+    
+    // Returnera bilens (carIsDirtyDate) med ett visst index
+    func getCarIsDirtyDate(withCarIndex: Int) -> Date {
+        let carIsDirtynDate = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carIsDirtyDate] as! Date
+        return carIsDirtynDate
+    }
+    
+    // Returnera bilens (carTimeInterval) med ett visst index
+    func getCarTimeInterval(withCarIndex: Int) -> Int {
+        let carTimeInterval = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carTimeInterval] as! Int
+        return carTimeInterval
+    }
+    
+    // Returnera en array av alla bilar
+    func getCarArray() -> [Car] {
+        let dictionaryArray = user.carObject.carDataDictionaryArray
+        var dataArray = [Car]()
+        for dictionary in dictionaryArray {
+            let test = Car(dataDictionary: dictionary)
+            dataArray.append(test)
+        }
+        return dataArray
+    }
+    
+    func getStatus(withCarIndex: Int) -> String {
+        readUserDefaults()
+        let carName = getCarName(withCarIndex: withCarIndex)
+        let carIsDirtyBool = getCarIsDirtyBool(withCarIndex: withCarIndex)
+        let startSearchingDate = user.howManyDaysToSearchingDate()
+        let shouldAppSearch = shouldAppSearchForGoodDate()
+        var washTodayStatus = ""
+        var rainStatus = ""
+        var carCleanSatus = ""
+        var appIsSearching = ""
+        if washToday == true {
+            washTodayStatus = "Tvätta \"\(carName)\" idag 👍🏽"
+        } else {
+            washTodayStatus = "Tvätta inte \"\(carName)\" idag 👎🏽"
+        }
+        if noRainTodayAndTomorrow == true {
+            rainStatus = "✓ Bra väder både idag och imorgon"
+        } else {
+            rainStatus = "✕ Dåligt väder idag eller imorgon"
+        }
+        if carIsDirtyBool == true {
+            carCleanSatus = "✓ Bilen är inte tvättad nyligen"
+        } else {
+            carCleanSatus = "✕ Bilen är tvättad nyligen"
+        }
+        if shouldAppSearch == true {
+            appIsSearching = "✓ Appen söker just nu efter en bra dag att tvätta bilen"
+        } else {
+            appIsSearching = "✕ Det är \(startSearchingDate) dagar kvar tills appen börjar söka efter en bra dag att tvätta bilen"
+        }
+        let status = "Status: \n \(washTodayStatus) \n \(rainStatus) \n \(carCleanSatus) \n \(appIsSearching)"
+        return status
     }
     
     // Fråga användaren efter tillstånd att få skicka notiser.
     func askForNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
     }
+    
 }
 
 protocol LogicDelegate {
