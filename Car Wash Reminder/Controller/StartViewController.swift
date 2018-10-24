@@ -15,23 +15,21 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        logic.readUserDefaults()
         performSegueBasedOnUserStatus()
     }
 
-    // Kollar om användaren har öppnat appen tidigare samt om användaren gjort ett tidsintervall eller inte.
     func performSegueBasedOnUserStatus() {
-        logic.readUserDefaults()
-        let amountOfCars = logic.user.carObject.carDataDictionaryArray.count
-        if logic.user.hasOpenedAppBefore == false && logic.user.timeIntervalChoiseIsMade == false {
+        let userStatus = logic.user.checkUserStatus()
+        switch userStatus {
+        case .firstTime:
             performSegue(withIdentifier: "fromStartToFirst", sender: self)
-        } else if amountOfCars == 0 && logic.user.hasOpenedAppBefore == true {
+        case .nameFirstCar:
             performSegue(withIdentifier: "fromStartToNewCar", sender: self)
-        } else if logic.user.hasOpenedAppBefore == true && logic.user.timeIntervalChoiseIsMade == false && amountOfCars > 0 {
+        case .setTimeIntervalForFirstCar:
             performSegue(withIdentifier: "fromStartToTime", sender: self)
-        } else {
+        case .userHasAtLeastOneCar:
             performSegue(withIdentifier: "fromStartToHome", sender: self)
         }
-        
     }
-
 }

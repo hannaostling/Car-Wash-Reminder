@@ -47,7 +47,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     // Vad som ska häna när användaren klickar på nästa, ovsett om det är från return button i textfield eller om det är knappen "nextButton".
     func next() {
         logic.readUserDefaults()
-        let carArray = logic.user.carObject.giveCarArray(fromDictionaryArray: logic.user.carObject.carDataDictionaryArray)
+        let carArray = logic.getCarArray()
         let carIndex = carArray.count
         let carName = nameCarTextField.text!
         nameTheCar(carName: carName, carIndex: carIndex)
@@ -73,11 +73,10 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             // Skapa nytt car-objekt
             let car = Car()
             car.name = "\(carName)"
-            car.isNotClean = true
-            car.id = cars.count
+            car.isDirty = true
             cars.append(car)
             // Sätt användarens chosenCarIndex till samma som nya bilens id
-            logic.user.chosenCarIndex = car.id
+            logic.user.chosenCarIndex = cars.count-1
             logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
             // Skapa ny array med dictionaries för att hålla all data som skall sparas
             var carsDataArray = [[String:Any]]()

@@ -21,7 +21,7 @@ class HistoryTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         logic.readUserDefaults()
         dates = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carWashedDates] as! [Date]
-        let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
+        let carName = logic.getCarName(withCarIndex: logic.user.chosenCarIndex)
         title = "\(carName) senast tvättad"
         tableView.reloadData()
     }

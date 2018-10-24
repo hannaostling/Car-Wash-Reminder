@@ -13,7 +13,6 @@
 		B54940802170EC3300EB3F11 /* ToDoList in Resources */ = {isa = PBXBuildFile; fileRef = B549407F2170EC3300EB3F11 /* ToDoList */; };
 		B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940812170ECCF00EB3F11 /* WeatherData.swift */; };
 		B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940832170ECFB00EB3F11 /* HomeViewController.swift */; };
-		B550762E217961AE009F17BB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550762D217961AE009F17BB /* Alert.swift */; };
 		B557761E2179EADD00C92F7F /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */; };
 		B55776202179EB1D00C92F7F /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */; };
 		B573C718216B80B400754AA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C717216B80B400754AA6 /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 		B549407F2170EC3300EB3F11 /* ToDoList */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoList; sourceTree = "<group>"; };
 		B54940812170ECCF00EB3F11 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		B54940832170ECFB00EB3F11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B550762D217961AE009F17BB /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		B573C714216B80B400754AA6 /* Car Wash Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Wash Reminder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,7 +224,6 @@
 				B58A5309216E017E00184750 /* User.swift */,
 				B58A530B216E28E100184750 /* Car.swift */,
 				B54940812170ECCF00EB3F11 /* WeatherData.swift */,
-				B550762D217961AE009F17BB /* Alert.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,7 +475,6 @@
 				B55776202179EB1D00C92F7F /* HistoryTableViewCell.swift in Sources */,
 				B5CF08B2217F50B200380A01 /* ChooseCarTableViewCell.swift in Sources */,
 				B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */,
-				B550762E217961AE009F17BB /* Alert.swift in Sources */,
 				B557761E2179EADD00C92F7F /* HistoryTableViewController.swift in Sources */,
 				B59C2F01217768D5004C8C2D /* FirstTimeViewController.swift in Sources */,
 				B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */,

@@ -37,7 +37,7 @@ class ChooseCarTableViewController: UITableViewController {
     
     // Konfiguera call.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let carArray = logic.user.carObject.giveCarArray(fromDictionaryArray: logic.user.carObject.carDataDictionaryArray)
+        let carArray = logic.getCarArray()
         let car = carArray[indexPath.row]
         let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
         carCell.setCar(car: car)
@@ -48,7 +48,7 @@ class ChooseCarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         logic.user.chosenCarIndex = indexPath.row
         logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
-        let carName = logic.user.carObject.carDataDictionaryArray[indexPath.row][logic.user.carObject.carName] as! String
+        let carName = logic.getCarName(withCarIndex: indexPath.row)
         let title = "Ditt val är sparat"
         let message = "Nu visas information för \"\(carName)\""
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
