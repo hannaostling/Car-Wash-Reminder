@@ -17,13 +17,14 @@ class FirstTimeViewController: UIViewController {
     
     var index = 0
     let logic = Logic.sharedInstance
-    let messages = ["Det här är en app för dig som vill slippa tänka på när du behöver tvätta din bil.","Appen kommer ge dig en notis varje gång vädret är bra samma dag och dagen efter.","Du kan markera din bil som tvättad så pausar appens sökande i ett tidsintervall som du själv väljer i nästa steg.", "För att appen ska fungera måste du alltså tillåta notiser, är det okej?"]
+    let messages = ["Det här är en app för dig som vill slippa tänka på när du behöver tvätta din bil.", "Appen kommer ge dig en notis varje gång vädret är bra samma dag och dagen efter.", "Du kan markera din bil som tvättad så pausar appens sökande i ett tidsintervall som du själv väljer i nästa steg.", "För att appen ska fungera måste du alltså tillåta notiser, är det okej?"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         pageControl.numberOfPages = messages.count
         label.text = messages[0]
+        messageView.layer.cornerRadius = messageView.frame.height/5
     }
   
     // Sätt texten till samma sida som pageControll
