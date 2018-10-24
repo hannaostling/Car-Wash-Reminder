@@ -1,10 +1,16 @@
 TO DO:
-* Swipe istället för knappar i början - eller tydliga knappar med "nästa" och "föregående"
 * Flytta timeintervalInWeeks från user till user.cars[x]
 * Ta bort upprepningar (carName, readUserDefaults osv.)
 * Att knapparnas tillgänglighet körs varje sekund är inte nödvändigt
 * Searchbar automatiskt försvinn istället för att man måste trycka?
 * Prognos i bakgrunden också, bara simpelt om man kan tvätta eller inte
-* Större temperatur-label
 * Tableview i tableview
 * Gör bilderna lite mindre så det inte laddar så mycket
+* Navigation bar safe area (speciellt iPhone X)
+* Lägg till app ikon
+* Kolla upp licens gällande väder-ikon (kanske i app store beskrivning eller information i appen)
+
+Viktigast
+* Större temperatur-label
+* Ingen prognos som alert, ha i view
+* Bygga om till samma navigationController (samma stack) pop istället för dismiss
