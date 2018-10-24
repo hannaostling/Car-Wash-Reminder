@@ -12,8 +12,6 @@ import UIKit
 class User {
 
     var startSearchingDate = Date()
-    var timeIntervalInWeeks: Int = 0
-    var timeIntervalChoiseIsMade: Bool = false
     var hasOpenedAppBefore: Bool = false
     var lastSearchedCity: String = ""
     var lastPositionCity: String = ""
@@ -47,16 +45,41 @@ class User {
         let currentDate = Date()
         startSearchingDate = calendar.date(byAdding: .day, value: daysToAdd, to: currentDate)!
         let carNotWashedRecently = daysToAdd - 6
-        var isNotCleanDate = carObject.carDataDictionaryArray[chosenCarIndex][carObject.carIsNotCleanDate] as! Date
-        isNotCleanDate = calendar.date(byAdding: .day, value: carNotWashedRecently, to: currentDate)!
+        var isDirtyDate = carObject.carDataDictionaryArray[chosenCarIndex][carObject.carIsDirtyDate] as! Date
+        isDirtyDate = calendar.date(byAdding: .day, value: carNotWashedRecently, to: currentDate)!
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         let currentDateInString = formatter.string(from: Date())
-        let carIsNotCleanDate = formatter.string(from: isNotCleanDate)
+        let carIsDirtyDate = formatter.string(from: isDirtyDate)
         let startSearchingDateInString = formatter.string(from: startSearchingDate)
         print("Dagens datum: \(currentDateInString)")
-        print("Bilen räknas som smutsig igen: \(carIsNotCleanDate)")
+        print("Bilen räknas som smutsig igen: \(carIsDirtyDate)")
         print("Appen börjar leta efter bra datum: \(startSearchingDateInString)")
     }
     
+    func checkUserStatus() -> UserStatus {
+        let amountOfCars = carObject.carDataDictionaryArray.count
+        if amountOfCars == 0 {
+            if hasOpenedAppBefore == false {
+                return .firstTime
+            } else {
+                return .nameFirstCar
+            }
+        } else {
+            let firstCarTimeInterval = carObject.carDataDictionaryArray[0][carObject.carTimeInterval] as! Int
+            if firstCarTimeInterval == 0 {
+                return .setTimeIntervalForFirstCar
+            } else {
+                return .userHasAtLeastOneCar
+            }
+        }
+    }
+    
+}
+
+enum UserStatus {
+    case firstTime
+    case nameFirstCar
+    case setTimeIntervalForFirstCar
+    case userHasAtLeastOneCar
 }

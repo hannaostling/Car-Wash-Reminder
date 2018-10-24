@@ -10,50 +10,38 @@ import Foundation
 
 class Car {
 
-    var id: Int = 0
     var name: String = "Bilen"
-    var isNotClean: Bool = true
-    var isNotCleanDate = Date()
+    var isDirty: Bool = true
+    var isDirtyDate = Date()
     var washedDates: [Date] = []
+    var timeIntervalInWeeks: Int = 0
     var carDataDictionaryArray = [[String:Any]]()
     
     // Dictionary nycklar
     let carName = "carName"
-    let carIsNotCleanBool = "carIsNotCleanBool"
-    let carIsNotCleanDate = "carIsNotCleanDate"
+    let carIsDirtyBool = "carIsDirtyBool"
+    let carIsDirtyDate = "carIsDirtyDate"
     let carWashedDates = "carWashedDates"
+    let carTimeInterval = "carTimeInterval"
     
     init() {}
     
     init(dataDictionary:[String:Any]) {
         name = dataDictionary[carName] as! String
-        isNotClean = dataDictionary[carIsNotCleanBool] as! Bool
-        isNotCleanDate = dataDictionary[carIsNotCleanDate] as! Date
+        isDirty = dataDictionary[carIsDirtyBool] as! Bool
+        isDirtyDate = dataDictionary[carIsDirtyDate] as! Date
         washedDates = dataDictionary[carWashedDates] as! [Date]
+        timeIntervalInWeeks = dataDictionary[carTimeInterval] as! Int
     }
     
     func dataDictionaryFromObject() -> [String:Any] {
         var dictionary = [String:Any]()
         dictionary[carName] = name
-        dictionary[carIsNotCleanBool] = isNotClean
-        dictionary[carIsNotCleanDate] = isNotCleanDate
+        dictionary[carIsDirtyBool] = isDirty
+        dictionary[carIsDirtyDate] = isDirtyDate
         dictionary[carWashedDates] = washedDates
+        dictionary[carTimeInterval] = timeIntervalInWeeks
         return dictionary
-    }
-    
-    // Returnerar carArray av dictionaryArray
-    func giveCarArray(fromDictionaryArray: [[String:Any]]) -> [Car] {
-        var dataArray = [Car]()
-        for dictionary in fromDictionaryArray {
-            let test = Car(dataDictionary: dictionary)
-            dataArray.append(test)
-        }
-        return dataArray
-    }
-    
-    // Returnerar isNotClean bool av carArray
-    func giveCarIsNotCleanBool(carArray: [Car], carIndex: Int) -> Bool {
-        return carArray[carIndex].isNotClean
     }
     
     // Returnerar ett heltal hur många dagar har det gått sen ett inskickat datum.
