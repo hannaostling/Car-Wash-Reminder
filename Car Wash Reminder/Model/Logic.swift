@@ -43,7 +43,7 @@ class Logic {
     
     // Kollar om det är bra dag att tvätta bilen eller inte.
     @objc func runsEverySecond() {
-        self.readUserDefaults()
+        //self.readUserDefaults()
         let appIsSearching = shouldAppSearchForGoodDate()
         let carIsCleanDate = user.carObject.carDataDictionaryArray[user.chosenCarIndex][user.carObject.carIsNotCleanDate] as! Date
         var carIsCleanBool = user.carObject.carDataDictionaryArray[user.chosenCarIndex][user.carObject.carIsNotCleanBool] as! Bool
@@ -55,7 +55,7 @@ class Logic {
         if carIsCleanDate == Date() {
             carIsCleanBool = true
         }
-        logicDelegate?.notifyUser(washToday: washToday)
+        //logicDelegate?.notifyUser(washToday: washToday)
         logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
     }
     
