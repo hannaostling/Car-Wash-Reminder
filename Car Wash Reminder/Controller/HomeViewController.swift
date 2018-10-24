@@ -34,7 +34,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         logic.logicDelegate = self
         logic.askForNotificationPermission()
         logic.checkIfUserShouldWashCar()

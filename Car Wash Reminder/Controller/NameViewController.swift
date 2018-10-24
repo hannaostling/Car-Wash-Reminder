@@ -17,6 +17,8 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.hideKeyboardWhenTappedAround()
         nameCarTextField.delegate = self
         nextButton.isEnabled = false

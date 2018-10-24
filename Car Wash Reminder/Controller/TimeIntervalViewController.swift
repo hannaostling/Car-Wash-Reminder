@@ -12,21 +12,20 @@ import UserNotifications
 class TimeIntervalViewController: UIViewController {
 
     @IBOutlet weak var weeksPickerView: UIPickerView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
     let logic = Logic.sharedInstance
     var timeIntervals = ["Varje vecka", "Varannan vecka"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         logic.readUserDefaults()
         let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
-        navigationBar.topItem?.title = carName
+        title = "Välj tidsintervall för \(carName)"
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-        // giveInformationAlert()
     }
     
     // När använvaren väljer tidsintervall och klickar på "klar" så sparas tidsintervallet som ett heltal i logis.user.timeIntervalInWeeks.

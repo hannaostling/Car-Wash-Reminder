@@ -13,4 +13,3 @@ TO DO:
 Viktigast
 * Större temperatur-label
 * Ingen prognos som alert, ha i view
-* Bygga om till samma navigationController (samma stack) pop istället för dismiss

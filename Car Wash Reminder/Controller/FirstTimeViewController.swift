@@ -21,7 +21,8 @@ class FirstTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         pageControl.numberOfPages = messages.count
         label.text = messages[0]
         messageView.layer.cornerRadius = messageView.frame.height/5

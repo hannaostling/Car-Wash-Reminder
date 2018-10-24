@@ -52,7 +52,7 @@ class HistoryTableViewController: UITableViewController {
     
     // Tillbaka knapp
     @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // Byr bil knapp
