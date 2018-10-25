@@ -31,6 +31,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var weatherDataView: UIImageView!
     @IBOutlet weak var washedCarButton: UIButton!    
     @IBOutlet weak var citySegmentControl: UISegmentedControl!
+    @IBOutlet weak var statusForCarLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             let carArray = self.logic.getCarArray()
             let car = carArray[carIndex]
             // Ändrar det vi vill ändra
-            car.isDirty = false
+            car.isDirtyBool = false
             car.isDirtyDate = self.logic.user.carObject.carDataDictionaryArray[carIndex][self.logic.user.carObject.carIsDirtyDate] as! Date
             car.washedDates = self.logic.user.carObject.carDataDictionaryArray[carIndex][self.logic.user.carObject.carWashedDates] as! [Date]
             car.washedDates.append(Date())
@@ -114,10 +115,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             // Sparar
             self.logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
             title = "Kanon"
+            let carName = self.logic.getCarName(withCarIndex: self.logic.user.chosenCarIndex)
             if carTimeInterval == 1 {
-                message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(carTimeInterval) vecka igen!"
+                message = "Om en vecka börjar appen leta efter ett nytt bra tillfälle att tvätta \(carName)!"
             } else {
-                message = "Jag börjar leta efter en ny bra dag att tvätta bilen om \(carTimeInterval) veckor igen!"
+                message = "Om \(carTimeInterval) veckor börjar appen leta efter ett nytt bra tillfälle att tvätta \(carName)!"
             }
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: nil))
@@ -237,6 +239,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                     self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
                 }
+                self.statusForCarLabel.text = self.logic.getStatus(withCarIndex: self.logic.user.chosenCarIndex)
             }
         } else {
             retrievedDataButDidNotSucceed = true

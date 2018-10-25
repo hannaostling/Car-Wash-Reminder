@@ -47,14 +47,12 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     // Vad som ska häna när användaren klickar på nästa, ovsett om det är från return button i textfield eller om det är knappen "nextButton".
     func next() {
         logic.readUserDefaults()
-        let carArray = logic.getCarArray()
-        let carIndex = carArray.count
         let carName = nameCarTextField.text!
-        nameTheCar(carName: carName, carIndex: carIndex)
+        nameTheCar(carName: carName)
     }
     
     // Alert: fråga om användaren om
-    func nameTheCar(carName: String, carIndex: Int) {
+    func nameTheCar(carName: String) {
         var title = ""
         var message = ""
         if carName.count == 0 {
@@ -64,7 +62,7 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else if carName.count > 0 && carName.count < 9 {
-            // Skapa array för test-objekt
+            // Skapa array för car-objekt
             var cars = [Car]()
             for dataDictionary in logic.user.carObject.carDataDictionaryArray {
                 let car = Car(dataDictionary: dataDictionary)
@@ -73,9 +71,9 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             // Skapa nytt car-objekt
             let car = Car()
             car.name = "\(carName)"
-            car.isDirty = true
+            car.isDirtyBool = true
             cars.append(car)
-            // Sätt användarens chosenCarIndex till samma som nya bilens id
+            // Sätt användarens chosenCarIndex till samma som nya bilens index
             logic.user.chosenCarIndex = cars.count-1
             logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
             // Skapa ny array med dictionaries för att hålla all data som skall sparas

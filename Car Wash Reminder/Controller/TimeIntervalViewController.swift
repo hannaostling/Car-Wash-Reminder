@@ -16,6 +16,7 @@ class TimeIntervalViewController: UIViewController {
     
     let logic = Logic.sharedInstance
     var timeIntervals = ["Inget tidsintervall valt", "Varje vecka", "Varannan vecka"]
+    var timeIntervalChoise = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,30 @@ class TimeIntervalViewController: UIViewController {
     // Om användaren inte förstår vad det är för tidsintervall så kan man klicka på info för att få mer information.
     @IBAction func infoButtonPressed(_ sender: Any) {
         giveInformationAlert()
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if timeIntervalChoise != 0 {
+            performSegue(withIdentifier: "fromTimeToHome", sender: self)
+            var cars = [Car]()
+            for carDictionary in self.logic.user.carObject.carDataDictionaryArray {
+                let car = Car(dataDictionary: carDictionary)
+                cars.append(car)
+            }
+            cars.remove(at: logic.user.chosenCarIndex)
+            let carArray = self.logic.getCarArray()
+            let car = carArray[logic.user.chosenCarIndex]
+            car.timeIntervalInWeeks = timeIntervalChoise
+            cars.append(car)
+            var carsDataArray = [[String:Any]]()
+            for car in cars {
+                let carDictionaryFromObject = car.dataDictionaryFromObject()
+                carsDataArray.append(carDictionaryFromObject)
+            }
+            logic.defaults.set(carsDataArray, forKey: logic.defaultsCarDataDictionaryArray)
+            logic.user.chosenCarIndex = carsDataArray.count-1
+            logic.defaults.set(logic.user.chosenCarIndex, forKey: logic.defaultsUserChosenCarIndex)
+        }
     }
     
     // Lägger till fler element i timeIntervals.
@@ -63,6 +88,24 @@ class TimeIntervalViewController: UIViewController {
             doneButton.alpha = 1.0
         }
     }
+//    let choiseIsMadeBool = choiseIsMade()
+//    if choiseIsMadeBool == true {
+//
+//    // Kollar om användaren har valt tidsintervall för sista bilen i arrayen
+//    func choiseIsMade() -> Bool {
+//        let carArray = logic.getCarArray()
+//        let amountOfCars = carArray.count
+//        if amountOfCars != 0 {
+//            let lastIndex = carArray.count-1
+//            let lastCarInCarArrayTimeInterval = logic.getCarTimeInterval(withCarIndex: lastIndex)
+//            if lastCarInCarArrayTimeInterval == 0 {
+//                return false
+//            } else {
+//                return true
+//            }
+//        }
+//        return false
+//    }
 
 }
 
@@ -78,24 +121,7 @@ extension TimeIntervalViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         setDoneButtonProperties(int: row)
-        var cars = [Car]()
-        for carDictionary in self.logic.user.carObject.carDataDictionaryArray {
-            let car = Car(dataDictionary: carDictionary)
-            cars.append(car)
-        }
-        cars.remove(at: logic.user.chosenCarIndex)
-        let carArray = self.logic.getCarArray()
-        let car = carArray[logic.user.chosenCarIndex]
-        car.timeIntervalInWeeks = row
-        cars.append(car)
-        var carsDataArray = [[String:Any]]()
-        for car in cars {
-            let carDictionaryFromObject = car.dataDictionaryFromObject()
-            carsDataArray.append(carDictionaryFromObject)
-        }
-        logic.defaults.set(carsDataArray, forKey: logic.defaultsCarDataDictionaryArray)
-        logic.user.chosenCarIndex = carsDataArray.count-1
-        logic.defaults.set(logic.user.chosenCarIndex, forKey: logic.defaultsUserChosenCarIndex)
+        timeIntervalChoise = row
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

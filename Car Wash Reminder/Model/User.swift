@@ -66,8 +66,15 @@ class User {
                 return .nameFirstCar
             }
         } else {
-            let firstCarTimeInterval = carObject.carDataDictionaryArray[0][carObject.carTimeInterval] as! Int
-            if firstCarTimeInterval == 0 {
+            let carDictionaryArray = carObject.carDataDictionaryArray
+            var cars = [Car]()
+            for dictionary in carDictionaryArray {
+                let car = Car(dataDictionary: dictionary)
+                cars.append(car)
+            }
+            let lastIndex = cars.count-1
+            let lastCarInCarArrayTimeInterval = carObject.carDataDictionaryArray[lastIndex][carObject.carTimeInterval] as! Int
+            if lastCarInCarArrayTimeInterval == 0 {
                 return .setTimeIntervalForFirstCar
             } else {
                 return .userHasAtLeastOneCar

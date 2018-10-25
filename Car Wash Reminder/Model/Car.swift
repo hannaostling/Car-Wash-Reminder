@@ -11,7 +11,7 @@ import Foundation
 class Car {
 
     var name: String = "Bilen"
-    var isDirty: Bool = true
+    var isDirtyBool: Bool = true
     var isDirtyDate = Date()
     var washedDates: [Date] = []
     var timeIntervalInWeeks: Int = 0
@@ -28,7 +28,7 @@ class Car {
     
     init(dataDictionary:[String:Any]) {
         name = dataDictionary[carName] as! String
-        isDirty = dataDictionary[carIsDirtyBool] as! Bool
+        isDirtyBool = dataDictionary[carIsDirtyBool] as! Bool
         isDirtyDate = dataDictionary[carIsDirtyDate] as! Date
         washedDates = dataDictionary[carWashedDates] as! [Date]
         timeIntervalInWeeks = dataDictionary[carTimeInterval] as! Int
@@ -37,7 +37,7 @@ class Car {
     func dataDictionaryFromObject() -> [String:Any] {
         var dictionary = [String:Any]()
         dictionary[carName] = name
-        dictionary[carIsDirtyBool] = isDirty
+        dictionary[carIsDirtyBool] = isDirtyBool
         dictionary[carIsDirtyDate] = isDirtyDate
         dictionary[carWashedDates] = washedDates
         dictionary[carTimeInterval] = timeIntervalInWeeks

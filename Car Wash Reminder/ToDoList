@@ -14,6 +14,7 @@ TO DO:
 * Bättre algoritm för push (var i = 0 och för varje notis += 1, i nollställs efter 24 timmar och om i är mer än 2, ge inte notis (för att användaren inte ska få för många notiser))
 * Label, varför frågetecken? Alert med du har inte gjort sökning än
 * När man valt bil, gå till HomeViewController
+* Fixa bugg: varför syns inte item?
 
 Viktigast
 * Ingen prognos som alert, ha i view

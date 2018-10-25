@@ -120,7 +120,8 @@ class Logic {
         if let savedCarDataDictionaryArray = defaults.array(forKey: defaultsCarDataDictionaryArray) as! [[String:Any]]? {
             user.carObject.carDataDictionaryArray = savedCarDataDictionaryArray
             print("• User amount of cars: \(user.carObject.carDataDictionaryArray.count)")
-            if user.carObject.carDataDictionaryArray.count > 0 {
+            let carArray = getCarArray()
+            if carArray.count != 0 {
                 for i in 0...user.carObject.carDataDictionaryArray.count-1 {
                     let carName = getCarName(withCarIndex: i)
                     let carIsDirty = getCarIsDirtyBool(withCarIndex: i)
@@ -162,8 +163,8 @@ class Logic {
         let dictionaryArray = user.carObject.carDataDictionaryArray
         var dataArray = [Car]()
         for dictionary in dictionaryArray {
-            let test = Car(dataDictionary: dictionary)
-            dataArray.append(test)
+            let car = Car(dataDictionary: dictionary)
+            dataArray.append(car)
         }
         return dataArray
     }
@@ -184,19 +185,19 @@ class Logic {
             washTodayStatus = "Tvätta inte \"\(carName)\" idag 👎🏽"
         }
         if noRainTodayAndTomorrow == true {
-            rainStatus = "✓ Bra väder både idag och imorgon"
+            rainStatus = "✓ Bra väder"
         } else {
-            rainStatus = "✕ Dåligt väder idag eller imorgon"
+            rainStatus = "✕ Dåligt väder"
         }
         if carIsDirtyBool == true {
-            carCleanSatus = "✓ Bilen är inte tvättad nyligen"
+            carCleanSatus = "✓ Bilen är smutsig"
         } else {
             carCleanSatus = "✕ Bilen är tvättad nyligen"
         }
         if shouldAppSearch == true {
-            appIsSearching = "✓ Appen söker just nu efter en bra dag att tvätta bilen"
+            appIsSearching = "✓ Sökning är aktiv"
         } else {
-            appIsSearching = "✕ Det är \(startSearchingDate) dagar kvar tills appen börjar söka efter en bra dag att tvätta bilen"
+            appIsSearching = "✕ Sökning är inte aktiv"
         }
         let status = "Status: \n \(washTodayStatus) \n \(rainStatus) \n \(carCleanSatus) \n \(appIsSearching)"
         return status
