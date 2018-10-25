@@ -1,20 +1,11 @@
 TO DO:
-* Kolla igenom om det finns onödig kod som kan tas bort (readUserDefaults är nog skrivet på ställen där det inte behövs exempelvis)
-* Kolla igenom om det finns något som drar bateri (exempelvis: ta bort timer som körs varje sekund för att ta reda på när knapparna ska vara tillgängliga. Kalla istället på metoden där ändringarna görs)
 * Searchbar automatiskt försvinn istället för att man måste trycka?
 * Prognos i bakgrunden också, bara simpelt om man kan tvätta eller inte
-* Tableview i tableview
 * Gör bilderna lite mindre så det inte laddar så mycket
 * Kolla upp licens gällande väder-ikon (kanske i app store beskrivning eller information i appen)
 * Bättre App Icon
-* Kunna ta bort en bil
 * Kunna redigera en bil
 * Kunna "skapa" sin egen bil
 * Visuell blick med vädret
 * Bättre algoritm för push (var i = 0 och för varje notis += 1, i nollställs efter 24 timmar och om i är mer än 2, ge inte notis (för att användaren inte ska få för många notiser))
-* Label, varför frågetecken? Alert med du har inte gjort sökning än
-* När man valt bil, gå till HomeViewController
-* Fixa bugg: varför syns inte item?
-
-Viktigast
-* Ingen prognos som alert, ha i view
+* Fixa bugg: varför syns inte navigation button i timeViewController
