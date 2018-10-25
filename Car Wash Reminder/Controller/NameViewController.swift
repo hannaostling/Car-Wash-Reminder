@@ -62,27 +62,22 @@ class NameViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else if carName.count > 0 && carName.count < 9 {
-            // Skapa array för car-objekt
             var cars = [Car]()
             for dataDictionary in logic.user.carObject.carDataDictionaryArray {
                 let car = Car(dataDictionary: dataDictionary)
                 cars.append(car)
             }
-            // Skapa nytt car-objekt
             let car = Car()
             car.name = "\(carName)"
             car.isDirtyBool = true
             cars.append(car)
-            // Sätt användarens chosenCarIndex till samma som nya bilens index
             logic.user.chosenCarIndex = cars.count-1
             logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
-            // Skapa ny array med dictionaries för att hålla all data som skall sparas
             var carsDataArray = [[String:Any]]()
             for car in cars {
                 let carDictionaryFromObject = car.dataDictionaryFromObject()
                 carsDataArray.append(carDictionaryFromObject)
             }
-            // Sparar carsDataArray med user defaults
             logic.defaults.set(carsDataArray, forKey: logic.defaultsCarDataDictionaryArray)
             performSegue(withIdentifier: "fromNameCarToTime", sender: self)
         } else {

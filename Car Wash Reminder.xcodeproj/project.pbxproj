@@ -168,7 +168,6 @@
 				B573C745216B80BC00754AA6 /* Controller */,
 				B573C71E216B80B600754AA6 /* Assets.xcassets */,
 				B573C723216B80B600754AA6 /* Info.plist */,
-				B573C717216B80B400754AA6 /* AppDelegate.swift */,
 				B549407F2170EC3300EB3F11 /* ToDoList */,
 			);
 			path = "Car Wash Reminder";
@@ -200,10 +199,11 @@
 				B507FCE9217E088F005E7321 /* NameViewController.swift */,
 				B59C2EFE217768B7004C8C2D /* TimeIntervalViewController.swift */,
 				B54940832170ECFB00EB3F11 /* HomeViewController.swift */,
-				B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */,
-				B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */,
 				B5CF08AF217F442200380A01 /* ChooseCarTableViewController.swift */,
 				B5CF08B1217F50B200380A01 /* ChooseCarTableViewCell.swift */,
+				B557761F2179EB1D00C92F7F /* HistoryTableViewCell.swift */,
+				B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */,
+				B573C717216B80B400754AA6 /* AppDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
