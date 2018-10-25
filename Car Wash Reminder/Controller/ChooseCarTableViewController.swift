@@ -73,7 +73,7 @@ class ChooseCarTableViewController: UITableViewController {
                 self.present(alert, animated: true, completion: nil)
             } else if indexPath.row == logic.user.chosenCarIndex && amountOfCars != 1 {
                 let title = "Du kan inte ta bort en bil som är markerad"
-                let message = "Den bilen som är markerad visas med ett ✓\"✓\", byt bil innan du tar bort \(carName)"
+                let message = "Den bilen som är markerad visas med ett \"✓\", byt bil innan du tar bort \(carName)"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
