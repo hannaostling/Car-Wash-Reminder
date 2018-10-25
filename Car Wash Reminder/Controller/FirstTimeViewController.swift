@@ -14,10 +14,15 @@ class FirstTimeViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     
     var index = 0
     let logic = Logic.sharedInstance
-    let messages = ["Det här är en app för dig som vill slippa tänka på när du behöver tvätta din bil.", "Appen kommer ge dig en notis varje gång vädret är bra samma dag och dagen efter.", "Du kan markera din bil som tvättad så pausar appens sökande i ett tidsintervall som du själv väljer i nästa steg.", "För att appen ska fungera måste du alltså tillåta notiser, är det okej?"]
+    let messages = ["Wash Me är en app för dig som vill ha hjälp att hitta ett bra läge att tvätta din bil.",
+                    "Appen kommer ge dig en notis så fort vädret är bra, så minimerar du risken att hamna i långa biltvättsköer.",
+                    "Du kan markera din bil som tvättad så pausar appens sökande i ett tidsintervall som du själv väljer i nästa steg.",
+                    "För att appen ska fungera måste du alltså tillåta notiser."]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,7 @@ class FirstTimeViewController: UIViewController {
         pageControl.numberOfPages = messages.count
         label.text = messages[0]
         messageView.layer.cornerRadius = messageView.frame.height/5
+        setText()
     }
   
     // Sätt texten till samma sida som pageControll
@@ -55,8 +61,18 @@ class FirstTimeViewController: UIViewController {
     func setText() {
         label.text = messages[pageControl.currentPage]
         var userHasReadEverything = false
-        if pageControl.currentPage == messages.count-1 {
+        if pageControl.currentPage == 0 {
+            leftButton.isEnabled = false
+            leftButton.alpha = 0.5
+        } else if pageControl.currentPage == messages.count-1 {
             userHasReadEverything = true
+            rightButton.isEnabled = false
+            rightButton.alpha = 0.5
+        } else {
+            rightButton.isEnabled = true
+            leftButton.isEnabled = true
+            leftButton.alpha = 1.0
+            rightButton.alpha = 1.0
         }
         if userHasReadEverything == true {
             okButton.isEnabled = true
