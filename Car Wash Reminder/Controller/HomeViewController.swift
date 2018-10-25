@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var washStatusLabel: UILabel!
     @IBOutlet weak var dropView: UIView!
     @IBOutlet weak var dropButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
