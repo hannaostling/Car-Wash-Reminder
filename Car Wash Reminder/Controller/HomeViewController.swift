@@ -30,6 +30,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var citySegmentControl: UISegmentedControl!
     @IBOutlet weak var washStatusLabel: UILabel!
+    @IBOutlet weak var dropView: UIView!
+    @IBOutlet weak var dropButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if weatherData.city == "" {
             retrievedData = false
         }
+        dropView.isHidden = true
     }
     
     // Gå till ChooseCarTableViewController
@@ -65,7 +68,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         searchController.searchBar.autocapitalizationType = .words
         present(searchController, animated: true, completion: nil)
     }
-
+    
+    // View åker upp eller ner beroende på olika tillstånd
+    @IBAction func dropButtonPressed(_ sender: Any) {
+        if dropButton.currentTitle == "↓" {
+            dropButton.setTitle("↑", for: .normal)
+            dropView.isHidden = false
+        } else if dropButton.currentTitle == "↑" {
+            dropButton.setTitle("↓", for: .normal)
+            dropView.isHidden = true
+        }
+    }
+    
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
     @IBAction func washedCarButtonPressed(_ sender: Any) {
         var title = "Är du säker?"
@@ -291,6 +305,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Uppdaterar UI
     func didUpdateUI() {
         logic.readUserDefaults()
+        if dropView.isHidden == true {
+            dropButton.setTitle("↓", for: .normal)
+        } else {
+            dropButton.setTitle("↑", for: .normal)
+        }
         if retrievedDataButDidNotSucceed == true {
             thumbImage.image = UIImage(named: "thumb-down")
         } else {
