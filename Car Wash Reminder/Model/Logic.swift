@@ -25,8 +25,6 @@ class Logic {
     // User defaults nycklar.
     let defaultsUserLastSearchedCity = "defaultsUserLastSearchedCity"
     let defaultsUserLastPositionCity = "letdefaultsUserLastPositionCity"
-    //let defaultsUserTimeInterval = "defaultsUserTimeInterval"
-    //let defaultsUserMadeChoice = "defaultsUserMadeChoice"
     let defaultsSearchForGoodDayDate = "defaultsSearchForGoodDayDate"
     let defaultsCityParams = "defaultsCityParams"
     let defaultsPositionParams = "defaultsPositionParams"
@@ -42,23 +40,24 @@ class Logic {
     
     // Kollar om det är bra dag att tvätta bilen eller inte.
     @objc func runsEverySecond() {
-        let appIsSearching = shouldAppSearchForGoodDate()
         let carIsCleanDate = getCarIsDirtyDate(withCarIndex: user.chosenCarIndex)
         var carIsCleanBool = getCarIsDirtyBool(withCarIndex: user.chosenCarIndex)
+        if carIsCleanDate == Date() {
+            carIsCleanBool = true
+        }
+        let appIsSearching = shouldAppSearchForGoodDate()
         if carIsCleanBool == true && noRainTodayAndTomorrow == true && appIsSearching == true {
             washToday = true
         } else {
             washToday = false
-        }
-        if carIsCleanDate == Date() {
-            carIsCleanBool = true
         }
         logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då blir shouldCheckForGoodDate = true.
     func shouldAppSearchForGoodDate () -> Bool {
-        if user.startSearchingDate <= Date() {
+        let searchDate = getCarSearchingDate(withCarIndex: user.chosenCarIndex)
+        if searchDate <= Date() {
             return true
         } else {
             return false
@@ -79,14 +78,7 @@ class Logic {
         let request = UNNotificationRequest(identifier: "17:00", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-    
-    // Ge användaren alert om det inte går att hämta väderdata.
-    func noWeatherDataAlert(title: String) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: "Försök igen senare", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okej", style: UIAlertAction.Style.default, handler: nil))
-        return alert
-    }
-    
+        
     // Läs user defaults.
     func readUserDefaults() {
         print("")
@@ -94,10 +86,6 @@ class Logic {
         if let savedUserOpenedAppBefore = defaults.bool(forKey: defaultsUserOpenedAppBefore) as Bool?  {
             user.hasOpenedAppBefore = savedUserOpenedAppBefore
             print("• User has opened app before: \(user.hasOpenedAppBefore)")
-        }
-        if let savedUserSearchAgainDate = defaults.object(forKey: defaultsSearchForGoodDayDate) {
-            user.startSearchingDate = savedUserSearchAgainDate as! Date
-            print("• App start searching: \(user.startSearchingDate)")
         }
         if let savedUserLastSearchedCity = defaults.string(forKey: defaultsUserLastSearchedCity) as String? {
             user.lastSearchedCity = savedUserLastSearchedCity
@@ -126,12 +114,25 @@ class Logic {
                     let carName = getCarName(withCarIndex: i)
                     let carIsDirty = getCarIsDirtyBool(withCarIndex: i)
                     let carTimeInterval = getCarTimeInterval(withCarIndex: i)
+                    let carSearchingDate = getCarSearchingDate(withCarIndex: i)
+                    let carSearchingDateAsString = getDateInString(date: carSearchingDate)
                     print("• Car \(i+1) name: \(carName)")
                     print("• Car \(i+1) is dirty: \(carIsDirty)")
                     print("• Car \(i+1) time interval: \(carTimeInterval)")
+                    print("• Car \(i+1) search day begin: \(carSearchingDateAsString)")
                 }
             }
         }
+    }
+    
+    // Returnerar ett datum i en sträng med nice formatl
+    func getDateInString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "sv")
+        formatter.dateFormat = "d MMMM yyyy"
+        let dateString = formatter.string(from: date)
+        let dateCapitalized = dateString.capitalized
+        return dateCapitalized
     }
     
     // Returnera bilens (carName) med ett visst index
@@ -158,6 +159,18 @@ class Logic {
         return carTimeInterval
     }
     
+    // Returnera bilens (carIsDirtyDate) med ett visst index
+    func getCarSearchingDate(withCarIndex: Int) -> Date {
+        let carSearchingDate = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carSearchingDate] as! Date
+        return carSearchingDate
+    }
+    
+    // Returnera bilens (carWashedDates) med ett visst index
+    func getCarWashedDates(withCarIndex: Int) -> [Date] {
+        let carWashedDates = user.carObject.carDataDictionaryArray[withCarIndex][user.carObject.carWashedDates] as! [Date]
+        return carWashedDates
+    }
+    
     // Returnera en array av alla bilar
     func getCarArray() -> [Car] {
         let dictionaryArray = user.carObject.carDataDictionaryArray
@@ -171,19 +184,11 @@ class Logic {
     
     func getStatus(withCarIndex: Int) -> String {
         readUserDefaults()
-        let carName = getCarName(withCarIndex: withCarIndex)
         let carIsDirtyBool = getCarIsDirtyBool(withCarIndex: withCarIndex)
-        let startSearchingDate = user.howManyDaysToSearchingDate()
         let shouldAppSearch = shouldAppSearchForGoodDate()
-        var washTodayStatus = ""
         var rainStatus = ""
         var carCleanSatus = ""
         var appIsSearching = ""
-        if washToday == true {
-            washTodayStatus = "Tvätta \"\(carName)\" idag 👍🏽"
-        } else {
-            washTodayStatus = "Tvätta inte \"\(carName)\" idag 👎🏽"
-        }
         if noRainTodayAndTomorrow == true {
             rainStatus = "✓ Bra väder"
         } else {
@@ -199,7 +204,7 @@ class Logic {
         } else {
             appIsSearching = "✕ Sökning är inte aktiv"
         }
-        let status = "Status: \n \(washTodayStatus) \n \(rainStatus) \n \(carCleanSatus) \n \(appIsSearching)"
+        let status = "\(rainStatus) \n \(carCleanSatus) \n \(appIsSearching)"
         return status
     }
     
@@ -213,4 +218,5 @@ class Logic {
 protocol LogicDelegate {
     func notifyUser(washToday: Bool)
     func didUpdateUserCities(positionCity: String, searchedCity: String)
+    func didUpdateUI()
 }
