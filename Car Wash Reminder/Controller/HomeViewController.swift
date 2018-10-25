@@ -23,15 +23,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var retrievedDataButDidNotSucceed = false
     var fetchedDataTime = Date()
     var positionOrSearch = PositionOrSearch.position
-    var forecastAlertTitle = ""
-    var forecastAlertMessage = ""
     
-    @IBOutlet weak var forecastButton: UIBarButtonItem!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var weatherDataView: UIImageView!
-    @IBOutlet weak var washedCarButton: UIButton!    
+    @IBOutlet weak var washedCarButton: UIButton!
+    @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var citySegmentControl: UISegmentedControl!
-    @IBOutlet weak var statusForCarLabel: UILabel!
+    @IBOutlet weak var washStatusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +52,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
-    // Gå till Historik
-    @IBAction func historyButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "fromHomeToHistory", sender: self)
+    // Gå till ChooseCarTableViewController
+    @IBAction func changeCarButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "fromHomeToChooseCar", sender: self)
     }
     
     // När man klickar på sök-knappen visas en sök-ruta.
@@ -81,39 +79,31 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Nej", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { action in
-            self.logic.user.startSearchingAgainAfter(timeInterval: carTimeInterval)
             let carIndex = self.logic.user.chosenCarIndex
-            // Skapar temorär array för car-objekt
             var cars = [Car]()
             for carDictionary in self.logic.user.carObject.carDataDictionaryArray {
                 let car = Car(dataDictionary: carDictionary)
                 cars.append(car)
             }
-            // Tar bort det carObjekt som ska ändras
             cars.remove(at: carIndex)
-            
-            // Skapa nytt car-objekt som är en kopia av den bilen vi vill ändra
             let carArray = self.logic.getCarArray()
             let car = carArray[carIndex]
-            // Ändrar det vi vill ändra
+            let startSearchDate = self.logic.user.carObject.startSearchingAgainAfter(timeInterval: carTimeInterval)
+            car.startSearchingDate = startSearchDate
             car.isDirtyBool = false
-            car.isDirtyDate = self.logic.user.carObject.carDataDictionaryArray[carIndex][self.logic.user.carObject.carIsDirtyDate] as! Date
-            car.washedDates = self.logic.user.carObject.carDataDictionaryArray[carIndex][self.logic.user.carObject.carWashedDates] as! [Date]
+            car.isDirtyDate = self.logic.getCarIsDirtyDate(withCarIndex: carIndex)
+            car.washedDates = self.logic.getCarWashedDates(withCarIndex: carIndex)
             car.washedDates.append(Date())
-            // Lägg till den nya (egentligen gamla men det är ett nytt objekt med de ändringar vi gjort) bilen i arrayen
             cars.append(car)
-            // Skapa ny array med dictionaries för att hålla all data som skall sparas
             var carsDataArray = [[String:Any]]()
             for car in cars {
                 let carDictionaryFromObject = car.dataDictionaryFromObject()
                 carsDataArray.append(carDictionaryFromObject)
             }
-            // Spara
             self.logic.defaults.set(carsDataArray, forKey: self.logic.defaultsCarDataDictionaryArray)
-            // Ändrar chosenCarIndex till den som vi la till nu
             self.logic.user.chosenCarIndex = carsDataArray.count-1
-            // Sparar
             self.logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
+            self.didUpdateUI()
             title = "Kanon"
             let carName = self.logic.getCarName(withCarIndex: self.logic.user.chosenCarIndex)
             if carTimeInterval == 1 {
@@ -124,21 +114,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "👌🏽", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            self.logic.defaults.set(self.logic.user.startSearchingDate, forKey:self.logic.defaultsSearchForGoodDayDate)
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    // Ge användaren en prognos, varför är det bra/inte bra att tvätta bilen idag?
-    @IBAction func forecastButtonPressed(_ sender: Any) {
-        let title = forecastAlertTitle
-        let message = forecastAlertMessage
-        let actionTitle = "Klar"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: actionTitle, style: UIAlertAction.Style.default, handler: nil))
-        present(alert, animated: true, completion: nil)
-        let status = logic.getStatus(withCarIndex: logic.user.chosenCarIndex)
-        print(status)
     }
     
     // Välj att hämta väder för den stad man klickar på.
@@ -196,9 +173,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 self.retrievedData = true
                 self.fetchedDataTime = Date()
             } else {
-                let title = String("Connection Issues")
-                let alert = self.logic.noWeatherDataAlert(title: title)
-                self.present(alert, animated: true, completion: nil)
+                self.washStatusLabel.text = "Anslutningsproblem"
                 print("Error \(response.result.error!))")
                 self.retrievedData = false
             }
@@ -232,20 +207,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             }
             DispatchQueue.main.async {
                 self.checkRain()
-                self.forecastAlertTitle = "Väder"
-                self.forecastAlertMessage = "Temperatur \(self.weatherData.temperature)°"
                 self.weatherIcon.image = UIImage(named: self.weatherData.weatherIconName)
                 if self.positionOrSearch == .position {
                     self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
+                    self.didUpdateUI()
                 }
-                self.statusForCarLabel.text = self.logic.getStatus(withCarIndex: self.logic.user.chosenCarIndex)
             }
         } else {
             retrievedDataButDidNotSucceed = true
-            forecastAlertTitle = "Ingen data kan visas"
-            forecastAlertMessage = String("\(json["message"])").capitalized
+            let errorMessage = String("\(json["message"])").capitalized
+            if logic.user.lastSearchedCity != "" {
+                washStatusLabel.text = errorMessage
+            }
+            print(errorMessage)
             weatherIcon.image = UIImage(named: "dont_know")
+            didUpdateUI()
         }
     }
     
@@ -266,9 +243,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     
     // Vid misslyckad hämtning av data, uppdatera titeln till "Location unavailable".
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        let title = String("Plats ej tillgänglig")
-        let alert = self.logic.noWeatherDataAlert(title: title)
-        self.present(alert, animated: true, completion: nil)
+        washStatusLabel.text = String("Plats ej tillgänglig")
         retrievedData = false
         print(error)
     }
@@ -280,16 +255,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.startUpdatingLocation()
     }
-    
-//    // Ge användaren en prognos.
-//    func giveForecastAlert() {
-//        logic.readUserDefaults()
-//        checkRain()
-//        let carName = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carName] as! String
-//        let carNotClean = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carIsDirtyBool] as! Bool
-//        let alert = logic.alert.forecast(carName:"\(carName)", washToday: logic.washToday, longTimeSinceWashedCar: carNotClean, noRainTodayOrTomorrow: logic.noRainTodayAndTomorrow, searchingForGoodDate: logic.shouldAppSearchForGoodDate(), daysLeftToSearchingAgain: logic.user.howManyDaysToSearchingDate())
-//        self.present(alert, animated: true, completion: nil)
-//    }
     
     // Background fetch
     func notifyUser(washToday: Bool) {
@@ -311,8 +276,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             citySegmentControl.setTitle("Senaste sök", forSegmentAt: 1)
         }
         if searchedCity == "" && citySegmentControl.selectedSegmentIndex == 1 {
-            forecastAlertTitle = "Ingen data kan visas"
-            forecastAlertMessage = "Du har inte gjort någon sökning hittils."
+            washStatusLabel.text = "Du har inte gjort någon sökning hittils"
         }
         if positionCity == "" {
             citySegmentControl.setTitle("Position", forSegmentAt: 0)
@@ -322,21 +286,40 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         } else {
             citySegmentControl.selectedSegmentIndex = 1
         }
-        let carNotClean = logic.user.carObject.carDataDictionaryArray[logic.user.chosenCarIndex][logic.user.carObject.carIsDirtyBool] as! Bool
-        let carName = logic.getCarName(withCarIndex: logic.user.chosenCarIndex)
-        if carNotClean == true {
-            washedCarButton.setTitle("Klicka här när \(carName) är tvättad", for: .normal)
-            washedCarButton.isEnabled = true
-            washedCarButton.alpha = 1.0
+    }
+    
+    // Uppdaterar UI
+    func didUpdateUI() {
+        logic.readUserDefaults()
+        if retrievedDataButDidNotSucceed == true {
+            thumbImage.image = UIImage(named: "thumb-down")
         } else {
-            washedCarButton.setTitle("\(carName) är tvättad nyligen", for: .normal)
-            washedCarButton.isEnabled = false
-            washedCarButton.alpha = 0.5
+            let carIsDirty = logic.getCarIsDirtyBool(withCarIndex: logic.user.chosenCarIndex)
+            let carName = logic.getCarName(withCarIndex: logic.user.chosenCarIndex)
+            let carStatus = logic.getStatus(withCarIndex: logic.user.chosenCarIndex)
+            washStatusLabel.text = carStatus
+            if carIsDirty == true {
+                washedCarButton.setTitle("Klicka här när \(carName) är tvättad", for: .normal)
+                washedCarButton.isEnabled = true
+                washedCarButton.alpha = 1.0
+            } else {
+                washedCarButton.setTitle("\(carName) är tvättad nyligen", for: .normal)
+                washedCarButton.isEnabled = false
+                washedCarButton.alpha = 0.5
+            }
+            if logic.washToday == true {
+                thumbImage.image = UIImage(named: "thumb-up")
+            } else {
+                thumbImage.image = UIImage(named: "thumb-down")
+            }
         }
-        if retrievedData == true && retrievedDataButDidNotSucceed == false {
-            forecastButton.isEnabled = true
-        } else {
-            forecastButton.isEnabled = false
+    }
+    
+    // Sätter den här viewControllerns delegat till samma som i ChooseCarTBC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromHomeToChooseCar" {
+            let chooseCarTBC = segue.destination as! ChooseCarTableViewController
+            chooseCarTBC.logicDelegate = self
         }
     }
 }
