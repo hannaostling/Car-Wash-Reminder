@@ -11,6 +11,7 @@ import UIKit
 class ChooseCarTableViewController: UITableViewController {
     
     let logic = Logic.sharedInstance
+    var logicDelegate: LogicDelegate? = nil
     var dates = [Date]()
     
     override func viewDidLoad() {
@@ -41,6 +42,11 @@ class ChooseCarTableViewController: UITableViewController {
         let car = carArray[indexPath.row]
         let carCell = tableView.dequeueReusableCell(withIdentifier: "car", for: indexPath) as! ChooseCarTableViewCell
         carCell.setCar(car: car)
+        if indexPath.row == logic.user.chosenCarIndex {
+            carCell.accessoryType = .checkmark
+        } else {
+            carCell.accessoryType = .none
+        }
         return carCell
     }
     
@@ -48,12 +54,51 @@ class ChooseCarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         logic.user.chosenCarIndex = indexPath.row
         logic.defaults.set(self.logic.user.chosenCarIndex, forKey:self.logic.defaultsUserChosenCarIndex)
-        let carName = logic.getCarName(withCarIndex: indexPath.row)
-        let title = "Ditt val är sparat"
-        let message = "Nu visas information för \"\(carName)\""
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        tableView.reloadData()
+        if logicDelegate != nil {
+            logicDelegate?.didUpdateUI()
+        }
+    }
+    
+    // Ta bort en bil med swipe.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let amountOfCars = logic.getCarArray().count
+            let carName = logic.getCarName(withCarIndex: indexPath.row)
+            if indexPath.row == logic.user.chosenCarIndex && amountOfCars == 1 {
+                let title = "Du måste ha minst en bil"
+                let message = "Skapa en ny bil innan du tar bort \(carName)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else if indexPath.row == logic.user.chosenCarIndex && amountOfCars != 1 {
+                let title = "Du kan inte ta bort en bil som är markerad"
+                let message = "Den bilen som är markerad visas med ett ✓\"✓\", byt bil innan du tar bort \(carName)"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                logic.readUserDefaults()
+                var cars = [Car]()
+                for carDictionary in self.logic.user.carObject.carDataDictionaryArray {
+                    let car = Car(dataDictionary: carDictionary)
+                    cars.append(car)
+                }
+                cars.remove(at: indexPath.row)
+                var carsDataArray = [[String:Any]]()
+                for car in cars {
+                    let carDictionaryFromObject = car.dataDictionaryFromObject()
+                    carsDataArray.append(carDictionaryFromObject)
+                }
+                logic.defaults.set(carsDataArray, forKey: logic.defaultsCarDataDictionaryArray)
+                logic.user.chosenCarIndex = 0
+                logic.defaults.set(logic.user.chosenCarIndex, forKey: logic.defaultsUserChosenCarIndex)
+                logic.readUserDefaults()
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.endUpdates()
+            }
+        }
     }
     
     // Tillbaka knapp
