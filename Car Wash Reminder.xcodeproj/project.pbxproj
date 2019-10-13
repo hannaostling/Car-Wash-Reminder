@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,6 @@
 		B573C71D216B80B400754AA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C71B216B80B400754AA6 /* Main.storyboard */; };
 		B573C71F216B80B600754AA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B573C71E216B80B600754AA6 /* Assets.xcassets */; };
 		B573C722216B80B600754AA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B573C720216B80B600754AA6 /* LaunchScreen.storyboard */; };
-		B573C72D216B80B600754AA6 /* Car_Wash_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C72C216B80B600754AA6 /* Car_Wash_ReminderTests.swift */; };
-		B573C738216B80B600754AA6 /* Car_Wash_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C737216B80B600754AA6 /* Car_Wash_ReminderUITests.swift */; };
 		B573C783216B956400754AA6 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573C782216B956400754AA6 /* Logic.swift */; };
 		B58A530A216E017E00184750 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A5309216E017E00184750 /* User.swift */; };
 		B58A530C216E28E100184750 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A530B216E28E100184750 /* Car.swift */; };
@@ -70,11 +68,7 @@
 		B573C721216B80B600754AA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B573C723216B80B600754AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B573C728216B80B600754AA6 /* Car Wash ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Car Wash ReminderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B573C72C216B80B600754AA6 /* Car_Wash_ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car_Wash_ReminderTests.swift; sourceTree = "<group>"; };
-		B573C72E216B80B600754AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B573C733216B80B600754AA6 /* Car Wash ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Car Wash ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B573C737216B80B600754AA6 /* Car_Wash_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car_Wash_ReminderUITests.swift; sourceTree = "<group>"; };
-		B573C739216B80B600754AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B573C782216B956400754AA6 /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		B58A5309216E017E00184750 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B58A530B216E28E100184750 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
@@ -142,8 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				B573C716216B80B400754AA6 /* Car Wash Reminder */,
-				B573C72B216B80B600754AA6 /* Car Wash ReminderTests */,
-				B573C736216B80B600754AA6 /* Car Wash ReminderUITests */,
 				B573C715216B80B400754AA6 /* Products */,
 				9423A395FF26BF02B2B1F9D4 /* Pods */,
 				5655C819176A68822ABBE177 /* Frameworks */,
@@ -171,24 +163,6 @@
 				B549407F2170EC3300EB3F11 /* ToDoList */,
 			);
 			path = "Car Wash Reminder";
-			sourceTree = "<group>";
-		};
-		B573C72B216B80B600754AA6 /* Car Wash ReminderTests */ = {
-			isa = PBXGroup;
-			children = (
-				B573C72C216B80B600754AA6 /* Car_Wash_ReminderTests.swift */,
-				B573C72E216B80B600754AA6 /* Info.plist */,
-			);
-			path = "Car Wash ReminderTests";
-			sourceTree = "<group>";
-		};
-		B573C736216B80B600754AA6 /* Car Wash ReminderUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B573C737216B80B600754AA6 /* Car_Wash_ReminderUITests.swift */,
-				B573C739216B80B600754AA6 /* Info.plist */,
-			);
-			path = "Car Wash ReminderUITests";
 			sourceTree = "<group>";
 		};
 		B573C745216B80BC00754AA6 /* Controller */ = {
@@ -393,24 +367,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Car Wash Reminder/Pods-Car Wash Reminder-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED2F9DC93893F310F70D4FC8 /* [CP] Check Pods Manifest.lock */ = {
@@ -485,7 +450,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B573C72D216B80B600754AA6 /* Car_Wash_ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +457,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B573C738216B80B600754AA6 /* Car_Wash_ReminderUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
