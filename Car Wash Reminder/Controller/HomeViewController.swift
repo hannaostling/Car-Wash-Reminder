@@ -1,11 +1,3 @@
-//
-//  HomeViewController.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-11.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UIKit
 import UserNotifications
 import CoreLocation
@@ -28,11 +20,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     @IBOutlet weak var weatherDataView: UIImageView!
     @IBOutlet weak var washedCarButton: UIButton!
     @IBOutlet weak var thumbImage: UIImageView!
-    @IBOutlet weak var citySegmentControl: UISegmentedControl!
     @IBOutlet weak var washStatusLabel: UILabel!
     @IBOutlet weak var dropView: UIView!
     @IBOutlet weak var dropButton: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +30,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         logic.logicDelegate = self
         logic.askForNotificationPermission()
         logic.checkIfUserShouldWashCar()
-        if let value = UserDefaults.standard.value(forKey: logic.defaultsSelectedCity) {
-            let selectedIndex = value as! Int
-            citySegmentControl.selectedSegmentIndex = selectedIndex
-        }
-        if citySegmentControl.selectedSegmentIndex == 0 {
-            updatePosition()
-        } else {
-            positionOrSearch = .search
-            getWeather(positionOrSearch: .search)
-        }
+        updatePosition()
         if weatherData.city == "" {
             retrievedData = false
         }
@@ -59,15 +40,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Gå till ChooseCarTableViewController
     @IBAction func changeCarButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "fromHomeToChooseCar", sender: self)
-    }
-    
-    // När man klickar på sök-knappen visas en sök-ruta.
-    @IBAction func searchButtonPressed(_ sender: Any) {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Visa väder för en annan stad"
-        searchController.searchBar.autocapitalizationType = .words
-        present(searchController, animated: true, completion: nil)
     }
     
     // View åker upp eller ner beroende på olika tillstånd
@@ -131,22 +103,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             self.present(alert, animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    // Välj att hämta väder för den stad man klickar på.
-    @IBAction func chooseCitySement(_ sender: UISegmentedControl) {
-        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: logic.defaultsSelectedCity)
-        let getIndex = citySegmentControl.selectedSegmentIndex
-        switch (getIndex) {
-        case 0:
-           positionOrSearch = .position
-           getWeather(positionOrSearch: .position)
-        case 1:
-            positionOrSearch = .search
-            getWeather(positionOrSearch: .search)
-        default:
-            print("No segment selected.")
-        }
     }
     
     // Hitta en bra dag att tvätta bilen.
@@ -280,26 +236,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             logic.sendNotification(title: title, body: body)
         } else {
             print("Don't give user notification today!")
-        }
-    }
-    
-    // Uppdaterar segmentcontrol.
-    func didUpdateUserCities(positionCity: String, searchedCity: String) {
-        citySegmentControl.setTitle("\(positionCity)", forSegmentAt: 0)
-        citySegmentControl.setTitle("\(searchedCity)", forSegmentAt: 1)
-        if searchedCity == "" {
-            citySegmentControl.setTitle("Senaste sök", forSegmentAt: 1)
-        }
-        if searchedCity == "" && citySegmentControl.selectedSegmentIndex == 1 {
-            washStatusLabel.text = "Du har inte gjort någon sökning hittils"
-        }
-        if positionCity == "" {
-            citySegmentControl.setTitle("Position", forSegmentAt: 0)
-        }
-        if positionOrSearch == .position {
-            citySegmentControl.selectedSegmentIndex = 0
-        } else {
-            citySegmentControl.selectedSegmentIndex = 1
         }
     }
     

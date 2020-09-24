@@ -1,14 +1,8 @@
-//
-//  StartViewController.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-17.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UIKit
 
 class StartViewController: UIViewController {
+    
+    @IBOutlet var activityIndicator: UIImageView!
     
     let logic = Logic.sharedInstance
     
@@ -17,6 +11,7 @@ class StartViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         logic.readUserDefaults()
         performSegueBasedOnUserStatus()
+        activityIndicator.spin(true)
     }
 
     func performSegueBasedOnUserStatus() {

@@ -1,10 +1,3 @@
-//  Logic.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-08.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UserNotifications
 import Foundation
 import UIKit
@@ -51,7 +44,6 @@ class Logic {
         } else {
             washToday = false
         }
-        logicDelegate?.didUpdateUserCities(positionCity: user.lastPositionCity, searchedCity: user.lastSearchedCity)
     }
     
     // Om användarens börja-söka-igen-datum är mindre än, eller lika med dagens datum, då blir shouldCheckForGoodDate = true.
@@ -217,6 +209,38 @@ class Logic {
 
 protocol LogicDelegate {
     func notifyUser(washToday: Bool)
-    func didUpdateUserCities(positionCity: String, searchedCity: String)
     func didUpdateUI()
+}
+
+extension UIView {
+    
+    func spin(_ doSpin: Bool) {
+        if doSpin {
+            startSpin()
+        } else {
+            stopSpin()
+        }
+    }
+    
+    private func startSpin() {
+        isHidden = false
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let imageView = UIImageView(image: UIImage(named: "activityIndicator"))
+        imageView.frame = frame
+        addSubview(imageView)
+        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi + 1)
+        rotation.duration = 1
+        rotation.isCumulative = true
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        layer.add(rotation, forKey: "rotationAnimation")
+    }
+    
+    private func stopSpin() {
+        DispatchQueue.main.async {
+            self.layer.removeAllAnimations()
+            self.isHidden = true
+        }
+    }
+    
 }
