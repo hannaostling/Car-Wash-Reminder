@@ -244,3 +244,36 @@ extension UIView {
     }
     
 }
+
+extension UITextField {
+
+    func style() {
+        borderStyle = .none
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: Font.regular(size: 16)]
+        attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: attributes)
+        font = Font.regular(size: 16)
+        clearButtonMode = .always
+        layer.borderWidth = 1
+        layer.cornerRadius = 18
+        layer.borderColor = UIColor(named: "textFieldBorder")?.cgColor //UIColor.text.cgColor
+        leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: frame.height))
+        leftViewMode = .always
+        backgroundColor = UIColor.white
+        textColor = UIColor.black
+    }
+
+}
+
+enum Font {
+    static func bold(size: CGFloat) -> UIFont {
+        UIFont(name: "AvenirNext-Bold", size: size)!
+    }
+
+    static func regular(size: CGFloat) -> UIFont {
+        UIFont(name: "AvenirNext-Regular", size: size)!
+    }
+
+    static func medium(size: CGFloat) -> UIFont {
+        UIFont(name: "AvenirNext-Medium", size: size)!
+    }
+}

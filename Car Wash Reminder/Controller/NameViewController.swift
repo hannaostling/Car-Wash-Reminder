@@ -1,11 +1,3 @@
-//
-//  NameViewController.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-22.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UIKit
 
 class NameViewController: UIViewController, UITextFieldDelegate {
@@ -17,6 +9,11 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        nameCarTextField.style()
+        
+        
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.hideKeyboardWhenTappedAround()
