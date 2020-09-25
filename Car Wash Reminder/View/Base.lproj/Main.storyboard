@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6y5-w6-UXa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kAv-AJ-rGB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -29,7 +29,7 @@
         <!--Welcome-->
         <scene sceneID="Et1-Hc-oxp">
             <objects>
-                <viewController title="Welcome" id="jEy-Om-slK" sceneMemberID="viewController">
+                <viewController title="Welcome" id="jEy-Om-slK" customClass="FirstTimeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iAv-r7-UwL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,6 +73,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="okButtonPressed:" destination="jEy-Om-slK" eventType="touchUpInside" id="q0u-xt-SEJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ndc-dh-cCu"/>
@@ -94,7 +97,9 @@
                             <constraint firstItem="xsh-ar-r0W" firstAttribute="leading" secondItem="Ndc-dh-cCu" secondAttribute="leading" constant="40" id="xiu-Q2-1Nq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="8dN-td-hxi"/>
+                    <connections>
+                        <segue destination="5Q9-Vk-cSx" kind="show" identifier="fromFirstToPermission" id="8G2-wS-6hP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCF-Kn-AOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,6 +131,10 @@
                     <navigationItem key="navigationItem" id="Gii-lZ-wEW"/>
                     <connections>
                         <outlet property="activityIndicator" destination="S2b-T1-pyl" id="7Ct-O7-XGB"/>
+                        <segue destination="jEy-Om-slK" kind="show" identifier="fromStartToFirst" id="78K-4k-Ia8"/>
+                        <segue destination="RrU-gq-0fX" kind="show" identifier="fromStartToTime" id="E3l-6g-k5D"/>
+                        <segue destination="6y5-w6-UXa" kind="show" identifier="fromStartToHome" animates="NO" id="FTh-JL-hnX"/>
+                        <segue destination="Myh-AV-gVN" kind="show" identifier="fromStartToName" id="yMX-XI-15C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXS-zI-7DX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,7 +144,7 @@
         <!--Welcome-->
         <scene sceneID="rB7-Nu-AoX">
             <objects>
-                <viewController title="Welcome" id="5Q9-Vk-cSx" sceneMemberID="viewController">
+                <viewController title="Welcome" id="5Q9-Vk-cSx" customClass="PermissionViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIw-Ia-C8h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +157,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjS-Lj-gcJ">
                                 <rect key="frame" x="40" y="172" width="334" height="87.5"/>
-                                <string key="text">För att appen ska fungera så måste du alltså tillåta notiser samt din position för att vi ska kunna se väderprognosen där du befinner dig och ge dig en notis när det är dags</string>
+                                <string key="text">För att appen ska fungera så måste du tillåta notiser samt din position för att vi ska kunna se väderprognosen där du befinner dig och ge dig en notis när det är dags</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -168,6 +177,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextPressed:" destination="5Q9-Vk-cSx" eventType="touchUpInside" id="PJa-yP-Q5L"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvD-MI-WXM">
                                 <rect key="frame" x="40" y="718" width="334" height="53"/>
@@ -184,6 +196,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="positionPressed:" destination="5Q9-Vk-cSx" eventType="touchUpInside" id="wWQ-kE-YiT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xH-Rh-j1r">
                                 <rect key="frame" x="40" y="657" width="334" height="53"/>
@@ -200,6 +215,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="notificationsPressed:" destination="5Q9-Vk-cSx" eventType="touchUpInside" id="MUM-sO-6Cu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vLx-Hr-fXb"/>
@@ -222,10 +240,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="tOf-y3-NlG"/>
+                    <connections>
+                        <outlet property="nextButton" destination="vMg-OX-qGk" id="dQk-vP-kMf"/>
+                        <outlet property="notificationsButton" destination="7xH-Rh-j1r" id="tQL-l0-nNv"/>
+                        <outlet property="positionButton" destination="NvD-MI-WXM" id="Efr-qF-75r"/>
+                        <segue destination="Myh-AV-gVN" kind="show" identifier="fromPermissionToName" id="gx6-nD-3JX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAC-oz-6Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4723" y="-539"/>
+            <point key="canvasLocation" x="4041" y="-1240"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="6pe-ib-P4H">
@@ -241,7 +265,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikH-ow-Ows">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikH-ow-Ows">
                                 <rect key="frame" x="40" y="779" width="334" height="53"/>
                                 <color key="backgroundColor" name="blue"/>
                                 <constraints>
@@ -256,6 +280,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="Myh-AV-gVN" eventType="touchUpInside" id="bR3-TH-VwS"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bettan" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qM-py-Mlu">
                                 <rect key="frame" x="50" y="428" width="314" height="40"/>
@@ -264,7 +291,13 @@
                                 </constraints>
                                 <color key="textColor" name="blue"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                <connections>
+                                    <action selector="textFieldDidBeginEditing:" destination="Myh-AV-gVN" eventType="editingDidBegin" id="Yxt-XL-EmJ"/>
+                                    <action selector="textFieldEditingChanged:" destination="Myh-AV-gVN" eventType="editingChanged" id="ALj-nk-AGL"/>
+                                    <action selector="textFieldShouldReturn:" destination="Myh-AV-gVN" eventType="primaryActionTriggered" id="aGI-UJ-36f"/>
+                                    <outlet property="delegate" destination="Myh-AV-gVN" id="fu4-mO-IWK"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="41W-UE-ap6"/>
@@ -280,20 +313,20 @@
                             <constraint firstItem="4KM-Ly-JK2" firstAttribute="centerX" secondItem="cKs-Cj-gim" secondAttribute="centerX" id="qs8-2N-kIY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="1Ia-BM-0R8"/>
                     <connections>
                         <outlet property="nameCarTextField" destination="3qM-py-Mlu" id="kc0-Tz-L2J"/>
                         <outlet property="nextButton" destination="ikH-ow-Ows" id="wu6-Nn-0Lk"/>
+                        <segue destination="RrU-gq-0fX" kind="show" identifier="fromNameCarToTime" id="p33-cK-Ujl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocM-KL-c1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5454" y="-539"/>
+            <point key="canvasLocation" x="4855" y="-1240"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="t7C-hI-y27">
             <objects>
-                <viewController title="Welcome" id="RrU-gq-0fX" sceneMemberID="viewController">
+                <viewController title="Welcome" id="RrU-gq-0fX" customClass="TimeIntervalViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Tm-0J-6se">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,6 +352,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="RrU-gq-0fX" eventType="touchUpInside" id="HQy-lv-1Ja"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xa-MQ-lS8">
                                 <rect key="frame" x="0.0" y="340" width="414" height="216"/>
@@ -338,11 +374,16 @@
                             <constraint firstItem="SY0-LJ-6J0" firstAttribute="centerX" secondItem="8Tm-0J-6se" secondAttribute="centerX" id="oPW-Ht-HgS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="eMp-Oa-c3q"/>
+                    <connections>
+                        <outlet property="doneButton" destination="b3H-J0-TgN" id="dN6-Zo-kak"/>
+                        <outlet property="titleLabel" destination="SY0-LJ-6J0" id="Md6-Do-3X9"/>
+                        <outlet property="weeksPickerView" destination="5xa-MQ-lS8" id="bTJ-ru-YSP"/>
+                        <segue destination="6y5-w6-UXa" kind="show" identifier="fromTimeToHome" id="BSz-BK-9Os"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOp-KQ-1cY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6149" y="-540"/>
+            <point key="canvasLocation" x="5725" y="-1240"/>
         </scene>
         <!--Welcome-->
         <scene sceneID="6Ci-4X-PEc">
@@ -355,18 +396,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodWeather" translatesAutoresizingMaskIntoConstraints="NO" id="UCR-z4-M3O">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bra väder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3s-RK-zjM">
-                                <rect key="frame" x="40" y="477" width="334" height="20.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilen är smutsig" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-dP-HQM">
-                                <rect key="frame" x="40" y="505" width="334" height="20.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5F-qN-5eO">
                                 <rect key="frame" x="40" y="779" width="334" height="53"/>
                                 <color key="backgroundColor" name="blue"/>
@@ -383,8 +412,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Idag är en bra dag att tvätta Bettan" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqP-du-Y9N">
-                                <rect key="frame" x="97" y="317" width="220" height="88"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Idag är en bra dag att tvätta Bettan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqP-du-Y9N">
+                                <rect key="frame" x="97" y="90.5" width="220" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Udk-Gz-0LK"/>
                                     <constraint firstAttribute="height" constant="88" id="v7W-fk-R8B"/>
@@ -393,24 +422,70 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-0Q-Yp2">
+                                <rect key="frame" x="127" y="424" width="160" height="48"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uqy-0w-brf">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-Lh-ZiX">
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="c6G-dZ-hgI"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bra väder" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3s-RK-zjM">
+                                                <rect key="frame" x="26" y="0.0" width="134" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="lRY-CW-lSb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="75C-Sa-tnf"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UlN-wM-N6m">
+                                        <rect key="frame" x="0.0" y="28" width="160" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="hDg-MV-VZy">
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="20"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="18" id="d8t-NO-eSm"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilen är smutsig" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-dP-HQM">
+                                                <rect key="frame" x="26" y="0.0" width="134" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="LMh-rj-mgI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IwL-c9-fJf"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IwL-c9-fJf" firstAttribute="trailing" secondItem="x3s-RK-zjM" secondAttribute="trailing" constant="40" id="2tw-yM-4eS"/>
                             <constraint firstItem="UCR-z4-M3O" firstAttribute="leading" secondItem="hag-mA-rsV" secondAttribute="leading" id="AvA-wA-8R8"/>
-                            <constraint firstItem="wPn-dP-HQM" firstAttribute="leading" secondItem="IwL-c9-fJf" secondAttribute="leading" constant="40" id="GCC-ed-Rd8"/>
-                            <constraint firstItem="OqP-du-Y9N" firstAttribute="top" secondItem="IwL-c9-fJf" secondAttribute="top" constant="273" id="QjQ-t5-e7G"/>
-                            <constraint firstItem="wPn-dP-HQM" firstAttribute="top" secondItem="x3s-RK-zjM" secondAttribute="bottom" constant="7.5" id="T3n-VD-7pC"/>
                             <constraint firstItem="IwL-c9-fJf" firstAttribute="bottom" secondItem="V5F-qN-5eO" secondAttribute="bottom" constant="30" id="TmR-R1-Px4"/>
                             <constraint firstItem="V5F-qN-5eO" firstAttribute="leading" secondItem="IwL-c9-fJf" secondAttribute="leading" constant="40" id="UlZ-p5-l0l"/>
                             <constraint firstAttribute="trailing" secondItem="UCR-z4-M3O" secondAttribute="trailing" id="V4A-VW-f2x"/>
                             <constraint firstAttribute="bottom" secondItem="UCR-z4-M3O" secondAttribute="bottom" id="W1f-Id-OJW"/>
-                            <constraint firstItem="x3s-RK-zjM" firstAttribute="leading" secondItem="IwL-c9-fJf" secondAttribute="leading" constant="40" id="aEC-Gk-W5k"/>
                             <constraint firstItem="IwL-c9-fJf" firstAttribute="trailing" secondItem="V5F-qN-5eO" secondAttribute="trailing" constant="40" id="bSy-Rp-8iP"/>
+                            <constraint firstItem="ePd-0Q-Yp2" firstAttribute="centerX" secondItem="hag-mA-rsV" secondAttribute="centerX" id="hJH-am-Y67"/>
                             <constraint firstItem="UCR-z4-M3O" firstAttribute="top" secondItem="hag-mA-rsV" secondAttribute="top" id="l5K-8M-im7"/>
-                            <constraint firstItem="x3s-RK-zjM" firstAttribute="top" secondItem="OqP-du-Y9N" secondAttribute="bottom" constant="72" id="v0s-sc-mM0"/>
-                            <constraint firstItem="IwL-c9-fJf" firstAttribute="trailing" secondItem="wPn-dP-HQM" secondAttribute="trailing" constant="40" id="yJ2-Vs-Bc6"/>
+                            <constraint firstItem="OqP-du-Y9N" firstAttribute="centerY" secondItem="hag-mA-rsV" secondAttribute="centerY" multiplier="0.3" id="v2B-WD-6jn"/>
+                            <constraint firstItem="ePd-0Q-Yp2" firstAttribute="centerY" secondItem="hag-mA-rsV" secondAttribute="centerY" id="vgG-BK-g4q"/>
                             <constraint firstItem="OqP-du-Y9N" firstAttribute="centerX" secondItem="hag-mA-rsV" secondAttribute="centerX" id="zIO-V6-BZJ"/>
                         </constraints>
                     </view>
@@ -424,8 +499,14 @@
             <point key="canvasLocation" x="4040.579710144928" y="146.65178571428569"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FTh-JL-hnX"/>
+        <segue reference="E3l-6g-k5D"/>
+        <segue reference="yMX-XI-15C"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="check" width="23" height="19"/>
         <image name="goodWeather" width="1218" height="812"/>
         <image name="load" width="33" height="33"/>
         <namedColor name="blue">

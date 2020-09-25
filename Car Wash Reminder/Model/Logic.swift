@@ -79,10 +79,6 @@ class Logic {
             user.hasOpenedAppBefore = savedUserOpenedAppBefore
             print("• User has opened app before: \(user.hasOpenedAppBefore)")
         }
-        if let savedUserLastSearchedCity = defaults.string(forKey: defaultsUserLastSearchedCity) as String? {
-            user.lastSearchedCity = savedUserLastSearchedCity
-            print("• User last searched city: \(user.lastSearchedCity)")
-        }
         if let savedUserPositionCity = defaults.string(forKey: defaultsUserLastPositionCity) as String? {
             user.lastPositionCity = savedUserPositionCity
             print("• User last position city: \(user.lastPositionCity)")

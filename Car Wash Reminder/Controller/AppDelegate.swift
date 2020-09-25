@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-08.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

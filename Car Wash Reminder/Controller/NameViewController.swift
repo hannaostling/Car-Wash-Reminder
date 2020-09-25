@@ -1,6 +1,6 @@
 import UIKit
 
-class NameViewController: UIViewController, UITextFieldDelegate {
+class NameViewController: UIViewController {
 
     @IBOutlet weak var nameCarTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
@@ -9,47 +9,45 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         nameCarTextField.style()
-        
-        
-        self.navigationItem.setHidesBackButton(true, animated:true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.hideKeyboardWhenTappedAround()
-        nameCarTextField.delegate = self
+        hideKeyboardWhenTappedAround()
         nextButton.isEnabled = false
         logic.askForNotificationPermission()
         logic.readUserDefaults()
     }
     
-    // Next button
     @IBAction func nextButtonPressed(_ sender: Any) {
         next()
     }
     
-    // När användaren börjar skriva, sätt knappen till enabled
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        nextButton.isEnabled = true
-        nextButton.alpha = 1.0
+    @IBAction func textFieldDidBeginEditing(_ sender: Any) {
+        updateUI()
     }
     
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    @IBAction func textFieldShouldReturn(_ sender: Any) {
         nameCarTextField.resignFirstResponder()
         next()
-        return true
+    }
+    
+    @IBAction func textFieldEditingChanged(_ sender: Any) {
+        updateUI()
+    }
+    
+    private func updateUI() {
+        guard let name = nameCarTextField.text else {return}
+        nextButton.isEnabled = !name.isEmpty
+        nextButton.alpha = !name.isEmpty ? 1 : 0
     }
     
     // Vad som ska häna när användaren klickar på nästa, ovsett om det är från return button i textfield eller om det är knappen "nextButton".
-    func next() {
+    private func next() {
         logic.readUserDefaults()
         let carName = nameCarTextField.text!
         nameTheCar(carName: carName)
     }
     
     // Alert: fråga om användaren om
-    func nameTheCar(carName: String) {
+    private func nameTheCar(carName: String) {
         var title = ""
         var message = ""
         if carName.count == 0 {

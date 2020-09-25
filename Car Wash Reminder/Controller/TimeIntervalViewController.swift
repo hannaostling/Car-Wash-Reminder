@@ -1,11 +1,3 @@
-//
-//  TimeIntervalViewController.swift
-//  Car Wash Reminder
-//
-//  Created by Hanna Östling on 2018-10-17.
-//  Copyright © 2018 Hanna Östling. All rights reserved.
-//
-
 import UIKit
 import UserNotifications
 
@@ -13,6 +5,7 @@ class TimeIntervalViewController: UIViewController {
 
     @IBOutlet weak var weeksPickerView: UIPickerView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet var titleLabel: UILabel!
     
     let logic = Logic.sharedInstance
     var timeIntervals = ["Inget tidsintervall valt", "Varje vecka", "Varannan vecka"]
@@ -20,21 +13,15 @@ class TimeIntervalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated:true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         logic.readUserDefaults()
         let carName = logic.getCarName(withCarIndex: logic.user.chosenCarIndex)
         title = "Välj tidsintervall för \(carName)"
+        titleLabel.text = title
         let carTimeInterval = logic.getCarTimeInterval(withCarIndex: logic.user.chosenCarIndex)
         setDoneButtonProperties(int: carTimeInterval)
         addTimeIntervals()
         weeksPickerView.dataSource = self
         weeksPickerView.delegate = self
-    }
-    
-    // Om användaren inte förstår vad det är för tidsintervall så kan man klicka på info för att få mer information.
-    @IBAction func infoButtonPressed(_ sender: Any) {
-        giveInformationAlert()
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {

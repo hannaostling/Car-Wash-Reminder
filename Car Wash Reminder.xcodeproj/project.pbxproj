@@ -11,6 +11,7 @@
 		4DA2F90CB06E8BC3C6E63298 /* Pods_Car_Wash_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */; };
 		B507FCEA217E088F005E7321 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507FCE9217E088F005E7321 /* NameViewController.swift */; };
 		B533DDCA251DDACD00B3A2AC /* HomeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533DDC9251DDACD00B3A2AC /* HomeeViewController.swift */; };
+		B533DDCF251DE63000B3A2AC /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B533DDCE251DE63000B3A2AC /* PermissionViewController.swift */; };
 		B54940802170EC3300EB3F11 /* ToDoList in Resources */ = {isa = PBXBuildFile; fileRef = B549407F2170EC3300EB3F11 /* ToDoList */; };
 		B54940822170ECCF00EB3F11 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940812170ECCF00EB3F11 /* WeatherData.swift */; };
 		B54940842170ECFB00EB3F11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54940832170ECFB00EB3F11 /* HomeViewController.swift */; };
@@ -58,6 +59,7 @@
 		B12F311D5EDF3B4F0C10C8F4 /* Pods_Car_Wash_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Wash_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B507FCE9217E088F005E7321 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		B533DDC9251DDACD00B3A2AC /* HomeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeeViewController.swift; sourceTree = "<group>"; };
+		B533DDCE251DE63000B3A2AC /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		B549407F2170EC3300EB3F11 /* ToDoList */ = {isa = PBXFileReference; lastKnownFileType = text; path = ToDoList; sourceTree = "<group>"; };
 		B54940812170ECCF00EB3F11 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		B54940832170ECFB00EB3F11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				B557761D2179EADD00C92F7F /* HistoryTableViewController.swift */,
 				B573C717216B80B400754AA6 /* AppDelegate.swift */,
 				B533DDC9251DDACD00B3A2AC /* HomeeViewController.swift */,
+				B533DDCE251DE63000B3A2AC /* PermissionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58A530A216E017E00184750 /* User.swift in Sources */,
+				B533DDCF251DE63000B3A2AC /* PermissionViewController.swift in Sources */,
 				B59C2EFD21776788004C8C2D /* StartViewController.swift in Sources */,
 				B573C783216B956400754AA6 /* Logic.swift in Sources */,
 				B58A530C216E28E100184750 /* Car.swift in Sources */,

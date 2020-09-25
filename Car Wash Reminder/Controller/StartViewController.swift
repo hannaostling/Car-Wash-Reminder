@@ -20,7 +20,7 @@ class StartViewController: UIViewController {
         case .firstTime:
             performSegue(withIdentifier: "fromStartToFirst", sender: self)
         case .nameFirstCar:
-            performSegue(withIdentifier: "fromStartToNewCar", sender: self)
+            performSegue(withIdentifier: "fromStartToName", sender: self)
         case .setTimeIntervalForFirstCar:
             performSegue(withIdentifier: "fromStartToTime", sender: self)
         case .userHasAtLeastOneCar:
