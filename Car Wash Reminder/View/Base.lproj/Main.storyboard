@@ -141,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="3235" y="-538"/>
         </scene>
-        <!--Welcome-->
+        <!--Permission View Controller-->
         <scene sceneID="rB7-Nu-AoX">
             <objects>
-                <viewController title="Welcome" id="5Q9-Vk-cSx" customClass="PermissionViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Q9-Vk-cSx" customClass="PermissionViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIw-Ia-C8h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +239,6 @@
                             <constraint firstItem="vLx-Hr-fXb" firstAttribute="bottom" secondItem="vMg-OX-qGk" secondAttribute="bottom" constant="30" id="vuA-RD-Sk4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="tOf-y3-NlG"/>
                     <connections>
                         <outlet property="nextButton" destination="vMg-OX-qGk" id="dQk-vP-kMf"/>
                         <outlet property="notificationsButton" destination="7xH-Rh-j1r" id="tQL-l0-nNv"/>
@@ -251,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="4041" y="-1240"/>
         </scene>
-        <!--Welcome-->
+        <!--Name View Controller-->
         <scene sceneID="6pe-ib-P4H">
             <objects>
-                <viewController title="Welcome" id="Myh-AV-gVN" customClass="NameViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Myh-AV-gVN" customClass="NameViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cKs-Cj-gim">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,10 +322,10 @@
             </objects>
             <point key="canvasLocation" x="4855" y="-1240"/>
         </scene>
-        <!--Welcome-->
+        <!--Time Interval View Controller-->
         <scene sceneID="t7C-hI-y27">
             <objects>
-                <viewController title="Welcome" id="RrU-gq-0fX" customClass="TimeIntervalViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RrU-gq-0fX" customClass="TimeIntervalViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Tm-0J-6se">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="5725" y="-1240"/>
         </scene>
-        <!--Welcome-->
+        <!--Home View Controller-->
         <scene sceneID="6Ci-4X-PEc">
             <objects>
-                <viewController title="Welcome" id="6y5-w6-UXa" customClass="HomeeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6y5-w6-UXa" customClass="HomeViewController" customModule="Car_Wash_Reminder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hag-mA-rsV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,6 +410,9 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="washedCarButtonPressed:" destination="6y5-w6-UXa" eventType="touchUpInside" id="DGb-bx-tsM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Idag är en bra dag att tvätta Bettan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqP-du-Y9N">
                                 <rect key="frame" x="97" y="90.5" width="220" height="88"/>
@@ -472,16 +474,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atC-t2-XR8">
+                                <rect key="frame" x="257" y="277" width="46" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="changeCarButtonPressed:" destination="6y5-w6-UXa" eventType="touchUpInside" id="2SF-4K-hFL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IwL-c9-fJf"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="atC-t2-XR8" firstAttribute="top" secondItem="OqP-du-Y9N" secondAttribute="bottom" constant="98.5" id="0d7-eB-ZJ2"/>
                             <constraint firstItem="UCR-z4-M3O" firstAttribute="leading" secondItem="hag-mA-rsV" secondAttribute="leading" id="AvA-wA-8R8"/>
                             <constraint firstItem="IwL-c9-fJf" firstAttribute="bottom" secondItem="V5F-qN-5eO" secondAttribute="bottom" constant="30" id="TmR-R1-Px4"/>
                             <constraint firstItem="V5F-qN-5eO" firstAttribute="leading" secondItem="IwL-c9-fJf" secondAttribute="leading" constant="40" id="UlZ-p5-l0l"/>
                             <constraint firstAttribute="trailing" secondItem="UCR-z4-M3O" secondAttribute="trailing" id="V4A-VW-f2x"/>
                             <constraint firstAttribute="bottom" secondItem="UCR-z4-M3O" secondAttribute="bottom" id="W1f-Id-OJW"/>
                             <constraint firstItem="IwL-c9-fJf" firstAttribute="trailing" secondItem="V5F-qN-5eO" secondAttribute="trailing" constant="40" id="bSy-Rp-8iP"/>
+                            <constraint firstItem="IwL-c9-fJf" firstAttribute="trailing" secondItem="atC-t2-XR8" secondAttribute="trailing" constant="111" id="cPi-BO-WP7"/>
                             <constraint firstItem="ePd-0Q-Yp2" firstAttribute="centerX" secondItem="hag-mA-rsV" secondAttribute="centerX" id="hJH-am-Y67"/>
                             <constraint firstItem="UCR-z4-M3O" firstAttribute="top" secondItem="hag-mA-rsV" secondAttribute="top" id="l5K-8M-im7"/>
                             <constraint firstItem="OqP-du-Y9N" firstAttribute="centerY" secondItem="hag-mA-rsV" secondAttribute="centerY" multiplier="0.3" id="v2B-WD-6jn"/>
@@ -489,9 +501,9 @@
                             <constraint firstItem="OqP-du-Y9N" firstAttribute="centerX" secondItem="hag-mA-rsV" secondAttribute="centerX" id="zIO-V6-BZJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Välkommen till Wash Me" id="8Om-Sa-6Jc"/>
                     <connections>
-                        <outlet property="label" destination="OqP-du-Y9N" id="61Z-0U-Ved"/>
+                        <outlet property="washStatusLabel" destination="x3s-RK-zjM" id="ENM-5m-kOW"/>
+                        <outlet property="washedCarButton" destination="V5F-qN-5eO" id="k3T-32-bWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rum-cq-bfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -500,7 +512,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FTh-JL-hnX"/>
+        <segue reference="BSz-BK-9Os"/>
         <segue reference="E3l-6g-k5D"/>
         <segue reference="yMX-XI-15C"/>
     </inferredMetricsTieBreakers>

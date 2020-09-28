@@ -16,17 +16,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     var fetchedDataTime = Date()
     var positionOrSearch = PositionOrSearch.position
     
-    @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var weatherDataView: UIImageView!
     @IBOutlet weak var washedCarButton: UIButton!
-    @IBOutlet weak var thumbImage: UIImageView!
     @IBOutlet weak var washStatusLabel: UILabel!
-    @IBOutlet weak var dropView: UIView!
-    @IBOutlet weak var dropButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         logic.logicDelegate = self
         logic.askForNotificationPermission()
         logic.checkIfUserShouldWashCar()
@@ -34,23 +28,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         if weatherData.city == "" {
             retrievedData = false
         }
-        dropView.isHidden = true
     }
     
     // Gå till ChooseCarTableViewController
     @IBAction func changeCarButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "fromHomeToChooseCar", sender: self)
-    }
-    
-    // View åker upp eller ner beroende på olika tillstånd
-    @IBAction func dropButtonPressed(_ sender: Any) {
-        if dropButton.currentTitle == "↓" {
-            dropButton.setTitle("↑", for: .normal)
-            dropView.isHidden = false
-        } else if dropButton.currentTitle == "↑" {
-            dropButton.setTitle("↓", for: .normal)
-            dropView.isHidden = true
-        }
     }
     
     // När man klickar på "Nu är bilen tvättad" så markeras bilen som tvättad nyligen och appen tar en paus från att leta efter en bra dag att tvätta bilen med tidsintervallet som användaren har valt.
@@ -178,7 +160,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
             }
             DispatchQueue.main.async {
                 self.checkRain()
-                self.weatherIcon.image = UIImage(named: self.weatherData.weatherIconName)
                 if self.positionOrSearch == .position {
                     self.logic.user.lastPositionCity = self.weatherData.city
                     self.logic.defaults.set(self.logic.user.lastPositionCity, forKey: self.logic.defaultsUserLastPositionCity)
@@ -192,7 +173,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 washStatusLabel.text = errorMessage
             }
             print(errorMessage)
-            weatherIcon.image = UIImage(named: "dont_know")
             didUpdateUI()
         }
     }
@@ -242,14 +222,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
     // Uppdaterar UI
     func didUpdateUI() {
         logic.readUserDefaults()
-        if dropView.isHidden == true {
-            dropButton.setTitle("↓", for: .normal)
-        } else {
-            dropButton.setTitle("↑", for: .normal)
-        }
-        if retrievedDataButDidNotSucceed == true {
-            thumbImage.image = UIImage(named: "thumb-down")
-        } else {
+        if !retrievedDataButDidNotSucceed {
             let carIsDirty = logic.getCarIsDirtyBool(withCarIndex: logic.user.chosenCarIndex)
             let carName = logic.getCarName(withCarIndex: logic.user.chosenCarIndex)
             let carStatus = logic.getStatus(withCarIndex: logic.user.chosenCarIndex)
@@ -262,11 +235,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
                 washedCarButton.setTitle("\(carName) är tvättad nyligen", for: .normal)
                 washedCarButton.isEnabled = false
                 washedCarButton.alpha = 0.5
-            }
-            if logic.washToday == true {
-                thumbImage.image = UIImage(named: "thumb-up")
-            } else {
-                thumbImage.image = UIImage(named: "thumb-down")
             }
         }
     }
