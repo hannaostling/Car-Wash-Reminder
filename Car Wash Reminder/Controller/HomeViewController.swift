@@ -30,6 +30,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UISearchB
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     // Gå till ChooseCarTableViewController
     @IBAction func changeCarButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "fromHomeToChooseCar", sender: self)
